@@ -91,20 +91,32 @@ def modifiers_down():
     return any(user32.GetAsyncKeyState(vk) & 0x8000 for vk in (0x10, 0x11, 0x12, 0x5B, 0x5C))
 
 
+STARTUP_LINK = (Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming"))
+                / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "Startup" / f"{C.APP_NAME}.lnk")
+
+
 def set_start_with_windows(enabled):
-    key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
-    with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_SET_VALUE) as key:
-        if enabled:
-            if getattr(sys, "frozen", False):
-                cmd = f'"{sys.executable}" --tray'
-            else:
-                cmd = f'"{Path(sys.executable).with_name("pythonw.exe")}" "{Path(__file__).resolve()}" --tray'
-            winreg.SetValueEx(key, C.APP_NAME, 0, winreg.REG_SZ, cmd)
-        else:
-            try:
-                winreg.DeleteValue(key, C.APP_NAME)
-            except FileNotFoundError:
-                pass
+    """A shortcut in the Startup folder (starts in the tray at sign-in). The folder is used instead
+    of the registry Run key: hosts that sandbox their child processes can redirect registry writes."""
+    import subprocess
+    try:  # clean up the registry entry older versions used
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0,
+                            winreg.KEY_SET_VALUE) as key:
+            winreg.DeleteValue(key, C.APP_NAME)
+    except OSError:
+        pass
+    if not enabled:
+        STARTUP_LINK.unlink(missing_ok=True)
+        return
+    if getattr(sys, "frozen", False):
+        target, args = sys.executable, "--tray"
+    else:
+        target, args = str(Path(sys.executable).with_name("pythonw.exe")), f'"{Path(__file__).resolve()}" --tray'
+    ps = ("$s=(New-Object -ComObject WScript.Shell).CreateShortcut($env:L);$s.TargetPath=$env:T;"
+          "$s.Arguments=$env:A;$s.WorkingDirectory=(Split-Path $env:T);$s.IconLocation=$env:T+',0';$s.Save()")
+    subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", ps], check=True,
+                   env={**os.environ, "L": str(STARTUP_LINK), "T": target, "A": args},
+                   creationflags=0x08000000)  # CREATE_NO_WINDOW
 
 
 def make_tone(path, freqs, ms=60, volume=0.14):
@@ -194,6 +206,10 @@ class SpeakOn:
         threading.Thread(target=self.controller, daemon=True).start()
         self.load_model()
         self.start_hidden = start_hidden
+        # the Settings switch reflects the real Startup shortcut; refresh it in case the app moved
+        self.settings["start_with_windows"] = STARTUP_LINK.exists()
+        if self.settings["start_with_windows"]:
+            threading.Thread(target=lambda: set_start_with_windows(True), daemon=True).start()
 
     # ----- persistence
     def save_settings(self):
