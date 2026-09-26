@@ -258,17 +258,39 @@ def learn_from_wispr(engine, transcribe, progress=lambda done, total, msg: None,
 # ---------------------------------------------------------------- learned store
 
 class Learned:
+    """learned.json. Re-read whenever the file changes on disk, so edits made while the app runs
+    (a tool, the weekly routine, a text editor) are never overwritten by a stale in-memory copy."""
+
     def __init__(self, path):
         self.path = Path(path)
-        self.data = {"fixes": [], "terms": [], "clips": 0, "edits": {}}
+        self._data = None
+        self._mtime = None
+        self._refresh()
+
+    def _refresh(self):
         try:
-            self.data.update(json.loads(self.path.read_text(encoding="utf-8")))
-        except Exception:
-            pass
+            mtime = self.path.stat().st_mtime
+        except OSError:
+            mtime = None
+        if self._data is None or mtime != self._mtime:
+            data = {"fixes": [], "terms": [], "clips": 0, "edits": {}}
+            try:
+                data.update(json.loads(self.path.read_text(encoding="utf-8")))
+            except Exception:
+                pass
+            self._data, self._mtime = data, mtime
+
+    @property
+    def data(self):
+        self._refresh()
+        return self._data
 
     def save(self):
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        self.path.write_text(json.dumps(self.data, indent=1, ensure_ascii=False), encoding="utf-8")
+        tmp = self.path.with_suffix(".tmp")
+        tmp.write_text(json.dumps(self._data, indent=1, ensure_ascii=False), encoding="utf-8")
+        tmp.replace(self.path)
+        self._mtime = self.path.stat().st_mtime
 
     def replacements(self):
         return [(f["heard"], f["wanted"]) for f in self.data["fixes"] if f.get("enabled", True)]

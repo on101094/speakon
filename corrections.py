@@ -11,6 +11,7 @@ new sentences and deletions are ignored.
 """
 
 import difflib
+import logging
 import re
 import threading
 import time
@@ -18,6 +19,7 @@ import time
 import textproc
 
 WATCH_SECONDS = 90
+log = logging.getLogger("speakon")
 POLL_SECONDS = 1.0
 MAX_CHARS = 30000
 
@@ -148,6 +150,7 @@ class EditWatcher:
                     if stop.wait(0.2):
                         return
                 if last is None:
+                    log.info("correction watch: could not read the text box in this app")
                     return                            # can't read this box, or our text isn't there
                 deadline = time.time() + WATCH_SECONDS
                 while time.time() < deadline and not stop.wait(POLL_SECONDS):
@@ -160,10 +163,11 @@ class EditWatcher:
                         break                         # message sent / box cleared: keep the last reading
                     last = text
                 pairs = find_corrections(inserted, last, self.ordinary())
+                log.info("correction watch ended: box readable, %d change(s) learned", len(pairs))
                 if pairs:
                     self.on_corrections(pairs)
         except Exception:
-            pass
+            log.exception("correction watch failed")
 
 
 if __name__ == "__main__":

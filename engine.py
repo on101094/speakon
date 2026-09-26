@@ -31,6 +31,9 @@ BLOCK = 480                 # 30 ms
 PAUSE_BLOCKS = 18           # 540 ms of quiet = a pause we can cut at
 MIN_CHUNK_BLOCKS = 200      # 6 s - tuned on the user's recordings: fewer joins, fewer errors
 MAX_CHUNK_BLOCKS = 800      # 24 s - force a cut at the quietest spot
+PREVIEW_GAP = 5             # a preview ends at a quiet gap of this many blocks (150 ms)
+REMAINDER_CONTEXT = 100     # context for the words after a reused preview (3 s: tuned on the user's recordings)
+PROMOTE_BLOCKS = 200        # lock in a preview once it covers 6 s of finished words
 CONTEXT_BLOCKS = 100        # 3 s of earlier audio in front of each piece
 PAD_BLOCKS = 7              # keep 210 ms of quiet around speech
 SENTENCE_END = ".?!"
@@ -193,7 +196,7 @@ class Dictation:
     text appear almost as soon as the key is released.
     """
 
-    def __init__(self, engine, language=None, hotwords="", live_preview=True, on_preview=None):
+    def __init__(self, engine, language=None, hotwords="", live_preview=True, on_preview=None, start_worker=True):
         self.engine = engine
         self.language = language
         self.hotwords = hotwords
@@ -215,8 +218,10 @@ class Dictation:
         self.error = None
         self.spec = None
         self.reused_preview = False
+        self.cut_lock = threading.Lock()
         self.worker = threading.Thread(target=self._work, daemon=True)
-        self.worker.start()
+        if start_worker:
+            self.worker.start()
 
     # ----- audio side
     def threshold(self):
@@ -232,14 +237,15 @@ class Dictation:
         thr = self.threshold()
         self.quiet = self.quiet + 1 if r < thr else 0
         self.seg_peak = max(self.seg_peak, r)
-        seg = n - self.committed
-        if seg < MIN_CHUNK_BLOCKS or self.finishing:
-            return
-        if self.quiet >= PAUSE_BLOCKS and self.seg_peak > thr * 2:
-            self._commit(n - PAUSE_BLOCKS // 2)
-        elif seg >= MAX_CHUNK_BLOCKS:
-            window = np.convolve(np.array(self.rms[n - 166:n]), np.ones(5) / 5, mode="same")
-            self._commit(n - 166 + int(np.argmin(window)))
+        with self.cut_lock:
+            seg = n - self.committed
+            if seg < MIN_CHUNK_BLOCKS or self.finishing:
+                return
+            if self.quiet >= PAUSE_BLOCKS and self.seg_peak > thr * 2:
+                self._commit(n - PAUSE_BLOCKS // 2)
+            elif seg >= MAX_CHUNK_BLOCKS:
+                window = np.convolve(np.array(self.rms[n - 166:n]), np.ones(5) / 5, mode="same")
+                self._commit(n - 166 + int(np.argmin(window)))
 
     def _commit(self, cut):
         start = self.committed
@@ -322,7 +328,7 @@ class Dictation:
             if not self._voiced(start, end, thr):
                 self.done_to = end
                 return
-            context = 50                          # only a few words left: 1.5 s of context is enough
+            context = REMAINDER_CONTEXT
         else:
             context = CONTEXT_BLOCKS
         text, prev_fixed = "", None
@@ -373,9 +379,9 @@ class Dictation:
             return                                  # nothing new said since the last preview
         self.last_preview = time.time()
         end = n
-        for e in range(n, start + 20, -1):          # latest gap of >= 150 ms
-            if all(r < thr for r in self.rms[e - 5:e]):
-                end = e - 2
+        for e in range(n, start + 20, -1):          # latest gap between words
+            if all(r < thr for r in self.rms[e - PREVIEW_GAP:e]):
+                end = e - PREVIEW_GAP // 2
                 break
         try:
             text, prev_fixed = self._piece(start, end, thr, preview=True)
@@ -384,11 +390,24 @@ class Dictation:
         if self.finishing:
             return
         self.spec = {"start": start, "end": end, "text": text, "prev_fixed": prev_fixed, "n": len(self.pieces)}
+        if PROMOTE_BLOCKS and end - start >= PROMOTE_BLOCKS and text:
+            # 6 s+ of finished words: lock them in, so later previews (and the release) stay short
+            with self.cut_lock:
+                if self.committed == start and not self.finishing:
+                    self.committed = end
+                    self.seg_peak = 0.0
+                    self.nchunks += 1
+                    self.chunks_done += 1
+                    self._store(text, prev_fixed, end)
+                    self.spec = None
         if not self.finishing and not self.cancelled:
-            shown = list(self.pieces)
-            if prev_fixed is not None and shown:
-                shown[-1] = prev_fixed
-            self.on_preview(" ".join(p for p in shown + [text] if p))
+            if self.spec is None:
+                self.on_preview(self.committed_text())
+            else:
+                shown = list(self.pieces)
+                if prev_fixed is not None and shown:
+                    shown[-1] = prev_fixed
+                self.on_preview(" ".join(p for p in shown + [text] if p))
 
     # ----- control
     def finish(self):

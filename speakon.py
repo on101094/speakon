@@ -7,6 +7,8 @@ FluidVoice, Handy and murmur, and it learns from your own Wispr Flow history.
 
 import ctypes
 import json
+import logging
+import logging.handlers
 import math
 import os
 import queue
@@ -39,15 +41,17 @@ from pynput import keyboard
 import config as C
 import engine as eng
 import learn
+import sendinput
 import textproc
 from corrections import EditWatcher, find_corrections
 from hotkeys import HotkeyWatcher
 from overlay import FlowBar
 
 HISTORY_LIMIT = 5000
+log = logging.getLogger("speakon")
 MIN_SECONDS = 0.3
 TAP_SECONDS = 0.35
-TYPE_LIMIT = 200
+TYPE_LIMIT = 600         # auto insert: type up to this many characters (fast SendInput), paste longer
 user32 = ctypes.windll.user32
 kernel32 = ctypes.windll.kernel32
 
@@ -169,6 +173,13 @@ class FakeMic:
 class SpeakOn:
     def __init__(self, start_hidden=False):
         C.DATA_DIR.mkdir(parents=True, exist_ok=True)
+        (C.DATA_DIR / "logs").mkdir(exist_ok=True)
+        handler = logging.handlers.RotatingFileHandler(C.DATA_DIR / "logs" / "speakon.log", maxBytes=1_000_000,
+                                                       backupCount=2, encoding="utf-8")
+        handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+        log.addHandler(handler)
+        log.setLevel(logging.INFO)
+        log.info("SpeakOn %s starting", C.VERSION)
         self.settings = {**C.DEFAULT_SETTINGS, **load_json(C.SETTINGS_FILE, {})}
         if self.settings["hotkey"] != "custom" and self.settings["hotkey"] not in C.HOTKEY_PRESETS:
             self.settings["hotkey"] = "ctrl_win"
@@ -181,6 +192,7 @@ class SpeakOn:
         self.stream = None
         self.dictation = None
         self.recording = self.latched = self.from_button = self.busy = False
+        self.timing = {}
         self.level = 0.0
         self.levels = [0.0] * 18
         self.preview = ""
@@ -450,6 +462,9 @@ class SpeakOn:
             raw = d.finish()
         except Exception as e:
             err = e
+            log.exception("transcription failed")
+        self.timing = {"engine": time.time() - self.released_at, "reused": d.reused_preview,
+                       "pieces": d.nchunks, "speech": round(d.seconds, 1)}
         try:
             self.deliver(raw, d, err)
         finally:
@@ -480,6 +495,7 @@ class SpeakOn:
                 f["enabled"] = True
                 f["wanted"] = next(x["wanted"] for x in fixes if x["heard"].lower() == f["heard"].lower())
         self.learned.save()
+        log.info("learned from %s: %s", source, ", ".join(f"{o} -> {n}" for o, n in pairs))
         if notify:
             self.notify("Learned: " + ", ".join(f'"{o}" → "{n}"' for o, n in pairs) +
                         ". You can undo this under Your voice.")
@@ -501,6 +517,11 @@ class SpeakOn:
             if self.settings["learn_from_edits"]:
                 self.watcher.watch(text)              # learn if the user fixes a word right after
         latency = time.time() - self.released_at
+        t = getattr(self, "timing", {})
+        log.info("dictation: %.1fs speech, %d chars, wait %.2fs = engine %.2f (pieces %s, preview reused %s) "
+                 "+ keys still held %.2f + insert %.2f [%s]", t.get("speech", 0), len(text), latency,
+                 t.get("engine", 0), t.get("pieces"), t.get("reused"), t.get("keys_held", 0), t.get("insert", 0),
+                 self.settings["paste_method"])
         entry = {"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw, "fixes": fixes,
                  "app": self.target_app, "seconds": round(d.seconds, 1), "model": self.settings["model"],
                  "latency": round(latency, 2)}
@@ -530,21 +551,25 @@ class SpeakOn:
 
     # ----- inserting text where the cursor is
     def insert(self, text):
-        deadline = time.time() + 2.0
+        t0 = time.time()
+        deadline = t0 + 2.0
         while modifiers_down() and time.time() < deadline:   # e.g. Win still held: Ctrl+V would be Win+Ctrl+V
             time.sleep(0.02)
+        t1 = time.time()
         self.keys.paused = True
         try:
             self._insert(text)
         finally:
+            self.timing.update(keys_held=t1 - t0, insert=time.time() - t1)
             time.sleep(0.05)
             self.keys.paused = False
 
     def _insert(self, text):
         method = self.settings["paste_method"]
         if method == "type" or (method == "auto" and len(text) <= TYPE_LIMIT and "\n" not in text):
-            self.kb.type(text)
-            return
+            if sendinput.type_text(text.replace("\n", " ")):
+                return
+            # nothing accepted (e.g. an admin window): fall through to the clipboard
         old = None
         if self.settings["restore_clipboard"]:
             try:
