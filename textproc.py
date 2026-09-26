@@ -39,7 +39,7 @@ page part people point put read right run said same say see set she should show 
 such take team test than that the their them then there these they thing think this time to two type up us
 use user very want was way we well were what when where which who will with word work would year you your""".split())
 
-DEFAULT_DICTIONARY = """# SpeakType dictionary - one entry per line. Lines starting with # are ignored.
+DEFAULT_DICTIONARY = """# SpeakOn dictionary - one entry per line. Lines starting with # are ignored.
 #
 # A word or name you want spelled right (sound-alikes get snapped to it):
 #   ChatGPT
@@ -47,7 +47,7 @@ DEFAULT_DICTIONARY = """# SpeakType dictionary - one entry per line. Lines start
 #
 # A fix, when you hear X write Y (always applied, whole words only):
 #   cloud code -> Claude Code
-#   speak type -> SpeakType
+#   speak on -> SpeakOn
 """
 
 
@@ -273,11 +273,11 @@ def process(text, settings, english, dictionary="", extra_fixes=(), extra_terms=
 
 
 if __name__ == "__main__":
-    d = "ChatGPT\nChargeBee\nKubernetes\nspeak type -> SpeakType\ncloud code -> Claude Code\nClaude"
+    d = "ChatGPT\nChargeBee\nKubernetes\nspeak on -> SpeakOn\ncloud code -> Claude Code\nClaude"
     s = {"spoken_commands": True}
     tests = [
         "Um, so I asked chat GPT about uh the charge be invoice.",
-        "I I I I think we should use kubernetes, new line and speak type comma really",
+        "I I I I think we should use kubernetes, new line and speak on comma really",
         "hmm okay period new paragraph next point question mark",
         "I opened CloudCode and Cloud-code, then checked Cloudflare and the cloud.",
     ]

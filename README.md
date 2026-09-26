@@ -2,6 +2,8 @@
 
 **[⬇ Download SpeakOn for Windows](https://github.com/on101094/speakon/releases/latest)** — unzip, double-click `SpeakOn.exe`.
 
+**Windows only.** There is no Mac version. On a Mac, you're welcome to have your own AI coding assistant adapt the code. Prefer building on Windows from source? See [prompts/windows.md](prompts/windows.md).
+
 Private, fast voice-to-text for Windows. Hold **Ctrl + Win** (the same key as Wispr Flow), speak, let go: your words appear wherever the cursor is, in any app. Everything runs on this computer.
 
 SpeakOn combines the best parts of four open-source dictation apps, and learns from your own Wispr Flow history:
