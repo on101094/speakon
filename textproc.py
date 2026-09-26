@@ -174,12 +174,13 @@ def _keep_case(original, replacement):
     return replacement
 
 
-def apply_custom_words(text, terms, fixes=None):
+def apply_custom_words(text, terms, fixes=None, protected=()):
     # emails, file names, web addresses and codes are literal: never matched by sound
     entries = [(t, _key(t)) for t in terms if _key(t) and _key(t).isascii()
                and not re.search(r"[@/_]|\.\w", t) and sum(c.isdigit() for c in t) <= 2]
     if not entries:
         return text
+    protected = {_key(w) for p in protected for w in p.split()} - {""}
     words = text.split(" ")
     out, i = [], 0
     while i < len(words):
@@ -194,7 +195,12 @@ def apply_custom_words(text, terms, fixes=None):
                 continue
             if any("@" in w or "://" in w for w in chunk):
                 continue
-            m = _best_match("".join(_key(w) for w in chunk), entries)
+            if any(_key(w) in protected for w in chunk):
+                continue                              # a fix already wrote this word on purpose
+            cand = "".join(_key(w) for w in chunk)
+            if any(cand in (k + "s", k + "es", k + "'s") for _, k in entries):
+                continue                              # plural / possessive of a term: leave it
+            m = _best_match(cand, entries)
             if m and (best is None or m[1] < best[2]):
                 best = (n, m[0], m[1])
         if best:
@@ -239,6 +245,33 @@ def apply_spoken_commands(text):
     return text.strip(" ")
 
 
+EVERYDAY_WORDS = set("""a about after again all also am an and any are as at back be because been before being
+better both but by can could did do does doing done down each even ever every few for from get gets getting go
+goes going good got had has have having he her here him his how if in into is it its just know last less let like
+more most much must my need never new next no not now of off on once one only or other our out over own quick
+quicker quickly really right same see she should so some still such than that the their them then there these
+they thing things think this those through to too under until up us very want wanted was way we well were what
+when where which while who why will with without would yes yet you your""".split())
+
+
+def fix_midsentence_caps(text, lowercase_words=(), protected=()):
+    """The engine capitalises a word after a short pause ("with C And replikanto", "It's in fact Quicker").
+    Lower-case such words when they are ordinary words this user normally writes in lower case."""
+    words = set(lowercase_words) | EVERYDAY_WORDS
+    keep = {p.lower() for p in protected if any(c.isupper() for c in p)}   # names only, not "by the way"
+
+    def fix(m):
+        word, i = m.group(0), m.start()
+        before = text[:i].rstrip(" ")
+        if i == 0 or text[i - 1] not in " ,;(" or not before or before[-1] in '.!?:\n"“':
+            return word                               # sentence start, or not a separate word
+        low = word.lower()
+        if low in words and low not in keep and low != "i" and not low.startswith("i'"):
+            return low
+        return word
+    return re.sub(r"\b[A-Z][a-z']+\b", fix, text)
+
+
 def tidy(text):
     text = re.sub(r"[ \t]{2,}", " ", text)
     text = re.sub(r"[ \t]*\n[ \t]*", "\n", text)
@@ -251,9 +284,9 @@ def tidy(text):
     return text
 
 
-def process(text, settings, english, dictionary="", extra_fixes=(), extra_terms=()):
+def process(text, settings, english, dictionary="", extra_fixes=(), extra_terms=(), lowercase_words=()):
     """Returns (clean text, [(heard, written), ...] dictionary fixes that fired).
-    extra_fixes / extra_terms: what SpeakOn learned about this user's voice."""
+    extra_fixes / extra_terms / lowercase_words: what SpeakOn learned about this user."""
     fixes = []
     if not text:
         return text, fixes
@@ -266,7 +299,10 @@ def process(text, settings, english, dictionary="", extra_fixes=(), extra_terms=
     terms += [t for t in extra_terms if t not in terms]
     text = apply_replacements(text, replacements, fixes)
     if settings.get("fuzzy_words", True):
-        text = apply_custom_words(text, terms, fixes)
+        text = apply_custom_words(text, terms, fixes, [w for _, w in replacements if w])
+    if english:
+        protected = terms + [w for _, w in replacements]
+        text = fix_midsentence_caps(text, lowercase_words, [p for t in protected for p in t.split()])
     if settings.get("spoken_commands", False):
         text = apply_spoken_commands(text)
     return tidy(text), fixes

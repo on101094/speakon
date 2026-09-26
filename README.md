@@ -25,6 +25,7 @@ SpeakOn transcribes **while you talk**. At every natural pause, the finished par
 ## How it learns your voice
 
 - **Your voice → Learn now** reads Wispr Flow's local database (a copy; Wispr's file is never changed), runs SpeakOn over your recordings, compares with what Wispr wrote, and keeps the mishearings that repeat for *your* voice (for example a word it keeps mishearing in your accent). It checks itself on recordings it did not learn from and shows the before/after mistake rate.
+- **Fix a word right after dictating**, in any app: SpeakOn watches the text box it just typed into for about a minute (through Windows accessibility, only that box, never your keystrokes or password fields). If you change a word to a similar-looking one ("replicanto" → "Replikanto"), it remembers and writes it right from then on. Undo any learned fix under *Your voice*.
 - **Edit a dictation** on Home → *Save & learn*. When the same correction happens twice, SpeakOn applies it automatically from then on.
 - **Dictionary → Import from Wispr Flow** brings over your Wispr words and snippets.
 
@@ -63,6 +64,7 @@ The first start downloads the speech model (~630 MB) once. To build a stand-alon
 | `engine.py` | Parakeet / Whisper and the transcribe-while-you-talk pipeline with context at pauses |
 | `textproc.py` | Clean-up and dictionary (`python textproc.py` runs its checks) |
 | `learn.py` | Learning from Wispr Flow recordings and from your edits |
+| `corrections.py` | Learns from words you fix right after dictating |
 | `hotkeys.py` | Global shortcut watcher (key combinations, mouse buttons, Start-menu mask) |
 | `overlay.py` | The bottom-centre mic pill (per-pixel-alpha layered window) |
 | `ui/index.html` | The window |

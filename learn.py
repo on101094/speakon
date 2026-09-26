@@ -296,3 +296,18 @@ class Learned:
             self.merge_fixes(new, "your edits")
         self.save()
         return new
+
+
+def learn_lowercase(texts, min_count=2):
+    """Words this user normally writes in lower case mid-sentence ("quicker", "and", "the").
+    Used to undo the engine's habit of capitalising a word after a short pause."""
+    low, cap = collections.Counter(), collections.Counter()
+    for t in texts:
+        for sent in re.split(r"(?<=[.!?])\s+|\n", t or ""):
+            words = re.findall(r"[A-Za-z][a-z']*", sent)
+            for w in words[1:]:                      # skip the sentence's first word
+                if w.islower():
+                    low[w] += 1
+                elif w[0].isupper() and w[1:].islower():
+                    cap[w.lower()] += 1
+    return sorted(w for w, n in low.items() if n >= min_count and cap[w] <= n * 0.1 and w != "i")

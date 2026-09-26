@@ -40,6 +40,7 @@ import config as C
 import engine as eng
 import learn
 import textproc
+from corrections import EditWatcher, find_corrections
 from hotkeys import HotkeyWatcher
 from overlay import FlowBar
 
@@ -201,6 +202,8 @@ class SpeakOn:
         self.keys.set_combo(C.hotkey_keys(self.settings))
         self.keys.start()
         self.bar = FlowBar(self.bar_state)
+        self.watcher = EditWatcher(lambda pairs: self.learn_corrections(pairs),
+                                   ordinary=lambda: self.learned.data.get("lowercase", []))
         self.tray = pystray.Icon(C.APP_NAME, Image.open(resource("assets/icon.png")), C.APP_NAME, self.tray_menu())
         self.tray.run_detached()
         threading.Thread(target=self.controller, daemon=True).start()
@@ -457,7 +460,30 @@ class SpeakOn:
         s = self.settings
         english = (s["language"] in ("auto", "en") and raw.isascii()) or eng.is_english_only(s["model"])
         return textproc.process(raw, s, english, self.dictionary, self.learned.replacements(),
-                                self.learned.data.get("terms", []))
+                                self.learned.data.get("terms", []), self.learned.data.get("lowercase", []))
+
+    def learn_corrections(self, pairs, source="your corrections", notify=True):
+        """Remember words the user corrected; applied from the next dictation on."""
+        fixes = []
+        for old, new in pairs:
+            fixes.append({"heard": old, "wanted": new, "count": 1, "precision": 1.0})
+            terms = self.learned.data.setdefault("terms", [])
+            key = new.lower()
+            if (len(new) >= 4 and key not in textproc.COMMON_WORDS and key not in textproc.EVERYDAY_WORDS
+                    and new not in terms and " " not in new):
+                terms.append(new)                     # also catches other mishearings of it
+        if not fixes:
+            return []
+        self.learned.merge_fixes(fixes, source)
+        for f in self.learned.data["fixes"]:          # a new correction re-enables an old one
+            if any(f["heard"].lower() == x["heard"].lower() for x in fixes):
+                f["enabled"] = True
+                f["wanted"] = next(x["wanted"] for x in fixes if x["heard"].lower() == f["heard"].lower())
+        self.learned.save()
+        if notify:
+            self.notify("Learned: " + ", ".join(f'"{o}" → "{n}"' for o, n in pairs) +
+                        ". You can undo this under Your voice.")
+        return fixes
 
     def deliver(self, raw, d, err):
         if err:
@@ -472,6 +498,8 @@ class SpeakOn:
             self.set_status("Copied - paste it anywhere")
         else:
             self.insert(text + (" " if self.settings["trailing_space"] and not text.endswith("\n") else ""))
+            if self.settings["learn_from_edits"]:
+                self.watcher.watch(text)              # learn if the user fixes a word right after
         latency = time.time() - self.released_at
         entry = {"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw, "fixes": fixes,
                  "app": self.target_app, "seconds": round(d.seconds, 1), "model": self.settings["model"],
@@ -585,10 +613,10 @@ class Api:
         h["edited"] = True
         a.save_history()
         if a.settings["learn_from_edits"] and before != h["text"]:
-            new = a.learned.learn_edit(before, h["text"])
-            if new:
-                return "Learned: " + ", ".join(f'"{f["heard"]}" → "{f["wanted"]}"' for f in new)
-            return "Saved · SpeakOn will learn this fix if it happens again"
+            pairs = find_corrections(before, h["text"], a.learned.data.get("lowercase", []))
+            if a.learn_corrections(pairs, notify=False):
+                return "Learned: " + ", ".join(f'"{o}" → "{n}"' for o, n in pairs)
+            return "Saved (no misheard words to learn - only rewording)"
         return "Saved"
 
     # dictionary
@@ -766,6 +794,25 @@ def main():
         ctypes.windll.shcore.SetProcessDpiAwareness(1)
     except Exception:
         pass
+    if "--selftest-corrections" in sys.argv:
+        # developer check: watch a test window called "SpeakOn correction test" (see README) and
+        # write what was learned to %TEMP%\speakon_corrections_test.txt. Does not start the app.
+        import traceback
+        out = Path(os.environ["TEMP"], "speakon_corrections_test.txt")
+        try:
+            import corrections
+            import uiautomation as auto
+            corrections.WATCH_SECONDS = 6
+            got = []
+            ctrl = auto.WindowControl(searchDepth=1, Name="SpeakOn correction test").EditControl()
+            first = corrections.EditWatcher._read(ctrl)
+            w = corrections.EditWatcher(got.extend)
+            w.watch("For example, replicanto. It writes it with C and the orb setup works.", control=ctrl)
+            time.sleep(9)
+            out.write_text(f"read={first is not None} learned={got!r}", encoding="utf-8")
+        except Exception:
+            out.write_text(traceback.format_exc(), encoding="utf-8")
+        return
     mutex = kernel32.CreateMutexW(None, False, "SpeakOnSingleInstance")
     if kernel32.GetLastError() == 183:
         h = user32.FindWindowW(None, C.APP_NAME)
