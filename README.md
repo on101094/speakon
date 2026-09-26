@@ -1,5 +1,7 @@
 # SpeakOn
 
+**[⬇ Download SpeakOn for Windows](https://github.com/on101094/speakon/releases/latest)** — unzip, double-click `SpeakOn.exe`.
+
 Private, fast voice-to-text for Windows. Hold **Ctrl + Win** (the same key as Wispr Flow), speak, let go: your words appear wherever the cursor is, in any app. Everything runs on this computer.
 
 SpeakOn combines the best parts of four open-source dictation apps, and learns from your own Wispr Flow history:

@@ -21,8 +21,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import engine as E  # noqa: E402
 
 MODELS_DIR = os.path.expanduser(r"~\SpeakOn\models")
-if not os.path.isdir(MODELS_DIR):
-    MODELS_DIR = os.path.expanduser(r"~\SpeakType\models")
 
 EQUIV = {"gonna": "going to", "wanna": "want to", "gotta": "got to", "ok": "okay", "yeah": "yes",
          "alright": "all right", "percent": "%"}

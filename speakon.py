@@ -151,21 +151,10 @@ class FakeMic:
         pass
 
 
-def migrate_old_data():
-    """SpeakType -> SpeakOn: keep the downloaded models, dictionary and history."""
-    old = Path.home() / "SpeakType"
-    if old.exists() and not C.DATA_DIR.exists():
-        try:
-            old.rename(C.DATA_DIR)
-        except OSError:
-            pass
-
-
 # ---------------------------------------------------------------- the app
 
 class SpeakOn:
     def __init__(self, start_hidden=False):
-        migrate_old_data()
         C.DATA_DIR.mkdir(parents=True, exist_ok=True)
         self.settings = {**C.DEFAULT_SETTINGS, **load_json(C.SETTINGS_FILE, {})}
         if self.settings["hotkey"] != "custom" and self.settings["hotkey"] not in C.HOTKEY_PRESETS:
