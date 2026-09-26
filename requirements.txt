@@ -1,0 +1,11 @@
+faster-whisper
+onnx-asr[cpu,hub]
+onnxruntime
+sounddevice
+numpy
+pynput
+pystray
+pillow
+pyperclip
+pywebview
+av

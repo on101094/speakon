@@ -1,0 +1,15 @@
+# local environment and build output
+.venv/
+__pycache__/
+build/
+dist/
+*.spec
+# never commit personal data (it lives in %USERPROFILE%\SpeakOn, but just in case)
+*.wav
+*.sqlite
+history.json
+learned.json
+dictionary.txt
+settings.json
+models/
+recordings/
