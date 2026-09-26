@@ -33,6 +33,7 @@ MIN_CHUNK_BLOCKS = 200      # 6 s - tuned on the user's recordings: fewer joins,
 MAX_CHUNK_BLOCKS = 800      # 24 s - force a cut at the quietest spot
 PREVIEW_GAP = 5             # a preview ends at a quiet gap of this many blocks (150 ms)
 REMAINDER_CONTEXT = 100     # context for the words after a reused preview (3 s: tuned on the user's recordings)
+SHORT_TAIL_BLOCKS = 167     # at release, up to 5 s left: transcribe it whole instead of reusing a preview
 PROMOTE_BLOCKS = 200        # lock in a preview once it covers 6 s of finished words
 CONTEXT_BLOCKS = 100        # 3 s of earlier audio in front of each piece
 PAD_BLOCKS = 7              # keep 210 ms of quiet around speech
@@ -354,6 +355,8 @@ class Dictation:
             if job == "finish":
                 n = len(self.blocks)
                 if n > self.done_to and not self.cancelled:
+                    if n - self.done_to <= SHORT_TAIL_BLOCKS:
+                        self.spec = None              # short: one clean pass is accurate and still fast
                     self._do(self.done_to, n, self.threshold())
                 return
             start, end, thr = job

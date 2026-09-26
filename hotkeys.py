@@ -58,20 +58,36 @@ class HotkeyWatcher:
         self.active = False
         self.paused = False          # while we inject our own keys
         self.capture = None          # recording a new shortcut
-        self.kb = keyboard.Listener(on_press=self._press, on_release=self._release)
-        self.ms = mouse.Listener(on_click=self._click)
+        # the filters run first, in the hook itself: skipping injected keys (SpeakOn's own typing) and
+        # mouse moves there keeps typing instant and the mouse smooth
+        self.kb = keyboard.Listener(on_press=self._press, on_release=self._release,
+                                    win32_event_filter=lambda msg, data: not (data.flags & 0x10))
+        self.ms = None
 
     def start(self):
         self.kb.start()
-        self.ms.start()
+        self._mouse_needed()
 
     def stop(self):
         self.kb.stop()
-        self.ms.stop()
+        if self.ms:
+            self.ms.stop()
+
+    def _mouse_needed(self, force=False):
+        """Watch the mouse only when a mouse button is the shortcut (or one is being recorded)."""
+        need = force or any(k.startswith("mouse_") for k in self.combo)
+        if need and self.ms is None:
+            self.ms = mouse.Listener(on_click=self._click,
+                                     win32_event_filter=lambda msg, data: msg not in (0x0200, 0x020A, 0x020E))
+            self.ms.start()
+        elif not need and self.ms is not None:
+            self.ms.stop()
+            self.ms = None
 
     def set_combo(self, keys):
         self.combo = list(keys)
         self.active = False
+        self._mouse_needed()
 
     def _is_active(self):
         return all(any(matches(spec, k) for k in self.pressed) for spec in self.combo)
@@ -108,6 +124,8 @@ class HotkeyWatcher:
     # ----- capture a new shortcut
     def start_capture(self):
         self.capture = {"held": set(), "seen": [], "done": threading.Event()}
+        self._mouse_needed(force=True)
+        threading.Thread(target=lambda c=self.capture: (c["done"].wait(30), self._mouse_needed()), daemon=True).start()
         return self.capture
 
     def _capture(self, name, down):

@@ -22,6 +22,8 @@ def run(eng, audio, previews=True):
         d._do(*d.jobs.get())
     d.finishing = True
     if len(d.blocks) > d.done_to:
+        if len(d.blocks) - d.done_to <= E.SHORT_TAIL_BLOCKS:
+            d.spec = None                      # same rule as the app's release step
         d._do(d.done_to, len(d.blocks), d.threshold())
     return d.committed_text()
 
