@@ -380,7 +380,7 @@ $("#learnw").onclick = () => api.learn_from_wispr();
 // ---------- settings
 function fill(sel, options, value){ sel.innerHTML = options.map(([k,l])=>`<option value="${esc(String(k))}">${esc(l)}</option>`).join(""); sel.value = String(value ?? "None"); }
 function bindSwitch(inp){ inp.checked = !!opts.settings[inp.dataset.set]; inp.onchange = () => api.set_setting(inp.dataset.set, inp.checked); }
-const TOGGLES = [["always_show_bar","Always show the mic bar","A small pill stays at the bottom of the screen and opens when you dictate"],["live_preview","Show words while I speak",""],["sounds","Start and stop sounds",""],["remove_fillers","Remove um, uh and stutters",""],
+const TOGGLES = [["always_show_bar","Always show the mic bar","A small pill stays at the bottom of the screen and opens when you dictate"],["mic_ready","Keep the microphone ready","Never cut off your first word: the last half second is held in memory and used only when you press the shortcut. Windows shows the mic icon while this is on."],["live_preview","Show words while I speak",""],["sounds","Start and stop sounds",""],["remove_fillers","Remove um, uh and stutters",""],
   ["fuzzy_words","Catch sound-alikes of my dictionary words",""],["spoken_commands","Spoken commands","“new line”, “new paragraph”, “comma”, “period”, “question mark”"],
   ["trailing_space","Add a space after each dictation",""],["restore_clipboard","Restore my clipboard after pasting",""],["start_with_windows","Start SpeakOn with Windows","Starts quietly in the tray"]];
 async function loadSettings(){

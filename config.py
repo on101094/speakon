@@ -3,7 +3,7 @@
 from pathlib import Path
 
 APP_NAME = "SpeakOn"
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 # Not %APPDATA%: apps started from sandboxed hosts (MSIX) get a private, redirected copy of it.
 DATA_DIR = Path.home() / APP_NAME
 MODELS_DIR = DATA_DIR / "models"
@@ -76,6 +76,7 @@ DEFAULT_SETTINGS = {
     "model": "parakeet-v2",
     "language": "auto",
     "mic": None,
+    "mic_ready": True,
     "paste_method": "auto",
     "restore_clipboard": True,
     "trailing_space": True,

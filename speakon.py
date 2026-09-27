@@ -45,6 +45,7 @@ import sendinput
 import textproc
 from corrections import EditWatcher, find_corrections
 from hotkeys import HotkeyWatcher
+from mic import Microphone
 from overlay import FlowBar
 
 HISTORY_LIMIT = 5000
@@ -189,10 +190,13 @@ class SpeakOn:
         self.load_dictionary()
         self.events = queue.Queue()
         self.engine = eng.Engine(C.MODELS_DIR)
-        self.stream = None
+        fake = os.environ.get("SPEAKON_FAKE_MIC")
+        self.mic = Microphone(self.settings["mic"], self.settings["mic_ready"] and not fake,
+                              factory=(lambda cb: FakeMic(fake, cb)) if fake else None)
         self.dictation = None
         self.recording = self.latched = self.from_button = self.busy = False
         self.timing = {}
+        self.lead_in = 0.0
         self.level = 0.0
         self.levels = [0.0] * 18
         self.preview = ""
@@ -220,6 +224,7 @@ class SpeakOn:
         self.tray.run_detached()
         threading.Thread(target=self.controller, daemon=True).start()
         self.load_model()
+        threading.Thread(target=self.mic.warm, daemon=True).start()
         self.start_hidden = start_hidden
         # the Settings switch reflects the real Startup shortcut; refresh it in case the app moved
         self.settings["start_with_windows"] = STARTUP_LINK.exists()
@@ -257,6 +262,8 @@ class SpeakOn:
         old = self.settings.get(key)
         self.settings[key] = value
         self.save_settings()
+        if key in ("mic", "mic_ready"):
+            self.mic.configure(self.settings["mic"], self.settings["mic_ready"])
         if key == "model" and value != old:
             self.load_model()
         if key in ("hotkey", "custom_hotkey"):
@@ -330,7 +337,7 @@ class SpeakOn:
 
     def quit(self):
         self.quitting = True
-        self.close_stream()
+        self.mic.close()
         self.keys.stop()
         self.tray.stop()
         if self.window:
@@ -401,19 +408,12 @@ class SpeakOn:
         d = self.dictation = eng.Dictation(self.engine, lang, self.hotwords(), s["live_preview"],
                                            on_preview=self.set_preview)
 
-        def callback(indata, frames, t, status):
-            block = indata[:, 0].copy()
+        def sink(block):
             self.level = eng.block_rms(block)
             d.feed(block)
 
-        fake = os.environ.get("SPEAKON_FAKE_MIC")
         try:
-            if fake:
-                self.stream = FakeMic(fake, callback)
-            else:
-                self.stream = sd.InputStream(samplerate=eng.SAMPLE_RATE, channels=1, dtype="float32",
-                                             blocksize=eng.BLOCK, device=s["mic"], callback=callback)
-            self.stream.start()
+            self.lead_in = self.mic.begin(sink)
         except Exception as e:
             d.cancel()
             self.notify(f"Microphone problem: {e}")
@@ -425,13 +425,7 @@ class SpeakOn:
         self.play(self.sound_start)
 
     def close_stream(self):
-        if self.stream:
-            try:
-                self.stream.stop()
-                self.stream.close()
-            except Exception:
-                pass
-            self.stream = None
+        self.mic.end()
 
     def do_cancel(self):
         self.recording = False
@@ -449,7 +443,7 @@ class SpeakOn:
         self.released_at = time.time()
         self.close_stream()
         d = self.dictation
-        if d.seconds < MIN_SECONDS:
+        if d.seconds - self.lead_in < MIN_SECONDS:
             d.cancel()
             return
         self.play(self.sound_stop)
@@ -519,9 +513,9 @@ class SpeakOn:
         latency = time.time() - self.released_at
         t = getattr(self, "timing", {})
         log.info("dictation: %.1fs speech, %d chars, wait %.2fs = engine %.2f (pieces %s, preview reused %s) "
-                 "+ keys still held %.2f + insert %.2f [%s]", t.get("speech", 0), len(text), latency,
+                 "+ keys still held %.2f + insert %.2f [%s] lead-in %.2fs", t.get("speech", 0), len(text), latency,
                  t.get("engine", 0), t.get("pieces"), t.get("reused"), t.get("keys_held", 0), t.get("insert", 0),
-                 self.settings["paste_method"])
+                 self.settings["paste_method"], self.lead_in)
         entry = {"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw, "fixes": fixes,
                  "app": self.target_app, "seconds": round(d.seconds, 1), "model": self.settings["model"],
                  "latency": round(latency, 2)}

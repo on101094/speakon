@@ -32,6 +32,7 @@ SpeakOn transcribes **while you talk**. At every natural pause, the finished par
 ## Using it
 
 - Hold **Ctrl + Win**, talk, let go. Or **tap** once to keep listening and tap again to finish. **Esc** cancels.
+- Never cuts off your first word: the microphone stays ready and the half second before you press the shortcut is included (held only in memory; can be turned off in Settings).
 - A small bar rests at the bottom of the screen and opens into the mic pill while you dictate (can be turned off in Settings).
 - Settings: shortcut (many presets, mouse side buttons, or *Record shortcut* for any combination), model, microphone, light/dark mode (sun/moon switch in the sidebar), start with Windows.
 - Data (models, history, dictionary, learned fixes, last 30 recordings): `C:\Users\<you>\SpeakOn`.
@@ -66,6 +67,7 @@ The first start downloads the speech model (~630 MB) once. To build a stand-alon
 | `learn.py` | Learning from Wispr Flow recordings and from your edits |
 | `corrections.py` | Learns from words you fix right after dictating |
 | `hotkeys.py` | Global shortcut watcher (key combinations, mouse buttons, Start-menu mask) |
+| `mic.py` | Keeps the microphone ready with a half-second lead-in, reopens it after sleep or unplugging |
 | `overlay.py` | The bottom-centre mic pill (per-pixel-alpha layered window) |
 | `ui/index.html` | The window |
 | `tools/eval_wispr.py` | Scores engines on your Wispr Flow recordings |

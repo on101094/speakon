@@ -58,6 +58,9 @@ def looks_like_correction(old, new, ordinary=()):
         return len(kn) >= 3 and any(c.isupper() for c in new)  # capitalisation of a name: "orb" -> "ORB"
     if len(kn) < 3:
         return False
+    short, long_ = sorted((ko, kn), key=len)
+    if len(long_) - len(short) >= 3 and (long_.startswith(short) or long_.endswith(short)):
+        return False                                  # words added or removed, not a new spelling
     dist = _levenshtein(ko, kn) / max(len(ko), len(kn))
     sounds = ko.isalpha() and kn.isalpha() and textproc._soundex(ko) == textproc._soundex(kn)
     return dist <= 0.34 or (sounds and dist <= 0.5)
@@ -178,6 +181,7 @@ if __name__ == "__main__":
         ("send it to Take Profit Rader today", "send it to Take Profit Trader today"),
         ("hello there", "completely different text now"),
         ("The long worked twice", "The long walked twice"),
+        ("open the TradingView MCP now", "open the TradingView-MCP folder now"),
     ]
     for ins, now in tests:
         print(f"{ins!r} -> {now!r}: {find_corrections(ins, now)}")

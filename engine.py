@@ -36,6 +36,7 @@ REMAINDER_CONTEXT = 100     # context for the words after a reused preview (3 s:
 SHORT_TAIL_BLOCKS = 167     # at release, up to 5 s left: transcribe it whole instead of reusing a preview
 PROMOTE_BLOCKS = 200        # lock in a preview once it covers 6 s of finished words
 CONTEXT_BLOCKS = 100        # 3 s of earlier audio in front of each piece
+LEAD_SILENCE = 4000          # 250 ms of silence if the first piece opens mid-word (49 vs 43 of 60 first words)
 PAD_BLOCKS = 7              # keep 210 ms of quiet around speech
 SENTENCE_END = ".?!"
 JOIN_PUNCT = ".?!,;:"
@@ -275,6 +276,8 @@ class Dictation:
                 start = voiced[0] - 20
             ctx = start
         audio = np.concatenate(self.blocks[ctx:end])
+        if not prev and voiced[0] - start < 5:     # speech right at the start: a little quiet first saves the word
+            audio = np.concatenate([np.zeros(LEAD_SILENCE, np.float32), audio])
         if len(audio) < SAMPLE_RATE // 2:          # engines like at least ~0.5 s
             audio = np.concatenate([audio, np.zeros(SAMPLE_RATE // 2 - len(audio), np.float32)])
         prompt = self.committed_text()[-200:]
