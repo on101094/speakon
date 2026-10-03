@@ -13,3 +13,11 @@ dictionary.txt
 settings.json
 models/
 recordings/
+
+# graphify (machine-specific / regenerable)
+graphify-out/cache/
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+graphify-out/cost.json
+graphify-out/20*/
+graphify-out/*.sig
