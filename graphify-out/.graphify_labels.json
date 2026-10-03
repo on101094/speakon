@@ -7,7 +7,7 @@
   "5": "textproc.py",
   "6": "SpeakOn",
   "7": "Dictation",
-  "8": "Hotkey Watcher",
+  "8": "HotkeyWatcher",
   "9": "FlowBar",
   "10": "Engine",
   "11": "Microphone",
@@ -17,8 +17,5 @@
   "15": "graphify knowledge graph (graphify-out/)",
   "16": "build.ps1",
   "17": "Cannot type into administrator apps",
-  "18": "corrections.py",
-  "19": "EditWatcher",
-  "20": "sendinput.py",
-  "21": ".__init__"
+  "21": "test_api.py"
 }
