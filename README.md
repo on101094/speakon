@@ -71,6 +71,7 @@ The first start downloads the speech model (~630 MB) once. To build a stand-alon
 | `mic.py` | Keeps the microphone ready with a half-second lead-in, reopens it after sleep or unplugging |
 | `overlay.py` | The bottom-centre mic pill (per-pixel-alpha layered window) |
 | `ui/index.html` | The window |
+| `tests/` | `python -m pytest tests` - settings, history, dictionary, learned fixes and the window's API (runs on every push, on Windows and Linux) |
 | `tools/eval_wispr.py` | Scores engines on your Wispr Flow recordings |
 
 Self-test without a microphone and without sending keys: `SPEAKON_FAKE_MIC=<16 kHz mono .wav>`, `SPEAKON_NO_INSERT=1`, `SPEAKON_SELFTEST=<seconds>`.

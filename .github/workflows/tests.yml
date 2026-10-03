@@ -1,0 +1,31 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # Everything the app imports except the speech-model packages (faster-whisper, onnx-asr,
+      # onnxruntime, av): engine.py only loads those when a model is used, and the tests never do.
+      - name: Install (Windows, real modules)
+        if: runner.os == 'Windows'
+        run: pip install numpy pynput pystray pillow pyperclip pywebview sounddevice uiautomation pytest
+      - name: Install (Linux, Windows-only modules are stood in for by tests/conftest.py)
+        if: runner.os != 'Windows'
+        run: pip install numpy pytest
+      - name: Tests
+        run: python -m pytest tests -q
+      - name: Text clean-up checks
+        run: python textproc.py
