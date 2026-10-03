@@ -1,0 +1,3 @@
+# keep graphify's own skill docs and the app icon out of the knowledge graph
+.claude/
+assets/icon.png
