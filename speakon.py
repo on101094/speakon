@@ -48,6 +48,21 @@ from hotkeys import HotkeyWatcher
 from mic import Microphone
 from overlay import FlowBar
 
+ABOVE_NORMAL, NORMAL = 0x8000, 0x20
+
+
+def set_busy_priority(high):
+    """Above-normal CPU priority only while dictating: on a busy PC this halves the wait
+    (measured 3.05 s -> 1.37 s with every core loaded). The engine uses 3 of the cores, so other
+    programs keep the rest, and priority is back to normal as soon as the text is written."""
+    try:
+        k = ctypes.windll.kernel32
+        k.GetCurrentProcess.restype = ctypes.c_void_p
+        k.SetPriorityClass.argtypes = [ctypes.c_void_p, ctypes.c_uint32]
+        k.SetPriorityClass(k.GetCurrentProcess(), ABOVE_NORMAL if high else NORMAL)
+    except Exception:
+        pass
+
 HISTORY_LIMIT = 5000
 log = logging.getLogger("speakon")
 MIN_SECONDS = 0.3
@@ -419,6 +434,7 @@ class SpeakOn:
             self.notify(f"Microphone problem: {e}")
             return
         self.recording = True
+        set_busy_priority(True)
         self.from_button = from_button
         self.latched = from_button
         self.target_app = "" if from_button else foreground_app()
@@ -432,6 +448,7 @@ class SpeakOn:
         self.close_stream()
         if self.dictation:
             self.dictation.cancel()
+        set_busy_priority(False)
         self.level = 0.0
         self.preview = ""
 
@@ -445,6 +462,7 @@ class SpeakOn:
         d = self.dictation
         if d.seconds - self.lead_in < MIN_SECONDS:
             d.cancel()
+            set_busy_priority(False)
             return
         self.play(self.sound_stop)
         self.busy = True
@@ -464,6 +482,7 @@ class SpeakOn:
         finally:
             self.busy = False
             self.preview = ""
+            set_busy_priority(False)
 
     def clean(self, raw):
         s = self.settings
