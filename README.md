@@ -62,6 +62,7 @@ The first start downloads the speech model (~630 MB) once. To build a stand-alon
 | File | What it does |
 |---|---|
 | `speakon.py` | App: recording, hotkey events, inserting text, tray, the window's API |
+| `store.py` | Settings, history and the dictionary file: loading, saving and changes, behind one lock |
 | `engine.py` | Parakeet / Whisper and the transcribe-while-you-talk pipeline with context at pauses |
 | `textproc.py` | Clean-up and dictionary (`python textproc.py` runs its checks) |
 | `learn.py` | Learning from Wispr Flow recordings and from your edits |
