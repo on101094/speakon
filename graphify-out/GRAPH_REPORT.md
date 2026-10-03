@@ -1,17 +1,17 @@
 # Graph Report - speakon  (2026-10-03)
 
 ## Corpus Check
-- 26 files · ~21,208 words
+- 27 files · ~21,777 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 3, .ico 1)
 
 ## Summary
-- 489 nodes · 935 edges · 19 communities (15 shown, 4 thin omitted)
+- 498 nodes · 955 edges · 19 communities (15 shown, 4 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 68 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c854f7d6`
+- Built from commit: `cc6f1351`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -73,20 +73,20 @@
 ## Communities (19 total, 4 thin omitted)
 
 ### Community 0 - "speakon.py"
-Cohesion: 0.07
-Nodes (10): EditWatcher, find_corrections(), _levenshtein(), looks_like_correction(), _words(), foreground_app(), main(), make_tone() (+2 more)
+Cohesion: 0.08
+Nodes (7): EditWatcher, find_corrections(), _levenshtein(), looks_like_correction(), _words(), main(), resource()
 
 ### Community 1 - "Api"
-Cohesion: 0.07
-Nodes (27): Edit dictation: Save & learn, Api, progress(), work(), clean(), pywebview JS-to-Python api bridge, bindSwitch(), boot() (+19 more)
+Cohesion: 0.08
+Nodes (23): Api, progress(), work(), clean(), pywebview JS-to-Python api bridge, bindSwitch(), boot(), checkWarn() (+15 more)
 
 ### Community 2 - "SpeakOn"
-Cohesion: 0.10
-Nodes (4): set_busy_priority(), set_start_with_windows(), SpeakOn, work()
+Cohesion: 0.09
+Nodes (7): foreground_app(), make_tone(), modifiers_down(), set_busy_priority(), set_start_with_windows(), SpeakOn, work()
 
 ### Community 3 - "engine.py"
-Cohesion: 0.11
-Nodes (13): block_rms(), main(), run(), load_textproc(), main(), wispr_texts(), align(), load() (+5 more)
+Cohesion: 0.08
+Nodes (17): block_rms(), main(), run(), load_textproc(), main(), wispr_texts(), align(), load() (+9 more)
 
 ### Community 4 - "learn.py"
 Cohesion: 0.10
@@ -94,19 +94,19 @@ Nodes (15): align(), apply_fixes(), diff_spans(), learn_fixes(), learn_from_wisp
 
 ### Community 5 - "textproc.py"
 Cohesion: 0.12
-Nodes (18): apply_custom_words(), apply_replacements(), apply_spoken_commands(), _best_match(), collapse_stutters(), dictionary_warnings(), fix_midsentence_caps(), _keep_case() (+10 more)
+Nodes (19): apply_custom_words(), apply_replacements(), apply_spoken_commands(), _best_match(), collapse_stutters(), dictionary_warnings(), fix_midsentence_caps(), _keep_case() (+11 more)
 
 ### Community 6 - "SpeakOn"
 Cohesion: 0.07
-Nodes (34): Build-from-source agent prompt for Windows, history.json self-test check, Stand-alone SpeakOn.exe build (PyInstaller + build.ps1), Data folder C:\Users\<you>\SpeakOn, Dictionary rules (longest first, whole words, warnings), FluidVoice (Mac, GPL-3.0), Handy, Bottom-of-screen mic pill overlay (+26 more)
+Nodes (36): Build-from-source agent prompt for Windows, history.json self-test check, Stand-alone SpeakOn.exe build (PyInstaller + build.ps1), Data folder C:\Users\<you>\SpeakOn, Dictionary rules (longest first, whole words, warnings), FluidVoice (Mac, GPL-3.0), Handy, murmur (+28 more)
 
 ### Community 8 - "HotkeyWatcher"
 Cohesion: 0.10
 Nodes (8): HotkeyWatcher, key_name(), matches(), INPUT, KEYBDINPUT, MOUSEINPUT, type_text(), _U
 
 ### Community 9 - "FlowBar"
-Cohesion: 0.18
-Nodes (5): BITMAPINFOHEADER, BLENDFUNCTION, FlowBar, _font(), WNDCLASS
+Cohesion: 0.16
+Nodes (6): BITMAPINFOHEADER, BLENDFUNCTION, FlowBar, _font(), WNDCLASS, Bottom-of-screen mic pill overlay
 
 ### Community 10 - "Engine"
 Cohesion: 0.14
@@ -121,31 +121,31 @@ Cohesion: 0.08
 Nodes (16): entry_id(), load_json(), save_json(), Store, test_add_dictionary_lines_skips_existing(), test_add_history_assigns_id_trims_and_saves(), test_concurrent_changes_lose_nothing(), guard() (+8 more)
 
 ### Community 13 - "Learned"
-Cohesion: 0.11
-Nodes (9): fix_id(), Learned, make(), test_apply_wispr(), test_concurrent_merges_lose_nothing(), test_entries_and_ids_survive_reordering(), test_lowercase_is_a_copy(), test_remove_term() (+1 more)
+Cohesion: 0.10
+Nodes (11): fix_id(), Learned, on_closing(), app(), make(), test_apply_wispr(), test_concurrent_merges_lose_nothing(), test_entries_and_ids_survive_reordering() (+3 more)
 
 ### Community 15 - "graphify knowledge graph (graphify-out/)"
 Cohesion: 0.50
 Nodes (4): GRAPH_REPORT.md, graphify knowledge graph (graphify-out/), graphify query/path/explain commands, graphify update . (AST-only refresh)
 
 ### Community 21 - "test_api.py"
-Cohesion: 0.08
-Nodes (7): combo_label(), hotkey_keys(), hotkey_label(), on_closing(), data_dir(), app(), test_dictionary_page()
+Cohesion: 0.10
+Nodes (5): combo_label(), hotkey_keys(), hotkey_label(), data_dir(), test_dictionary_page()
 
 ## Knowledge Gaps
 - **14 isolated node(s):** `MOUSEINPUT`, `_U`, `INPUT`, `graphify query/path/explain commands`, `graphify update . (AST-only refresh)` (+9 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 150 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 154 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `SpeakOn` connect `SpeakOn` to `speakon.py`, `Api`, `SpeakOn`, `HotkeyWatcher`, `FlowBar`, `Microphone`, `Store`?**
-  _High betweenness centrality (0.158) - this node is a cross-community bridge._
+  _High betweenness centrality (0.155) - this node is a cross-community bridge._
 - **Why does `Api` connect `Api` to `speakon.py`, `SpeakOn`?**
-  _High betweenness centrality (0.129) - this node is a cross-community bridge._
-- **Why does `Store` connect `Store` to `speakon.py`, `SpeakOn`, `test_api.py`?**
-  _High betweenness centrality (0.119) - this node is a cross-community bridge._
+  _High betweenness centrality (0.128) - this node is a cross-community bridge._
+- **Why does `Store` connect `Store` to `speakon.py`, `SpeakOn`, `Learned`?**
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `SpeakOn` (e.g. with `SpeakOn` and `EditWatcher`) actually correct?**
   _`SpeakOn` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `Api` (e.g. with `SpeakOn` and `pywebview JS-to-Python api bridge`) actually correct?**
