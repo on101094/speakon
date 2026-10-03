@@ -102,9 +102,9 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "README.md": {
-    "mtime": 1791050499.0258393,
-    "seen": 1791050513.5957856,
-    "ast_hash": "c7d13b7a3766b9edecc3ec4c176c323f",
+    "mtime": 1791050686.5418506,
+    "seen": 1791050694.5233214,
+    "ast_hash": "6f4822b0cc5664cfc0c756f55e831f44",
     "semantic_hash": ""
   },
   "prompts/windows.md": {
@@ -171,6 +171,18 @@
     "mtime": 1791050497.7338393,
     "seen": 1791050513.5957837,
     "ast_hash": "e57b177c3329bbdf4d25830a206aaee3",
+    "semantic_hash": ""
+  },
+  "tools/selftest.py": {
+    "mtime": 1791050668.5218494,
+    "seen": 1791050694.5233123,
+    "ast_hash": "bbd8c34228d717dac872fd93a0e1ff90",
+    "semantic_hash": ""
+  },
+  ".github/workflows/selftest.yml": {
+    "mtime": 1791050674.94585,
+    "seen": 1791050694.5233173,
+    "ast_hash": "163abdce1ca41a4ebe0a16ed842e0016",
     "semantic_hash": ""
   }
 }
