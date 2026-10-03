@@ -14,6 +14,7 @@ from before being reported.
 """
 
 import collections
+import hashlib
 import io
 import json
 import os
@@ -258,6 +259,16 @@ def learn_from_wispr(engine, transcribe, progress=lambda done, total, msg: None,
 
 # ---------------------------------------------------------------- learned store
 
+def entry_id(kind, *parts):
+    """Stable id for a dictionary line / learned fix / term: the same text always gets the same id,
+    so the window keeps pointing at the right entry even if the list changes under it."""
+    return kind + hashlib.sha1("\0".join(parts).encode("utf-8")).hexdigest()[:12]
+
+
+def fix_id(f):
+    return entry_id("l", f["heard"], f["wanted"])
+
+
 class Learned:
     """learned.json. Re-read whenever the file changes on disk, so edits made while the app runs
     (a tool, the weekly routine, a text editor) are never overwritten by a stale in-memory copy."""
@@ -309,6 +320,46 @@ class Learned:
                     old.update(count=max(old["count"], f["count"]), wanted=f["wanted"])
                 else:
                     self.data["fixes"].append({**f, "source": source, "enabled": True})
+            self.save()
+
+    # ----- for the settings window: copies out, changes by id, each under the lock
+
+    def lowercase(self):
+        with self.lock:
+            return list(self.data.get("lowercase", []))
+
+    def entries(self):
+        """Enabled fixes and all terms, as rows for the Dictionary page."""
+        with self.lock:
+            rows = [{"id": fix_id(f), "write": f["wanted"], "hear": f["heard"], "kind": "fix"}
+                    for f in self.data["fixes"] if f.get("enabled", True)]
+            rows += [{"id": entry_id("t", t), "write": t, "hear": "", "kind": "word"}
+                     for t in self.data.get("terms", [])]
+            return rows
+
+    def summary(self):
+        """What the Your voice page shows."""
+        with self.lock:
+            return {"report": self.data.get("report"), "fixes": [{**f, "id": fix_id(f)} for f in self.data["fixes"]],
+                    "terms": len(self.data.get("terms", [])), "clips": self.data.get("clips", 0)}
+
+    def set_fix_enabled(self, eid, on):
+        with self.lock:
+            for f in self.data["fixes"]:
+                if fix_id(f) == eid:
+                    f["enabled"] = bool(on)
+            self.save()
+
+    def remove_term(self, eid):
+        with self.lock:
+            self.data["terms"] = [t for t in self.data.get("terms", []) if entry_id("t", t) != eid]
+            self.save()
+
+    def apply_wispr(self, fixes, terms, clips, report):
+        """Store the result of learning from Wispr Flow recordings."""
+        with self.lock:
+            self.merge_fixes(fixes, "Wispr Flow")
+            self.data.update(terms=terms[:80], clips=clips, report=report)
             self.save()
 
     def learn_edit(self, before, after):

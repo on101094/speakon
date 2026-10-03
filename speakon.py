@@ -6,7 +6,6 @@ FluidVoice, Handy and murmur, and it learns from your own Wispr Flow history.
 """
 
 import ctypes
-import hashlib
 import json
 import logging
 import logging.handlers
@@ -254,7 +253,8 @@ class SpeakOn:
 
     # ----- persistence
     def save_settings(self):
-        save_json(C.SETTINGS_FILE, self.settings)
+        with self.lock:   # one writer at a time: save_json reuses settings.tmp
+            save_json(C.SETTINGS_FILE, self.settings)
 
     def save_history(self):
         with self.lock:
@@ -284,9 +284,10 @@ class SpeakOn:
     def update_setting(self, key, value):
         if key == "mic":
             value = None if value in (None, "", "None") else int(value)
-        old = self.settings.get(key)
-        self.settings[key] = value
-        self.save_settings()
+        with self.lock:
+            old = self.settings.get(key)
+            self.settings[key] = value
+            self.save_settings()
         if key in ("mic", "mic_ready"):
             self.mic.configure(self.settings["mic"], self.settings["mic_ready"])
         if key == "model" and value != old:
@@ -625,10 +626,7 @@ class SpeakOn:
 
 # ---------------------------------------------------------------- what the window can ask for
 
-def entry_id(kind, *parts):
-    """Stable id for a dictionary line / learned fix / term: the same text always gets the same id,
-    so the window keeps pointing at the right entry even if the list changes under it."""
-    return kind + hashlib.sha1("\0".join(parts).encode("utf-8")).hexdigest()[:12]
+entry_id = learn.entry_id
 
 
 class Api:
@@ -691,9 +689,7 @@ class Api:
             h["edited"] = True
             a.save_history()
         if a.settings["learn_from_edits"] and before != after:
-            with a.learned.lock:
-                lowercase = list(a.learned.data.get("lowercase", []))
-            pairs = find_corrections(before, after, lowercase)
+            pairs = find_corrections(before, after, a.learned.lowercase())
             if a.learn_corrections(pairs, notify=False):
                 return "Learned: " + ", ".join(f'"{o}" → "{n}"' for o, n in pairs)
             return "Saved (no misheard words to learn - only rewording)"
@@ -713,14 +709,7 @@ class Api:
             hear, write = ((x.strip() for x in s.split("->", 1)) if "->" in s else ("", s))
             out.append({"id": entry_id("d", s), "write": write, "hear": hear, "kind": "fix" if hear else "word",
                         "learned": False, "warnings": textproc.dictionary_warnings(s)})
-        with a.learned.lock:
-            for f in a.learned.data["fixes"]:
-                if f.get("enabled", True):
-                    out.append({"id": entry_id("l", f["heard"], f["wanted"]), "write": f["wanted"],
-                                "hear": f["heard"], "kind": "fix", "learned": True, "warnings": []})
-            for t in a.learned.data.get("terms", []):
-                out.append({"id": entry_id("t", t), "write": t, "hear": "", "kind": "word", "learned": True,
-                            "warnings": []})
+        out += [{**e, "learned": True, "warnings": []} for e in a.learned.entries()]
         return out
 
     def check_entry(self, write, hear):
@@ -761,15 +750,9 @@ class Api:
                     del lines[n]
                     a.set_dictionary("\n".join(lines) + "\n")
         elif eid[0] == "l":
-            with a.learned.lock:
-                for f in a.learned.data["fixes"]:
-                    if entry_id("l", f["heard"], f["wanted"]) == eid:
-                        f["enabled"] = False
-                a.learned.save()
+            a.learned.set_fix_enabled(eid, False)
         elif eid[0] == "t":
-            with a.learned.lock:
-                a.learned.data["terms"] = [t for t in a.learned.data.get("terms", []) if entry_id("t", t) != eid]
-                a.learned.save()
+            a.learned.remove_term(eid)
 
     def open_dictionary_file(self):
         os.startfile(str(C.DICTIONARY_FILE))
@@ -799,20 +782,13 @@ class Api:
                  "in Wispr Flow.")
         else:
             w = "Wispr Flow's data was not found on this PC."
-        with a.learned.lock:
-            info = a.learned.data.get("report")
-            fixes = [{**f, "id": entry_id("l", f["heard"], f["wanted"])} for f in a.learned.data["fixes"]]
-            terms, clips = len(a.learned.data.get("terms", [])), a.learned.data.get("clips", 0)
-        if info:
-            w += " " + info
-        return {"wispr": w, "fixes": fixes, "terms": terms, "clips": clips}
+        s = a.learned.summary()
+        if s["report"]:
+            w += " " + s["report"]
+        return {"wispr": w, "fixes": s["fixes"], "terms": s["terms"], "clips": s["clips"]}
 
     def toggle_learned(self, eid, on):
-        with self._app.learned.lock:
-            for f in self._app.learned.data["fixes"]:
-                if entry_id("l", f["heard"], f["wanted"]) == eid:
-                    f["enabled"] = bool(on)
-            self._app.learned.save()
+        self._app.learned.set_fix_enabled(eid, on)
 
     def learn_from_wispr(self):
         a = self._app
@@ -829,12 +805,7 @@ class Api:
                 r = learn.learn_from_wispr(a.engine, lambda audio: eng.transcribe_array(a.engine, audio), progress)
                 report = (f"On recordings it did not learn from, mistakes went from "
                           f"{r['wer_before'] * 100:.1f}% to {r['wer_after'] * 100:.1f}% of words.")
-                with a.learned.lock:
-                    a.learned.merge_fixes(r["fixes"], "Wispr Flow")
-                    a.learned.data["terms"] = r["terms"][:80]
-                    a.learned.data["clips"] = r["clips"]
-                    a.learned.data["report"] = report
-                    a.learned.save()
+                a.learned.apply_wispr(r["fixes"], r["terms"], r["clips"], report)
                 a.learning.update(message=f"Done · learned {len(r['fixes'])} fixes and {len(r['terms'])} of your terms. "
                                           + report)
             except Exception as e:
@@ -866,7 +837,7 @@ class Api:
         a.keys.capture = None
         if not keys:
             return None
-        a.settings["custom_hotkey"] = keys
+        a.update_setting("custom_hotkey", keys)
         a.update_setting("hotkey", "custom")
         return C.combo_label(keys)
 
