@@ -1,0 +1,49 @@
+name: selftest
+
+# The whole app on Windows: a synthesized sentence is dictated through the fake microphone
+# (SPEAKON_FAKE_MIC, no keys sent anywhere) and the entry it leaves in history.json is checked.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      SENTENCE: "Testing SpeakOn on Windows. The quick brown fox jumps over the lazy dog, and the meeting starts at nine tomorrow morning."
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Cache the speech model
+        uses: actions/cache@v4
+        with:
+          path: ~/SpeakOn/models
+          key: speakon-models-${{ hashFiles('engine.py') }}
+      - name: Synthesize the test sentence (16 kHz mono WAV)
+        shell: pwsh
+        run: |
+          Add-Type -AssemblyName System.Speech
+          $s = New-Object System.Speech.Synthesis.SpeechSynthesizer
+          if (-not $s.GetInstalledVoices()) { throw "No speech synthesizer voices on this runner" }
+          $fmt = New-Object System.Speech.AudioFormat.SpeechAudioFormatInfo(16000,
+            [System.Speech.AudioFormat.AudioBitsPerSample]::Sixteen, [System.Speech.AudioFormat.AudioChannel]::Mono)
+          $s.SetOutputToWaveFile("$env:RUNNER_TEMP\speech.wav", $fmt)
+          $s.Speak($env:SENTENCE)
+          $s.Dispose()
+      - name: Dictate it through SpeakOn
+        run: python tools/selftest.py "$env:RUNNER_TEMP\speech.wav" "$env:SENTENCE"
+      - name: Keep the app log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: speakon-log
+          path: ~/SpeakOn/logs/
+          if-no-files-found: ignore
