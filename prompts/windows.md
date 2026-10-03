@@ -10,8 +10,9 @@ Set up SpeakOn on this Windows PC from source: https://github.com/on101094/speak
 2. Create a Python 3.11+ virtual environment and install requirements.txt.
 3. Run the self-test without sending any keys to my apps:
    generate a 16 kHz mono WAV of a few sentences with Windows' speech synthesizer,
-   then start speakon.py with SPEAKON_FAKE_MIC=<wav> SPEAKON_NO_INSERT=1 SPEAKON_SELFTEST=20
-   and confirm a new entry with the right text appears in %USERPROFILE%\SpeakOn\history.json.
+   then run: python tools/selftest.py <wav> "<the sentences>"
+   (it starts SpeakOn with a fake microphone, checks the new entry in
+   %USERPROFILE%\SpeakOn\history.json against the sentences and closes the app).
 4. Build the .exe with build.ps1 and create Desktop and Start-menu shortcuts to it.
 5. Tell me in plain language how to use it (default key: hold Ctrl + Win) and report
    the wait time after releasing the key from the self-test.
