@@ -46,6 +46,7 @@ def main():
     p.add_argument("expected", help="what the WAV says")
     p.add_argument("--timeout", type=float, default=900, help="seconds to wait (first run downloads the model)")
     p.add_argument("--min-recall", type=float, default=0.8)
+    p.add_argument("--tail", type=float, default=0.5, help="seconds between the end of the WAV and the stop")
     a = p.parse_args()
 
     with wave.open(a.wav) as w:
@@ -54,8 +55,11 @@ def main():
         seconds = w.getnframes() / w.getframerate()
 
     before = history_ids()
+    # Stop half a second after the speech ends, like letting go of the key. A longer tail of silence
+    # would let the transcribe-while-you-talk pipeline finish everything before the stop, and the
+    # "wait after release" would read ~0 s instead of what a user actually waits.
     env = {**os.environ, "SPEAKON_FAKE_MIC": str(Path(a.wav).resolve()), "SPEAKON_NO_INSERT": "1",
-           "SPEAKON_SELFTEST": f"{seconds + 2:.1f}"}
+           "SPEAKON_SELFTEST": f"{seconds + a.tail:.1f}"}
     print(f"Dictating {seconds:.1f} s of audio; waiting up to {a.timeout:.0f} s for the result...", flush=True)
     proc = subprocess.Popen([sys.executable, str(ROOT / "speakon.py"), "--tray"], env=env, cwd=ROOT)
     entry, start = None, time.time()
