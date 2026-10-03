@@ -6,6 +6,7 @@ FluidVoice, Handy and murmur, and it learns from your own Wispr Flow history.
 """
 
 import ctypes
+import hashlib
 import json
 import logging
 import logging.handlers
@@ -16,6 +17,7 @@ import struct
 import sys
 import threading
 import time
+import uuid
 import wave
 import winreg
 import winsound
@@ -200,6 +202,8 @@ class SpeakOn:
         if self.settings["hotkey"] != "custom" and self.settings["hotkey"] not in C.HOTKEY_PRESETS:
             self.settings["hotkey"] = "ctrl_win"
         self.history = load_json(C.HISTORY_FILE, [])
+        for h in self.history:  # older history.json files have no ids
+            h.setdefault("id", uuid.uuid4().hex)
         self.history_version = 0
         self.learned = learn.Learned(C.LEARNED_FILE)
         self.load_dictionary()
@@ -548,6 +552,7 @@ class SpeakOn:
                     old.unlink()
             except Exception:
                 pass
+        entry["id"] = uuid.uuid4().hex
         self.history.insert(0, entry)
         del self.history[HISTORY_LIMIT:]
         self.save_history()
@@ -606,9 +611,18 @@ class SpeakOn:
 
 # ---------------------------------------------------------------- what the window can ask for
 
+def entry_id(kind, *parts):
+    """Stable id for a dictionary line / learned fix / term: the same text always gets the same id,
+    so the window keeps pointing at the right entry even if the list changes under it."""
+    return kind + hashlib.sha1("\0".join(parts).encode("utf-8")).hexdigest()[:12]
+
+
 class Api:
     def __init__(self, app):
         self._app = app
+
+    def _history_entry(self, hid):
+        return next((h for h in self._app.history if h.get("id") == hid), None)
 
     def state(self):
         a = self._app
@@ -626,26 +640,32 @@ class Api:
         q = (query or "").lower().strip()
         today = date.today()
         out = []
-        for i, h in enumerate(self._app.history[:600]):
+        for h in self._app.history[:600]:
             if q and q not in h["text"].lower() and q not in h.get("app", "").lower():
                 continue
             t = datetime.fromisoformat(h["time"])
             d = t.date()
             day = "Today" if d == today else "Yesterday" if d == today - timedelta(days=1) else t.strftime("%A, %d %B")
-            out.append({"i": i, "day": day, "clock": t.strftime("%H:%M"), "text": h["text"], "app": h.get("app", ""),
+            out.append({"i": h["id"], "day": day, "clock": t.strftime("%H:%M"), "text": h["text"], "app": h.get("app", ""),
                         "seconds": h.get("seconds", 0), "wait": h.get("latency"), "fixes": h.get("fixes", [])})
         return out
 
-    def copy(self, i):
-        pyperclip.copy(self._app.history[i]["text"])
+    def copy(self, hid):
+        h = self._history_entry(hid)
+        if h:
+            pyperclip.copy(h["text"])
 
-    def delete_history(self, i):
-        del self._app.history[i]
-        self._app.save_history()
+    def delete_history(self, hid):
+        h = self._history_entry(hid)
+        if h:
+            self._app.history.remove(h)
+            self._app.save_history()
 
-    def edit_history(self, i, text):
+    def edit_history(self, hid, text):
         a = self._app
-        h = a.history[i]
+        h = self._history_entry(hid)
+        if not h:
+            return "That dictation no longer exists"
         before = h["text"]
         h["text"] = text.strip()
         h["edited"] = True
@@ -662,19 +682,19 @@ class Api:
         a = self._app
         a.reload_dictionary()
         out = []
-        for n, line in enumerate(a.dictionary.splitlines()):
+        for line in a.dictionary.splitlines():
             s = line.strip()
             if not s or s.startswith("#"):
                 continue
             hear, write = ((x.strip() for x in s.split("->", 1)) if "->" in s else ("", s))
-            out.append({"id": f"d{n}", "write": write, "hear": hear, "kind": "fix" if hear else "word",
+            out.append({"id": entry_id("d", s), "write": write, "hear": hear, "kind": "fix" if hear else "word",
                         "learned": False, "warnings": textproc.dictionary_warnings(s)})
-        for n, f in enumerate(a.learned.data["fixes"]):
+        for f in a.learned.data["fixes"]:
             if f.get("enabled", True):
-                out.append({"id": f"l{n}", "write": f["wanted"], "hear": f["heard"], "kind": "fix", "learned": True,
-                            "warnings": []})
-        for n, t in enumerate(a.learned.data.get("terms", [])):
-            out.append({"id": f"t{n}", "write": t, "hear": "", "kind": "word", "learned": True, "warnings": []})
+                out.append({"id": entry_id("l", f["heard"], f["wanted"]), "write": f["wanted"], "hear": f["heard"],
+                            "kind": "fix", "learned": True, "warnings": []})
+        for t in a.learned.data.get("terms", []):
+            out.append({"id": entry_id("t", t), "write": t, "hear": "", "kind": "word", "learned": True, "warnings": []})
         return out
 
     def check_entry(self, write, hear):
@@ -683,34 +703,42 @@ class Api:
             return []
         return textproc.dictionary_warnings(f"{hear} -> {write}" if hear else write)
 
-    def save_entry(self, entry_id, write, hear):
+    def save_entry(self, eid, write, hear):
         a = self._app
         write, hear = (write or "").strip(), (hear or "").strip()
         if not write:
             return
         line = f"{hear} -> {write}" if hear else write
-        if entry_id and entry_id[0] in "lt":
-            self.delete_entry(entry_id)
-            entry_id = None
+        if eid and eid[0] in "lt":
+            self.delete_entry(eid)
+            eid = None
         lines = a.dictionary.splitlines()
-        if entry_id and entry_id.startswith("d"):
-            lines[int(entry_id[1:])] = line
+        n = self._dictionary_line(lines, eid) if eid else None
+        if n is not None:
+            lines[n] = line
         else:
             lines.append(line)
         a.set_dictionary("\n".join(lines) + "\n")
 
-    def delete_entry(self, entry_id):
+    @staticmethod
+    def _dictionary_line(lines, eid):
+        return next((n for n, line in enumerate(lines) if line.strip() and entry_id("d", line.strip()) == eid), None)
+
+    def delete_entry(self, eid):
         a = self._app
-        n = int(entry_id[1:])
-        if entry_id[0] == "d":
+        if eid[0] == "d":
             lines = a.dictionary.splitlines()
-            del lines[n]
-            a.set_dictionary("\n".join(lines) + "\n")
-        elif entry_id[0] == "l":
-            a.learned.data["fixes"][n]["enabled"] = False
+            n = self._dictionary_line(lines, eid)
+            if n is not None:
+                del lines[n]
+                a.set_dictionary("\n".join(lines) + "\n")
+        elif eid[0] == "l":
+            for f in a.learned.data["fixes"]:
+                if entry_id("l", f["heard"], f["wanted"]) == eid:
+                    f["enabled"] = False
             a.learned.save()
-        elif entry_id[0] == "t":
-            del a.learned.data["terms"][n]
+        elif eid[0] == "t":
+            a.learned.data["terms"] = [t for t in a.learned.data.get("terms", []) if entry_id("t", t) != eid]
             a.learned.save()
 
     def open_dictionary_file(self):
@@ -742,11 +770,14 @@ class Api:
         info = a.learned.data.get("report")
         if info:
             w += " " + info
-        return {"wispr": w, "fixes": a.learned.data["fixes"], "terms": len(a.learned.data.get("terms", [])),
+        fixes = [{**f, "id": entry_id("l", f["heard"], f["wanted"])} for f in a.learned.data["fixes"]]
+        return {"wispr": w, "fixes": fixes, "terms": len(a.learned.data.get("terms", [])),
                 "clips": a.learned.data.get("clips", 0)}
 
-    def toggle_learned(self, i, on):
-        self._app.learned.data["fixes"][i]["enabled"] = bool(on)
+    def toggle_learned(self, eid, on):
+        for f in self._app.learned.data["fixes"]:
+            if entry_id("l", f["heard"], f["wanted"]) == eid:
+                f["enabled"] = bool(on)
         self._app.learned.save()
 
     def learn_from_wispr(self):
@@ -819,7 +850,8 @@ class Api:
         audio = eng.load_audio_file(path)
         raw = eng.transcribe_array(a.engine, audio, None, a.hotwords())
         text, fixes = a.clean(raw)
-        a.history.insert(0, {"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw,
+        a.history.insert(0, {"id": uuid.uuid4().hex, "time": datetime.now().isoformat(timespec="seconds"),
+                             "text": text, "raw": raw,
                              "fixes": fixes, "app": "File: " + Path(path).name, "seconds": round(len(audio) / 16000, 1),
                              "model": a.settings["model"], "file": True})
         a.save_history()
