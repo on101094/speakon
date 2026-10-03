@@ -22,6 +22,7 @@ import re
 import shutil
 import sqlite3
 import tempfile
+import threading
 import wave
 from pathlib import Path
 
@@ -263,22 +264,24 @@ class Learned:
 
     def __init__(self, path):
         self.path = Path(path)
+        self.lock = threading.RLock()   # callers hold it around any read-modify-write of .data
         self._data = None
         self._mtime = None
         self._refresh()
 
     def _refresh(self):
-        try:
-            mtime = self.path.stat().st_mtime
-        except OSError:
-            mtime = None
-        if self._data is None or mtime != self._mtime:
-            data = {"fixes": [], "terms": [], "clips": 0, "edits": {}}
+        with self.lock:
             try:
-                data.update(json.loads(self.path.read_text(encoding="utf-8")))
-            except Exception:
-                pass
-            self._data, self._mtime = data, mtime
+                mtime = self.path.stat().st_mtime
+            except OSError:
+                mtime = None
+            if self._data is None or mtime != self._mtime:
+                data = {"fixes": [], "terms": [], "clips": 0, "edits": {}}
+                try:
+                    data.update(json.loads(self.path.read_text(encoding="utf-8")))
+                except Exception:
+                    pass
+                self._data, self._mtime = data, mtime
 
     @property
     def data(self):
@@ -286,38 +289,42 @@ class Learned:
         return self._data
 
     def save(self):
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = self.path.with_suffix(".tmp")
-        tmp.write_text(json.dumps(self._data, indent=1, ensure_ascii=False), encoding="utf-8")
-        tmp.replace(self.path)
-        self._mtime = self.path.stat().st_mtime
+        with self.lock:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            tmp = self.path.with_suffix(".tmp")
+            tmp.write_text(json.dumps(self._data, indent=1, ensure_ascii=False), encoding="utf-8")
+            tmp.replace(self.path)
+            self._mtime = self.path.stat().st_mtime
 
     def replacements(self):
-        return [(f["heard"], f["wanted"]) for f in self.data["fixes"] if f.get("enabled", True)]
+        with self.lock:
+            return [(f["heard"], f["wanted"]) for f in self.data["fixes"] if f.get("enabled", True)]
 
     def merge_fixes(self, fixes, source):
-        known = {f["heard"].lower(): f for f in self.data["fixes"]}
-        for f in fixes:
-            old = known.get(f["heard"].lower())
-            if old:
-                old.update(count=max(old["count"], f["count"]), wanted=f["wanted"])
-            else:
-                self.data["fixes"].append({**f, "source": source, "enabled": True})
-        self.save()
+        with self.lock:
+            known = {f["heard"].lower(): f for f in self.data["fixes"]}
+            for f in fixes:
+                old = known.get(f["heard"].lower())
+                if old:
+                    old.update(count=max(old["count"], f["count"]), wanted=f["wanted"])
+                else:
+                    self.data["fixes"].append({**f, "source": source, "enabled": True})
+            self.save()
 
     def learn_edit(self, before, after):
         """Remember a correction; returns fixes that just reached two sightings."""
-        new = []
-        for h, r in diff_spans(after, before):
-            key = " ".join(h) + " -> " + " ".join(r)
-            n = self.data["edits"].get(key, 0) + 1
-            self.data["edits"][key] = n
-            if n == 2 and len(" ".join(h)) > 2:
-                new.append({"heard": " ".join(h), "wanted": " ".join(r), "count": n, "precision": 1.0})
-        if new:
-            self.merge_fixes(new, "your edits")
-        self.save()
-        return new
+        with self.lock:
+            new = []
+            for h, r in diff_spans(after, before):
+                key = " ".join(h) + " -> " + " ".join(r)
+                n = self.data["edits"].get(key, 0) + 1
+                self.data["edits"][key] = n
+                if n == 2 and len(" ".join(h)) > 2:
+                    new.append({"heard": " ".join(h), "wanted": " ".join(r), "count": n, "precision": 1.0})
+            if new:
+                self.merge_fixes(new, "your edits")
+            self.save()
+            return new
 
 
 def learn_lowercase(texts, min_count=2):
