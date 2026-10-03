@@ -16,7 +16,6 @@ import struct
 import sys
 import threading
 import time
-import uuid
 import wave
 import winreg
 import winsound
@@ -48,6 +47,7 @@ from corrections import EditWatcher, find_corrections
 from hotkeys import HotkeyWatcher
 from mic import Microphone
 from overlay import FlowBar
+from store import Store
 
 ABOVE_NORMAL, NORMAL = 0x8000, 0x20
 
@@ -64,7 +64,6 @@ def set_busy_priority(high):
     except Exception:
         pass
 
-HISTORY_LIMIT = 5000
 log = logging.getLogger("speakon")
 MIN_SECONDS = 0.3
 TAP_SECONDS = 0.35
@@ -76,20 +75,6 @@ kernel32 = ctypes.windll.kernel32
 def resource(name):
     base = Path(getattr(sys, "_MEIPASS", Path(__file__).parent))
     return base / name
-
-
-def load_json(path, default):
-    try:
-        return json.loads(Path(path).read_text(encoding="utf-8"))
-    except Exception:
-        return default
-
-
-def save_json(path, data):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
-    tmp.write_text(json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8")
-    tmp.replace(path)
 
 
 def foreground_app():
@@ -197,17 +182,9 @@ class SpeakOn:
         log.addHandler(handler)
         log.setLevel(logging.INFO)
         log.info("SpeakOn %s starting", C.VERSION)
-        self.settings = {**C.DEFAULT_SETTINGS, **load_json(C.SETTINGS_FILE, {})}
-        if self.settings["hotkey"] != "custom" and self.settings["hotkey"] not in C.HOTKEY_PRESETS:
-            self.settings["hotkey"] = "ctrl_win"
-        # history and dictionary are touched by the window's API calls, the controller and worker threads
-        self.lock = threading.RLock()
-        self.history = load_json(C.HISTORY_FILE, [])
-        for h in self.history:  # older history.json files have no ids
-            h.setdefault("id", uuid.uuid4().hex)
-        self.history_version = 0
+        self.store = Store()
+        self.settings = self.store.settings   # read-only here; change through update_setting()
         self.learned = learn.Learned(C.LEARNED_FILE)
-        self.load_dictionary()
         self.events = queue.Queue()
         self.engine = eng.Engine(C.MODELS_DIR)
         fake = os.environ.get("SPEAKON_FAKE_MIC")
@@ -247,47 +224,16 @@ class SpeakOn:
         threading.Thread(target=self.mic.warm, daemon=True).start()
         self.start_hidden = start_hidden
         # the Settings switch reflects the real Startup shortcut; refresh it in case the app moved
-        self.settings["start_with_windows"] = STARTUP_LINK.exists()
+        # (not saved here: main() checks whether settings.json exists yet to spot a first run)
+        self.store.set_setting("start_with_windows", STARTUP_LINK.exists(), save=False)
         if self.settings["start_with_windows"]:
             threading.Thread(target=lambda: set_start_with_windows(True), daemon=True).start()
 
-    # ----- persistence
-    def save_settings(self):
-        with self.lock:   # one writer at a time: save_json reuses settings.tmp
-            save_json(C.SETTINGS_FILE, self.settings)
-
-    def save_history(self):
-        with self.lock:
-            save_json(C.HISTORY_FILE, self.history)
-            self.history_version += 1
-
-    def load_dictionary(self):
-        with self.lock:
-            if not C.DICTIONARY_FILE.exists():
-                C.DICTIONARY_FILE.write_text(textproc.DEFAULT_DICTIONARY, encoding="utf-8")
-            self.dictionary = C.DICTIONARY_FILE.read_text(encoding="utf-8")
-            self.dictionary_mtime = C.DICTIONARY_FILE.stat().st_mtime
-
-    def reload_dictionary(self):
-        with self.lock:
-            try:
-                if C.DICTIONARY_FILE.stat().st_mtime != self.dictionary_mtime:
-                    self.load_dictionary()
-            except OSError:
-                pass
-
-    def set_dictionary(self, text):
-        with self.lock:
-            C.DICTIONARY_FILE.write_text(text, encoding="utf-8")
-            self.load_dictionary()
-
+    # ----- settings
     def update_setting(self, key, value):
         if key == "mic":
             value = None if value in (None, "", "None") else int(value)
-        with self.lock:
-            old = self.settings.get(key)
-            self.settings[key] = value
-            self.save_settings()
+        old = self.store.set_setting(key, value)
         if key in ("mic", "mic_ready"):
             self.mic.configure(self.settings["mic"], self.settings["mic_ready"])
         if key == "model" and value != old:
@@ -318,8 +264,7 @@ class SpeakOn:
 
     def stats(self):
         today = date.today()
-        with self.lock:
-            history = list(self.history)
+        history = self.store.recent_history()
         days = {h["time"][:10] for h in history}
         streak, d = 0, today
         if d.isoformat() not in days:
@@ -420,7 +365,7 @@ class SpeakOn:
             self.do_start(True)
 
     def hotwords(self):
-        terms, _ = textproc.parse_dictionary(self.dictionary)
+        terms, _ = textproc.parse_dictionary(self.store.dictionary)
         with self.learned.lock:
             terms = terms + self.learned.data.get("terms", [])
         return ", ".join(terms[:30])  # short: long prompts drift
@@ -432,7 +377,7 @@ class SpeakOn:
             self.notify("No speech model loaded - open Settings and pick a model.")
             return
         s = self.settings
-        self.reload_dictionary()
+        self.store.reload_dictionary()
         lang = None if s["language"] == "auto" else s["language"]
         self.preview = ""
         d = self.dictation = eng.Dictation(self.engine, lang, self.hotwords(), s["live_preview"],
@@ -505,7 +450,7 @@ class SpeakOn:
         with self.learned.lock:   # copies, so learning on another thread can't change them mid-way
             fixes, terms = self.learned.replacements(), list(self.learned.data.get("terms", []))
             lowercase = list(self.learned.data.get("lowercase", []))
-        return textproc.process(raw, s, english, self.dictionary, fixes, terms, lowercase)
+        return textproc.process(raw, s, english, self.store.dictionary, fixes, terms, lowercase)
 
     def learn_corrections(self, pairs, source="your corrections", notify=True):
         """Remember words the user corrected; applied from the next dictation on."""
@@ -566,11 +511,7 @@ class SpeakOn:
                     old.unlink()
             except Exception:
                 pass
-        entry["id"] = uuid.uuid4().hex
-        with self.lock:
-            self.history.insert(0, entry)
-            del self.history[HISTORY_LIMIT:]
-            self.save_history()
+        self.store.add_history(entry)
 
     def set_preview(self, text):
         self.preview = text
@@ -633,15 +574,12 @@ class Api:
     def __init__(self, app):
         self._app = app
 
-    def _history_entry(self, hid):
-        return next((h for h in self._app.history if h.get("id") == hid), None)
-
     def state(self):
         a = self._app
         a.levels = a.levels[1:] + [min(1.0, a.level * 12) if a.recording else 0.0]
         return {"recording": a.recording, "busy": a.busy, "preview": a.preview, "status": a.status,
                 "levels": a.levels, "hotkey_keys": C.hotkey_label(a.settings).split(" + "),
-                "name": a.settings.get("name", ""), "history_version": a.history_version,
+                "name": a.settings.get("name", ""), "history_version": a.store.history_version,
                 "learning": a.learning, **a.stats()}
 
     def toggle_record(self):
@@ -652,9 +590,7 @@ class Api:
         q = (query or "").lower().strip()
         today = date.today()
         out = []
-        with self._app.lock:
-            history = self._app.history[:600]
-        for h in history:
+        for h in self._app.store.recent_history(600):
             if q and q not in h["text"].lower() and q not in h.get("app", "").lower():
                 continue
             t = datetime.fromisoformat(h["time"])
@@ -665,29 +601,18 @@ class Api:
         return out
 
     def copy(self, hid):
-        with self._app.lock:
-            h = self._history_entry(hid)
-            text = h["text"] if h else None
+        text = self._app.store.history_text(hid)
         if text is not None:
             pyperclip.copy(text)
 
     def delete_history(self, hid):
-        with self._app.lock:
-            h = self._history_entry(hid)
-            if h:
-                self._app.history.remove(h)
-                self._app.save_history()
+        self._app.store.delete_history(hid)
 
     def edit_history(self, hid, text):
         a = self._app
-        with a.lock:
-            h = self._history_entry(hid)
-            if not h:
-                return "That dictation no longer exists"
-            before, after = h["text"], text.strip()
-            h["text"] = after
-            h["edited"] = True
-            a.save_history()
+        before, after = a.store.edit_history(hid, text), text.strip()
+        if before is None:
+            return "That dictation no longer exists"
         if a.settings["learn_from_edits"] and before != after:
             pairs = find_corrections(before, after, a.learned.lowercase())
             if a.learn_corrections(pairs, notify=False):
@@ -698,11 +623,8 @@ class Api:
     # dictionary
     def dictionary(self):
         a = self._app
-        with a.lock:
-            a.reload_dictionary()
-            dictionary = a.dictionary
         out = []
-        for line in dictionary.splitlines():
+        for line in a.store.reload_dictionary().splitlines():
             s = line.strip()
             if not s or s.startswith("#"):
                 continue
@@ -724,31 +646,15 @@ class Api:
         if not write:
             return
         line = f"{hear} -> {write}" if hear else write
-        if eid and eid[0] in "lt":
+        if eid and eid[0] in "lt":     # editing a learned entry turns it into a dictionary line
             self.delete_entry(eid)
             eid = None
-        with a.lock:
-            lines = a.dictionary.splitlines()
-            n = self._dictionary_line(lines, eid) if eid else None
-            if n is not None:
-                lines[n] = line
-            else:
-                lines.append(line)
-            a.set_dictionary("\n".join(lines) + "\n")
-
-    @staticmethod
-    def _dictionary_line(lines, eid):
-        return next((n for n, line in enumerate(lines) if line.strip() and entry_id("d", line.strip()) == eid), None)
+        a.store.save_dictionary_entry(eid, line)
 
     def delete_entry(self, eid):
         a = self._app
         if eid[0] == "d":
-            with a.lock:
-                lines = a.dictionary.splitlines()
-                n = self._dictionary_line(lines, eid)
-                if n is not None:
-                    del lines[n]
-                    a.set_dictionary("\n".join(lines) + "\n")
+            a.store.delete_dictionary_entry(eid)
         elif eid[0] == "l":
             a.learned.set_fix_enabled(eid, False)
         elif eid[0] == "t":
@@ -760,17 +666,8 @@ class Api:
     def import_wispr_dictionary(self):
         if not learn.wispr_available():
             return "Wispr Flow's data was not found on this PC"
-        a = self._app
-        wispr = learn.wispr_dictionary()
-        with a.lock:
-            existing = {line.strip().lower() for line in a.dictionary.splitlines()}
-            added = []
-            for hear, write in wispr:
-                line = f"{hear} -> {write}" if hear else write
-                if line.lower() not in existing:
-                    added.append(line)
-            if added:
-                a.set_dictionary(a.dictionary.rstrip("\n") + "\n# from Wispr Flow\n" + "\n".join(added) + "\n")
+        lines = [f"{hear} -> {write}" if hear else write for hear, write in learn.wispr_dictionary()]
+        added = self._app.store.add_dictionary_lines(lines, "from Wispr Flow")
         return f"Imported {len(added)} entries from Wispr Flow" if added else "Already up to date"
 
     # your voice
@@ -857,12 +754,9 @@ class Api:
         audio = eng.load_audio_file(path)
         raw = eng.transcribe_array(a.engine, audio, None, a.hotwords())
         text, fixes = a.clean(raw)
-        with a.lock:
-            a.history.insert(0, {"id": uuid.uuid4().hex, "time": datetime.now().isoformat(timespec="seconds"),
-                                 "text": text, "raw": raw,
-                                 "fixes": fixes, "app": "File: " + Path(path).name,
-                                 "seconds": round(len(audio) / 16000, 1), "model": a.settings["model"], "file": True})
-            a.save_history()
+        a.store.add_history({"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw,
+                             "fixes": fixes, "app": "File: " + Path(path).name,
+                             "seconds": round(len(audio) / 16000, 1), "model": a.settings["model"], "file": True})
         a.set_status(f"Ready · {a.settings['model']}")
         return f"Done in {time.time() - t0:.0f}s - it's at the top of Home"
 
@@ -901,7 +795,7 @@ def main():
     app = SpeakOn(start_hidden="--tray" in sys.argv)
     api = Api(app)
     first_run = not C.SETTINGS_FILE.exists()
-    app.save_settings()
+    app.store.save_settings()
     win = webview.create_window(C.APP_NAME, str(resource("ui/index.html")), js_api=api, width=1120, height=780,
                                 min_size=(880, 600), hidden=app.start_hidden, background_color="#FFFFFF")
     app.window = win
