@@ -74,4 +74,4 @@ The first start downloads the speech model (~630 MB) once. To build a stand-alon
 | `tests/` | `python -m pytest tests` - settings, history, dictionary, learned fixes and the window's API (runs on every push, on Windows and Linux) |
 | `tools/eval_wispr.py` | Scores engines on your Wispr Flow recordings |
 
-Self-test without a microphone and without sending keys: `SPEAKON_FAKE_MIC=<16 kHz mono .wav>`, `SPEAKON_NO_INSERT=1`, `SPEAKON_SELFTEST=<seconds>`.
+Self-test without a microphone and without sending keys: `SPEAKON_FAKE_MIC=<16 kHz mono .wav>`, `SPEAKON_NO_INSERT=1`, `SPEAKON_SELFTEST=<seconds>`. `python tools/selftest.py <wav> "<what it says>"` does all of that, checks the new history entry and closes the app; CI runs it on Windows for every push.
