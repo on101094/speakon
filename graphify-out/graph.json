@@ -126,7 +126,7 @@
       "file_type": "code",
       "norm_label": "speakon",
       "source_file": "speakon.py",
-      "source_location": "L174"
+      "source_location": "L191"
     },
     {
       "id": "mic_microphone",
@@ -204,7 +204,7 @@
       "file_type": "code",
       "norm_label": "learned",
       "source_file": "learn.py",
-      "source_location": "L260"
+      "source_location": "L261"
     },
     {
       "id": "speakon_fakemic",
@@ -217,7 +217,7 @@
       "file_type": "code",
       "norm_label": "fakemic",
       "source_file": "speakon.py",
-      "source_location": "L143"
+      "source_location": "L160"
     },
     {
       "id": "speakon_api",
@@ -230,7 +230,7 @@
       "file_type": "code",
       "norm_label": "api",
       "source_file": "speakon.py",
-      "source_location": "L590"
+      "source_location": "L634"
     },
     {
       "id": "engine_dictation",
@@ -414,7 +414,7 @@
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "speakon.py",
-      "source_location": "L811"
+      "source_location": "L899"
     },
     {
       "id": "speakon_main_on_closing",
@@ -426,7 +426,7 @@
       "file_type": "code",
       "norm_label": "on_closing()",
       "source_file": "speakon.py",
-      "source_location": "L850"
+      "source_location": "L938"
     },
     {
       "id": "speakon_main_selftest",
@@ -438,7 +438,7 @@
       "file_type": "code",
       "norm_label": "selftest()",
       "source_file": "speakon.py",
-      "source_location": "L862"
+      "source_location": "L950"
     },
     {
       "id": "speakon_resource",
@@ -450,7 +450,7 @@
       "file_type": "code",
       "norm_label": "resource()",
       "source_file": "speakon.py",
-      "source_location": "L60"
+      "source_location": "L77"
     },
     {
       "id": "speakon_foreground_app",
@@ -462,7 +462,7 @@
       "file_type": "code",
       "norm_label": "foreground_app()",
       "source_file": "speakon.py",
-      "source_location": "L79"
+      "source_location": "L96"
     },
     {
       "id": "speakon_load_json",
@@ -474,7 +474,7 @@
       "file_type": "code",
       "norm_label": "load_json()",
       "source_file": "speakon.py",
-      "source_location": "L65"
+      "source_location": "L82"
     },
     {
       "id": "speakon_make_tone",
@@ -486,7 +486,7 @@
       "file_type": "code",
       "norm_label": "make_tone()",
       "source_file": "speakon.py",
-      "source_location": "L128"
+      "source_location": "L145"
     },
     {
       "id": "speakon_modifiers_down",
@@ -498,7 +498,7 @@
       "file_type": "code",
       "norm_label": "modifiers_down()",
       "source_file": "speakon.py",
-      "source_location": "L96"
+      "source_location": "L113"
     },
     {
       "id": "speakon_save_json",
@@ -510,7 +510,19 @@
       "file_type": "code",
       "norm_label": "save_json()",
       "source_file": "speakon.py",
-      "source_location": "L72"
+      "source_location": "L89"
+    },
+    {
+      "id": "speakon_set_busy_priority",
+      "label": "set_busy_priority()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "SpeakOn",
+      "file_type": "code",
+      "norm_label": "set_busy_priority()",
+      "source_file": "speakon.py",
+      "source_location": "L56"
     },
     {
       "id": "speakon_set_start_with_windows",
@@ -522,7 +534,7 @@
       "file_type": "code",
       "norm_label": "set_start_with_windows()",
       "source_file": "speakon.py",
-      "source_location": "L104"
+      "source_location": "L121"
     },
     {
       "id": "speakon_speakon_bar_state",
@@ -534,7 +546,7 @@
       "file_type": "code",
       "norm_label": ".bar_state()",
       "source_file": "speakon.py",
-      "source_location": "L311"
+      "source_location": "L338"
     },
     {
       "id": "speakon_speakon_clean",
@@ -546,7 +558,7 @@
       "file_type": "code",
       "norm_label": ".clean()",
       "source_file": "speakon.py",
-      "source_location": "L468"
+      "source_location": "L501"
     },
     {
       "id": "speakon_speakon_close_stream",
@@ -558,7 +570,7 @@
       "file_type": "code",
       "norm_label": ".close_stream()",
       "source_file": "speakon.py",
-      "source_location": "L427"
+      "source_location": "L457"
     },
     {
       "id": "speakon_speakon_controller",
@@ -570,7 +582,7 @@
       "file_type": "code",
       "norm_label": ".controller()",
       "source_file": "speakon.py",
-      "source_location": "L355"
+      "source_location": "L382"
     },
     {
       "id": "speakon_speakon_deliver",
@@ -582,7 +594,7 @@
       "file_type": "code",
       "norm_label": ".deliver()",
       "source_file": "speakon.py",
-      "source_location": "L498"
+      "source_location": "L534"
     },
     {
       "id": "speakon_speakon_do_cancel",
@@ -594,7 +606,7 @@
       "file_type": "code",
       "norm_label": ".do_cancel()",
       "source_file": "speakon.py",
-      "source_location": "L430"
+      "source_location": "L460"
     },
     {
       "id": "speakon_speakon_do_esc",
@@ -606,7 +618,7 @@
       "file_type": "code",
       "norm_label": ".do_esc()",
       "source_file": "speakon.py",
-      "source_location": "L384"
+      "source_location": "L411"
     },
     {
       "id": "speakon_speakon_do_hot_down",
@@ -618,7 +630,7 @@
       "file_type": "code",
       "norm_label": ".do_hot_down()",
       "source_file": "speakon.py",
-      "source_location": "L363"
+      "source_location": "L390"
     },
     {
       "id": "speakon_speakon_do_hot_up",
@@ -630,7 +642,7 @@
       "file_type": "code",
       "norm_label": ".do_hot_up()",
       "source_file": "speakon.py",
-      "source_location": "L371"
+      "source_location": "L398"
     },
     {
       "id": "speakon_speakon_do_other_key",
@@ -642,7 +654,7 @@
       "file_type": "code",
       "norm_label": ".do_other_key()",
       "source_file": "speakon.py",
-      "source_location": "L380"
+      "source_location": "L407"
     },
     {
       "id": "speakon_speakon_do_start",
@@ -654,7 +666,7 @@
       "file_type": "code",
       "norm_label": ".do_start()",
       "source_file": "speakon.py",
-      "source_location": "L398"
+      "source_location": "L427"
     },
     {
       "id": "speakon_speakon_do_start_sink",
@@ -666,7 +678,7 @@
       "file_type": "code",
       "norm_label": "sink()",
       "source_file": "speakon.py",
-      "source_location": "L411"
+      "source_location": "L440"
     },
     {
       "id": "speakon_speakon_do_stop",
@@ -678,7 +690,7 @@
       "file_type": "code",
       "norm_label": ".do_stop()",
       "source_file": "speakon.py",
-      "source_location": "L438"
+      "source_location": "L469"
     },
     {
       "id": "speakon_speakon_do_toggle",
@@ -690,7 +702,7 @@
       "file_type": "code",
       "norm_label": ".do_toggle()",
       "source_file": "speakon.py",
-      "source_location": "L388"
+      "source_location": "L415"
     },
     {
       "id": "speakon_speakon_finish",
@@ -702,7 +714,7 @@
       "file_type": "code",
       "norm_label": ".finish()",
       "source_file": "speakon.py",
-      "source_location": "L453"
+      "source_location": "L485"
     },
     {
       "id": "speakon_speakon_hotwords",
@@ -714,7 +726,7 @@
       "file_type": "code",
       "norm_label": ".hotwords()",
       "source_file": "speakon.py",
-      "source_location": "L394"
+      "source_location": "L421"
     },
     {
       "id": "speakon_speakon_init",
@@ -726,7 +738,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "speakon.py",
-      "source_location": "L175"
+      "source_location": "L192"
     },
     {
       "id": "speakon_speakon_insert",
@@ -738,7 +750,7 @@
       "file_type": "code",
       "norm_label": ".insert()",
       "source_file": "speakon.py",
-      "source_location": "L547"
+      "source_location": "L585"
     },
     {
       "id": "speakon_speakon_insert_44c9b8",
@@ -750,7 +762,7 @@
       "file_type": "code",
       "norm_label": "._insert()",
       "source_file": "speakon.py",
-      "source_location": "L561"
+      "source_location": "L599"
     },
     {
       "id": "speakon_speakon_insert_44c9b8_restore",
@@ -762,7 +774,7 @@
       "file_type": "code",
       "norm_label": "restore()",
       "source_file": "speakon.py",
-      "source_location": "L582"
+      "source_location": "L620"
     },
     {
       "id": "speakon_speakon_learn_corrections",
@@ -774,7 +786,7 @@
       "file_type": "code",
       "norm_label": ".learn_corrections()",
       "source_file": "speakon.py",
-      "source_location": "L474"
+      "source_location": "L509"
     },
     {
       "id": "speakon_speakon_load_dictionary",
@@ -786,7 +798,7 @@
       "file_type": "code",
       "norm_label": ".load_dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L242"
+      "source_location": "L264"
     },
     {
       "id": "speakon_speakon_load_model",
@@ -798,7 +810,7 @@
       "file_type": "code",
       "norm_label": ".load_model()",
       "source_file": "speakon.py",
-      "source_location": "L346"
+      "source_location": "L373"
     },
     {
       "id": "speakon_speakon_load_model_work",
@@ -810,7 +822,7 @@
       "file_type": "code",
       "norm_label": "work()",
       "source_file": "speakon.py",
-      "source_location": "L347"
+      "source_location": "L374"
     },
     {
       "id": "speakon_speakon_notify",
@@ -822,7 +834,7 @@
       "file_type": "code",
       "norm_label": ".notify()",
       "source_file": "speakon.py",
-      "source_location": "L287"
+      "source_location": "L312"
     },
     {
       "id": "speakon_speakon_play",
@@ -834,7 +846,7 @@
       "file_type": "code",
       "norm_label": ".play()",
       "source_file": "speakon.py",
-      "source_location": "L539"
+      "source_location": "L577"
     },
     {
       "id": "speakon_speakon_quit",
@@ -846,7 +858,7 @@
       "file_type": "code",
       "norm_label": ".quit()",
       "source_file": "speakon.py",
-      "source_location": "L338"
+      "source_location": "L365"
     },
     {
       "id": "speakon_speakon_reload_dictionary",
@@ -858,7 +870,7 @@
       "file_type": "code",
       "norm_label": ".reload_dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L248"
+      "source_location": "L271"
     },
     {
       "id": "speakon_speakon_save_history",
@@ -870,7 +882,7 @@
       "file_type": "code",
       "norm_label": ".save_history()",
       "source_file": "speakon.py",
-      "source_location": "L238"
+      "source_location": "L259"
     },
     {
       "id": "speakon_speakon_save_settings",
@@ -882,7 +894,7 @@
       "file_type": "code",
       "norm_label": ".save_settings()",
       "source_file": "speakon.py",
-      "source_location": "L235"
+      "source_location": "L256"
     },
     {
       "id": "speakon_speakon_set_dictionary",
@@ -894,7 +906,7 @@
       "file_type": "code",
       "norm_label": ".set_dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L255"
+      "source_location": "L279"
     },
     {
       "id": "speakon_speakon_set_preview",
@@ -906,7 +918,7 @@
       "file_type": "code",
       "norm_label": ".set_preview()",
       "source_file": "speakon.py",
-      "source_location": "L536"
+      "source_location": "L574"
     },
     {
       "id": "speakon_speakon_set_status",
@@ -918,7 +930,7 @@
       "file_type": "code",
       "norm_label": ".set_status()",
       "source_file": "speakon.py",
-      "source_location": "L279"
+      "source_location": "L304"
     },
     {
       "id": "speakon_speakon_show_window",
@@ -930,7 +942,7 @@
       "file_type": "code",
       "norm_label": ".show_window()",
       "source_file": "speakon.py",
-      "source_location": "L328"
+      "source_location": "L355"
     },
     {
       "id": "speakon_speakon_stats",
@@ -942,7 +954,7 @@
       "file_type": "code",
       "norm_label": ".stats()",
       "source_file": "speakon.py",
-      "source_location": "L293"
+      "source_location": "L318"
     },
     {
       "id": "speakon_speakon_tray_menu",
@@ -954,7 +966,7 @@
       "file_type": "code",
       "norm_label": ".tray_menu()",
       "source_file": "speakon.py",
-      "source_location": "L316"
+      "source_location": "L343"
     },
     {
       "id": "speakon_speakon_update_setting",
@@ -966,7 +978,7 @@
       "file_type": "code",
       "norm_label": ".update_setting()",
       "source_file": "speakon.py",
-      "source_location": "L259"
+      "source_location": "L284"
     },
     {
       "id": "mic_microphone_alive",
@@ -1206,7 +1218,7 @@
       "file_type": "code",
       "norm_label": ".data()",
       "source_file": "learn.py",
-      "source_location": "L284"
+      "source_location": "L287"
     },
     {
       "id": "learn_learned_init",
@@ -1218,7 +1230,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "learn.py",
-      "source_location": "L264"
+      "source_location": "L265"
     },
     {
       "id": "learn_learned_learn_edit",
@@ -1230,7 +1242,7 @@
       "file_type": "code",
       "norm_label": ".learn_edit()",
       "source_file": "learn.py",
-      "source_location": "L308"
+      "source_location": "L314"
     },
     {
       "id": "learn_learned_merge_fixes",
@@ -1242,7 +1254,7 @@
       "file_type": "code",
       "norm_label": ".merge_fixes()",
       "source_file": "learn.py",
-      "source_location": "L298"
+      "source_location": "L303"
     },
     {
       "id": "learn_learned_refresh",
@@ -1254,7 +1266,7 @@
       "file_type": "code",
       "norm_label": "._refresh()",
       "source_file": "learn.py",
-      "source_location": "L270"
+      "source_location": "L272"
     },
     {
       "id": "learn_learned_replacements",
@@ -1266,7 +1278,7 @@
       "file_type": "code",
       "norm_label": ".replacements()",
       "source_file": "learn.py",
-      "source_location": "L295"
+      "source_location": "L299"
     },
     {
       "id": "learn_learned_save",
@@ -1278,7 +1290,7 @@
       "file_type": "code",
       "norm_label": ".save()",
       "source_file": "learn.py",
-      "source_location": "L288"
+      "source_location": "L291"
     },
     {
       "id": "speakon_fakemic_close",
@@ -1290,7 +1302,7 @@
       "file_type": "code",
       "norm_label": ".close()",
       "source_file": "speakon.py",
-      "source_location": "L168"
+      "source_location": "L185"
     },
     {
       "id": "speakon_fakemic_init",
@@ -1302,7 +1314,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "speakon.py",
-      "source_location": "L146"
+      "source_location": "L163"
     },
     {
       "id": "speakon_fakemic_start",
@@ -1314,7 +1326,7 @@
       "file_type": "code",
       "norm_label": ".start()",
       "source_file": "speakon.py",
-      "source_location": "L152"
+      "source_location": "L169"
     },
     {
       "id": "speakon_fakemic_start_run",
@@ -1326,7 +1338,7 @@
       "file_type": "code",
       "norm_label": "run()",
       "source_file": "speakon.py",
-      "source_location": "L155"
+      "source_location": "L172"
     },
     {
       "id": "speakon_fakemic_stop",
@@ -1338,7 +1350,7 @@
       "file_type": "code",
       "norm_label": ".stop()",
       "source_file": "speakon.py",
-      "source_location": "L165"
+      "source_location": "L182"
     },
     {
       "id": "config_combo_label",
@@ -1437,6 +1449,42 @@
       "source_location": "L10"
     },
     {
+      "id": "tools_eval_textproc_load_textproc",
+      "label": "load_textproc()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "load_textproc()",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L23"
+    },
+    {
+      "id": "tools_eval_textproc_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L41"
+    },
+    {
+      "id": "tools_eval_textproc_wispr_texts",
+      "label": "wispr_texts()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "wispr_texts()",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L30"
+    },
+    {
       "id": "tools_eval_wispr_align",
       "label": "align()",
       "_callable": true,
@@ -1533,16 +1581,16 @@
       "source_location": "L30"
     },
     {
-      "id": "speakon_api_edit_history",
-      "label": ".edit_history()",
+      "id": "engine_dictation_audio",
+      "label": ".audio()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "SpeakOn",
+      "community": 4,
+      "community_name": "Api",
       "file_type": "code",
-      "norm_label": ".edit_history()",
-      "source_file": "speakon.py",
-      "source_location": "L627"
+      "norm_label": ".audio()",
+      "source_file": "engine.py",
+      "source_location": "L432"
     },
     {
       "id": "speakon_api_copy",
@@ -1554,7 +1602,7 @@
       "file_type": "code",
       "norm_label": ".copy()",
       "source_file": "speakon.py",
-      "source_location": "L620"
+      "source_location": "L669"
     },
     {
       "id": "speakon_api_delete_entry",
@@ -1566,7 +1614,7 @@
       "file_type": "code",
       "norm_label": ".delete_entry()",
       "source_file": "speakon.py",
-      "source_location": "L683"
+      "source_location": "L754"
     },
     {
       "id": "speakon_api_delete_history",
@@ -1578,7 +1626,7 @@
       "file_type": "code",
       "norm_label": ".delete_history()",
       "source_file": "speakon.py",
-      "source_location": "L623"
+      "source_location": "L676"
     },
     {
       "id": "speakon_api_dictionary",
@@ -1590,7 +1638,31 @@
       "file_type": "code",
       "norm_label": ".dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L642"
+      "source_location": "L703"
+    },
+    {
+      "id": "speakon_api_dictionary_line",
+      "label": "._dictionary_line()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": "._dictionary_line()",
+      "source_file": "speakon.py",
+      "source_location": "L751"
+    },
+    {
+      "id": "speakon_api_edit_history",
+      "label": ".edit_history()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": ".edit_history()",
+      "source_file": "speakon.py",
+      "source_location": "L683"
     },
     {
       "id": "speakon_api_history",
@@ -1602,7 +1674,19 @@
       "file_type": "code",
       "norm_label": ".history()",
       "source_file": "speakon.py",
-      "source_location": "L606"
+      "source_location": "L653"
+    },
+    {
+      "id": "speakon_api_history_entry",
+      "label": "._history_entry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": "._history_entry()",
+      "source_file": "speakon.py",
+      "source_location": "L638"
     },
     {
       "id": "speakon_api_import_wispr_dictionary",
@@ -1614,7 +1698,7 @@
       "file_type": "code",
       "norm_label": ".import_wispr_dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L700"
+      "source_location": "L777"
     },
     {
       "id": "speakon_api_init",
@@ -1626,7 +1710,43 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "speakon.py",
-      "source_location": "L591"
+      "source_location": "L635"
+    },
+    {
+      "id": "speakon_api_learn_from_wispr",
+      "label": ".learn_from_wispr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": ".learn_from_wispr()",
+      "source_file": "speakon.py",
+      "source_location": "L817"
+    },
+    {
+      "id": "speakon_api_learn_from_wispr_progress",
+      "label": "progress()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": "progress()",
+      "source_file": "speakon.py",
+      "source_location": "L822"
+    },
+    {
+      "id": "speakon_api_learn_from_wispr_work",
+      "label": "work()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": "work()",
+      "source_file": "speakon.py",
+      "source_location": "L825"
     },
     {
       "id": "speakon_api_open_data_folder",
@@ -1638,7 +1758,7 @@
       "file_type": "code",
       "norm_label": ".open_data_folder()",
       "source_file": "speakon.py",
-      "source_location": "L787"
+      "source_location": "L873"
     },
     {
       "id": "speakon_api_open_dictionary_file",
@@ -1650,7 +1770,7 @@
       "file_type": "code",
       "norm_label": ".open_dictionary_file()",
       "source_file": "speakon.py",
-      "source_location": "L697"
+      "source_location": "L774"
     },
     {
       "id": "speakon_api_options",
@@ -1662,7 +1782,7 @@
       "file_type": "code",
       "norm_label": ".options()",
       "source_file": "speakon.py",
-      "source_location": "L761"
+      "source_location": "L847"
     },
     {
       "id": "speakon_api_record_shortcut",
@@ -1674,7 +1794,7 @@
       "file_type": "code",
       "norm_label": ".record_shortcut()",
       "source_file": "speakon.py",
-      "source_location": "L775"
+      "source_location": "L861"
     },
     {
       "id": "speakon_api_save_entry",
@@ -1686,7 +1806,7 @@
       "file_type": "code",
       "norm_label": ".save_entry()",
       "source_file": "speakon.py",
-      "source_location": "L667"
+      "source_location": "L732"
     },
     {
       "id": "speakon_api_set_setting",
@@ -1698,7 +1818,7 @@
       "file_type": "code",
       "norm_label": ".set_setting()",
       "source_file": "speakon.py",
-      "source_location": "L772"
+      "source_location": "L858"
     },
     {
       "id": "speakon_api_state",
@@ -1710,7 +1830,7 @@
       "file_type": "code",
       "norm_label": ".state()",
       "source_file": "speakon.py",
-      "source_location": "L594"
+      "source_location": "L641"
     },
     {
       "id": "speakon_api_toggle_learned",
@@ -1722,7 +1842,7 @@
       "file_type": "code",
       "norm_label": ".toggle_learned()",
       "source_file": "speakon.py",
-      "source_location": "L729"
+      "source_location": "L810"
     },
     {
       "id": "speakon_api_toggle_record",
@@ -1734,7 +1854,7 @@
       "file_type": "code",
       "norm_label": ".toggle_record()",
       "source_file": "speakon.py",
-      "source_location": "L602"
+      "source_location": "L649"
     },
     {
       "id": "speakon_api_transcribe_file",
@@ -1746,7 +1866,7 @@
       "file_type": "code",
       "norm_label": ".transcribe_file()",
       "source_file": "speakon.py",
-      "source_location": "L790"
+      "source_location": "L876"
     },
     {
       "id": "speakon_api_voice",
@@ -1758,7 +1878,31 @@
       "file_type": "code",
       "norm_label": ".voice()",
       "source_file": "speakon.py",
-      "source_location": "L715"
+      "source_location": "L794"
+    },
+    {
+      "id": "speakon_entry_id",
+      "label": "entry_id()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": "entry_id()",
+      "source_file": "speakon.py",
+      "source_location": "L628"
+    },
+    {
+      "id": "tools_eval_textproc_main_clean",
+      "label": "clean()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "code",
+      "norm_label": "clean()",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L57"
     },
     {
       "id": "learn_align",
@@ -1770,7 +1914,7 @@
       "file_type": "code",
       "norm_label": "align()",
       "source_file": "learn.py",
-      "source_location": "L56"
+      "source_location": "L57"
     },
     {
       "id": "learn_apply_fixes",
@@ -1782,7 +1926,7 @@
       "file_type": "code",
       "norm_label": "apply_fixes()",
       "source_file": "learn.py",
-      "source_location": "L144"
+      "source_location": "L145"
     },
     {
       "id": "learn_diff_spans",
@@ -1794,7 +1938,7 @@
       "file_type": "code",
       "norm_label": "diff_spans()",
       "source_file": "learn.py",
-      "source_location": "L85"
+      "source_location": "L86"
     },
     {
       "id": "learn_learn_fixes",
@@ -1806,7 +1950,7 @@
       "file_type": "code",
       "norm_label": "learn_fixes()",
       "source_file": "learn.py",
-      "source_location": "L115"
+      "source_location": "L116"
     },
     {
       "id": "learn_learn_from_wispr",
@@ -1818,7 +1962,7 @@
       "file_type": "code",
       "norm_label": "learn_from_wispr()",
       "source_file": "learn.py",
-      "source_location": "L234"
+      "source_location": "L235"
     },
     {
       "id": "learn_learn_lowercase",
@@ -1830,7 +1974,7 @@
       "file_type": "code",
       "norm_label": "learn_lowercase()",
       "source_file": "learn.py",
-      "source_location": "L323"
+      "source_location": "L330"
     },
     {
       "id": "learn_learn_terms",
@@ -1842,7 +1986,7 @@
       "file_type": "code",
       "norm_label": "learn_terms()",
       "source_file": "learn.py",
-      "source_location": "L149"
+      "source_location": "L150"
     },
     {
       "id": "learn_ngram_counts",
@@ -1854,7 +1998,7 @@
       "file_type": "code",
       "norm_label": "ngram_counts()",
       "source_file": "learn.py",
-      "source_location": "L103"
+      "source_location": "L104"
     },
     {
       "id": "learn_tokens",
@@ -1866,7 +2010,7 @@
       "file_type": "code",
       "norm_label": "tokens()",
       "source_file": "learn.py",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "learn_wer",
@@ -1878,7 +2022,7 @@
       "file_type": "code",
       "norm_label": "wer()",
       "source_file": "learn.py",
-      "source_location": "L75"
+      "source_location": "L76"
     },
     {
       "id": "learn_wispr_available",
@@ -1890,7 +2034,7 @@
       "file_type": "code",
       "norm_label": "wispr_available()",
       "source_file": "learn.py",
-      "source_location": "L173"
+      "source_location": "L174"
     },
     {
       "id": "learn_wispr_clips",
@@ -1902,7 +2046,7 @@
       "file_type": "code",
       "norm_label": "wispr_clips()",
       "source_file": "learn.py",
-      "source_location": "L213"
+      "source_location": "L214"
     },
     {
       "id": "learn_wispr_copy",
@@ -1914,7 +2058,7 @@
       "file_type": "code",
       "norm_label": "wispr_copy()",
       "source_file": "learn.py",
-      "source_location": "L177"
+      "source_location": "L178"
     },
     {
       "id": "learn_wispr_dictionary",
@@ -1926,7 +2070,7 @@
       "file_type": "code",
       "norm_label": "wispr_dictionary()",
       "source_file": "learn.py",
-      "source_location": "L195"
+      "source_location": "L196"
     },
     {
       "id": "learn_wispr_summary",
@@ -1938,7 +2082,7 @@
       "file_type": "code",
       "norm_label": "wispr_summary()",
       "source_file": "learn.py",
-      "source_location": "L184"
+      "source_location": "L185"
     },
     {
       "id": "speakon_api_check_entry",
@@ -1950,7 +2094,7 @@
       "file_type": "code",
       "norm_label": ".check_entry()",
       "source_file": "speakon.py",
-      "source_location": "L661"
+      "source_location": "L726"
     },
     {
       "id": "textproc_apply_custom_words",
@@ -1962,7 +2106,7 @@
       "file_type": "code",
       "norm_label": "apply_custom_words()",
       "source_file": "textproc.py",
-      "source_location": "L177"
+      "source_location": "L198"
     },
     {
       "id": "textproc_apply_replacements",
@@ -1974,7 +2118,7 @@
       "file_type": "code",
       "norm_label": "apply_replacements()",
       "source_file": "textproc.py",
-      "source_location": "L76"
+      "source_location": "L77"
     },
     {
       "id": "textproc_apply_spoken_commands",
@@ -1986,7 +2130,7 @@
       "file_type": "code",
       "norm_label": "apply_spoken_commands()",
       "source_file": "textproc.py",
-      "source_location": "L239"
+      "source_location": "L262"
     },
     {
       "id": "textproc_best_match",
@@ -1998,7 +2142,7 @@
       "file_type": "code",
       "norm_label": "_best_match()",
       "source_file": "textproc.py",
-      "source_location": "L154"
+      "source_location": "L155"
     },
     {
       "id": "textproc_collapse_stutters",
@@ -2010,7 +2154,7 @@
       "file_type": "code",
       "norm_label": "collapse_stutters()",
       "source_file": "textproc.py",
-      "source_location": "L234"
+      "source_location": "L257"
     },
     {
       "id": "textproc_dictionary_warnings",
@@ -2022,7 +2166,7 @@
       "file_type": "code",
       "norm_label": "dictionary_warnings()",
       "source_file": "textproc.py",
-      "source_location": "L92"
+      "source_location": "L93"
     },
     {
       "id": "textproc_fix_midsentence_caps",
@@ -2034,7 +2178,7 @@
       "file_type": "code",
       "norm_label": "fix_midsentence_caps()",
       "source_file": "textproc.py",
-      "source_location": "L257"
+      "source_location": "L280"
     },
     {
       "id": "textproc_fix_midsentence_caps_fix",
@@ -2046,7 +2190,7 @@
       "file_type": "code",
       "norm_label": "fix()",
       "source_file": "textproc.py",
-      "source_location": "L263"
+      "source_location": "L286"
     },
     {
       "id": "textproc_keep_case",
@@ -2058,7 +2202,7 @@
       "file_type": "code",
       "norm_label": "_keep_case()",
       "source_file": "textproc.py",
-      "source_location": "L170"
+      "source_location": "L191"
     },
     {
       "id": "textproc_key",
@@ -2070,7 +2214,7 @@
       "file_type": "code",
       "norm_label": "_key()",
       "source_file": "textproc.py",
-      "source_location": "L120"
+      "source_location": "L121"
     },
     {
       "id": "textproc_levenshtein",
@@ -2082,7 +2226,7 @@
       "file_type": "code",
       "norm_label": "_levenshtein()",
       "source_file": "textproc.py",
-      "source_location": "L138"
+      "source_location": "L139"
     },
     {
       "id": "textproc_parse_dictionary",
@@ -2094,7 +2238,7 @@
       "file_type": "code",
       "norm_label": "parse_dictionary()",
       "source_file": "textproc.py",
-      "source_location": "L56"
+      "source_location": "L57"
     },
     {
       "id": "textproc_process",
@@ -2106,7 +2250,7 @@
       "file_type": "code",
       "norm_label": "process()",
       "source_file": "textproc.py",
-      "source_location": "L287"
+      "source_location": "L310"
     },
     {
       "id": "textproc_remove_fillers",
@@ -2118,7 +2262,7 @@
       "file_type": "code",
       "norm_label": "remove_fillers()",
       "source_file": "textproc.py",
-      "source_location": "L227"
+      "source_location": "L250"
     },
     {
       "id": "textproc_soundex",
@@ -2130,7 +2274,7 @@
       "file_type": "code",
       "norm_label": "_soundex()",
       "source_file": "textproc.py",
-      "source_location": "L124"
+      "source_location": "L125"
     },
     {
       "id": "textproc_split_punct",
@@ -2142,7 +2286,7 @@
       "file_type": "code",
       "norm_label": "_split_punct()",
       "source_file": "textproc.py",
-      "source_location": "L148"
+      "source_location": "L149"
     },
     {
       "id": "textproc_split_words",
@@ -2154,7 +2298,19 @@
       "file_type": "code",
       "norm_label": "_split_words()",
       "source_file": "textproc.py",
-      "source_location": "L72"
+      "source_location": "L73"
+    },
+    {
+      "id": "textproc_swallows_small_word",
+      "label": "_swallows_small_word()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "textproc.py",
+      "file_type": "code",
+      "norm_label": "_swallows_small_word()",
+      "source_file": "textproc.py",
+      "source_location": "L173"
     },
     {
       "id": "textproc_tidy",
@@ -2166,7 +2322,7 @@
       "file_type": "code",
       "norm_label": "tidy()",
       "source_file": "textproc.py",
-      "source_location": "L275"
+      "source_location": "L298"
     },
     {
       "id": "engine_block_rms",
@@ -2179,18 +2335,6 @@
       "norm_label": "block_rms()",
       "source_file": "engine.py",
       "source_location": "L187"
-    },
-    {
-      "id": "engine_dictation_audio",
-      "label": ".audio()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "Dictation",
-      "file_type": "code",
-      "norm_label": ".audio()",
-      "source_file": "engine.py",
-      "source_location": "L432"
     },
     {
       "id": "engine_dictation_cancel",
@@ -2371,42 +2515,6 @@
       "norm_label": "transcribe_array()",
       "source_file": "engine.py",
       "source_location": "L440"
-    },
-    {
-      "id": "speakon_api_learn_from_wispr",
-      "label": ".learn_from_wispr()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "Dictation",
-      "file_type": "code",
-      "norm_label": ".learn_from_wispr()",
-      "source_file": "speakon.py",
-      "source_location": "L733"
-    },
-    {
-      "id": "speakon_api_learn_from_wispr_progress",
-      "label": "progress()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "Dictation",
-      "file_type": "code",
-      "norm_label": "progress()",
-      "source_file": "speakon.py",
-      "source_location": "L738"
-    },
-    {
-      "id": "speakon_api_learn_from_wispr_work",
-      "label": "work()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "Dictation",
-      "file_type": "code",
-      "norm_label": "work()",
-      "source_file": "speakon.py",
-      "source_location": "L741"
     },
     {
       "id": "hotkeys_hotkeywatcher_capture",
@@ -2910,7 +3018,7 @@
       "source_location": "L1"
     },
     {
-      "id": "speakon_rationale_105",
+      "id": "speakon_rationale_122",
       "label": "A shortcut in the Startup folder (starts in the tray at sign-in). The folder is\u2026",
       "_origin": "ast",
       "community": 1,
@@ -2918,10 +3026,10 @@
       "file_type": "rationale",
       "norm_label": "a shortcut in the startup folder (starts in the tray at sign-in). the folder is...",
       "source_file": "speakon.py",
-      "source_location": "L105"
+      "source_location": "L122"
     },
     {
-      "id": "speakon_rationale_475",
+      "id": "speakon_rationale_510",
       "label": "Remember words the user corrected; applied from the next dictation on.",
       "_origin": "ast",
       "community": 1,
@@ -2929,7 +3037,18 @@
       "file_type": "rationale",
       "norm_label": "remember words the user corrected; applied from the next dictation on.",
       "source_file": "speakon.py",
-      "source_location": "L475"
+      "source_location": "L510"
+    },
+    {
+      "id": "speakon_rationale_57",
+      "label": "Above-normal CPU priority only while dictating: on a busy PC this halves the\u2026",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "SpeakOn",
+      "file_type": "rationale",
+      "norm_label": "above-normal cpu priority only while dictating: on a busy pc this halves the...",
+      "source_file": "speakon.py",
+      "source_location": "L57"
     },
     {
       "id": "mic_rationale_72",
@@ -2998,7 +3117,7 @@
       "source_location": "L86"
     },
     {
-      "id": "learn_rationale_261",
+      "id": "learn_rationale_262",
       "label": "learned.json. Re-read whenever the file changes on disk, so edits made while\u2026",
       "_origin": "ast",
       "community": 12,
@@ -3006,10 +3125,10 @@
       "file_type": "rationale",
       "norm_label": "learned.json. re-read whenever the file changes on disk, so edits made while...",
       "source_file": "learn.py",
-      "source_location": "L261"
+      "source_location": "L262"
     },
     {
-      "id": "learn_rationale_309",
+      "id": "learn_rationale_315",
       "label": "Remember a correction; returns fixes that just reached two sightings.",
       "_origin": "ast",
       "community": 12,
@@ -3017,10 +3136,10 @@
       "file_type": "rationale",
       "norm_label": "remember a correction; returns fixes that just reached two sightings.",
       "source_file": "learn.py",
-      "source_location": "L309"
+      "source_location": "L315"
     },
     {
-      "id": "speakon_rationale_144",
+      "id": "speakon_rationale_161",
       "label": "Plays a 16 kHz mono .wav into the pipeline in real time (testing without a\u2026",
       "_origin": "ast",
       "community": 13,
@@ -3028,7 +3147,7 @@
       "file_type": "rationale",
       "norm_label": "plays a 16 khz mono .wav into the pipeline in real time (testing without a...",
       "source_file": "speakon.py",
-      "source_location": "L144"
+      "source_location": "L161"
     },
     {
       "id": "build",
@@ -3570,6 +3689,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_eval_textproc",
+      "label": "eval_textproc.py",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "eval_textproc.py",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_eval_wispr",
       "label": "eval_wispr.py",
       "_origin": "ast",
@@ -3644,6 +3774,17 @@
       "file_type": "rationale",
       "norm_label": "accuracy of the full live pipeline (pieces + previews + release) on the user's...",
       "source_file": "tools/eval_stream.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_eval_textproc_rationale_1",
+      "label": "How much the text clean-up (dictionary, sound-alike snapping, capitals) helps\u2026",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "engine.py",
+      "file_type": "rationale",
+      "norm_label": "how much the text clean-up (dictionary, sound-alike snapping, capitals) helps...",
+      "source_file": "tools/eval_textproc.py",
       "source_location": "L1"
     },
     {
@@ -3955,6 +4096,17 @@
       "source_location": "L1"
     },
     {
+      "id": "speakon_rationale_629",
+      "label": "Stable id for a dictionary line / learned fix / term: the same text always gets\u2026",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Api",
+      "file_type": "rationale",
+      "norm_label": "stable id for a dictionary line / learned fix / term: the same text always gets...",
+      "source_file": "speakon.py",
+      "source_location": "L629"
+    },
+    {
       "id": "learn",
       "label": "learn.py",
       "_origin": "ast",
@@ -3977,7 +4129,7 @@
       "source_location": "L1"
     },
     {
-      "id": "learn_rationale_116",
+      "id": "learn_rationale_117",
       "label": "pairs: [(reference_text, engine_text)] -> [{heard, wanted, count, precision}]",
       "_origin": "ast",
       "community": 5,
@@ -3985,10 +4137,10 @@
       "file_type": "rationale",
       "norm_label": "pairs: [(reference_text, engine_text)] -> [{heard, wanted, count, precision}]",
       "source_file": "learn.py",
-      "source_location": "L116"
+      "source_location": "L117"
     },
     {
-      "id": "learn_rationale_150",
+      "id": "learn_rationale_151",
       "label": "Words the user says often that are not ordinary lower-case words: GitHub,\u2026",
       "_origin": "ast",
       "community": 5,
@@ -3996,10 +4148,10 @@
       "file_type": "rationale",
       "norm_label": "words the user says often that are not ordinary lower-case words: github,...",
       "source_file": "learn.py",
-      "source_location": "L150"
+      "source_location": "L151"
     },
     {
-      "id": "learn_rationale_178",
+      "id": "learn_rationale_179",
       "label": "Read-only snapshot of Wispr's database (never opened in place).",
       "_origin": "ast",
       "community": 5,
@@ -4007,10 +4159,10 @@
       "file_type": "rationale",
       "norm_label": "read-only snapshot of wispr's database (never opened in place).",
       "source_file": "learn.py",
-      "source_location": "L178"
+      "source_location": "L179"
     },
     {
-      "id": "learn_rationale_196",
+      "id": "learn_rationale_197",
       "label": "[(heard_or_None, wanted)] - words and snippets the user set up in Wispr Flow.",
       "_origin": "ast",
       "community": 5,
@@ -4018,10 +4170,10 @@
       "file_type": "rationale",
       "norm_label": "[(heard_or_none, wanted)] - words and snippets the user set up in wispr flow.",
       "source_file": "learn.py",
-      "source_location": "L196"
+      "source_location": "L197"
     },
     {
-      "id": "learn_rationale_235",
+      "id": "learn_rationale_236",
       "label": "Run the engine over the user's Wispr recordings and learn from the differences.",
       "_origin": "ast",
       "community": 5,
@@ -4029,10 +4181,10 @@
       "file_type": "rationale",
       "norm_label": "run the engine over the user's wispr recordings and learn from the differences.",
       "source_file": "learn.py",
-      "source_location": "L235"
+      "source_location": "L236"
     },
     {
-      "id": "learn_rationale_324",
+      "id": "learn_rationale_331",
       "label": "Words this user normally writes in lower case mid-sentence (\"quicker\", \"and\",\u2026",
       "_origin": "ast",
       "community": 5,
@@ -4040,10 +4192,10 @@
       "file_type": "rationale",
       "norm_label": "words this user normally writes in lower case mid-sentence (\"quicker\", \"and\",...",
       "source_file": "learn.py",
-      "source_location": "L324"
+      "source_location": "L331"
     },
     {
-      "id": "learn_rationale_42",
+      "id": "learn_rationale_43",
       "label": "Words with their original spelling, plus normalised keys for matching.",
       "_origin": "ast",
       "community": 5,
@@ -4051,10 +4203,10 @@
       "file_type": "rationale",
       "norm_label": "words with their original spelling, plus normalised keys for matching.",
       "source_file": "learn.py",
-      "source_location": "L42"
+      "source_location": "L43"
     },
     {
-      "id": "learn_rationale_86",
+      "id": "learn_rationale_87",
       "label": "Mismatched stretches between matching words: [(hyp_words,\u2026",
       "_origin": "ast",
       "community": 5,
@@ -4062,7 +4214,7 @@
       "file_type": "rationale",
       "norm_label": "mismatched stretches between matching words: [(hyp_words,...",
       "source_file": "learn.py",
-      "source_location": "L86"
+      "source_location": "L87"
     },
     {
       "id": "textproc",
@@ -4087,7 +4239,18 @@
       "source_location": "L1"
     },
     {
-      "id": "textproc_rationale_258",
+      "id": "textproc_rationale_174",
+      "label": "True when the chunk starts or ends with an everyday word that none of the close\u2026",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "textproc.py",
+      "file_type": "rationale",
+      "norm_label": "true when the chunk starts or ends with an everyday word that none of the close...",
+      "source_file": "textproc.py",
+      "source_location": "L174"
+    },
+    {
+      "id": "textproc_rationale_281",
       "label": "The engine capitalises a word after a short pause (\"with C And replikanto\",\u2026",
       "_origin": "ast",
       "community": 6,
@@ -4095,10 +4258,10 @@
       "file_type": "rationale",
       "norm_label": "the engine capitalises a word after a short pause (\"with c and replikanto\",...",
       "source_file": "textproc.py",
-      "source_location": "L258"
+      "source_location": "L281"
     },
     {
-      "id": "textproc_rationale_288",
+      "id": "textproc_rationale_311",
       "label": "Returns (clean text, [(heard, written), ...] dictionary fixes that fired).\u2026",
       "_origin": "ast",
       "community": 6,
@@ -4106,10 +4269,10 @@
       "file_type": "rationale",
       "norm_label": "returns (clean text, [(heard, written), ...] dictionary fixes that fired)....",
       "source_file": "textproc.py",
-      "source_location": "L288"
+      "source_location": "L311"
     },
     {
-      "id": "textproc_rationale_57",
+      "id": "textproc_rationale_58",
       "label": "Returns (terms, [(heard, wanted), ...]).",
       "_origin": "ast",
       "community": 6,
@@ -4117,10 +4280,10 @@
       "file_type": "rationale",
       "norm_label": "returns (terms, [(heard, wanted), ...]).",
       "source_file": "textproc.py",
-      "source_location": "L57"
+      "source_location": "L58"
     },
     {
-      "id": "textproc_rationale_77",
+      "id": "textproc_rationale_78",
       "label": "The guaranteed pass: longest trigger first, whole matches only, glued forms\u2026",
       "_origin": "ast",
       "community": 6,
@@ -4128,10 +4291,10 @@
       "file_type": "rationale",
       "norm_label": "the guaranteed pass: longest trigger first, whole matches only, glued forms...",
       "source_file": "textproc.py",
-      "source_location": "L77"
+      "source_location": "L78"
     },
     {
-      "id": "textproc_rationale_93",
+      "id": "textproc_rationale_94",
       "label": "Warnings for one dictionary line (empty list = looks safe).",
       "_origin": "ast",
       "community": 6,
@@ -4139,7 +4302,7 @@
       "file_type": "rationale",
       "norm_label": "warnings for one dictionary line (empty list = looks safe).",
       "source_file": "textproc.py",
-      "source_location": "L93"
+      "source_location": "L94"
     },
     {
       "id": "engine_rationale_192",
@@ -4413,36 +4576,6 @@
       "source_url": null
     },
     {
-      "id": "ui_index_saveedit",
-      "label": "saveEdit()",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 3,
-      "community_name": "SpeakOn",
-      "contributor": null,
-      "file_type": "code",
-      "norm_label": "saveedit()",
-      "source_file": "ui/index.html",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "ui_index_toast",
-      "label": "toast()",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 3,
-      "community_name": "SpeakOn",
-      "contributor": null,
-      "file_type": "code",
-      "norm_label": "toast()",
-      "source_file": "ui/index.html",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "readme_build_exe",
       "label": "Stand-alone SpeakOn.exe build (PyInstaller + build.ps1)",
       "_origin": "semantic",
@@ -4546,22 +4679,6 @@
       "file_type": "concept",
       "norm_label": "push-to-talk ctrl + win (hold or tap)",
       "rationale": "Same hotkey as Wispr Flow; conflicts if both run.",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "readme_save_and_learn",
-      "label": "Edit dictation: Save & learn",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 3,
-      "community_name": "SpeakOn",
-      "contributor": null,
-      "file_type": "concept",
-      "norm_label": "edit dictation: save & learn",
-      "rationale": "Same correction twice is applied automatically from then on.",
       "source_file": "README.md",
       "source_location": null,
       "source_url": null
@@ -5025,6 +5142,21 @@
       "source_url": null
     },
     {
+      "id": "ui_index_saveedit",
+      "label": "saveEdit()",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 4,
+      "community_name": "Api",
+      "contributor": null,
+      "file_type": "code",
+      "norm_label": "saveedit()",
+      "source_file": "ui/index.html",
+      "source_location": null,
+      "source_url": null
+    },
+    {
       "id": "ui_index_show",
       "label": "show() page navigation",
       "_origin": "semantic",
@@ -5051,6 +5183,37 @@
       "file_type": "code",
       "norm_label": "tick() live-state poll",
       "source_file": "ui/index.html",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "ui_index_toast",
+      "label": "toast()",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 4,
+      "community_name": "Api",
+      "contributor": null,
+      "file_type": "code",
+      "norm_label": "toast()",
+      "source_file": "ui/index.html",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "readme_save_and_learn",
+      "label": "Edit dictation: Save & learn",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 4,
+      "community_name": "Api",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "edit dictation: save & learn",
+      "rationale": "Same correction twice is applied automatically from then on.",
+      "source_file": "README.md",
       "source_location": null,
       "source_url": null
     },
@@ -5193,6 +5356,18 @@
       "type": "external"
     },
     {
+      "id": "hashlib",
+      "label": "hashlib",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "speakon.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "hashlib",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "logging",
       "label": "logging",
       "_origin": "semantic",
@@ -5285,6 +5460,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "threading",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "uuid",
+      "label": "uuid",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "speakon.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "uuid",
       "source_file": "",
       "type": "external"
     },
@@ -5469,30 +5656,6 @@
       "type": "external"
     },
     {
-      "id": "hashlib",
-      "label": "hashlib",
-      "_origin": "semantic",
-      "community": 27,
-      "community_name": "hashlib",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "hashlib",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "uuid",
-      "label": "uuid",
-      "_origin": "semantic",
-      "community": 28,
-      "community_name": "uuid",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "uuid",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "io",
       "label": "io",
       "_origin": "semantic",
@@ -5561,6 +5724,17 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "unicodedata",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "importlib_util",
+      "label": "importlib_util",
+      "community": 2,
+      "community_name": "engine.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "importlib_util",
       "source_file": "",
       "type": "external"
     }
@@ -6187,7 +6361,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L87",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -6199,7 +6373,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L88",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -6211,7 +6385,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L120",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -6223,7 +6397,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -6235,7 +6409,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L237",
+      "source_location": "L238",
       "weight": 1.0
     },
     {
@@ -6247,7 +6421,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L249",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -6259,7 +6433,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L250",
+      "source_location": "L251",
       "weight": 1.0
     },
     {
@@ -6271,7 +6445,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L251",
+      "source_location": "L252",
       "weight": 1.0
     },
     {
@@ -6283,7 +6457,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L253",
+      "source_location": "L254",
       "weight": 1.0
     },
     {
@@ -6295,7 +6469,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L285",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -6307,7 +6481,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L268",
+      "source_location": "L270",
       "weight": 1.0
     },
     {
@@ -6319,7 +6493,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L311",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -6331,7 +6505,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L318",
+      "source_location": "L325",
       "weight": 1.0
     },
     {
@@ -6343,7 +6517,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L319",
+      "source_location": "L326",
       "weight": 1.0
     },
     {
@@ -6355,7 +6529,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L306",
+      "source_location": "L312",
       "weight": 1.0
     },
     {
@@ -6367,7 +6541,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L106",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -6379,7 +6553,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L78",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -6391,7 +6565,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -6403,7 +6577,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L214",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -6415,7 +6589,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L197",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -6427,7 +6601,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L185",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -6439,7 +6613,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "learn.py",
-      "source_location": "L187",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -6695,6 +6869,90 @@
       "weight": 1.0
     },
     {
+      "source": "speakon_api_copy",
+      "target": "speakon_api_history_entry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L671",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_delete_entry",
+      "target": "speakon_api_dictionary_line",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L759",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_delete_entry",
+      "target": "speakon_entry_id",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L766",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_delete_history",
+      "target": "speakon_api_history_entry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L678",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_dictionary",
+      "target": "speakon_entry_id",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L714",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_dictionary_line",
+      "target": "speakon_entry_id",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L752",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_edit_history",
+      "target": "speakon_api_history_entry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L686",
+      "weight": 1.0
+    },
+    {
       "source": "speakon_api_edit_history",
       "target": "corrections_find_corrections",
       "relation": "calls",
@@ -6703,7 +6961,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L635",
+      "source_location": "L696",
       "weight": 1.0
     },
     {
@@ -6715,7 +6973,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L674",
+      "source_location": "L739",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_save_entry",
+      "target": "speakon_api_dictionary_line",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L743",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_toggle_learned",
+      "target": "speakon_entry_id",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L813",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api_voice",
+      "target": "speakon_entry_id",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L804",
       "weight": 1.0
     },
     {
@@ -6727,7 +7021,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L842",
+      "source_location": "L930",
       "weight": 1.0
     },
     {
@@ -6739,7 +7033,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L843",
+      "source_location": "L931",
       "weight": 1.0
     },
     {
@@ -6751,7 +7045,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L846",
+      "source_location": "L934",
       "weight": 1.0
     },
     {
@@ -6763,7 +7057,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L361",
+      "source_location": "L388",
       "weight": 1.0
     },
     {
@@ -6775,7 +7069,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L500",
+      "source_location": "L536",
       "weight": 1.0
     },
     {
@@ -6787,7 +7081,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L501",
+      "source_location": "L537",
       "weight": 1.0
     },
     {
@@ -6799,7 +7093,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L508",
+      "source_location": "L544",
       "weight": 1.0
     },
     {
@@ -6811,7 +7105,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L510",
+      "source_location": "L546",
       "weight": 1.0
     },
     {
@@ -6823,7 +7117,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L534",
+      "source_location": "L572",
       "weight": 1.0
     },
     {
@@ -6835,7 +7129,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L432",
+      "source_location": "L462",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_speakon_do_cancel",
+      "target": "speakon_set_busy_priority",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L465",
       "weight": 1.0
     },
     {
@@ -6847,7 +7153,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L386",
+      "source_location": "L413",
       "weight": 1.0
     },
     {
@@ -6859,7 +7165,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L366",
+      "source_location": "L393",
       "weight": 1.0
     },
     {
@@ -6871,7 +7177,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L369",
+      "source_location": "L396",
       "weight": 1.0
     },
     {
@@ -6883,7 +7189,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L378",
+      "source_location": "L405",
       "weight": 1.0
     },
     {
@@ -6895,7 +7201,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L382",
+      "source_location": "L409",
       "weight": 1.0
     },
     {
@@ -6907,7 +7213,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L402",
+      "source_location": "L431",
       "weight": 1.0
     },
     {
@@ -6919,7 +7225,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L405",
+      "source_location": "L434",
       "weight": 1.0
     },
     {
@@ -6931,7 +7237,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L408",
+      "source_location": "L437",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_speakon_do_start",
+      "target": "speakon_set_busy_priority",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L451",
       "weight": 1.0
     },
     {
@@ -6943,7 +7261,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L424",
+      "source_location": "L454",
       "weight": 1.0
     },
     {
@@ -6955,7 +7273,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L425",
+      "source_location": "L455",
       "weight": 1.0
     },
     {
@@ -6967,7 +7285,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L444",
+      "source_location": "L475",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_speakon_do_stop",
+      "target": "speakon_set_busy_priority",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L479",
       "weight": 1.0
     },
     {
@@ -6979,7 +7309,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L449",
+      "source_location": "L481",
       "weight": 1.0
     },
     {
@@ -6991,7 +7321,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L390",
+      "source_location": "L417",
       "weight": 1.0
     },
     {
@@ -7003,7 +7333,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L392",
+      "source_location": "L419",
       "weight": 1.0
     },
     {
@@ -7015,7 +7345,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L463",
+      "source_location": "L495",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_speakon_finish",
+      "target": "speakon_set_busy_priority",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L499",
       "weight": 1.0
     },
     {
@@ -7027,7 +7369,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L184",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -7039,7 +7381,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L190",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -7051,7 +7393,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L194",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -7063,7 +7405,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L195",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -7075,7 +7417,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L210",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -7087,7 +7429,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L213",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -7099,7 +7441,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L220",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -7111,7 +7453,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L221",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -7123,7 +7465,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L221",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -7135,7 +7477,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L223",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -7147,7 +7489,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L223",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -7159,7 +7501,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L226",
+      "source_location": "L247",
       "weight": 1.0
     },
     {
@@ -7171,7 +7513,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L232",
+      "source_location": "L253",
       "weight": 1.0
     },
     {
@@ -7183,7 +7525,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L550",
+      "source_location": "L588",
       "weight": 1.0
     },
     {
@@ -7195,7 +7537,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L555",
+      "source_location": "L593",
       "weight": 1.0
     },
     {
@@ -7207,7 +7549,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L494",
+      "source_location": "L530",
       "weight": 1.0
     },
     {
@@ -7219,7 +7561,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L351",
+      "source_location": "L378",
       "weight": 1.0
     },
     {
@@ -7231,7 +7573,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L251",
+      "source_location": "L275",
       "weight": 1.0
     },
     {
@@ -7243,7 +7585,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L239",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -7255,7 +7597,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L236",
+      "source_location": "L257",
       "weight": 1.0
     },
     {
@@ -7267,7 +7609,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L257",
+      "source_location": "L282",
       "weight": 1.0
     },
     {
@@ -7279,7 +7621,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L321",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -7291,7 +7633,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L325",
+      "source_location": "L352",
       "weight": 1.0
     },
     {
@@ -7303,7 +7645,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L264",
+      "source_location": "L289",
       "weight": 1.0
     },
     {
@@ -7315,7 +7657,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L268",
+      "source_location": "L293",
       "weight": 1.0
     },
     {
@@ -7327,7 +7669,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L273",
+      "source_location": "L298",
       "weight": 1.0
     },
     {
@@ -7339,7 +7681,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L275",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -7351,7 +7693,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L179",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -7363,7 +7705,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L192",
+      "source_location": "L213",
+      "weight": 1.0
+    },
+    {
+      "source": "textproc_apply_custom_words",
+      "target": "textproc_swallows_small_word",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "textproc.py",
+      "source_location": "L221",
       "weight": 1.0
     },
     {
@@ -7375,7 +7729,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L203",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -7387,7 +7741,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L210",
+      "source_location": "L233",
       "weight": 1.0
     },
     {
@@ -7399,7 +7753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L80",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -7411,7 +7765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L162",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -7423,7 +7777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L163",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -7435,7 +7789,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L100",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -7447,7 +7801,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L110",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -7459,7 +7813,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L294",
+      "source_location": "L317",
       "weight": 1.0
     },
     {
@@ -7471,7 +7825,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L295",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -7483,7 +7837,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L296",
+      "source_location": "L319",
       "weight": 1.0
     },
     {
@@ -7495,7 +7849,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L300",
+      "source_location": "L325",
       "weight": 1.0
     },
     {
@@ -7507,7 +7861,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L302",
+      "source_location": "L327",
       "weight": 1.0
     },
     {
@@ -7519,7 +7873,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L305",
+      "source_location": "L330",
       "weight": 1.0
     },
     {
@@ -7531,7 +7885,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L307",
+      "source_location": "L332",
       "weight": 1.0
     },
     {
@@ -7543,7 +7897,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L308",
+      "source_location": "L333",
       "weight": 1.0
     },
     {
@@ -7555,7 +7909,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "textproc.py",
-      "source_location": "L231",
+      "source_location": "L254",
+      "weight": 1.0
+    },
+    {
+      "source": "textproc_swallows_small_word",
+      "target": "textproc_key",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "textproc.py",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -7604,6 +7970,54 @@
       "context": "call",
       "source_file": "tools/eval_stream.py",
       "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_main",
+      "target": "tools_eval_textproc_wispr_texts",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_main",
+      "target": "tools_eval_textproc_load_textproc",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_main",
+      "target": "tools_eval_wispr_norm",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_main",
+      "target": "tools_eval_wispr_align",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -7688,6 +8102,18 @@
       "context": "call",
       "source_file": "tools/weekly_check.py",
       "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_main",
+      "target": "tools_eval_textproc_main_clean",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -7956,7 +8382,7 @@
     },
     {
       "source": "learn",
-      "target": "wave",
+      "target": "threading",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7968,6 +8394,18 @@
     },
     {
       "source": "learn",
+      "target": "wave",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "learn.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "learn",
       "target": "numpy",
       "relation": "imports",
       "_origin": "ast",
@@ -7975,7 +8413,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "learn.py",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -8100,7 +8538,7 @@
     },
     {
       "source": "speakon",
-      "target": "logging",
+      "target": "json",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8112,7 +8550,7 @@
     },
     {
       "source": "speakon",
-      "target": "logging_handlers",
+      "target": "logging",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8124,7 +8562,7 @@
     },
     {
       "source": "speakon",
-      "target": "math",
+      "target": "logging_handlers",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8136,7 +8574,7 @@
     },
     {
       "source": "speakon",
-      "target": "os",
+      "target": "math",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8148,7 +8586,7 @@
     },
     {
       "source": "speakon",
-      "target": "queue",
+      "target": "os",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8160,7 +8598,7 @@
     },
     {
       "source": "speakon",
-      "target": "struct",
+      "target": "queue",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8172,7 +8610,7 @@
     },
     {
       "source": "speakon",
-      "target": "sys",
+      "target": "struct",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8184,7 +8622,7 @@
     },
     {
       "source": "speakon",
-      "target": "threading",
+      "target": "sys",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8196,7 +8634,7 @@
     },
     {
       "source": "speakon",
-      "target": "time",
+      "target": "threading",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8208,7 +8646,7 @@
     },
     {
       "source": "speakon",
-      "target": "wave",
+      "target": "time",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8220,7 +8658,7 @@
     },
     {
       "source": "speakon",
-      "target": "winreg",
+      "target": "uuid",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8232,7 +8670,7 @@
     },
     {
       "source": "speakon",
-      "target": "winsound",
+      "target": "wave",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8244,31 +8682,31 @@
     },
     {
       "source": "speakon",
+      "target": "winreg",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "winsound",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
       "target": "numpy",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "speakon.py",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon",
-      "target": "pyperclip",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "speakon.py",
-      "source_location": "L34",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon",
-      "target": "pystray",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8280,7 +8718,7 @@
     },
     {
       "source": "speakon",
-      "target": "sounddevice",
+      "target": "pyperclip",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8292,7 +8730,7 @@
     },
     {
       "source": "speakon",
-      "target": "webview",
+      "target": "pystray",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8304,31 +8742,31 @@
     },
     {
       "source": "speakon",
+      "target": "sounddevice",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "webview",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
       "target": "config",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "speakon.py",
-      "source_location": "L41",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon",
-      "target": "engine",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "speakon.py",
-      "source_location": "L42",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon",
-      "target": "learn",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8340,7 +8778,7 @@
     },
     {
       "source": "speakon",
-      "target": "sendinput",
+      "target": "engine",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8352,7 +8790,7 @@
     },
     {
       "source": "speakon",
-      "target": "textproc",
+      "target": "learn",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8364,7 +8802,7 @@
     },
     {
       "source": "speakon",
-      "target": "corrections_editwatcher",
+      "target": "sendinput",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8376,19 +8814,7 @@
     },
     {
       "source": "speakon",
-      "target": "corrections_find_corrections",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "speakon.py",
-      "source_location": "L46",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon",
-      "target": "hotkeys_hotkeywatcher",
+      "target": "textproc",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8400,7 +8826,7 @@
     },
     {
       "source": "speakon",
-      "target": "mic_microphone",
+      "target": "corrections_editwatcher",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8412,7 +8838,19 @@
     },
     {
       "source": "speakon",
-      "target": "overlay_flowbar",
+      "target": "corrections_find_corrections",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "hotkeys_hotkeywatcher",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8420,6 +8858,30 @@
       "context": "import",
       "source_file": "speakon.py",
       "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "mic_microphone",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "overlay_flowbar",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "speakon.py",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -8436,7 +8898,7 @@
     },
     {
       "source": "speakon",
-      "target": "json",
+      "target": "hashlib",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8684,6 +9146,90 @@
       "context": "import",
       "source_file": "tools/eval_stream.py",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "importlib_util",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "config",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "tools_eval_wispr_align",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "tools_eval_wispr_norm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -9031,7 +9577,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "learn.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -9079,7 +9625,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -9091,7 +9637,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -9103,7 +9649,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -9115,7 +9661,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -9127,7 +9673,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L46",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -9139,7 +9685,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -9151,7 +9697,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -9163,7 +9709,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "speakon.py",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -9200,6 +9746,18 @@
       "context": "import",
       "source_file": "tools/eval_stream.py",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "tools_eval_wispr",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -10014,7 +10572,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L103",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -10025,7 +10583,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L115",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -10036,7 +10594,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L144",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -10047,7 +10605,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L149",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -10058,7 +10616,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L173",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -10069,7 +10627,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L177",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -10080,7 +10638,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L184",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -10091,7 +10649,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L195",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -10102,7 +10660,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L213",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -10113,7 +10671,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L234",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -10124,7 +10682,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L260",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -10135,7 +10693,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L323",
+      "source_location": "L330",
       "weight": 1.0
     },
     {
@@ -10146,7 +10704,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -10157,7 +10715,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -10168,7 +10726,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -10179,7 +10737,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L85",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -10305,13 +10863,24 @@
     },
     {
       "source": "speakon",
+      "target": "speakon_modifiers_down",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
       "target": "speakon_set_start_with_windows",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L104",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -10322,7 +10891,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L128",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -10333,7 +10902,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L143",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -10344,7 +10913,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L174",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "speakon_set_busy_priority",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon",
+      "target": "speakon_entry_id",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L628",
       "weight": 1.0
     },
     {
@@ -10355,7 +10946,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L590",
+      "source_location": "L634",
       "weight": 1.0
     },
     {
@@ -10366,7 +10957,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L60",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -10377,7 +10968,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L65",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -10388,18 +10979,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L72",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon",
-      "target": "speakon_foreground_app",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "speakon.py",
-      "source_location": "L79",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -10410,12 +10990,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L811",
+      "source_location": "L899",
       "weight": 1.0
     },
     {
       "source": "speakon",
-      "target": "speakon_modifiers_down",
+      "target": "speakon_foreground_app",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10432,7 +11012,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L738",
+      "source_location": "L822",
       "weight": 1.0
     },
     {
@@ -10443,7 +11023,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L741",
+      "source_location": "L825",
       "weight": 1.0
     },
     {
@@ -10454,7 +11034,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L850",
+      "source_location": "L938",
       "weight": 1.0
     },
     {
@@ -10465,7 +11045,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L120",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -10476,7 +11056,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -10487,7 +11067,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L138",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -10498,7 +11078,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L148",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -10509,7 +11089,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L154",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "textproc",
+      "target": "textproc_swallows_small_word",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "textproc.py",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -10520,7 +11111,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L170",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -10531,7 +11122,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L177",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -10542,7 +11133,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L227",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -10553,7 +11144,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L234",
+      "source_location": "L257",
       "weight": 1.0
     },
     {
@@ -10564,7 +11155,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L239",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
@@ -10575,7 +11166,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L257",
+      "source_location": "L280",
       "weight": 1.0
     },
     {
@@ -10586,7 +11177,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L275",
+      "source_location": "L298",
       "weight": 1.0
     },
     {
@@ -10597,7 +11188,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L287",
+      "source_location": "L310",
       "weight": 1.0
     },
     {
@@ -10608,7 +11199,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -10619,7 +11210,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L72",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -10630,7 +11221,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L76",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -10641,7 +11232,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L92",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -10664,6 +11255,39 @@
       "confidence_score": 1.0,
       "source_file": "tools/eval_stream.py",
       "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "tools_eval_textproc_load_textproc",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "tools_eval_textproc_wispr_texts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc",
+      "target": "tools_eval_textproc_main",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -11257,7 +11881,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L264",
+      "source_location": "L265",
       "weight": 1.0
     },
     {
@@ -11268,7 +11892,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L270",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -11279,7 +11903,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L284",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -11290,7 +11914,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L288",
+      "source_location": "L291",
       "weight": 1.0
     },
     {
@@ -11301,7 +11925,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L295",
+      "source_location": "L299",
       "weight": 1.0
     },
     {
@@ -11312,7 +11936,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L298",
+      "source_location": "L303",
       "weight": 1.0
     },
     {
@@ -11323,7 +11947,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L308",
+      "source_location": "L314",
       "weight": 1.0
     },
     {
@@ -11532,7 +12156,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L591",
+      "source_location": "L635",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api",
+      "target": "speakon_api_history_entry",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L638",
       "weight": 1.0
     },
     {
@@ -11543,7 +12178,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L594",
+      "source_location": "L641",
       "weight": 1.0
     },
     {
@@ -11554,7 +12189,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L602",
+      "source_location": "L649",
       "weight": 1.0
     },
     {
@@ -11565,7 +12200,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L606",
+      "source_location": "L653",
       "weight": 1.0
     },
     {
@@ -11576,7 +12211,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L620",
+      "source_location": "L669",
       "weight": 1.0
     },
     {
@@ -11587,7 +12222,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L623",
+      "source_location": "L676",
       "weight": 1.0
     },
     {
@@ -11598,7 +12233,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L627",
+      "source_location": "L683",
       "weight": 1.0
     },
     {
@@ -11609,7 +12244,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L642",
+      "source_location": "L703",
       "weight": 1.0
     },
     {
@@ -11620,7 +12255,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L661",
+      "source_location": "L726",
       "weight": 1.0
     },
     {
@@ -11631,7 +12266,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L667",
+      "source_location": "L732",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_api",
+      "target": "speakon_api_dictionary_line",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L751",
       "weight": 1.0
     },
     {
@@ -11642,7 +12288,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L683",
+      "source_location": "L754",
       "weight": 1.0
     },
     {
@@ -11653,7 +12299,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L697",
+      "source_location": "L774",
       "weight": 1.0
     },
     {
@@ -11664,7 +12310,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L700",
+      "source_location": "L777",
       "weight": 1.0
     },
     {
@@ -11675,7 +12321,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L715",
+      "source_location": "L794",
       "weight": 1.0
     },
     {
@@ -11686,7 +12332,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L729",
+      "source_location": "L810",
       "weight": 1.0
     },
     {
@@ -11697,7 +12343,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L733",
+      "source_location": "L817",
       "weight": 1.0
     },
     {
@@ -11708,7 +12354,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L761",
+      "source_location": "L847",
       "weight": 1.0
     },
     {
@@ -11719,7 +12365,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L772",
+      "source_location": "L858",
       "weight": 1.0
     },
     {
@@ -11730,7 +12376,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L775",
+      "source_location": "L861",
       "weight": 1.0
     },
     {
@@ -11741,7 +12387,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L787",
+      "source_location": "L873",
       "weight": 1.0
     },
     {
@@ -11752,7 +12398,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L790",
+      "source_location": "L876",
       "weight": 1.0
     },
     {
@@ -11763,7 +12409,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L146",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -11774,7 +12420,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L152",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
@@ -11785,7 +12431,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L165",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -11796,7 +12442,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L168",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -11807,7 +12453,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L175",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -11818,7 +12464,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L235",
+      "source_location": "L256",
       "weight": 1.0
     },
     {
@@ -11829,7 +12475,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L238",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -11840,7 +12486,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L242",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -11851,7 +12497,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L248",
+      "source_location": "L271",
       "weight": 1.0
     },
     {
@@ -11862,7 +12508,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L255",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -11873,7 +12519,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L259",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -11884,7 +12530,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L279",
+      "source_location": "L304",
       "weight": 1.0
     },
     {
@@ -11895,7 +12541,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L287",
+      "source_location": "L312",
       "weight": 1.0
     },
     {
@@ -11906,7 +12552,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L293",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -11917,7 +12563,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L311",
+      "source_location": "L338",
       "weight": 1.0
     },
     {
@@ -11928,7 +12574,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L316",
+      "source_location": "L343",
       "weight": 1.0
     },
     {
@@ -11939,7 +12585,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L328",
+      "source_location": "L355",
       "weight": 1.0
     },
     {
@@ -11950,7 +12596,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L338",
+      "source_location": "L365",
       "weight": 1.0
     },
     {
@@ -11961,7 +12607,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L346",
+      "source_location": "L373",
       "weight": 1.0
     },
     {
@@ -11972,7 +12618,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L355",
+      "source_location": "L382",
       "weight": 1.0
     },
     {
@@ -11983,7 +12629,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L363",
+      "source_location": "L390",
       "weight": 1.0
     },
     {
@@ -11994,7 +12640,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L371",
+      "source_location": "L398",
       "weight": 1.0
     },
     {
@@ -12005,7 +12651,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L380",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -12016,7 +12662,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L384",
+      "source_location": "L411",
       "weight": 1.0
     },
     {
@@ -12027,7 +12673,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L388",
+      "source_location": "L415",
       "weight": 1.0
     },
     {
@@ -12038,7 +12684,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L394",
+      "source_location": "L421",
       "weight": 1.0
     },
     {
@@ -12049,7 +12695,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L398",
+      "source_location": "L427",
       "weight": 1.0
     },
     {
@@ -12060,7 +12706,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L427",
+      "source_location": "L457",
       "weight": 1.0
     },
     {
@@ -12071,7 +12717,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L430",
+      "source_location": "L460",
       "weight": 1.0
     },
     {
@@ -12082,7 +12728,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L438",
+      "source_location": "L469",
       "weight": 1.0
     },
     {
@@ -12093,7 +12739,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L453",
+      "source_location": "L485",
       "weight": 1.0
     },
     {
@@ -12104,7 +12750,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L468",
+      "source_location": "L501",
       "weight": 1.0
     },
     {
@@ -12115,7 +12761,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L474",
+      "source_location": "L509",
       "weight": 1.0
     },
     {
@@ -12126,7 +12772,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L498",
+      "source_location": "L534",
       "weight": 1.0
     },
     {
@@ -12137,7 +12783,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L536",
+      "source_location": "L574",
       "weight": 1.0
     },
     {
@@ -12148,7 +12794,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L539",
+      "source_location": "L577",
       "weight": 1.0
     },
     {
@@ -12159,7 +12805,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L547",
+      "source_location": "L585",
       "weight": 1.0
     },
     {
@@ -12170,7 +12816,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L561",
+      "source_location": "L599",
       "weight": 1.0
     },
     {
@@ -12405,113 +13051,113 @@
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_116",
+      "source": "learn_rationale_117",
       "target": "learn_learn_fixes",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L116",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_150",
+      "source": "learn_rationale_151",
       "target": "learn_learn_terms",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L150",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_178",
+      "source": "learn_rationale_179",
       "target": "learn_wispr_copy",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L178",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_196",
+      "source": "learn_rationale_197",
       "target": "learn_wispr_dictionary",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L196",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_235",
+      "source": "learn_rationale_236",
       "target": "learn_learn_from_wispr",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L235",
+      "source_location": "L236",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_261",
+      "source": "learn_rationale_262",
       "target": "learn_learned",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L261",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_309",
+      "source": "learn_rationale_315",
       "target": "learn_learned_learn_edit",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L309",
+      "source_location": "L315",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_324",
+      "source": "learn_rationale_331",
       "target": "learn_learn_lowercase",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L324",
+      "source_location": "L331",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_42",
+      "source": "learn_rationale_43",
       "target": "learn_tokens",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L42",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
-      "source": "learn_rationale_86",
+      "source": "learn_rationale_87",
       "target": "learn_diff_spans",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "learn.py",
-      "source_location": "L86",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -12614,36 +13260,58 @@
       "weight": 1.0
     },
     {
-      "source": "speakon_rationale_105",
+      "source": "speakon_rationale_122",
       "target": "speakon_set_start_with_windows",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L105",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
-      "source": "speakon_rationale_144",
+      "source": "speakon_rationale_161",
       "target": "speakon_fakemic",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L144",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
-      "source": "speakon_rationale_475",
+      "source": "speakon_rationale_510",
       "target": "speakon_speakon_learn_corrections",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L475",
+      "source_location": "L510",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_rationale_57",
+      "target": "speakon_set_busy_priority",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_rationale_629",
+      "target": "speakon_entry_id",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "speakon.py",
+      "source_location": "L629",
       "weight": 1.0
     },
     {
@@ -12658,58 +13326,69 @@
       "weight": 1.0
     },
     {
-      "source": "textproc_rationale_258",
+      "source": "textproc_rationale_174",
+      "target": "textproc_swallows_small_word",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "textproc.py",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "textproc_rationale_281",
       "target": "textproc_fix_midsentence_caps",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L258",
+      "source_location": "L281",
       "weight": 1.0
     },
     {
-      "source": "textproc_rationale_288",
+      "source": "textproc_rationale_311",
       "target": "textproc_process",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L288",
+      "source_location": "L311",
       "weight": 1.0
     },
     {
-      "source": "textproc_rationale_57",
+      "source": "textproc_rationale_58",
       "target": "textproc_parse_dictionary",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
-      "source": "textproc_rationale_77",
+      "source": "textproc_rationale_78",
       "target": "textproc_apply_replacements",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L77",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
-      "source": "textproc_rationale_93",
+      "source": "textproc_rationale_94",
       "target": "textproc_dictionary_warnings",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "textproc.py",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -12731,6 +13410,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/eval_stream.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_rationale_1",
+      "target": "tools_eval_textproc",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/eval_textproc.py",
       "source_location": "L1",
       "weight": 1.0
     },
@@ -12787,7 +13477,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L758",
+      "source_location": "L844",
       "weight": 1.0
     },
     {
@@ -12799,7 +13489,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L745",
+      "source_location": "L829",
       "weight": 1.0
     },
     {
@@ -12811,7 +13501,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L745",
+      "source_location": "L829",
       "weight": 1.0
     },
     {
@@ -12823,7 +13513,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L163",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -12835,7 +13525,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L870",
+      "source_location": "L958",
       "weight": 1.0
     },
     {
@@ -12847,7 +13537,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L416",
+      "source_location": "L445",
       "weight": 1.0
     },
     {
@@ -12859,7 +13549,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L585",
+      "source_location": "L623",
       "weight": 1.0
     },
     {
@@ -12871,7 +13561,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L352",
+      "source_location": "L379",
       "weight": 1.0
     },
     {
@@ -12883,7 +13573,19 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "textproc.py",
-      "source_location": "L272",
+      "source_location": "L295",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_eval_textproc_main_clean",
+      "target": "speakon_api_dictionary",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "tools/eval_textproc.py",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -12894,7 +13596,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "speakon.py",
-      "source_location": "L827",
+      "source_location": "L915",
       "weight": 0.8
     },
     {
@@ -12905,7 +13607,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "speakon.py",
-      "source_location": "L194",
+      "source_location": "L215",
       "weight": 0.8
     },
     {
@@ -12916,7 +13618,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "speakon.py",
-      "source_location": "L213",
+      "source_location": "L234",
       "weight": 0.8
     },
     {
@@ -12927,7 +13629,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "speakon.py",
-      "source_location": "L220",
+      "source_location": "L241",
       "weight": 0.8
     },
     {
@@ -12938,7 +13640,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "speakon.py",
-      "source_location": "L221",
+      "source_location": "L242",
       "weight": 0.8
     },
     {
@@ -14176,5 +14878,5 @@
       "source_file": "ui/index.html"
     }
   ],
-  "built_at_commit": "a4be1755b084021421d152b95b5a5dd4556e62a2"
+  "built_at_commit": "69151738e4c0bd7de9f8ba83a1c404136265237f"
 }

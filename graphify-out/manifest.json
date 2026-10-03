@@ -6,10 +6,10 @@
     "semantic_hash": "be883ebce7b39fde71647ae39d995051"
   },
   "config.py": {
-    "mtime": 1791046382.036405,
-    "seen": 1791046382.8448205,
-    "ast_hash": "3558f505d2c5dc7a0a5c4ac3a8da0598",
-    "semantic_hash": "3558f505d2c5dc7a0a5c4ac3a8da0598"
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.6052287,
+    "ast_hash": "5a6e22875401a5348cc3a0b0ab2ef9cf",
+    "semantic_hash": ""
   },
   "corrections.py": {
     "mtime": 1790936523.0429053,
@@ -30,9 +30,9 @@
     "semantic_hash": "fd86753332f86b15e33d9f9600372aa9"
   },
   "learn.py": {
-    "mtime": 1791046382.0437448,
-    "seen": 1791046382.844825,
-    "ast_hash": "6efe83c11ac1ba8d1be08d098408ec7d",
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.6052337,
+    "ast_hash": "53764180ac9f6294332d2a394b10978f",
     "semantic_hash": ""
   },
   "mic.py": {
@@ -54,16 +54,16 @@
     "semantic_hash": "e9ec2ed1154afa75cb190df84e34e346"
   },
   "speakon.py": {
-    "mtime": 1791046382.0437448,
-    "seen": 1791046382.8448284,
-    "ast_hash": "95276848097aa59ea0226662a52ffb9e",
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.605238,
+    "ast_hash": "47a31d7acc53805f1be504608dea36ed",
     "semantic_hash": ""
   },
   "textproc.py": {
-    "mtime": 1791046382.036405,
-    "seen": 1791046382.8448293,
-    "ast_hash": "455bf08c05c277f09d50e94e791a95c5",
-    "semantic_hash": "455bf08c05c277f09d50e94e791a95c5"
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.6052392,
+    "ast_hash": "323ae4ce736a61b4b5f76a5a9e5bf08d",
+    "semantic_hash": ""
   },
   "tools/diff_stream.py": {
     "mtime": 1790936523.0429053,
@@ -120,15 +120,15 @@
     "semantic_hash": "ae4af0d7cf344517832a50b445930829"
   },
   "tools/weekly_log.md": {
-    "mtime": 1791046382.036405,
-    "seen": 1791046382.8448474,
-    "ast_hash": "ec43128018b5efcf98d3564843e98d44",
-    "semantic_hash": "ec43128018b5efcf98d3564843e98d44"
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.6052587,
+    "ast_hash": "929cefb3b322aedecbd477a131e5e7ad",
+    "semantic_hash": ""
   },
   "ui/index.html": {
-    "mtime": 1791046399.2997458,
-    "seen": 1791046399.9081445,
-    "ast_hash": "0743b95a3cece88e85d73679219bbaad",
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.6052592,
+    "ast_hash": "99810f8d344c6bcb2e3e8c422a4a92a6",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
@@ -195,6 +195,12 @@
     "mtime": 1790936523.0429053,
     "seen": 1791045981.5604286,
     "ast_hash": "cba36a70826b6f96baed117c7421a94e",
+    "semantic_hash": ""
+  },
+  "tools/eval_textproc.py": {
+    "mtime": 1791046621.551759,
+    "seen": 1791046622.6052432,
+    "ast_hash": "17ad6fecf45f3883655517f5b9090b01",
     "semantic_hash": ""
   }
 }
