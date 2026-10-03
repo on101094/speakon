@@ -1,7 +1,7 @@
 {
   "0": "speakon.py",
   "1": "SpeakOn",
-  "2": "eval_wispr.py",
+  "2": "engine.py",
   "3": "SpeakOn",
   "4": "Api",
   "5": "learn.py",
@@ -26,5 +26,6 @@
   "24": "graphify reference: transcribe video and audio",
   "25": "CLAUDE.md",
   "26": "extraction-spec.md",
-  "27": "corrections.py"
+  "27": "hashlib",
+  "28": "uuid"
 }

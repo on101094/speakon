@@ -1,24 +1,24 @@
 # Graph Report - speakon  (2026-10-03)
 
 ## Corpus Check
-- 30 files · ~30,940 words
+- 30 files · ~30,687 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 3, .ico 1)
 
 ## Summary
-- 452 nodes · 767 edges · 28 communities (20 shown, 8 thin omitted)
+- 448 nodes · 750 edges · 29 communities (19 shown, 10 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 44 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d515e518`
+- Built from commit: `a4be1755`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - speakon.py
 - SpeakOn
-- eval_wispr.py
+- engine.py
 - SpeakOn
 - Api
 - learn.py
@@ -42,11 +42,10 @@
 - graphify reference: transcribe video and audio
 - CLAUDE.md
 - extraction-spec.md
-- corrections.py
 
 ## God Nodes (most connected - your core abstractions)
 1. `SpeakOn` - 41 edges
-2. `Api` - 27 edges
+2. `Api` - 25 edges
 3. `Dictation` - 19 edges
 4. `HotkeyWatcher` - 19 edges
 5. `SpeakOn` - 19 edges
@@ -76,27 +75,27 @@
 - **Low-latency dictation pipeline** — readme_transcribe_while_talking, readme_mic_lead_in, tools_weekly_log_v1_1_0, tools_weekly_log_v1_1_1, tools_weekly_log_v1_2_0 [INFERRED 0.85]
 - **UI to Python Api bridge** — ui_index_api_bridge, ui_index_tick, speakon_api, requirements_pywebview [INFERRED 0.85]
 
-## Communities (28 total, 8 thin omitted)
+## Communities (29 total, 10 thin omitted)
 
 ### Community 0 - "speakon.py"
-Cohesion: 0.05
-Nodes (13): combo_label(), hotkey_keys(), hotkey_label(), INPUT, KEYBDINPUT, MOUSEINPUT, type_text(), _U (+5 more)
+Cohesion: 0.06
+Nodes (12): EditWatcher, find_corrections(), _levenshtein(), looks_like_correction(), _words(), INPUT, KEYBDINPUT, MOUSEINPUT (+4 more)
 
 ### Community 1 - "SpeakOn"
 Cohesion: 0.08
-Nodes (6): history.json self-test check, modifiers_down(), save_json(), set_start_with_windows(), SpeakOn, work()
+Nodes (9): history.json self-test check, foreground_app(), load_json(), make_tone(), modifiers_down(), save_json(), set_start_with_windows(), SpeakOn (+1 more)
 
-### Community 2 - "eval_wispr.py"
-Cohesion: 0.20
-Nodes (9): main(), run(), align(), load(), main(), norm(), evaluate(), pct() (+1 more)
+### Community 2 - "engine.py"
+Cohesion: 0.10
+Nodes (12): combo_label(), hotkey_keys(), hotkey_label(), main(), run(), align(), load(), main() (+4 more)
 
 ### Community 3 - "SpeakOn"
-Cohesion: 0.11
-Nodes (25): Build-from-source agent prompt for Windows, Stand-alone SpeakOn.exe build (PyInstaller + build.ps1), Data folder C:\Users\<you>\SpeakOn, FluidVoice (Mac, GPL-3.0), Handy, Bottom-of-screen mic pill overlay, NVIDIA Parakeet engine, Push-to-talk Ctrl + Win (hold or tap) (+17 more)
+Cohesion: 0.09
+Nodes (27): Build-from-source agent prompt for Windows, Stand-alone SpeakOn.exe build (PyInstaller + build.ps1), Data folder C:\Users\<you>\SpeakOn, FluidVoice (Mac, GPL-3.0), Handy, Bottom-of-screen mic pill overlay, NVIDIA Parakeet engine, Push-to-talk Ctrl + Win (hold or tap) (+19 more)
 
 ### Community 4 - "Api"
-Cohesion: 0.07
-Nodes (17): Edit dictation: Save & learn, pywebview, Api, progress(), work(), entry_id(), pywebview JS-Python API bridge (window.pywebview.api), bindSwitch() (+9 more)
+Cohesion: 0.09
+Nodes (12): pywebview, Api, pywebview JS-Python API bridge (window.pywebview.api), bindSwitch(), boot(), loadDict(), loadHistory(), loadSettings() (+4 more)
 
 ### Community 5 - "learn.py"
 Cohesion: 0.10
@@ -107,8 +106,8 @@ Cohesion: 0.11
 Nodes (20): Dictionary rules (longest first, whole words, warnings), murmur, apply_custom_words(), apply_replacements(), apply_spoken_commands(), _best_match(), collapse_stutters(), dictionary_warnings() (+12 more)
 
 ### Community 7 - "Dictation"
-Cohesion: 0.16
-Nodes (3): block_rms(), Dictation, transcribe_array()
+Cohesion: 0.13
+Nodes (5): block_rms(), Dictation, transcribe_array(), progress(), work()
 
 ### Community 8 - "HotkeyWatcher"
 Cohesion: 0.19
@@ -154,22 +153,18 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
-### Community 27 - "corrections.py"
-Cohesion: 0.16
-Nodes (5): EditWatcher, find_corrections(), _levenshtein(), looks_like_correction(), _words()
-
 ## Knowledge Gaps
 - **55 isolated node(s):** `MOUSEINPUT`, `_U`, `INPUT`, `graphify`, `Usage` (+50 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 180 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 182 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `SpeakOn` connect `SpeakOn` to `speakon.py`, `SpeakOn`, `HotkeyWatcher`, `Microphone`, `FlowBar`, `corrections.py`?**
+- **Why does `SpeakOn` connect `SpeakOn` to `speakon.py`, `SpeakOn`, `HotkeyWatcher`, `Microphone`, `FlowBar`?**
   _High betweenness centrality (0.142) - this node is a cross-community bridge._
-- **Why does `Api` connect `Api` to `speakon.py`, `SpeakOn`, `textproc.py`?**
-  _High betweenness centrality (0.123) - this node is a cross-community bridge._
+- **Why does `Api` connect `Api` to `speakon.py`, `SpeakOn`, `textproc.py`, `Dictation`?**
+  _High betweenness centrality (0.124) - this node is a cross-community bridge._
 - **Why does `SpeakOn` connect `SpeakOn` to `SpeakOn`, `Microphone`, `Api`, `textproc.py`?**
   _High betweenness centrality (0.088) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `SpeakOn` (e.g. with `SpeakOn` and `EditWatcher`) actually correct?**

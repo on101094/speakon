@@ -6,7 +6,6 @@ FluidVoice, Handy and murmur, and it learns from your own Wispr Flow history.
 """
 
 import ctypes
-import hashlib
 import json
 import logging
 import logging.handlers
@@ -17,7 +16,6 @@ import struct
 import sys
 import threading
 import time
-import uuid
 import wave
 import winreg
 import winsound
@@ -186,11 +184,7 @@ class SpeakOn:
         self.settings = {**C.DEFAULT_SETTINGS, **load_json(C.SETTINGS_FILE, {})}
         if self.settings["hotkey"] != "custom" and self.settings["hotkey"] not in C.HOTKEY_PRESETS:
             self.settings["hotkey"] = "ctrl_win"
-        # history and dictionary are touched by the window's API calls, the controller and worker threads
-        self.lock = threading.RLock()
         self.history = load_json(C.HISTORY_FILE, [])
-        for h in self.history:  # older history.json files have no ids
-            h.setdefault("id", uuid.uuid4().hex)
         self.history_version = 0
         self.learned = learn.Learned(C.LEARNED_FILE)
         self.load_dictionary()
@@ -242,29 +236,25 @@ class SpeakOn:
         save_json(C.SETTINGS_FILE, self.settings)
 
     def save_history(self):
-        with self.lock:
-            save_json(C.HISTORY_FILE, self.history)
-            self.history_version += 1
+        save_json(C.HISTORY_FILE, self.history)
+        self.history_version += 1
 
     def load_dictionary(self):
-        with self.lock:
-            if not C.DICTIONARY_FILE.exists():
-                C.DICTIONARY_FILE.write_text(textproc.DEFAULT_DICTIONARY, encoding="utf-8")
-            self.dictionary = C.DICTIONARY_FILE.read_text(encoding="utf-8")
-            self.dictionary_mtime = C.DICTIONARY_FILE.stat().st_mtime
+        if not C.DICTIONARY_FILE.exists():
+            C.DICTIONARY_FILE.write_text(textproc.DEFAULT_DICTIONARY, encoding="utf-8")
+        self.dictionary = C.DICTIONARY_FILE.read_text(encoding="utf-8")
+        self.dictionary_mtime = C.DICTIONARY_FILE.stat().st_mtime
 
     def reload_dictionary(self):
-        with self.lock:
-            try:
-                if C.DICTIONARY_FILE.stat().st_mtime != self.dictionary_mtime:
-                    self.load_dictionary()
-            except OSError:
-                pass
+        try:
+            if C.DICTIONARY_FILE.stat().st_mtime != self.dictionary_mtime:
+                self.load_dictionary()
+        except OSError:
+            pass
 
     def set_dictionary(self, text):
-        with self.lock:
-            C.DICTIONARY_FILE.write_text(text, encoding="utf-8")
-            self.load_dictionary()
+        C.DICTIONARY_FILE.write_text(text, encoding="utf-8")
+        self.load_dictionary()
 
     def update_setting(self, key, value):
         if key == "mic":
@@ -302,9 +292,7 @@ class SpeakOn:
 
     def stats(self):
         today = date.today()
-        with self.lock:
-            history = list(self.history)
-        days = {h["time"][:10] for h in history}
+        days = {h["time"][:10] for h in self.history}
         streak, d = 0, today
         if d.isoformat() not in days:
             d -= timedelta(days=1)
@@ -312,10 +300,10 @@ class SpeakOn:
             streak += 1
             d -= timedelta(days=1)
         week = (today - timedelta(days=6)).isoformat()
-        recent = [h for h in history if h["time"][:10] >= week]
+        recent = [h for h in self.history if h["time"][:10] >= week]
         words = sum(len(h["text"].split()) for h in recent)
         secs = sum(h.get("seconds", 0) for h in recent if not h.get("file"))
-        waits = [h["latency"] for h in history[:50] if "latency" in h]
+        waits = [h["latency"] for h in self.history[:50] if "latency" in h]
         return {"streak": streak, "words_week": words,
                 "wpm": int(sum(len(h["text"].split()) for h in recent if not h.get("file")) / (secs / 60)) if secs > 20 else 0,
                 "avg_wait": sum(waits) / len(waits) if waits else None}
@@ -405,9 +393,7 @@ class SpeakOn:
 
     def hotwords(self):
         terms, _ = textproc.parse_dictionary(self.dictionary)
-        with self.learned.lock:
-            terms = terms + self.learned.data.get("terms", [])
-        return ", ".join(terms[:30])  # short: long prompts drift
+        return ", ".join((terms + self.learned.data.get("terms", []))[:30])  # short: long prompts drift
 
     def do_start(self, from_button=False):
         if self.recording or self.busy:
@@ -482,30 +468,27 @@ class SpeakOn:
     def clean(self, raw):
         s = self.settings
         english = (s["language"] in ("auto", "en") and raw.isascii()) or eng.is_english_only(s["model"])
-        with self.learned.lock:   # copies, so learning on another thread can't change them mid-way
-            fixes, terms = self.learned.replacements(), list(self.learned.data.get("terms", []))
-            lowercase = list(self.learned.data.get("lowercase", []))
-        return textproc.process(raw, s, english, self.dictionary, fixes, terms, lowercase)
+        return textproc.process(raw, s, english, self.dictionary, self.learned.replacements(),
+                                self.learned.data.get("terms", []), self.learned.data.get("lowercase", []))
 
     def learn_corrections(self, pairs, source="your corrections", notify=True):
         """Remember words the user corrected; applied from the next dictation on."""
         fixes = []
-        with self.learned.lock:
-            for old, new in pairs:
-                fixes.append({"heard": old, "wanted": new, "count": 1, "precision": 1.0})
-                terms = self.learned.data.setdefault("terms", [])
-                key = new.lower()
-                if (len(new) >= 4 and key not in textproc.COMMON_WORDS and key not in textproc.EVERYDAY_WORDS
-                        and new not in terms and " " not in new):
-                    terms.append(new)                     # also catches other mishearings of it
-            if not fixes:
-                return []
-            self.learned.merge_fixes(fixes, source)
-            for f in self.learned.data["fixes"]:          # a new correction re-enables an old one
-                if any(f["heard"].lower() == x["heard"].lower() for x in fixes):
-                    f["enabled"] = True
-                    f["wanted"] = next(x["wanted"] for x in fixes if x["heard"].lower() == f["heard"].lower())
-            self.learned.save()
+        for old, new in pairs:
+            fixes.append({"heard": old, "wanted": new, "count": 1, "precision": 1.0})
+            terms = self.learned.data.setdefault("terms", [])
+            key = new.lower()
+            if (len(new) >= 4 and key not in textproc.COMMON_WORDS and key not in textproc.EVERYDAY_WORDS
+                    and new not in terms and " " not in new):
+                terms.append(new)                     # also catches other mishearings of it
+        if not fixes:
+            return []
+        self.learned.merge_fixes(fixes, source)
+        for f in self.learned.data["fixes"]:          # a new correction re-enables an old one
+            if any(f["heard"].lower() == x["heard"].lower() for x in fixes):
+                f["enabled"] = True
+                f["wanted"] = next(x["wanted"] for x in fixes if x["heard"].lower() == f["heard"].lower())
+        self.learned.save()
         log.info("learned from %s: %s", source, ", ".join(f"{o} -> {n}" for o, n in pairs))
         if notify:
             self.notify("Learned: " + ", ".join(f'"{o}" → "{n}"' for o, n in pairs) +
@@ -546,11 +529,9 @@ class SpeakOn:
                     old.unlink()
             except Exception:
                 pass
-        entry["id"] = uuid.uuid4().hex
-        with self.lock:
-            self.history.insert(0, entry)
-            del self.history[HISTORY_LIMIT:]
-            self.save_history()
+        self.history.insert(0, entry)
+        del self.history[HISTORY_LIMIT:]
+        self.save_history()
 
     def set_preview(self, text):
         self.preview = text
@@ -606,18 +587,9 @@ class SpeakOn:
 
 # ---------------------------------------------------------------- what the window can ask for
 
-def entry_id(kind, *parts):
-    """Stable id for a dictionary line / learned fix / term: the same text always gets the same id,
-    so the window keeps pointing at the right entry even if the list changes under it."""
-    return kind + hashlib.sha1("\0".join(parts).encode("utf-8")).hexdigest()[:12]
-
-
 class Api:
     def __init__(self, app):
         self._app = app
-
-    def _history_entry(self, hid):
-        return next((h for h in self._app.history if h.get("id") == hid), None)
 
     def state(self):
         a = self._app
@@ -635,46 +607,32 @@ class Api:
         q = (query or "").lower().strip()
         today = date.today()
         out = []
-        with self._app.lock:
-            history = self._app.history[:600]
-        for h in history:
+        for i, h in enumerate(self._app.history[:600]):
             if q and q not in h["text"].lower() and q not in h.get("app", "").lower():
                 continue
             t = datetime.fromisoformat(h["time"])
             d = t.date()
             day = "Today" if d == today else "Yesterday" if d == today - timedelta(days=1) else t.strftime("%A, %d %B")
-            out.append({"i": h["id"], "day": day, "clock": t.strftime("%H:%M"), "text": h["text"], "app": h.get("app", ""),
+            out.append({"i": i, "day": day, "clock": t.strftime("%H:%M"), "text": h["text"], "app": h.get("app", ""),
                         "seconds": h.get("seconds", 0), "wait": h.get("latency"), "fixes": h.get("fixes", [])})
         return out
 
-    def copy(self, hid):
-        with self._app.lock:
-            h = self._history_entry(hid)
-            text = h["text"] if h else None
-        if text is not None:
-            pyperclip.copy(text)
+    def copy(self, i):
+        pyperclip.copy(self._app.history[i]["text"])
 
-    def delete_history(self, hid):
-        with self._app.lock:
-            h = self._history_entry(hid)
-            if h:
-                self._app.history.remove(h)
-                self._app.save_history()
+    def delete_history(self, i):
+        del self._app.history[i]
+        self._app.save_history()
 
-    def edit_history(self, hid, text):
+    def edit_history(self, i, text):
         a = self._app
-        with a.lock:
-            h = self._history_entry(hid)
-            if not h:
-                return "That dictation no longer exists"
-            before, after = h["text"], text.strip()
-            h["text"] = after
-            h["edited"] = True
-            a.save_history()
-        if a.settings["learn_from_edits"] and before != after:
-            with a.learned.lock:
-                lowercase = list(a.learned.data.get("lowercase", []))
-            pairs = find_corrections(before, after, lowercase)
+        h = a.history[i]
+        before = h["text"]
+        h["text"] = text.strip()
+        h["edited"] = True
+        a.save_history()
+        if a.settings["learn_from_edits"] and before != h["text"]:
+            pairs = find_corrections(before, h["text"], a.learned.data.get("lowercase", []))
             if a.learn_corrections(pairs, notify=False):
                 return "Learned: " + ", ".join(f'"{o}" → "{n}"' for o, n in pairs)
             return "Saved (no misheard words to learn - only rewording)"
@@ -683,25 +641,21 @@ class Api:
     # dictionary
     def dictionary(self):
         a = self._app
-        with a.lock:
-            a.reload_dictionary()
-            dictionary = a.dictionary
+        a.reload_dictionary()
         out = []
-        for line in dictionary.splitlines():
+        for n, line in enumerate(a.dictionary.splitlines()):
             s = line.strip()
             if not s or s.startswith("#"):
                 continue
             hear, write = ((x.strip() for x in s.split("->", 1)) if "->" in s else ("", s))
-            out.append({"id": entry_id("d", s), "write": write, "hear": hear, "kind": "fix" if hear else "word",
+            out.append({"id": f"d{n}", "write": write, "hear": hear, "kind": "fix" if hear else "word",
                         "learned": False, "warnings": textproc.dictionary_warnings(s)})
-        with a.learned.lock:
-            for f in a.learned.data["fixes"]:
-                if f.get("enabled", True):
-                    out.append({"id": entry_id("l", f["heard"], f["wanted"]), "write": f["wanted"],
-                                "hear": f["heard"], "kind": "fix", "learned": True, "warnings": []})
-            for t in a.learned.data.get("terms", []):
-                out.append({"id": entry_id("t", t), "write": t, "hear": "", "kind": "word", "learned": True,
+        for n, f in enumerate(a.learned.data["fixes"]):
+            if f.get("enabled", True):
+                out.append({"id": f"l{n}", "write": f["wanted"], "hear": f["heard"], "kind": "fix", "learned": True,
                             "warnings": []})
+        for n, t in enumerate(a.learned.data.get("terms", [])):
+            out.append({"id": f"t{n}", "write": t, "hear": "", "kind": "word", "learned": True, "warnings": []})
         return out
 
     def check_entry(self, write, hear):
@@ -710,47 +664,35 @@ class Api:
             return []
         return textproc.dictionary_warnings(f"{hear} -> {write}" if hear else write)
 
-    def save_entry(self, eid, write, hear):
+    def save_entry(self, entry_id, write, hear):
         a = self._app
         write, hear = (write or "").strip(), (hear or "").strip()
         if not write:
             return
         line = f"{hear} -> {write}" if hear else write
-        if eid and eid[0] in "lt":
-            self.delete_entry(eid)
-            eid = None
-        with a.lock:
-            lines = a.dictionary.splitlines()
-            n = self._dictionary_line(lines, eid) if eid else None
-            if n is not None:
-                lines[n] = line
-            else:
-                lines.append(line)
-            a.set_dictionary("\n".join(lines) + "\n")
+        if entry_id and entry_id[0] in "lt":
+            self.delete_entry(entry_id)
+            entry_id = None
+        lines = a.dictionary.splitlines()
+        if entry_id and entry_id.startswith("d"):
+            lines[int(entry_id[1:])] = line
+        else:
+            lines.append(line)
+        a.set_dictionary("\n".join(lines) + "\n")
 
-    @staticmethod
-    def _dictionary_line(lines, eid):
-        return next((n for n, line in enumerate(lines) if line.strip() and entry_id("d", line.strip()) == eid), None)
-
-    def delete_entry(self, eid):
+    def delete_entry(self, entry_id):
         a = self._app
-        if eid[0] == "d":
-            with a.lock:
-                lines = a.dictionary.splitlines()
-                n = self._dictionary_line(lines, eid)
-                if n is not None:
-                    del lines[n]
-                    a.set_dictionary("\n".join(lines) + "\n")
-        elif eid[0] == "l":
-            with a.learned.lock:
-                for f in a.learned.data["fixes"]:
-                    if entry_id("l", f["heard"], f["wanted"]) == eid:
-                        f["enabled"] = False
-                a.learned.save()
-        elif eid[0] == "t":
-            with a.learned.lock:
-                a.learned.data["terms"] = [t for t in a.learned.data.get("terms", []) if entry_id("t", t) != eid]
-                a.learned.save()
+        n = int(entry_id[1:])
+        if entry_id[0] == "d":
+            lines = a.dictionary.splitlines()
+            del lines[n]
+            a.set_dictionary("\n".join(lines) + "\n")
+        elif entry_id[0] == "l":
+            a.learned.data["fixes"][n]["enabled"] = False
+            a.learned.save()
+        elif entry_id[0] == "t":
+            del a.learned.data["terms"][n]
+            a.learned.save()
 
     def open_dictionary_file(self):
         os.startfile(str(C.DICTIONARY_FILE))
@@ -759,16 +701,14 @@ class Api:
         if not learn.wispr_available():
             return "Wispr Flow's data was not found on this PC"
         a = self._app
-        wispr = learn.wispr_dictionary()
-        with a.lock:
-            existing = {line.strip().lower() for line in a.dictionary.splitlines()}
-            added = []
-            for hear, write in wispr:
-                line = f"{hear} -> {write}" if hear else write
-                if line.lower() not in existing:
-                    added.append(line)
-            if added:
-                a.set_dictionary(a.dictionary.rstrip("\n") + "\n# from Wispr Flow\n" + "\n".join(added) + "\n")
+        existing = {line.strip().lower() for line in a.dictionary.splitlines()}
+        added = []
+        for hear, write in learn.wispr_dictionary():
+            line = f"{hear} -> {write}" if hear else write
+            if line.lower() not in existing:
+                added.append(line)
+        if added:
+            a.set_dictionary(a.dictionary.rstrip("\n") + "\n# from Wispr Flow\n" + "\n".join(added) + "\n")
         return f"Imported {len(added)} entries from Wispr Flow" if added else "Already up to date"
 
     # your voice
@@ -780,20 +720,15 @@ class Api:
                  "in Wispr Flow.")
         else:
             w = "Wispr Flow's data was not found on this PC."
-        with a.learned.lock:
-            info = a.learned.data.get("report")
-            fixes = [{**f, "id": entry_id("l", f["heard"], f["wanted"])} for f in a.learned.data["fixes"]]
-            terms, clips = len(a.learned.data.get("terms", [])), a.learned.data.get("clips", 0)
+        info = a.learned.data.get("report")
         if info:
             w += " " + info
-        return {"wispr": w, "fixes": fixes, "terms": terms, "clips": clips}
+        return {"wispr": w, "fixes": a.learned.data["fixes"], "terms": len(a.learned.data.get("terms", [])),
+                "clips": a.learned.data.get("clips", 0)}
 
-    def toggle_learned(self, eid, on):
-        with self._app.learned.lock:
-            for f in self._app.learned.data["fixes"]:
-                if entry_id("l", f["heard"], f["wanted"]) == eid:
-                    f["enabled"] = bool(on)
-            self._app.learned.save()
+    def toggle_learned(self, i, on):
+        self._app.learned.data["fixes"][i]["enabled"] = bool(on)
+        self._app.learned.save()
 
     def learn_from_wispr(self):
         a = self._app
@@ -808,16 +743,14 @@ class Api:
             try:
                 a.engine.ready.wait()
                 r = learn.learn_from_wispr(a.engine, lambda audio: eng.transcribe_array(a.engine, audio), progress)
-                report = (f"On recordings it did not learn from, mistakes went from "
-                          f"{r['wer_before'] * 100:.1f}% to {r['wer_after'] * 100:.1f}% of words.")
-                with a.learned.lock:
-                    a.learned.merge_fixes(r["fixes"], "Wispr Flow")
-                    a.learned.data["terms"] = r["terms"][:80]
-                    a.learned.data["clips"] = r["clips"]
-                    a.learned.data["report"] = report
-                    a.learned.save()
+                a.learned.merge_fixes(r["fixes"], "Wispr Flow")
+                a.learned.data["terms"] = r["terms"][:80]
+                a.learned.data["clips"] = r["clips"]
+                a.learned.data["report"] = (f"On recordings it did not learn from, mistakes went from "
+                                            f"{r['wer_before'] * 100:.1f}% to {r['wer_after'] * 100:.1f}% of words.")
+                a.learned.save()
                 a.learning.update(message=f"Done · learned {len(r['fixes'])} fixes and {len(r['terms'])} of your terms. "
-                                          + report)
+                                          + a.learned.data["report"])
             except Exception as e:
                 a.learning.update(message=f"Could not finish: {e}")
             finally:
@@ -867,12 +800,10 @@ class Api:
         audio = eng.load_audio_file(path)
         raw = eng.transcribe_array(a.engine, audio, None, a.hotwords())
         text, fixes = a.clean(raw)
-        with a.lock:
-            a.history.insert(0, {"id": uuid.uuid4().hex, "time": datetime.now().isoformat(timespec="seconds"),
-                                 "text": text, "raw": raw,
-                                 "fixes": fixes, "app": "File: " + Path(path).name,
-                                 "seconds": round(len(audio) / 16000, 1), "model": a.settings["model"], "file": True})
-            a.save_history()
+        a.history.insert(0, {"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw,
+                             "fixes": fixes, "app": "File: " + Path(path).name, "seconds": round(len(audio) / 16000, 1),
+                             "model": a.settings["model"], "file": True})
+        a.save_history()
         a.set_status(f"Ready · {a.settings['model']}")
         return f"Done in {time.time() - t0:.0f}s - it's at the top of Home"
 
