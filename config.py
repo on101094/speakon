@@ -3,7 +3,7 @@
 from pathlib import Path
 
 APP_NAME = "SpeakOn"
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 # Not %APPDATA%: apps started from sandboxed hosts (MSIX) get a private, redirected copy of it.
 DATA_DIR = Path.home() / APP_NAME
 MODELS_DIR = DATA_DIR / "models"

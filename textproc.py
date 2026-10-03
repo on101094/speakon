@@ -17,6 +17,7 @@ import unicodedata
 UNIVERSAL_FILLERS = {"uh", "uhm", "umm", "uhh", "uhhh", "ehh", "ehm", "ahm", "hmm", "hm", "mmm", "erm"}
 ENGLISH_FILLERS = {"um", "ah", "eh"}
 WORD_CORRECTION_THRESHOLD = 0.18  # Handy's default
+SOUNDEX_MAX_DISTANCE = 0.25       # sounding alike only helps words that are already this close
 
 SPOKEN_COMMANDS = [
     ("new paragraph", "\n\n"),
@@ -160,11 +161,31 @@ def _best_match(candidate, entries):
         if abs(len(candidate) - len(key)) > max(max_len * 0.25, 2.0):
             continue
         score = _levenshtein(candidate, key) / max_len
-        if candidate.isalpha() and key.isalpha() and _soundex(candidate) == _soundex(key):
+        # Soundex only looks at the first sounds, so it vouches only for near-misses
+        # ("evaluations" is not "evaluation-only", "Tradovate" is not "Tradeify")
+        if score <= SOUNDEX_MAX_DISTANCE and candidate.isalpha() and key.isalpha()                 and _soundex(candidate) == _soundex(key):
             score *= 0.3
         if score < best_score:
             best, best_score = word, score
     return (best, best_score) if best else None
+
+
+def _swallows_small_word(chunk, entries):
+    """True when the chunk starts or ends with an everyday word that none of the close terms
+    sound like at that end - matching would delete a word that was really said."""
+    first, last = _key(chunk[0]), _key(chunk[-1])
+    small = EVERYDAY_WORDS | COMMON_WORDS
+    for w, at_start in ((first, True), (last, False)):
+        if w not in small:
+            continue
+        cand = "".join(_key(x) for x in chunk)
+        rest = "".join(_key(x) for x in (chunk[1:] if at_start else chunk[:-1]))
+        if any(rest == k for _, k in entries):
+            return True                               # "in NinjaTrader": the rest is already the term
+        close = [k for _, k in entries if abs(len(k) - len(cand)) <= max(len(cand) * 0.25, 2.0)]
+        if not any((k[:len(w) + 1] if at_start else k[-len(w) - 1:]).find(w) >= 0 for k in close):
+            return True
+    return False
 
 
 def _keep_case(original, replacement):
@@ -197,6 +218,8 @@ def apply_custom_words(text, terms, fixes=None, protected=()):
                 continue
             if any(_key(w) in protected for w in chunk):
                 continue                              # a fix already wrote this word on purpose
+            if n > 1 and _swallows_small_word(chunk, entries):
+                continue                              # "on TradingView" / "trading that" keep their small word
             cand = "".join(_key(w) for w in chunk)
             if any(cand in (k + "s", k + "es", k + "'s") for _, k in entries):
                 continue                              # plural / possessive of a term: leave it
@@ -297,9 +320,11 @@ def process(text, settings, english, dictionary="", extra_fixes=(), extra_terms=
     known = {h.lower() for h, _ in replacements}
     replacements += [(h, w) for h, w in extra_fixes if h.lower() not in known]
     terms += [t for t in extra_terms if t not in terms]
+    ordinary = set(lowercase_words) | EVERYDAY_WORDS | COMMON_WORDS
+    terms = [t for t in terms if not (t.islower() and t in ordinary)]   # "desk" is no sound-alike target
     text = apply_replacements(text, replacements, fixes)
     if settings.get("fuzzy_words", True):
-        text = apply_custom_words(text, terms, fixes, [w for _, w in replacements if w])
+        text = apply_custom_words(text, terms, fixes, [w for _, w in fixes if w])
     if english:
         protected = terms + [w for _, w in replacements]
         text = fix_midsentence_caps(text, lowercase_words, [p for t in protected for p in t.split()])
