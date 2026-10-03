@@ -1,1 +1,20 @@
-{"0": "Config & Correction Helpers", "1": "Window API & UI", "2": "App Core & Startup", "3": "Streaming Eval Tools", "4": "Learning From Wispr", "5": "Text Processing & Dictionary", "6": "Docs & Features", "7": "Streaming Dictation", "8": "Hotkey Watcher", "9": "FlowBar Overlay", "10": "Speech Engine", "11": "Microphone Capture", "12": "Correction Watcher", "13": "Learned Corrections Store", "14": "Fake Mic Test Harness", "15": "Graphify Integration", "16": "Windows Build Script", "17": "Admin App Limitation"}
+{
+  "0": "speakon.py",
+  "1": "Api",
+  "2": "SpeakOn",
+  "3": "engine.py",
+  "4": "learn.py",
+  "5": "textproc.py",
+  "6": "SpeakOn",
+  "7": "Streaming Dictation",
+  "8": "Hotkey Watcher",
+  "9": "FlowBar",
+  "10": "Engine",
+  "11": "Microphone",
+  "12": "SpeakOn weekly log",
+  "13": "Learned",
+  "14": "FakeMic",
+  "15": "graphify knowledge graph (graphify-out/)",
+  "16": "build.ps1",
+  "17": "Cannot type into administrator apps"
+}
