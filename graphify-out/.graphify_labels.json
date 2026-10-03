@@ -6,15 +6,19 @@
   "4": "learn.py",
   "5": "textproc.py",
   "6": "SpeakOn",
-  "7": "Streaming Dictation",
+  "7": "Dictation",
   "8": "Hotkey Watcher",
   "9": "FlowBar",
   "10": "Engine",
   "11": "Microphone",
-  "12": "SpeakOn weekly log",
+  "12": "Store",
   "13": "Learned",
   "14": "FakeMic",
   "15": "graphify knowledge graph (graphify-out/)",
   "16": "build.ps1",
-  "17": "Cannot type into administrator apps"
+  "17": "Cannot type into administrator apps",
+  "18": "corrections.py",
+  "19": "EditWatcher",
+  "20": "sendinput.py",
+  "21": ".__init__"
 }
