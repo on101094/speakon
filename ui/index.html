@@ -322,10 +322,10 @@ async function loadHistory(){
   for(const h of items){
     if(h.day !== day){ if(day!==null) html += "</div>"; day = h.day; html += `<div class="day">${esc(day)}</div><div class="list">`; }
     const fixes = (h.fixes||[]).map(f=>`<span class="fix">${esc(f[0])} → ${esc(f[1])}</span>`).join("");
-    const body = editing===h.i ? `<textarea class="edit" id="ed">${esc(h.text)}</textarea><div class="row" style="margin-top:6px"><button class="btn small primary" onclick="saveEdit(${h.i})">Save & learn</button><button class="btn small" onclick="editing=null;loadHistory()">Cancel</button></div>`
+    const body = editing===h.i ? `<textarea class="edit" id="ed">${esc(h.text)}</textarea><div class="row" style="margin-top:6px"><button class="btn small primary" onclick="saveEdit('${h.i}')">Save & learn</button><button class="btn small" onclick="editing=null;loadHistory()">Cancel</button></div>`
       : `<div class="text">${esc(h.text)}</div>`;
     html += `<div class="item"><div class="time">${esc(h.clock)}</div><div>${body}<div class="meta">${h.app?`<span>${esc(h.app)}</span>`:""}<span>${h.seconds}s spoken</span>${h.wait!=null?`<span>ready in ${h.wait.toFixed(2)}s</span>`:""}${fixes}</div></div>
-      <div class="acts"><button class="ib" title="Copy" onclick="copyItem(${h.i})">${ICON.copy}</button><button class="ib" title="Edit" onclick="editing=${h.i};loadHistory()">${ICON.edit}</button><button class="ib" title="Delete" onclick="delItem(${h.i})">${ICON.del}</button></div></div>`;
+      <div class="acts"><button class="ib" title="Copy" onclick="copyItem('${h.i}')">${ICON.copy}</button><button class="ib" title="Edit" onclick="editing='${h.i}';loadHistory()">${ICON.edit}</button><button class="ib" title="Delete" onclick="delItem('${h.i}')">${ICON.del}</button></div></div>`;
   }
   box.innerHTML = html + "</div>";
   if(editing!==null){ const t=$("#ed"); if(t){ t.focus(); t.setSelectionRange(t.value.length,t.value.length);} }
@@ -363,8 +363,8 @@ async function loadVoice(){
   const v = await api.voice();
   $("#wstatus").textContent = v.wispr;
   $("#lcount").textContent = v.fixes.length; $("#lterms").textContent = v.terms; $("#lclips").textContent = v.clips;
-  $("#llist").innerHTML = v.fixes.length ? v.fixes.map((f,i)=>`<div class="entry"><div><span class="h">${esc(f.heard)}</span><span class="arrow">→</span><span class="w">${esc(f.wanted)}</span> <span class="muted" style="font-size:12px">· seen ${f.count}× · ${esc(f.source)}</span></div>
-     <label class="switch"><input type="checkbox" ${f.enabled?"checked":""} onchange="api.toggle_learned(${i}, this.checked)"><span></span></label></div>`).join("")
+  $("#llist").innerHTML = v.fixes.length ? v.fixes.map(f=>`<div class="entry"><div><span class="h">${esc(f.heard)}</span><span class="arrow">→</span><span class="w">${esc(f.wanted)}</span> <span class="muted" style="font-size:12px">· seen ${f.count}× · ${esc(f.source)}</span></div>
+     <label class="switch"><input type="checkbox" ${f.enabled?"checked":""} onchange="api.toggle_learned('${f.id}', this.checked)"><span></span></label></div>`).join("")
     : `<div class="empty">Nothing learned yet.</div>`;
   $$("#voice [data-set]").forEach(bindSwitch);
 }
