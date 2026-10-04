@@ -1,0 +1,74 @@
+name: release
+
+# Builds SpeakOn.exe with build.ps1, dictates a sentence through the built .exe, and only then
+# publishes SpeakOn-<version>-windows-x64.zip as release v<version> (version from config.py,
+# notes from .github/release_notes.md). Run it from the Actions tab or the API on main.
+# Pull requests that change the build run everything except the publish step.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: [build.ps1, requirements.txt, config.py, .github/workflows/release.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      SENTENCE: "Testing SpeakOn on Windows. The quick brown fox jumps over the lazy dog, and the meeting starts at nine tomorrow morning."
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Version
+        shell: pwsh
+        run: |
+          $v = python -c "import config; print(config.VERSION)"
+          if ("${{ github.event_name }}" -eq "workflow_dispatch" -and (gh release view "v$v" 2>$null)) {
+            throw "Release v$v already exists - bump VERSION in config.py first"
+          }
+          "VERSION=$v" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Output "Releasing v$v"
+      - name: Install (into .venv, as build.ps1 expects)
+        run: |
+          python -m venv .venv
+          .venv\Scripts\python -m pip install -r requirements.txt pyinstaller
+      - name: Build SpeakOn.exe
+        run: powershell -File build.ps1
+      - name: Cache the speech model
+        uses: actions/cache@v4
+        with:
+          path: ~/SpeakOn/models
+          key: speakon-models-${{ hashFiles('engine.py') }}
+      - name: Synthesize the test sentence
+        shell: pwsh
+        run: |
+          Add-Type -AssemblyName System.Speech
+          $s = New-Object System.Speech.Synthesis.SpeechSynthesizer
+          $fmt = New-Object System.Speech.AudioFormat.SpeechAudioFormatInfo(16000,
+            [System.Speech.AudioFormat.AudioBitsPerSample]::Sixteen, [System.Speech.AudioFormat.AudioChannel]::Mono)
+          $s.SetOutputToWaveFile("$env:RUNNER_TEMP\speech.wav", $fmt)
+          $s.Speak($env:SENTENCE)
+          $s.Dispose()
+      - name: Dictate it through the built SpeakOn.exe
+        run: python tools/selftest.py "$env:RUNNER_TEMP\speech.wav" "$env:SENTENCE" --exe dist\SpeakOn\SpeakOn.exe
+      - name: Zip
+        shell: pwsh
+        run: Compress-Archive -Path dist\SpeakOn -DestinationPath "SpeakOn-$env:VERSION-windows-x64.zip"
+      - name: Publish the release
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+        shell: pwsh
+        run: >
+          gh release create "v$env:VERSION" "SpeakOn-$env:VERSION-windows-x64.zip"
+          --target "$env:GITHUB_SHA" --title "SpeakOn $env:VERSION" --notes-file .github/release_notes.md
+      - name: Keep the app log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: speakon-log
+          path: ~/SpeakOn/logs/
+          if-no-files-found: ignore

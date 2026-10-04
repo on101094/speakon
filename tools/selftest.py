@@ -5,6 +5,7 @@ for a new entry in history.json, compares its text with what the WAV says, then 
 Never sends keys to other windows. Runs in CI; also usable by hand:
 
     python tools/selftest.py speech.wav "the sentence spoken in it"
+    python tools/selftest.py speech.wav "..." --exe dist\\SpeakOn\\SpeakOn.exe   (the built app)
 """
 
 import argparse
@@ -47,6 +48,7 @@ def main():
     p.add_argument("--timeout", type=float, default=900, help="seconds to wait (first run downloads the model)")
     p.add_argument("--min-recall", type=float, default=0.8)
     p.add_argument("--tail", type=float, default=0.5, help="seconds between the end of the WAV and the stop")
+    p.add_argument("--exe", help="run this built SpeakOn.exe instead of speakon.py (release check)")
     a = p.parse_args()
 
     with wave.open(a.wav) as w:
@@ -61,7 +63,8 @@ def main():
     env = {**os.environ, "SPEAKON_FAKE_MIC": str(Path(a.wav).resolve()), "SPEAKON_NO_INSERT": "1",
            "SPEAKON_SELFTEST": f"{seconds + a.tail:.1f}"}
     print(f"Dictating {seconds:.1f} s of audio; waiting up to {a.timeout:.0f} s for the result...", flush=True)
-    proc = subprocess.Popen([sys.executable, str(ROOT / "speakon.py"), "--tray"], env=env, cwd=ROOT)
+    cmd = [str(Path(a.exe).resolve())] if a.exe else [sys.executable, str(ROOT / "speakon.py")]
+    proc = subprocess.Popen(cmd + ["--tray"], env=env, cwd=Path(a.exe).resolve().parent if a.exe else ROOT)
     entry, start = None, time.time()
     try:
         while time.time() - start < a.timeout:
