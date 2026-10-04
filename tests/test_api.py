@@ -111,3 +111,12 @@ def test_failed_piece_is_reported_and_the_rest_still_delivered(app):
     app.deliver = lambda raw, dictation, err: delivered.append((raw, err))
     S.SpeakOn.finish(app, d)
     assert delivered[0][0] == "first part" and isinstance(delivered[0][1], RuntimeError)
+
+
+def test_stats_are_reused_until_the_history_changes(app):
+    app.store.add_history({"time": "2026-10-03T10:00:00", "text": "one two three"})
+    first = S.SpeakOn.stats(app)
+    with mock.patch.object(app.store, "recent_history", side_effect=AssertionError("re-read")):
+        assert S.SpeakOn.stats(app) is first                       # nothing changed: no re-scan
+    app.store.add_history({"time": "2026-10-03T10:01:00", "text": "four"})
+    assert S.SpeakOn.stats(app) is not first

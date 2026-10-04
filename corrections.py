@@ -34,16 +34,6 @@ def _words(text):
     return out
 
 
-def _levenshtein(a, b):
-    prev = list(range(len(b) + 1))
-    for i, ca in enumerate(a, 1):
-        cur = [i]
-        for j, cb in enumerate(b, 1):
-            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
-        prev = cur
-    return prev[-1]
-
-
 def looks_like_correction(old, new, ordinary=()):
     """Is `new` a corrected spelling of `old` (not a different word the user chose instead)?"""
     ko = "".join(c for c in old.lower() if c.isalnum())
@@ -61,7 +51,7 @@ def looks_like_correction(old, new, ordinary=()):
     short, long_ = sorted((ko, kn), key=len)
     if len(long_) - len(short) >= 3 and (long_.startswith(short) or long_.endswith(short)):
         return False                                  # words added or removed, not a new spelling
-    dist = _levenshtein(ko, kn) / max(len(ko), len(kn))
+    dist = textproc._levenshtein(ko, kn) / max(len(ko), len(kn))
     sounds = ko.isalpha() and kn.isalpha() and textproc._soundex(ko) == textproc._soundex(kn)
     return dist <= 0.34 or (sounds and dist <= 0.5)
 

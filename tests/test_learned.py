@@ -118,3 +118,16 @@ def test_concurrent_merges_lose_nothing(data_dir):
     for t in threads:
         t.join()
     assert len(json.loads(C.LEARNED_FILE.read_text())["fixes"]) == 400
+
+
+def test_learn_lowercase_from_finished_text():
+    texts = ["We should refactor it.", "then refactor the rest", "Ask Bob. Bob said yes. Then bob left"]
+    assert learn.learn_lowercase(texts) == ["refactor"]       # "bob" is mostly capitalised, so it stays out
+
+
+def test_apply_wispr_stores_the_users_lowercase_words(data_dir):
+    lr = make(data_dir, lowercase=["old"])
+    lr.apply_wispr([], [], 1, "r")                                  # older callers: list left alone
+    assert lr.lowercase() == ["old"]
+    lr.apply_wispr([], [], 1, "r", ["refactor"])
+    assert json.loads(C.LEARNED_FILE.read_text())["lowercase"] == ["refactor"]

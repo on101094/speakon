@@ -263,7 +263,13 @@ class SpeakOn:
             pass
 
     def stats(self):
+        # The window asks several times a second (state() polls); the numbers only change when the
+        # history does or the day rolls over, so reuse them until then.
         today = date.today()
+        key = (self.store.history_version, today)
+        cached = getattr(self, "_stats", None)
+        if cached and cached[0] == key:
+            return cached[1]
         history = self.store.recent_history()
         days = {h["time"][:10] for h in history}
         streak, d = 0, today
@@ -277,9 +283,11 @@ class SpeakOn:
         words = sum(len(h["text"].split()) for h in recent)
         secs = sum(h.get("seconds", 0) for h in recent if not h.get("file"))
         waits = [h["latency"] for h in history[:50] if "latency" in h]
-        return {"streak": streak, "words_week": words,
-                "wpm": int(sum(len(h["text"].split()) for h in recent if not h.get("file")) / (secs / 60)) if secs > 20 else 0,
-                "avg_wait": sum(waits) / len(waits) if waits else None}
+        out = {"streak": streak, "words_week": words,
+               "wpm": int(sum(len(h["text"].split()) for h in recent if not h.get("file")) / (secs / 60)) if secs > 20 else 0,
+               "avg_wait": sum(waits) / len(waits) if waits else None}
+        self._stats = (key, out)
+        return out
 
     def bar_state(self):
         return {"recording": self.recording and not self.from_button, "busy": self.busy and not self.from_button,
@@ -703,9 +711,8 @@ class Api:
             try:
                 a.engine.ready.wait()
                 r = learn.learn_from_wispr(a.engine, lambda audio: eng.transcribe_array(a.engine, audio), progress)
-                report = (f"On recordings it did not learn from, mistakes went from "
-                          f"{r['wer_before'] * 100:.1f}% to {r['wer_after'] * 100:.1f}% of words.")
-                a.learned.apply_wispr(r["fixes"], r["terms"], r["clips"], report)
+                report = learn.wispr_report(r)
+                a.learned.apply_wispr(r["fixes"], r["terms"], r["clips"], report, r["lowercase"])
                 a.learning.update(message=f"Done · learned {len(r['fixes'])} fixes and {len(r['terms'])} of your terms. "
                                           + report)
             except Exception as e:

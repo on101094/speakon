@@ -33,3 +33,9 @@ def test_filler_cleanup_otherwise_unchanged():
     assert clean("Really? Uh. Yes.") == "Really? Yes."
     assert clean("uh... then we left") == "Then we left"
     assert clean("line one\num. two") == "Line one\nTwo"
+
+
+def test_learned_lowercase_words_undo_a_capital_after_a_pause():
+    text = "we should go, Refactor the thing"
+    assert textproc.process(text, {}, True)[0] == "We should go, Refactor the thing"
+    assert textproc.process(text, {}, True, lowercase_words=["refactor"])[0] == "We should go, refactor the thing"

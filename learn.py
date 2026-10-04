@@ -265,8 +265,14 @@ def learn_from_wispr(engine, transcribe, progress=lambda done, total, msg: None,
     after = wer([(r, apply_fixes(h, fixes_train)) for r, h in test])
     fixes = learn_fixes(pairs)
     terms = learn_terms([c["formatted"] for c in clips])
-    return {"fixes": fixes, "terms": terms, "clips": len(clips), "wer_before": before, "wer_after": after,
-            "pairs": pairs}
+    lowercase = learn_lowercase([c["formatted"] for c in clips])
+    return {"fixes": fixes, "terms": terms, "lowercase": lowercase, "clips": len(clips), "wer_before": before,
+            "wer_after": after, "pairs": pairs}
+
+
+def wispr_report(r):
+    return (f"On recordings it did not learn from, mistakes went from {r['wer_before'] * 100:.1f}% "
+            f"to {r['wer_after'] * 100:.1f}% of words.")
 
 
 # ---------------------------------------------------------------- learned store
@@ -381,29 +387,17 @@ class Learned:
             self.data["terms"] = [t for t in self.data.get("terms", []) if entry_id("t", t) != eid]
             self.save()
 
-    def apply_wispr(self, fixes, terms, clips, report):
+    def apply_wispr(self, fixes, terms, clips, report, lowercase=None):
         """Store the result of learning from Wispr Flow recordings. Terms are added to the ones already
-        learned (e.g. from the user's own corrections), not put in their place."""
+        learned (e.g. from the user's own corrections), not put in their place. `lowercase` (words the
+        user writes in lower case mid-sentence) is recomputed from all of Wispr's text, so it replaces."""
         with self.lock:
             self.merge_fixes(fixes, "Wispr Flow")
             merged = list(dict.fromkeys(self.data.get("terms", []) + list(terms[:80])))
             self.data.update(terms=merged, clips=clips, report=report)
+            if lowercase is not None:
+                self.data["lowercase"] = list(lowercase)
             self.save()
-
-    def learn_edit(self, before, after):
-        """Remember a correction; returns fixes that just reached two sightings."""
-        with self.lock:
-            new = []
-            for h, r in diff_spans(after, before):
-                key = " ".join(h) + " -> " + " ".join(r)
-                n = self.data["edits"].get(key, 0) + 1
-                self.data["edits"][key] = n
-                if n == 2 and len(" ".join(h)) > 2:
-                    new.append({"heard": " ".join(h), "wanted": " ".join(r), "count": n, "precision": 1.0})
-            if new:
-                self.merge_fixes(new, "your edits")
-            self.save()
-            return new
 
 
 def learn_lowercase(texts, min_count=2):
