@@ -432,6 +432,9 @@ class SpeakOn:
         raw, err = "", None
         try:
             raw = d.finish()
+            err = d.error           # a piece that failed mid-way: keep the rest, but say so
+            if err:
+                log.error("transcription of a piece failed: %r", err)
         except Exception as e:
             err = e
             log.exception("transcription failed")

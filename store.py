@@ -11,15 +11,21 @@ from pathlib import Path
 
 import config as C
 import textproc
-from learn import entry_id
+from learn import entry_id, set_aside
 
 HISTORY_LIMIT = 5000
 
 
 def load_json(path, default):
+    """The file's contents; `default` if it is missing. An unreadable file is copied aside first
+    (path.broken-<time>), because the next save replaces it."""
+    path = Path(path)
+    if not path.exists():
+        return default
     try:
-        return json.loads(Path(path).read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
+        set_aside(path)
         return default
 
 

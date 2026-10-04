@@ -101,3 +101,13 @@ def test_record_shortcut_saves_both_settings(app):
     assert S.Api(app).record_shortcut()
     saved = json.loads(C.SETTINGS_FILE.read_text())
     assert saved["custom_hotkey"] == ["ctrl", "f9"] and saved["hotkey"] == "custom"
+
+
+def test_failed_piece_is_reported_and_the_rest_still_delivered(app):
+    d = types.SimpleNamespace(finish=lambda: "first part", error=RuntimeError("terminated"), reused_preview=False,
+                              nchunks=2, seconds=3.0)
+    delivered = []
+    app.released_at = 0
+    app.deliver = lambda raw, dictation, err: delivered.append((raw, err))
+    S.SpeakOn.finish(app, d)
+    assert delivered[0][0] == "first part" and isinstance(delivered[0][1], RuntimeError)

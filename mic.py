@@ -33,7 +33,8 @@ class Microphone:
         self.sink = None
         self.ring = collections.deque(maxlen=PREROLL_BLOCKS)
         self.last = 0.0
-        self.lock = threading.Lock()
+        self.lock = threading.Lock()          # sink and ring (also taken by the audio callback)
+        self.stream_lock = threading.RLock()  # opening/closing: start-up warm(), the controller, settings
         self.opened_at = 0.0
 
     def _callback(self, indata, frames, t, status):
@@ -46,24 +47,26 @@ class Microphone:
                 self.ring.append(block)
 
     def _open(self):
-        self._close()
-        self.ring.clear()
-        if self.factory:
-            self.stream = self.factory(self._callback)
-        else:
-            self.stream = sd.InputStream(samplerate=eng.SAMPLE_RATE, channels=1, dtype="float32",
-                                         blocksize=eng.BLOCK, device=self.device, callback=self._callback)
-        self.stream.start()
-        self.opened_at = self.last = time.time()
+        with self.stream_lock:
+            self._close()
+            self.ring.clear()
+            if self.factory:
+                self.stream = self.factory(self._callback)
+            else:
+                self.stream = sd.InputStream(samplerate=eng.SAMPLE_RATE, channels=1, dtype="float32",
+                                             blocksize=eng.BLOCK, device=self.device, callback=self._callback)
+            self.stream.start()
+            self.opened_at = self.last = time.time()
 
     def _close(self):
-        if self.stream:
-            try:
-                self.stream.stop()
-                self.stream.close()
-            except Exception:
-                pass
-            self.stream = None
+        with self.stream_lock:
+            if self.stream:
+                try:
+                    self.stream.stop()
+                    self.stream.close()
+                except Exception:
+                    pass
+                self.stream = None
 
     def _alive(self):
         return self.stream is not None and time.time() - self.last < STALE_SECONDS
@@ -72,19 +75,23 @@ class Microphone:
         """Open the idle stream now (at start-up and after settings change)."""
         if not self.keep_open:
             return
-        try:
-            self._open()
-            log.info("microphone ready (kept open, %.1f s lead-in)", PREROLL_SECONDS)
-        except Exception as e:
-            log.warning("could not open the microphone yet: %s", e)
+        with self.stream_lock:
+            if self._alive():       # begin() got there first (the key was pressed during start-up)
+                return
+            try:
+                self._open()
+                log.info("microphone ready (kept open, %.1f s lead-in)", PREROLL_SECONDS)
+            except Exception as e:
+                log.warning("could not open the microphone yet: %s", e)
 
     def begin(self, sink):
         """Start sending audio to sink(block). Earlier audio (up to half a second) goes first.
         Returns the lead-in length in seconds. Raises if the microphone can't be opened."""
-        if not (self.keep_open and self._alive()):
-            if self.keep_open and self.stream:
-                log.info("microphone stream had stopped - reopening")
-            self._open()
+        with self.stream_lock:
+            if not (self.keep_open and self._alive()):
+                if self.keep_open and self.stream:
+                    log.info("microphone stream had stopped - reopening")
+                self._open()
         with self.lock:
             lead = list(self.ring)
             self.ring.clear()

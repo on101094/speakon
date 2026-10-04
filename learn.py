@@ -14,6 +14,7 @@ from before being reported.
 """
 
 import collections
+import contextlib
 import hashlib
 import io
 import json
@@ -24,6 +25,7 @@ import shutil
 import sqlite3
 import tempfile
 import threading
+import time
 import wave
 from pathlib import Path
 
@@ -176,29 +178,39 @@ def wispr_available():
     return WISPR_DB.exists()
 
 
-def wispr_copy():
-    """Read-only snapshot of Wispr's database (never opened in place)."""
-    tmp = Path(tempfile.mkdtemp(prefix="speakon_wispr_")) / "flow.sqlite"
-    shutil.copy2(WISPR_DB, tmp)
-    return tmp
+@contextlib.contextmanager
+def wispr_db():
+    """A connection to a snapshot of Wispr's database (never opened in place), deleted afterwards.
+    The -wal file is copied too: Wispr keeps its newest dictations there until a checkpoint."""
+    folder = Path(tempfile.mkdtemp(prefix="speakon_wispr_"))
+    try:
+        for suffix in ("", "-wal", "-shm"):
+            src = WISPR_DB.with_name(WISPR_DB.name + suffix)
+            if src.exists():
+                shutil.copy2(src, folder / ("flow.sqlite" + suffix))
+        db = sqlite3.connect(folder / "flow.sqlite")   # a private copy, so opening it read-write is harmless
+        try:
+            yield db
+        finally:
+            db.close()
+    finally:
+        shutil.rmtree(folder, ignore_errors=True)
 
 
 def wispr_summary():
     if not wispr_available():
         return None
-    db = sqlite3.connect(f"file:{wispr_copy()}?mode=ro", uri=True)
-    n, audio = db.execute("select count(*), sum(case when audio is not null and length(audio)>0 then 1 else 0 end) "
-                          "from History").fetchone()
-    words = db.execute("select count(*) from Dictionary where isDeleted=0").fetchone()[0]
-    db.close()
+    with wispr_db() as db:
+        n, audio = db.execute("select count(*), sum(case when audio is not null and length(audio)>0 then 1 else 0 "
+                              "end) from History").fetchone()
+        words = db.execute("select count(*) from Dictionary where isDeleted=0").fetchone()[0]
     return {"dictations": n, "recordings": audio or 0, "dictionary": words}
 
 
 def wispr_dictionary():
     """[(heard_or_None, wanted)] - words and snippets the user set up in Wispr Flow."""
-    db = sqlite3.connect(f"file:{wispr_copy()}?mode=ro", uri=True)
-    rows = db.execute("select phrase, replacement, isSnippet, source from Dictionary where isDeleted=0").fetchall()
-    db.close()
+    with wispr_db() as db:
+        rows = db.execute("select phrase, replacement, isSnippet, source from Dictionary where isDeleted=0").fetchall()
     out = []
     for phrase, replacement, snippet, source in rows:
         if not phrase or phrase.strip() == "Wispr Flow" or "wisprflow.ai" in (replacement or ""):
@@ -213,11 +225,11 @@ def wispr_dictionary():
 
 
 def wispr_clips(limit=None, languages=("en",)):
-    db = sqlite3.connect(f"file:{wispr_copy()}?mode=ro", uri=True)
-    rows = db.execute("""select transcriptEntityId, audio, asrText, formattedText, coalesce(detectedLanguage, language)
-                         from History where audio is not null and length(audio) > 0 and asrText is not null
-                         order by timestamp desc""").fetchall()
-    db.close()
+    with wispr_db() as db:
+        rows = db.execute("""select transcriptEntityId, audio, asrText, formattedText,
+                                    coalesce(detectedLanguage, language)
+                             from History where audio is not null and length(audio) > 0 and asrText is not null
+                             order by timestamp desc""").fetchall()
     clips = []
     for tid, audio, asr, fmt, lang in rows:
         if languages and lang not in languages:
@@ -259,6 +271,14 @@ def learn_from_wispr(engine, transcribe, progress=lambda done, total, msg: None,
 
 # ---------------------------------------------------------------- learned store
 
+def set_aside(path):
+    """Keep a copy of a data file that could not be read (path.broken-<time>), before it is replaced."""
+    try:
+        shutil.copy2(path, path.with_name(f"{path.name}.broken-{time.strftime('%Y%m%d-%H%M%S')}"))
+    except OSError:
+        pass
+
+
 def entry_id(kind, *parts):
     """Stable id for a dictionary line / learned fix / term: the same text always gets the same id,
     so the window keeps pointing at the right entry even if the list changes under it."""
@@ -288,10 +308,16 @@ class Learned:
                 mtime = None
             if self._data is None or mtime != self._mtime:
                 data = {"fixes": [], "terms": [], "clips": 0, "edits": {}}
-                try:
-                    data.update(json.loads(self.path.read_text(encoding="utf-8")))
-                except Exception:
-                    pass
+                if mtime is not None:
+                    try:
+                        data.update(json.loads(self.path.read_text(encoding="utf-8")))
+                    except Exception:
+                        # A typo from a hand edit, or a file caught mid-write by another tool. Keep a copy
+                        # and carry on with what we had, so the next save doesn't replace everything learned
+                        # with an empty list.
+                        set_aside(self.path)
+                        if self._data is not None:
+                            data = self._data
                 self._data, self._mtime = data, mtime
 
     @property
@@ -356,10 +382,12 @@ class Learned:
             self.save()
 
     def apply_wispr(self, fixes, terms, clips, report):
-        """Store the result of learning from Wispr Flow recordings."""
+        """Store the result of learning from Wispr Flow recordings. Terms are added to the ones already
+        learned (e.g. from the user's own corrections), not put in their place."""
         with self.lock:
             self.merge_fixes(fixes, "Wispr Flow")
-            self.data.update(terms=terms[:80], clips=clips, report=report)
+            merged = list(dict.fromkeys(self.data.get("terms", []) + list(terms[:80])))
+            self.data.update(terms=merged, clips=clips, report=report)
             self.save()
 
     def learn_edit(self, before, after):
