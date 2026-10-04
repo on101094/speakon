@@ -41,6 +41,16 @@ jobs:
           .venv\Scripts\python -m pip install -r requirements.txt pyinstaller
       - name: Build SpeakOn.exe
         run: powershell -File build.ps1
+      - name: Check the bundle has what 1.2.2 shipped
+        shell: pwsh
+        run: |
+          $missing = @("SpeakOn.exe", "_internal\ui\index.html", "_internal\assets\icon.png",
+            "_internal\onnx_asr", "_internal\faster_whisper", "_internal\ctranslate2", "_internal\onnxruntime",
+            "_internal\webview", "_internal\_sounddevice_data",
+            "_internal\uiautomation\bin\UIAutomationClient_VC140_X64.dll") |
+            Where-Object { -not (Test-Path "dist\SpeakOn\$_") }
+          if ($missing) { throw "Missing from dist\SpeakOn: $($missing -join ', ')" }
+          Write-Output "Bundle complete"
       - name: Cache the speech model
         uses: actions/cache@v4
         with:
