@@ -28,8 +28,10 @@ jobs:
         shell: pwsh
         run: |
           $v = python -c "import config; print(config.VERSION)"
-          if ("${{ github.event_name }}" -eq "workflow_dispatch" -and (gh release view "v$v" 2>$null)) {
-            throw "Release v$v already exists - bump VERSION in config.py first"
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            gh release view "v$v" *> $null
+            if ($LASTEXITCODE -eq 0) { throw "Release v$v already exists - bump VERSION in config.py first" }
+            $global:LASTEXITCODE = 0   # "not found" is the normal case; don't let it fail the step
           }
           "VERSION=$v" | Out-File -FilePath $env:GITHUB_ENV -Append
           Write-Output "Releasing v$v"
