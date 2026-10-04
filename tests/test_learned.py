@@ -1,5 +1,8 @@
 import json
+import os
+import sqlite3
 import threading
+import time
 
 import config as C
 import learn
@@ -44,12 +47,62 @@ def test_lowercase_is_a_copy(data_dir):
 
 
 def test_apply_wispr(data_dir):
-    lr = make(data_dir)
-    lr.apply_wispr([{"heard": "d", "wanted": "D", "count": 2, "precision": 1.0}], [f"t{i}" for i in range(100)], 9,
-                   "report")
+    lr = make(data_dir, terms=["Replikanto"])                          # learned from the user's own correction
+    lr.apply_wispr([{"heard": "d", "wanted": "D", "count": 2, "precision": 1.0}],
+                   ["t0"] + [f"t{i}" for i in range(100)], 9, "report")
     saved = json.loads(C.LEARNED_FILE.read_text())
-    assert len(saved["terms"]) == 80 and saved["clips"] == 9 and saved["report"] == "report"
+    assert saved["terms"][0] == "Replikanto"                          # kept, not replaced
+    assert saved["terms"][1:] == [f"t{i}" for i in range(79)]         # Wispr's top 80, no duplicates
+    assert saved["clips"] == 9 and saved["report"] == "report"
     assert saved["fixes"][0]["heard"] == "d" and saved["fixes"][0]["source"] == "Wispr Flow"
+
+
+def test_unreadable_file_does_not_wipe_what_was_learned(data_dir):
+    lr = make(data_dir, fixes=[{"heard": "a", "wanted": "A", "count": 1}], terms=["x"])
+    assert lr.entries()
+    C.LEARNED_FILE.write_text('{"fixes": [ typo')
+    later = time.time() + 5
+    os.utime(C.LEARNED_FILE, (later, later))
+    lr.merge_fixes([{"heard": "b", "wanted": "B", "count": 1, "precision": 1.0}], "t")
+    saved = json.loads(C.LEARNED_FILE.read_text())
+    assert [f["heard"] for f in saved["fixes"]] == ["a", "b"] and saved["terms"] == ["x"]
+    backups = list(data_dir.glob("learned.json.broken-*"))
+    assert len(backups) == 1 and backups[0].read_text() == '{"fixes": [ typo'
+
+
+def test_unreadable_file_at_start_is_kept_aside(data_dir):
+    C.LEARNED_FILE.write_text("not json")
+    lr = learn.Learned(C.LEARNED_FILE)
+    assert lr.data["fixes"] == []
+    assert list(data_dir.glob("learned.json.broken-*"))
+
+
+def make_wispr_db(path, wal_rows):
+    db = sqlite3.connect(path)
+    db.execute("pragma journal_mode=wal")
+    db.execute("pragma wal_autocheckpoint=0")
+    db.execute("create table History (audio blob)")
+    db.execute("create table Dictionary (phrase text, replacement text, isSnippet int, source text, isDeleted int)")
+    db.execute("insert into Dictionary values ('Zed', null, 0, 'manual', 0)")
+    db.commit()
+    for _ in range(wal_rows):                       # still only in flow.sqlite-wal, like Wispr's newest rows
+        db.execute("insert into Dictionary values ('New', null, 0, 'manual', 0)")
+    db.commit()
+    return db                                       # kept open so the -wal file is not checkpointed away
+
+
+def test_wispr_snapshot_includes_wal_rows_and_is_deleted(tmp_path, monkeypatch):
+    wispr = tmp_path / "wispr" / "flow.sqlite"
+    wispr.parent.mkdir()
+    live = make_wispr_db(wispr, wal_rows=2)
+    assert wispr.with_name("flow.sqlite-wal").exists()
+    monkeypatch.setattr(learn, "WISPR_DB", wispr)
+    monkeypatch.setattr(learn.tempfile, "tempdir", str(tmp_path / "temp"))
+    (tmp_path / "temp").mkdir()
+    assert learn.wispr_summary()["dictionary"] == 3
+    assert [w for _, w in learn.wispr_dictionary()] == ["Zed", "New", "New"]
+    assert list((tmp_path / "temp").iterdir()) == []
+    live.close()
 
 
 def test_concurrent_merges_lose_nothing(data_dir):

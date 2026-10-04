@@ -75,8 +75,11 @@ def _split_words(phrase):
 
 
 def apply_replacements(text, replacements, fixes=None):
-    """The guaranteed pass: longest trigger first, whole matches only, glued forms match."""
+    """The guaranteed pass: longest trigger first, whole matches only, glued forms match.
+    Each replacement is parked behind a placeholder until the end, so a shorter rule never
+    rewrites a longer rule's output ("cloud code -> Claude Code" + "code -> Claude Code")."""
     text = unicodedata.normalize("NFC", text)
+    done = []
     for heard, wanted in sorted(replacements, key=lambda r: len(r[0]), reverse=True):
         words = [re.escape(w) for w in _split_words(unicodedata.normalize("NFC", heard))]
         if not words:
@@ -86,8 +89,16 @@ def apply_replacements(text, replacements, fixes=None):
         if found:
             if fixes is not None and found.group(0) != wanted:
                 fixes.append((found.group(0), wanted))
-            text = re.sub(pattern, lambda _m, w=wanted: w, text, flags=re.IGNORECASE)
+            done.append(wanted)
+            text = re.sub(pattern, _placeholder(len(done) - 1), text, flags=re.IGNORECASE)
+    for i, wanted in enumerate(done):
+        text = text.replace(_placeholder(i), wanted)
     return text
+
+
+def _placeholder(i):
+    # private-use characters: not letters or digits, so no rule's \w boundaries match inside them
+    return "" + "".join(chr(0xE100 + int(d, 16)) for d in f"{i:x}") + ""
 
 
 def dictionary_warnings(line):
@@ -250,7 +261,13 @@ def apply_custom_words(text, terms, fixes=None, protected=()):
 def remove_fillers(text, english):
     fillers = UNIVERSAL_FILLERS | (ENGLISH_FILLERS if english else set())
     alt = "|".join(sorted(map(re.escape, fillers), key=len, reverse=True))
-    text = re.sub(r"(?<!\w)(?:" + alt + r")(?!\w)[,.…]*", "", text, flags=re.IGNORECASE)
+    # drop the filler and the comma or "..." after it, but keep a full stop that ends a sentence:
+    # "We should go uh. Then" -> "We should go. Then", not "We should go then"
+    def drop(m):
+        ends_sentence = re.search(r"(?<!\.)\.(?!\.)", m.group(1))
+        before = m.string[:m.start()].rstrip(" \t")
+        return "." if ends_sentence and before[-1:] not in ("", ".", "!", "?", "\n") else ""
+    text = re.sub(r"(?<!\w)(?:" + alt + r")(?!\w)([,.…]*)", drop, text, flags=re.IGNORECASE)
     return tidy(text)
 
 

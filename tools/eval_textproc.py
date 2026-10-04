@@ -28,13 +28,10 @@ def load_textproc(path):
 
 
 def wispr_texts():
-    import sqlite3
-
     import learn
-    db = sqlite3.connect(f"file:{learn.wispr_copy()}?mode=ro", uri=True)
-    rows = db.execute("select asrText, formattedText, coalesce(detectedLanguage, language) from History "
-                      "where asrText is not null and formattedText is not null").fetchall()
-    db.close()
+    with learn.wispr_db() as db:
+        rows = db.execute("select asrText, formattedText, coalesce(detectedLanguage, language) from History "
+                          "where asrText is not null and formattedText is not null").fetchall()
     return [(a, f) for a, f, lang in rows if lang == "en" and a.strip() and f.strip()]
 
 

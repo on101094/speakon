@@ -20,7 +20,7 @@ if sys.platform != "win32":
     ctypes.WINFUNCTYPE = mock.MagicMock()
     for name in ["winreg", "winsound", "pyperclip", "pystray", "sounddevice", "webview", "PIL", "PIL.Image",
                  "pynput", "pynput.keyboard", "pynput.mouse", "uiautomation",
-                 "hotkeys", "mic", "overlay", "sendinput"]:   # the last four use Win32 at import time
+                 "hotkeys", "overlay", "sendinput"]:   # the last three use Win32 at import time
         sys.modules.setdefault(name, mock.MagicMock())
 
 import config as C  # noqa: E402

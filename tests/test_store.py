@@ -141,3 +141,11 @@ def test_concurrent_changes_lose_nothing(data_dir):
     assert sorted(st.dictionary.split()) == sorted(f"x{i}" for i in range(60))
     assert json.loads(C.HISTORY_FILE.read_text()) == st.history
     assert json.loads(C.SETTINGS_FILE.read_text()) == st.settings
+
+
+def test_unreadable_history_is_kept_aside_before_it_is_replaced(data_dir):
+    C.HISTORY_FILE.write_text('[{"time": "2026-10-01T10:00:00", "text": "precious"')   # cut off mid-write
+    st = store.Store()
+    st.add_history({"time": "2026-10-03T10:00:00", "text": "new"})
+    backups = list(data_dir.glob("history.json.broken-*"))
+    assert len(backups) == 1 and "precious" in backups[0].read_text()

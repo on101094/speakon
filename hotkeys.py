@@ -23,6 +23,11 @@ _SIDES = {
     "win_l": {"cmd", "cmd_l", "win_l"},
     "win_r": {"cmd_r", "win_r"},
     "alt_r": {"alt_r", "alt_gr"},
+    # one-side shortcuts recorded from a left key: pynput may report the left key by its generic
+    # name ("shift"), which _PUBLIC turns into "shift_l" when the shortcut is saved
+    "ctrl_l": {"ctrl", "ctrl_l"},
+    "alt_l": {"alt", "alt_l"},
+    "shift_l": {"shift", "shift_l"},
 }
 _GENERIC = {"ctrl_l": "ctrl", "ctrl_r": "ctrl", "alt_l": "alt", "alt_r": "alt", "alt_gr": "alt",
             "shift_l": "shift", "shift_r": "shift", "cmd": "win", "cmd_l": "win", "cmd_r": "win"}
