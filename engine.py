@@ -106,7 +106,9 @@ class Engine:
                 return
             self.ready.clear()
             self.error = None
-            self.model = self.model_ts = None
+            # drop every reference to the old model (the encoder wrapper too) before loading the next,
+            # so a switch doesn't hold both in memory
+            self.model = self.model_ts = self.encoder = None
             target = self.models_dir / name
             first = not target.exists()
             on_status(f"Downloading {model_id} (one time)…" if first else f"Loading {model_id}…")

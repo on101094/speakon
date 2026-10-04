@@ -13,12 +13,8 @@ def progress(done, total, msg):
         print(f"{done}/{total}  {time.time() - t0:.0f}s", flush=True)
 r = learn.learn_from_wispr(eng, lambda a: E.transcribe_array(eng, a), progress)
 L = learn.Learned(C.LEARNED_FILE)
-L.merge_fixes(r["fixes"], "Wispr Flow")
-L.data["terms"] = r["terms"][:80]
-L.data["clips"] = r["clips"]
-L.data["report"] = (f"On recordings it did not learn from, mistakes went from {r['wer_before'] * 100:.1f}% "
-                    f"to {r['wer_after'] * 100:.1f}% of words.")
-L.save()
+L.apply_wispr(r["fixes"], r["terms"], r["clips"], learn.wispr_report(r), r["lowercase"])
 print("clips", r["clips"], "| WER before", round(r["wer_before"] * 100, 2), "after", round(r["wer_after"] * 100, 2))
 print("fixes:", [(f["heard"], f["wanted"], f["count"], f["precision"]) for f in r["fixes"]])
 print("terms:", r["terms"][:80])
+print("lowercase:", r["lowercase"])
