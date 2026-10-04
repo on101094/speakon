@@ -61,20 +61,23 @@ class _Cancellable:
 
     def __init__(self, session):
         self._session = session
-        self._opts = None
+        self._run = None            # (RunOptions, preview?) of the call in progress
+        self.preview = False        # set by Engine.words before each transcription
 
     def run(self, outputs, feeds, run_options=None):
         import onnxruntime as ort
-        self._opts = ort.RunOptions()
+        # tag the call when it starts: a cancel meant for a preview must never stop the final pass
+        # that may have started by the time it arrives
+        self._run = (ort.RunOptions(), self.preview)
         try:
-            return self._session.run(outputs, feeds, self._opts)
+            return self._session.run(outputs, feeds, self._run[0])
         finally:
-            self._opts = None
+            self._run = None
 
-    def cancel(self):
-        opts = self._opts
-        if opts is not None:
-            opts.terminate = True
+    def cancel_preview(self):
+        current = self._run
+        if current is not None and current[1]:
+            current[0].terminate = True
 
     def __getattr__(self, name):
         return getattr(self._session, name)
@@ -172,6 +175,8 @@ class Engine:
         language = self._check(language)
         with self.lock:
             self.preview_running = preview
+            if self.encoder is not None:
+                self.encoder.preview = preview
             try:
                 return self._words(audio, language, prompt, hotwords)
             finally:
@@ -180,7 +185,7 @@ class Engine:
     def cancel_preview(self):
         """Stop a live-preview transcription that is still running (the key was released)."""
         if self.preview_running and self.encoder is not None:
-            self.encoder.cancel()
+            self.encoder.cancel_preview()
 
     def transcribe(self, audio, language=None, prompt="", hotwords=""):
         return "".join(w for w, _ in self.words(audio, language, prompt, hotwords)).strip()
