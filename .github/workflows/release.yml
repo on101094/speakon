@@ -68,6 +68,38 @@ jobs:
           $s.Dispose()
       - name: Dictate it through the built SpeakOn.exe
         run: python tools/selftest.py "$env:RUNNER_TEMP\speech.wav" "$env:SENTENCE" --exe dist\SpeakOn\SpeakOn.exe
+      - name: Learn-from-corrections check on the built SpeakOn.exe
+        shell: pwsh
+        # The app's own --selftest-corrections mode watches a window called "SpeakOn correction test".
+        # A test window shows the dictated sentence, fixes one word after 3 s, and the .exe must read
+        # the box through UI Automation (comtypes, generated on first use in the built app) and learn it.
+        run: |
+          $text = "For example, replicanto. It writes it with C and the orb setup works."
+          $window = Start-Job -ArgumentList $text -ScriptBlock {
+            param($text)
+            Add-Type -AssemblyName System.Windows.Forms
+            $f = New-Object System.Windows.Forms.Form
+            $f.Text = "SpeakOn correction test"
+            $t = New-Object System.Windows.Forms.TextBox
+            $t.Multiline = $true; $t.Dock = "Fill"; $t.Text = $text
+            $f.Controls.Add($t)
+            $timer = New-Object System.Windows.Forms.Timer
+            $timer.Interval = 3000
+            $timer.Add_Tick({ $t.Text = $t.Text.Replace("replicanto", "Replikanto"); $timer.Stop() })
+            $f.Add_Shown({ $timer.Start() })
+            $f.TopMost = $true
+            [System.Windows.Forms.Application]::Run($f)
+          }
+          Start-Sleep -Seconds 2
+          $out = Join-Path $env:TEMP "speakon_corrections_test.txt"
+          Remove-Item $out -ErrorAction SilentlyContinue
+          Start-Process dist\SpeakOn\SpeakOn.exe -ArgumentList "--selftest-corrections" -Wait
+          Stop-Job $window; Remove-Job $window -Force
+          if (-not (Test-Path $out)) { throw "SpeakOn.exe wrote no result" }
+          $result = Get-Content $out -Raw
+          Write-Output $result
+          if ($result -notmatch "read=True") { throw "The built app could not read the text box" }
+          if ($result -notmatch "Replikanto") { throw "The built app read the box but did not learn the fix" }
       - name: Zip
         shell: pwsh
         run: Compress-Archive -Path dist\SpeakOn -DestinationPath "SpeakOn-$env:VERSION-windows-x64.zip"
