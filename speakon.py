@@ -151,6 +151,7 @@ class FakeMic:
             self.audio = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
         self.callback = callback
         self.running = False
+        self.played = threading.Event()     # the whole file has gone into the pipeline
 
     def start(self):
         self.running = True
@@ -158,11 +159,15 @@ class FakeMic:
         def run():
             silence = np.zeros(eng.BLOCK, np.float32)
             i = 0
+            t0 = time.perf_counter()
             while self.running:
                 block = self.audio[i:i + eng.BLOCK] if i + eng.BLOCK <= len(self.audio) else silence
                 self.callback(block.reshape(-1, 1), eng.BLOCK, None, None)
                 i += eng.BLOCK
-                time.sleep(eng.BLOCK / eng.SAMPLE_RATE)
+                if i >= len(self.audio):
+                    self.played.set()
+                # keep to the clock like a real microphone: a busy PC must not make the file play slower
+                time.sleep(max(0.0, t0 + i / eng.SAMPLE_RATE - time.perf_counter()))
         threading.Thread(target=run, daemon=True).start()
 
     def stop(self):
@@ -894,7 +899,15 @@ def main():
             app.events.put(("hot_down", time.time()))
             time.sleep(0.1)
             app.events.put(("hot_up", time.time()))      # short tap: latches on
-            time.sleep(secs)
+            deadline = time.time() + secs * 3
+            while not getattr(app.mic.stream, "played", None) and time.time() < deadline:
+                time.sleep(0.05)                          # the fake microphone opens on the tap
+            mic = app.mic.stream
+            if mic and hasattr(mic, "played"):            # stop a fixed time after the file ends, however
+                mic.played.wait(max(0.0, deadline - time.time()))   # long it took to play
+                time.sleep(max(0.0, secs - len(mic.audio) / eng.SAMPLE_RATE))
+            else:
+                time.sleep(secs)
             app.events.put(("hot_down", time.time()))    # tap again: stop
         threading.Thread(target=selftest, daemon=True).start()
     if first_run:

@@ -2,9 +2,11 @@
 
 import json
 import threading
+import time
 import types
 from unittest import mock
 
+import numpy as np
 import pytest
 
 import config as C
@@ -134,3 +136,20 @@ def test_turning_update_checks_on_checks_now(app):
     app.update_wake.set.assert_not_called()
     app.update_setting("check_updates", True)
     app.update_wake.set.assert_called_once()
+
+
+def test_fake_mic_keeps_to_the_clock_and_says_when_the_file_has_played(tmp_path):
+    path = tmp_path / "a.wav"
+    S.eng.save_wav(path, np.zeros(16000 // 2, np.float32))       # 0.5 s
+    got = []
+
+    def slow_callback(block, *a):                                 # a busy PC: every block costs 10 ms
+        got.append(block)
+        time.sleep(0.01)
+    mic = S.FakeMic(str(path), slow_callback)
+    t0 = time.perf_counter()
+    mic.start()
+    assert mic.played.wait(2)
+    took = time.perf_counter() - t0
+    mic.stop()
+    assert 0.4 < took < 0.65 and len(got) >= 16

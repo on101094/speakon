@@ -91,7 +91,10 @@ def main():
     score = recall(a.expected, entry["text"])
     print(f"Expected: {a.expected}\nGot:      {entry['text']}")
     print(f"Word recall {score:.0%} (need {a.min_recall:.0%}), wait after release {entry.get('latency')} s, "
-          f"model {entry.get('model')}")
+          f"model {entry.get('model')}, recorded {entry.get('seconds')} s for {seconds:.1f} s of speech")
+    if score < a.min_recall and log.exists():
+        print("--- speakon.log (last 20 lines) ---")
+        print("\n".join(log.read_text(encoding="utf-8", errors="replace").splitlines()[-20:]))
     sys.exit(0 if score >= a.min_recall else 1)
 
 
