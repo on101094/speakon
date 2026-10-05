@@ -3,7 +3,7 @@
 from pathlib import Path
 
 APP_NAME = "SpeakOn"
-VERSION = "1.2.4"
+VERSION = "1.2.5"
 # Not %APPDATA%: apps started from sandboxed hosts (MSIX) get a private, redirected copy of it.
 DATA_DIR = Path.home() / APP_NAME
 MODELS_DIR = DATA_DIR / "models"
@@ -91,6 +91,7 @@ DEFAULT_SETTINGS = {
     "name": "",
     "theme": "system",
     "always_show_bar": True,
+    "check_updates": True,
 }
 
 

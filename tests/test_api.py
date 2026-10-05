@@ -19,7 +19,8 @@ def app(data_dir):
     C.LEARNED_FILE.write_text(json.dumps({"fixes": [{"heard": "a", "wanted": "A", "count": 1, "enabled": True}],
                                           "terms": ["x"], "lowercase": ["and"]}))
     a = types.SimpleNamespace(store=store.Store(), learned=learn.Learned(C.LEARNED_FILE), levels=[0.0] * 3, level=0,
-                              recording=False, busy=False, preview="", status="", learning={},
+                              recording=False, busy=False, preview="", status="", learning={}, update=None, updating="",
+                              update_wake=mock.MagicMock(),
                               mic=mock.MagicMock(), keys=mock.MagicMock(), tray=mock.MagicMock(),
                               load_model=mock.MagicMock(), notify=lambda text: None, set_status=lambda text: None,
                               learn_corrections=lambda pairs, notify=True: pairs)
@@ -120,3 +121,16 @@ def test_stats_are_reused_until_the_history_changes(app):
         assert S.SpeakOn.stats(app) is first                       # nothing changed: no re-scan
     app.store.add_history({"time": "2026-10-03T10:01:00", "text": "four"})
     assert S.SpeakOn.stats(app) is not first
+
+
+def test_state_offers_a_found_update(app):
+    assert S.Api(app).state()["update"] is None
+    app.update = {"version": "9.0.0", "notes": "new", "page": "p", "zip": "z", "sha256": "s"}
+    assert S.Api(app).state()["update"] == {"version": "9.0.0", "notes": "new"}
+
+
+def test_turning_update_checks_on_checks_now(app):
+    app.update_setting("check_updates", False)
+    app.update_wake.set.assert_not_called()
+    app.update_setting("check_updates", True)
+    app.update_wake.set.assert_called_once()
