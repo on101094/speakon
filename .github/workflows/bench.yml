@@ -1,7 +1,7 @@
 name: bench
 
-# Times the wait after letting go of the key (the release step) on a Windows runner, split into the
-# engine's parts, for speech of several lengths and ONNX thread counts. Numbers only; never fails on speed.
+# Times the wait after letting go of the key on a Windows runner, for speech of several lengths and
+# pauses before letting go, against main's engine on the same machine. Numbers only; never fails on speed.
 on:
   workflow_dispatch:
   pull_request:
@@ -43,13 +43,15 @@ jobs:
             $s.Speak($lines[$i]); $s.Dispose()
             Set-Content "$env:RUNNER_TEMP\clip$i.txt" $lines[$i]
           }
-      - name: Benchmark the release step
+      - name: Benchmark the release step (this branch, then main's engine on the same machine)
         shell: pwsh
         run: |
+          git fetch --depth 1 origin main
+          New-Item -ItemType Directory "$env:RUNNER_TEMP\main" | Out-Null
+          python -c "import subprocess, sys; open(sys.argv[1], 'wb').write(subprocess.check_output(['git', 'show', 'FETCH_HEAD:engine.py']))" "$env:RUNNER_TEMP\main\engine.py"
           $pairs = @()
           for ($i = 0; $i -lt 4; $i++) { $pairs += "$env:RUNNER_TEMP\clip$i.wav"; $pairs += (Get-Content "$env:RUNNER_TEMP\clip$i.txt" -Raw).Trim() }
-          foreach ($t in 3, 2, 4) {
-            Write-Output "===== threads $t"
-            python tools/bench_release.py @pairs --repeat 3 --threads $t
-            if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          }
+          python tools/bench_release.py @pairs --repeat 3 --hold 0.2 0.4 0.7
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python tools/bench_release.py @pairs --repeat 3 --hold 0.2 0.4 0.7 --engine "$env:RUNNER_TEMP\main"
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }

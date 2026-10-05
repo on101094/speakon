@@ -117,7 +117,20 @@
       "file_type": "code",
       "norm_label": "_cancellable",
       "source_file": "engine.py",
-      "source_location": "L59"
+      "source_location": "L60"
+    },
+    {
+      "id": "tests_test_engine_fakeengine",
+      "label": "FakeEngine",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "fakeengine",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L75"
     },
     {
       "id": "tests_test_engine_fakerunoptions",
@@ -130,7 +143,7 @@
       "file_type": "code",
       "norm_label": "fakerunoptions",
       "source_file": "tests/test_engine.py",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "tests_test_engine_fakesession",
@@ -143,7 +156,7 @@
       "file_type": "code",
       "norm_label": "fakesession",
       "source_file": "tests/test_engine.py",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "mic_microphone",
@@ -157,6 +170,19 @@
       "norm_label": "microphone",
       "source_file": "mic.py",
       "source_location": "L27"
+    },
+    {
+      "id": "tests_test_mic_fakestream",
+      "label": "FakeStream",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Microphone",
+      "file_type": "code",
+      "norm_label": "fakestream",
+      "source_file": "tests/test_mic.py",
+      "source_location": "L7"
     },
     {
       "id": "store_store",
@@ -263,17 +289,17 @@
       "source_location": "L144"
     },
     {
-      "id": "tests_test_mic_fakestream",
-      "label": "FakeStream",
+      "id": "overlay_flowbar",
+      "label": "FlowBar",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 23,
-      "community_name": "FakeStream",
+      "community": 25,
+      "community_name": "FlowBar",
       "file_type": "code",
-      "norm_label": "fakestream",
-      "source_file": "tests/test_mic.py",
-      "source_location": "L7"
+      "norm_label": "flowbar",
+      "source_file": "overlay.py",
+      "source_location": "L82"
     },
     {
       "id": "engine_engine",
@@ -286,7 +312,7 @@
       "file_type": "code",
       "norm_label": "engine",
       "source_file": "engine.py",
-      "source_location": "L90"
+      "source_location": "L91"
     },
     {
       "id": "engine_dictation",
@@ -299,7 +325,7 @@
       "file_type": "code",
       "norm_label": "dictation",
       "source_file": "engine.py",
-      "source_location": "L198"
+      "source_location": "L199"
     },
     {
       "id": "hotkeys_hotkeywatcher",
@@ -321,7 +347,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "bitmapinfoheader",
       "source_file": "overlay.py",
@@ -334,24 +360,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "blendfunction",
       "source_file": "overlay.py",
       "source_location": "L61"
-    },
-    {
-      "id": "overlay_flowbar",
-      "label": "FlowBar",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": "flowbar",
-      "source_file": "overlay.py",
-      "source_location": "L82"
     },
     {
       "id": "overlay_wndclass",
@@ -360,7 +373,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "wndclass",
       "source_file": "overlay.py",
@@ -460,7 +473,7 @@
       "file_type": "code",
       "norm_label": ".audio()",
       "source_file": "engine.py",
-      "source_location": "L439"
+      "source_location": "L463"
     },
     {
       "id": "speakon_api_check_entry",
@@ -760,7 +773,7 @@
       "file_type": "code",
       "norm_label": ".cancel_preview()",
       "source_file": "engine.py",
-      "source_location": "L77"
+      "source_location": "L78"
     },
     {
       "id": "engine_cancellable_getattr",
@@ -772,7 +785,7 @@
       "file_type": "code",
       "norm_label": ".__getattr__()",
       "source_file": "engine.py",
-      "source_location": "L82"
+      "source_location": "L83"
     },
     {
       "id": "engine_cancellable_init",
@@ -784,7 +797,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "engine.py",
-      "source_location": "L62"
+      "source_location": "L63"
     },
     {
       "id": "engine_cancellable_run",
@@ -796,7 +809,7 @@
       "file_type": "code",
       "norm_label": ".run()",
       "source_file": "engine.py",
-      "source_location": "L67"
+      "source_location": "L68"
     },
     {
       "id": "tests_test_engine_fake_onnxruntime",
@@ -808,7 +821,43 @@
       "file_type": "code",
       "norm_label": "fake_onnxruntime()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L28"
+      "source_location": "L29"
+    },
+    {
+      "id": "tests_test_engine_fakeengine_cancel_preview",
+      "label": ".cancel_preview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": ".cancel_preview()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L87"
+    },
+    {
+      "id": "tests_test_engine_fakeengine_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L78"
+    },
+    {
+      "id": "tests_test_engine_fakeengine_words",
+      "label": ".words()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": ".words()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L83"
     },
     {
       "id": "tests_test_engine_fakerunoptions_init",
@@ -820,7 +869,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L11"
+      "source_location": "L12"
     },
     {
       "id": "tests_test_engine_fakesession_init",
@@ -832,7 +881,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "tests_test_engine_fakesession_run",
@@ -844,7 +893,19 @@
       "file_type": "code",
       "norm_label": ".run()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L21"
+      "source_location": "L22"
+    },
+    {
+      "id": "tests_test_engine_previewed",
+      "label": "previewed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "previewed()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L100"
     },
     {
       "id": "tests_test_engine_run_in_thread",
@@ -856,7 +917,19 @@
       "file_type": "code",
       "norm_label": "run_in_thread()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L32"
+      "source_location": "L33"
+    },
+    {
+      "id": "tests_test_engine_talk",
+      "label": "talk()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "talk()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L91"
     },
     {
       "id": "tests_test_engine_test_cancel_stops_a_preview_run",
@@ -868,7 +941,7 @@
       "file_type": "code",
       "norm_label": "test_cancel_stops_a_preview_run()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L40"
+      "source_location": "L41"
     },
     {
       "id": "tests_test_engine_test_engine_tags_each_transcription",
@@ -880,7 +953,7 @@
       "file_type": "code",
       "norm_label": "test_engine_tags_each_transcription()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L62"
+      "source_location": "L63"
     },
     {
       "id": "tests_test_engine_test_late_cancel_does_not_stop_the_final_pass",
@@ -892,7 +965,55 @@
       "file_type": "code",
       "norm_label": "test_late_cancel_does_not_stop_the_final_pass()",
       "source_file": "tests/test_engine.py",
-      "source_location": "L50"
+      "source_location": "L51"
+    },
+    {
+      "id": "tests_test_engine_test_preview_waits_for_the_pause_to_cover_the_last_word",
+      "label": "test_preview_waits_for_the_pause_to_cover_the_last_word()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "test_preview_waits_for_the_pause_to_cover_the_last_word()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L125"
+    },
+    {
+      "id": "tests_test_engine_test_release_keeps_a_running_preview_only_if_it_covers_everything",
+      "label": "test_release_keeps_a_running_preview_only_if_it_covers_everything()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "test_release_keeps_a_running_preview_only_if_it_covers_everything()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L140"
+    },
+    {
+      "id": "tests_test_engine_test_release_reuses_a_preview_that_heard_everything",
+      "label": "test_release_reuses_a_preview_that_heard_everything()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "test_release_reuses_a_preview_that_heard_everything()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L109"
+    },
+    {
+      "id": "tests_test_engine_test_release_transcribes_again_when_more_was_said",
+      "label": "test_release_transcribes_again_when_more_was_said()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "test_release_transcribes_again_when_more_was_said()",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L117"
     },
     {
       "id": "mic_microphone_alive",
@@ -1015,172 +1136,64 @@
       "source_location": "L74"
     },
     {
-      "id": "learn_entry_id",
-      "label": "entry_id()",
+      "id": "tests_test_mic_fakestream_close",
+      "label": ".close()",
       "_callable": true,
       "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
+      "community": 11,
+      "community_name": "Microphone",
       "file_type": "code",
-      "norm_label": "entry_id()",
-      "source_file": "learn.py",
-      "source_location": "L288"
+      "norm_label": ".close()",
+      "source_file": "tests/test_mic.py",
+      "source_location": "L21"
     },
     {
-      "id": "learn_set_aside",
-      "label": "set_aside()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "set_aside()",
-      "source_file": "learn.py",
-      "source_location": "L280"
-    },
-    {
-      "id": "store_load_json",
-      "label": "load_json()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "load_json()",
-      "source_file": "store.py",
-      "source_location": "L19"
-    },
-    {
-      "id": "store_save_json",
-      "label": "save_json()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "save_json()",
-      "source_file": "store.py",
-      "source_location": "L32"
-    },
-    {
-      "id": "store_store_add_dictionary_lines",
-      "label": ".add_dictionary_lines()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".add_dictionary_lines()",
-      "source_file": "store.py",
-      "source_location": "L154"
-    },
-    {
-      "id": "store_store_add_history",
-      "label": ".add_history()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".add_history()",
-      "source_file": "store.py",
-      "source_location": "L72"
-    },
-    {
-      "id": "store_store_delete_dictionary_entry",
-      "label": ".delete_dictionary_entry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".delete_dictionary_entry()",
-      "source_file": "store.py",
-      "source_location": "L146"
-    },
-    {
-      "id": "store_store_delete_history",
-      "label": ".delete_history()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".delete_history()",
-      "source_file": "store.py",
-      "source_location": "L90"
-    },
-    {
-      "id": "store_store_dictionary_line",
-      "label": "._dictionary_line()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "._dictionary_line()",
-      "source_file": "store.py",
-      "source_location": "L132"
-    },
-    {
-      "id": "store_store_edit_history",
-      "label": ".edit_history()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".edit_history()",
-      "source_file": "store.py",
-      "source_location": "L97"
-    },
-    {
-      "id": "store_store_history_entry",
-      "label": "._history_entry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "._history_entry()",
-      "source_file": "store.py",
-      "source_location": "L82"
-    },
-    {
-      "id": "store_store_history_text",
-      "label": ".history_text()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".history_text()",
-      "source_file": "store.py",
-      "source_location": "L85"
-    },
-    {
-      "id": "store_store_init",
+      "id": "tests_test_mic_fakestream_init",
       "label": ".__init__()",
       "_callable": true,
       "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
+      "community": 11,
+      "community_name": "Microphone",
       "file_type": "code",
       "norm_label": ".__init__()",
-      "source_file": "store.py",
-      "source_location": "L40"
+      "source_file": "tests/test_mic.py",
+      "source_location": "L10"
     },
     {
-      "id": "store_store_load_dictionary",
-      "label": ".load_dictionary()",
+      "id": "tests_test_mic_fakestream_start",
+      "label": ".start()",
       "_callable": true,
       "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
+      "community": 11,
+      "community_name": "Microphone",
       "file_type": "code",
-      "norm_label": ".load_dictionary()",
-      "source_file": "store.py",
-      "source_location": "L110"
+      "norm_label": ".start()",
+      "source_file": "tests/test_mic.py",
+      "source_location": "L15"
+    },
+    {
+      "id": "tests_test_mic_fakestream_stop",
+      "label": ".stop()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Microphone",
+      "file_type": "code",
+      "norm_label": ".stop()",
+      "source_file": "tests/test_mic.py",
+      "source_location": "L18"
+    },
+    {
+      "id": "tests_test_mic_test_warm_and_begin_at_the_same_time_open_one_stream",
+      "label": "test_warm_and_begin_at_the_same_time_open_one_stream()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Microphone",
+      "file_type": "code",
+      "norm_label": "test_warm_and_begin_at_the_same_time_open_one_stream()",
+      "source_file": "tests/test_mic.py",
+      "source_location": "L25"
     },
     {
       "id": "store_store_recent_history",
@@ -1193,78 +1206,6 @@
       "norm_label": ".recent_history()",
       "source_file": "store.py",
       "source_location": "L78"
-    },
-    {
-      "id": "store_store_reload_dictionary",
-      "label": ".reload_dictionary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".reload_dictionary()",
-      "source_file": "store.py",
-      "source_location": "L117"
-    },
-    {
-      "id": "store_store_save_dictionary_entry",
-      "label": ".save_dictionary_entry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".save_dictionary_entry()",
-      "source_file": "store.py",
-      "source_location": "L135"
-    },
-    {
-      "id": "store_store_save_history",
-      "label": ".save_history()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".save_history()",
-      "source_file": "store.py",
-      "source_location": "L67"
-    },
-    {
-      "id": "store_store_save_settings",
-      "label": ".save_settings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".save_settings()",
-      "source_file": "store.py",
-      "source_location": "L53"
-    },
-    {
-      "id": "store_store_set_dictionary",
-      "label": ".set_dictionary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".set_dictionary()",
-      "source_file": "store.py",
-      "source_location": "L127"
-    },
-    {
-      "id": "store_store_set_setting",
-      "label": ".set_setting()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": ".set_setting()",
-      "source_file": "store.py",
-      "source_location": "L57"
     },
     {
       "id": "tests_test_store_test_add_dictionary_lines_skips_existing",
@@ -1289,42 +1230,6 @@
       "norm_label": "test_add_history_assigns_id_trims_and_saves()",
       "source_file": "tests/test_store.py",
       "source_location": "L36"
-    },
-    {
-      "id": "tests_test_store_test_concurrent_changes_lose_nothing",
-      "label": "test_concurrent_changes_lose_nothing()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "test_concurrent_changes_lose_nothing()",
-      "source_file": "tests/test_store.py",
-      "source_location": "L107"
-    },
-    {
-      "id": "tests_test_store_test_concurrent_changes_lose_nothing_guard",
-      "label": "guard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "guard()",
-      "source_file": "tests/test_store.py",
-      "source_location": "L115"
-    },
-    {
-      "id": "tests_test_store_test_concurrent_changes_lose_nothing_guard_run",
-      "label": "run()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "tests/test_store.py",
-      "source_location": "L116"
     },
     {
       "id": "tests_test_store_test_construction_does_not_write_settings",
@@ -1435,18 +1340,6 @@
       "source_location": "L146"
     },
     {
-      "id": "learn_fix_id",
-      "label": "fix_id()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": "fix_id()",
-      "source_file": "learn.py",
-      "source_location": "L294"
-    },
-    {
       "id": "learn_learned_apply_wispr",
       "label": ".apply_wispr()",
       "_callable": true,
@@ -1469,18 +1362,6 @@
       "norm_label": ".data()",
       "source_file": "learn.py",
       "source_location": "L330"
-    },
-    {
-      "id": "learn_learned_entries",
-      "label": ".entries()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": ".entries()",
-      "source_file": "learn.py",
-      "source_location": "L363"
     },
     {
       "id": "learn_learned_init",
@@ -1531,18 +1412,6 @@
       "source_location": "L309"
     },
     {
-      "id": "learn_learned_remove_term",
-      "label": ".remove_term()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": ".remove_term()",
-      "source_file": "learn.py",
-      "source_location": "L385"
-    },
-    {
       "id": "learn_learned_replacements",
       "label": ".replacements()",
       "_callable": true,
@@ -1567,54 +1436,6 @@
       "source_location": "L334"
     },
     {
-      "id": "learn_learned_set_fix_enabled",
-      "label": ".set_fix_enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": ".set_fix_enabled()",
-      "source_file": "learn.py",
-      "source_location": "L378"
-    },
-    {
-      "id": "learn_learned_summary",
-      "label": ".summary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": ".summary()",
-      "source_file": "learn.py",
-      "source_location": "L372"
-    },
-    {
-      "id": "speakon_main_on_closing",
-      "label": "on_closing()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": "on_closing()",
-      "source_file": "speakon.py",
-      "source_location": "L813"
-    },
-    {
-      "id": "tests_test_api_app",
-      "label": "app()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "tests/test_api.py",
-      "source_location": "L18"
-    },
-    {
       "id": "tests_test_learned_test_unreadable_file_at_start_is_kept_aside",
       "label": "test_unreadable_file_at_start_is_kept_aside()",
       "_callable": true,
@@ -1627,52 +1448,172 @@
       "source_location": "L73"
     },
     {
-      "id": "engine_block_rms",
-      "label": "block_rms()",
+      "id": "speakon_main",
+      "label": "main()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "engine.py",
+      "community": 14,
+      "community_name": "speakon.py",
       "file_type": "code",
-      "norm_label": "block_rms()",
-      "source_file": "engine.py",
-      "source_location": "L194"
+      "norm_label": "main()",
+      "source_file": "speakon.py",
+      "source_location": "L774"
     },
     {
-      "id": "engine_load_audio_file",
-      "label": "load_audio_file()",
+      "id": "speakon_main_selftest",
+      "label": "selftest()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "engine.py",
+      "community": 14,
+      "community_name": "speakon.py",
       "file_type": "code",
-      "norm_label": "load_audio_file()",
-      "source_file": "engine.py",
-      "source_location": "L462"
+      "norm_label": "selftest()",
+      "source_file": "speakon.py",
+      "source_location": "L825"
     },
     {
-      "id": "engine_save_wav",
-      "label": "save_wav()",
+      "id": "speakon_make_tone",
+      "label": "make_tone()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "engine.py",
+      "community": 14,
+      "community_name": "speakon.py",
       "file_type": "code",
-      "norm_label": "save_wav()",
-      "source_file": "engine.py",
-      "source_location": "L476"
+      "norm_label": "make_tone()",
+      "source_file": "speakon.py",
+      "source_location": "L129"
     },
     {
-      "id": "tools_learn_now_progress",
-      "label": "progress()",
+      "id": "speakon_modifiers_down",
+      "label": "modifiers_down()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "speakon.py",
+      "file_type": "code",
+      "norm_label": "modifiers_down()",
+      "source_file": "speakon.py",
+      "source_location": "L97"
+    },
+    {
+      "id": "speakon_resource",
+      "label": "resource()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "speakon.py",
+      "file_type": "code",
+      "norm_label": "resource()",
+      "source_file": "speakon.py",
+      "source_location": "L75"
+    },
+    {
+      "id": "learn_entry_id",
+      "label": "entry_id()",
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "engine.py",
+      "community_name": "entry_id",
       "file_type": "code",
-      "norm_label": "progress()",
-      "source_file": "tools/learn_now.py",
-      "source_location": "L10"
+      "norm_label": "entry_id()",
+      "source_file": "learn.py",
+      "source_location": "L288"
+    },
+    {
+      "id": "learn_fix_id",
+      "label": "fix_id()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": "fix_id()",
+      "source_file": "learn.py",
+      "source_location": "L294"
+    },
+    {
+      "id": "learn_learned_entries",
+      "label": ".entries()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": ".entries()",
+      "source_file": "learn.py",
+      "source_location": "L363"
+    },
+    {
+      "id": "learn_learned_remove_term",
+      "label": ".remove_term()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": ".remove_term()",
+      "source_file": "learn.py",
+      "source_location": "L385"
+    },
+    {
+      "id": "learn_learned_set_fix_enabled",
+      "label": ".set_fix_enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": ".set_fix_enabled()",
+      "source_file": "learn.py",
+      "source_location": "L378"
+    },
+    {
+      "id": "learn_learned_summary",
+      "label": ".summary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": ".summary()",
+      "source_file": "learn.py",
+      "source_location": "L372"
+    },
+    {
+      "id": "tests_test_store_test_concurrent_changes_lose_nothing",
+      "label": "test_concurrent_changes_lose_nothing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": "test_concurrent_changes_lose_nothing()",
+      "source_file": "tests/test_store.py",
+      "source_location": "L107"
+    },
+    {
+      "id": "tests_test_store_test_concurrent_changes_lose_nothing_guard",
+      "label": "guard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": "guard()",
+      "source_file": "tests/test_store.py",
+      "source_location": "L115"
+    },
+    {
+      "id": "tests_test_store_test_concurrent_changes_lose_nothing_guard_run",
+      "label": "run()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "code",
+      "norm_label": "run()",
+      "source_file": "tests/test_store.py",
+      "source_location": "L116"
     },
     {
       "id": "sendinput_type_text",
@@ -1697,66 +1638,6 @@
       "norm_label": "foreground_app()",
       "source_file": "speakon.py",
       "source_location": "L80"
-    },
-    {
-      "id": "speakon_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SpeakOn",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "speakon.py",
-      "source_location": "L774"
-    },
-    {
-      "id": "speakon_main_selftest",
-      "label": "selftest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SpeakOn",
-      "file_type": "code",
-      "norm_label": "selftest()",
-      "source_file": "speakon.py",
-      "source_location": "L825"
-    },
-    {
-      "id": "speakon_make_tone",
-      "label": "make_tone()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SpeakOn",
-      "file_type": "code",
-      "norm_label": "make_tone()",
-      "source_file": "speakon.py",
-      "source_location": "L129"
-    },
-    {
-      "id": "speakon_modifiers_down",
-      "label": "modifiers_down()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SpeakOn",
-      "file_type": "code",
-      "norm_label": "modifiers_down()",
-      "source_file": "speakon.py",
-      "source_location": "L97"
-    },
-    {
-      "id": "speakon_resource",
-      "label": "resource()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "SpeakOn",
-      "file_type": "code",
-      "norm_label": "resource()",
-      "source_file": "speakon.py",
-      "source_location": "L75"
     },
     {
       "id": "speakon_set_busy_priority",
@@ -2167,16 +2048,28 @@
       "source_location": "L233"
     },
     {
-      "id": "tests_test_mic_test_warm_and_begin_at_the_same_time_open_one_stream",
-      "label": "test_warm_and_begin_at_the_same_time_open_one_stream()",
+      "id": "learn_set_aside",
+      "label": "set_aside()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
-      "community_name": "threading",
+      "community_name": "store.py",
       "file_type": "code",
-      "norm_label": "test_warm_and_begin_at_the_same_time_open_one_stream()",
-      "source_file": "tests/test_mic.py",
-      "source_location": "L25"
+      "norm_label": "set_aside()",
+      "source_file": "learn.py",
+      "source_location": "L280"
+    },
+    {
+      "id": "store_load_json",
+      "label": "load_json()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "store.py",
+      "file_type": "code",
+      "norm_label": "load_json()",
+      "source_file": "store.py",
+      "source_location": "L19"
     },
     {
       "id": "config_combo_label",
@@ -2383,6 +2276,126 @@
       "source_location": "L18"
     },
     {
+      "id": "tools_bench_release_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L45"
+    },
+    {
+      "id": "tools_bench_release_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L106"
+    },
+    {
+      "id": "tools_bench_release_old_finish",
+      "label": "old_finish()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "old_finish()",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L62"
+    },
+    {
+      "id": "tools_bench_release_piece",
+      "label": "piece()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "piece()",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L57"
+    },
+    {
+      "id": "tools_bench_release_release_time",
+      "label": "release_time()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "release_time()",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L71"
+    },
+    {
+      "id": "tools_bench_release_timed",
+      "label": "timed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "timed()",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L51"
+    },
+    {
+      "id": "tools_selftest_history_ids",
+      "label": "history_ids()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "history_ids()",
+      "source_file": "tools/selftest.py",
+      "source_location": "L27"
+    },
+    {
+      "id": "tools_selftest_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "tools/selftest.py",
+      "source_location": "L44"
+    },
+    {
+      "id": "tools_selftest_recall",
+      "label": "recall()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "recall()",
+      "source_file": "tools/selftest.py",
+      "source_location": "L38"
+    },
+    {
+      "id": "tools_selftest_words",
+      "label": "words()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "words()",
+      "source_file": "tools/selftest.py",
+      "source_location": "L34"
+    },
+    {
       "id": "speakon_fakemic_close",
       "label": ".close()",
       "_callable": true,
@@ -2443,52 +2456,340 @@
       "source_location": "L166"
     },
     {
-      "id": "tests_test_mic_fakestream_close",
-      "label": ".close()",
+      "id": "store_store_add_dictionary_lines",
+      "label": ".add_dictionary_lines()",
       "_callable": true,
       "_origin": "ast",
       "community": 23,
-      "community_name": "FakeStream",
+      "community_name": ".set_dictionary",
       "file_type": "code",
-      "norm_label": ".close()",
-      "source_file": "tests/test_mic.py",
-      "source_location": "L21"
+      "norm_label": ".add_dictionary_lines()",
+      "source_file": "store.py",
+      "source_location": "L154"
     },
     {
-      "id": "tests_test_mic_fakestream_init",
+      "id": "store_store_delete_dictionary_entry",
+      "label": ".delete_dictionary_entry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "code",
+      "norm_label": ".delete_dictionary_entry()",
+      "source_file": "store.py",
+      "source_location": "L146"
+    },
+    {
+      "id": "store_store_dictionary_line",
+      "label": "._dictionary_line()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "code",
+      "norm_label": "._dictionary_line()",
+      "source_file": "store.py",
+      "source_location": "L132"
+    },
+    {
+      "id": "store_store_init",
       "label": ".__init__()",
       "_callable": true,
       "_origin": "ast",
       "community": 23,
-      "community_name": "FakeStream",
+      "community_name": ".set_dictionary",
       "file_type": "code",
       "norm_label": ".__init__()",
-      "source_file": "tests/test_mic.py",
-      "source_location": "L10"
+      "source_file": "store.py",
+      "source_location": "L40"
     },
     {
-      "id": "tests_test_mic_fakestream_start",
-      "label": ".start()",
+      "id": "store_store_load_dictionary",
+      "label": ".load_dictionary()",
       "_callable": true,
       "_origin": "ast",
       "community": 23,
-      "community_name": "FakeStream",
+      "community_name": ".set_dictionary",
       "file_type": "code",
-      "norm_label": ".start()",
-      "source_file": "tests/test_mic.py",
-      "source_location": "L15"
+      "norm_label": ".load_dictionary()",
+      "source_file": "store.py",
+      "source_location": "L110"
     },
     {
-      "id": "tests_test_mic_fakestream_stop",
-      "label": ".stop()",
+      "id": "store_store_reload_dictionary",
+      "label": ".reload_dictionary()",
       "_callable": true,
       "_origin": "ast",
       "community": 23,
-      "community_name": "FakeStream",
+      "community_name": ".set_dictionary",
       "file_type": "code",
-      "norm_label": ".stop()",
-      "source_file": "tests/test_mic.py",
+      "norm_label": ".reload_dictionary()",
+      "source_file": "store.py",
+      "source_location": "L117"
+    },
+    {
+      "id": "store_store_save_dictionary_entry",
+      "label": ".save_dictionary_entry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "code",
+      "norm_label": ".save_dictionary_entry()",
+      "source_file": "store.py",
+      "source_location": "L135"
+    },
+    {
+      "id": "store_store_set_dictionary",
+      "label": ".set_dictionary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "code",
+      "norm_label": ".set_dictionary()",
+      "source_file": "store.py",
+      "source_location": "L127"
+    },
+    {
+      "id": "store_save_json",
+      "label": "save_json()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": "save_json()",
+      "source_file": "store.py",
+      "source_location": "L32"
+    },
+    {
+      "id": "store_store_add_history",
+      "label": ".add_history()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".add_history()",
+      "source_file": "store.py",
+      "source_location": "L72"
+    },
+    {
+      "id": "store_store_delete_history",
+      "label": ".delete_history()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".delete_history()",
+      "source_file": "store.py",
+      "source_location": "L90"
+    },
+    {
+      "id": "store_store_edit_history",
+      "label": ".edit_history()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".edit_history()",
+      "source_file": "store.py",
+      "source_location": "L97"
+    },
+    {
+      "id": "store_store_history_entry",
+      "label": "._history_entry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": "._history_entry()",
+      "source_file": "store.py",
+      "source_location": "L82"
+    },
+    {
+      "id": "store_store_history_text",
+      "label": ".history_text()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".history_text()",
+      "source_file": "store.py",
+      "source_location": "L85"
+    },
+    {
+      "id": "store_store_save_history",
+      "label": ".save_history()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".save_history()",
+      "source_file": "store.py",
+      "source_location": "L67"
+    },
+    {
+      "id": "store_store_save_settings",
+      "label": ".save_settings()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".save_settings()",
+      "source_file": "store.py",
+      "source_location": "L53"
+    },
+    {
+      "id": "store_store_set_setting",
+      "label": ".set_setting()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "code",
+      "norm_label": ".set_setting()",
+      "source_file": "store.py",
+      "source_location": "L57"
+    },
+    {
+      "id": "overlay_flowbar_draw",
+      "label": "._draw()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "code",
+      "norm_label": "._draw()",
+      "source_file": "overlay.py",
+      "source_location": "L177"
+    },
+    {
+      "id": "overlay_flowbar_frame",
+      "label": "._frame()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "code",
+      "norm_label": "._frame()",
+      "source_file": "overlay.py",
+      "source_location": "L130"
+    },
+    {
+      "id": "overlay_flowbar_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "overlay.py",
+      "source_location": "L85"
+    },
+    {
+      "id": "overlay_flowbar_mic",
+      "label": "._mic()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "code",
+      "norm_label": "._mic()",
+      "source_file": "overlay.py",
+      "source_location": "L171"
+    },
+    {
+      "id": "overlay_flowbar_target",
+      "label": "._target()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "code",
+      "norm_label": "._target()",
+      "source_file": "overlay.py",
+      "source_location": "L164"
+    },
+    {
+      "id": "overlay_flowbar_text",
+      "label": "._text()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "code",
+      "norm_label": "._text()",
+      "source_file": "overlay.py",
+      "source_location": "L155"
+    },
+    {
+      "id": "speakon_main_on_closing",
+      "label": "on_closing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "app",
+      "file_type": "code",
+      "norm_label": "on_closing()",
+      "source_file": "speakon.py",
+      "source_location": "L813"
+    },
+    {
+      "id": "tests_test_api_app",
+      "label": "app()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "app",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "tests/test_api.py",
       "source_location": "L18"
+    },
+    {
+      "id": "engine_block_rms",
+      "label": "block_rms()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "block_rms()",
+      "source_file": "engine.py",
+      "source_location": "L195"
+    },
+    {
+      "id": "engine_load_audio_file",
+      "label": "load_audio_file()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "load_audio_file()",
+      "source_file": "engine.py",
+      "source_location": "L486"
+    },
+    {
+      "id": "engine_save_wav",
+      "label": "save_wav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "save_wav()",
+      "source_file": "engine.py",
+      "source_location": "L500"
     },
     {
       "id": "tools_eval_stream_main",
@@ -2496,7 +2797,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "tools/eval_stream.py",
@@ -2508,7 +2809,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "run()",
       "source_file": "tools/eval_stream.py",
@@ -2520,7 +2821,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "load_textproc()",
       "source_file": "tools/eval_textproc.py",
@@ -2532,7 +2833,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "tools/eval_textproc.py",
@@ -2544,7 +2845,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "wispr_texts()",
       "source_file": "tools/eval_textproc.py",
@@ -2556,7 +2857,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "align()",
       "source_file": "tools/eval_wispr.py",
@@ -2568,7 +2869,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "load()",
       "source_file": "tools/eval_wispr.py",
@@ -2580,7 +2881,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "tools/eval_wispr.py",
@@ -2592,59 +2893,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "norm()",
       "source_file": "tools/eval_wispr.py",
       "source_location": "L30"
     },
     {
-      "id": "tools_selftest_history_ids",
-      "label": "history_ids()",
+      "id": "tools_learn_now_progress",
+      "label": "progress()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
-      "norm_label": "history_ids()",
-      "source_file": "tools/selftest.py",
-      "source_location": "L26"
-    },
-    {
-      "id": "tools_selftest_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "tools/selftest.py",
-      "source_location": "L43"
-    },
-    {
-      "id": "tools_selftest_recall",
-      "label": "recall()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "file_type": "code",
-      "norm_label": "recall()",
-      "source_file": "tools/selftest.py",
-      "source_location": "L37"
-    },
-    {
-      "id": "tools_selftest_words",
-      "label": "words()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "file_type": "code",
-      "norm_label": "words()",
-      "source_file": "tools/selftest.py",
-      "source_location": "L33"
+      "norm_label": "progress()",
+      "source_file": "tools/learn_now.py",
+      "source_location": "L10"
     },
     {
       "id": "tools_weekly_check_evaluate",
@@ -2652,7 +2917,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "evaluate()",
       "source_file": "tools/weekly_check.py",
@@ -2664,7 +2929,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "pct()",
       "source_file": "tools/weekly_check.py",
@@ -2676,7 +2941,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "report()",
       "source_file": "tools/weekly_check.py",
@@ -3388,7 +3653,7 @@
       "file_type": "code",
       "norm_label": ".cancel_preview()",
       "source_file": "engine.py",
-      "source_location": "L185"
+      "source_location": "L186"
     },
     {
       "id": "engine_engine_check",
@@ -3400,7 +3665,7 @@
       "file_type": "code",
       "norm_label": "._check()",
       "source_file": "engine.py",
-      "source_location": "L168"
+      "source_location": "L169"
     },
     {
       "id": "engine_engine_init",
@@ -3412,7 +3677,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "engine.py",
-      "source_location": "L93"
+      "source_location": "L94"
     },
     {
       "id": "engine_engine_load",
@@ -3424,7 +3689,7 @@
       "file_type": "code",
       "norm_label": ".load()",
       "source_file": "engine.py",
-      "source_location": "L105"
+      "source_location": "L106"
     },
     {
       "id": "engine_engine_transcribe",
@@ -3436,7 +3701,7 @@
       "file_type": "code",
       "norm_label": ".transcribe()",
       "source_file": "engine.py",
-      "source_location": "L190"
+      "source_location": "L191"
     },
     {
       "id": "engine_engine_words",
@@ -3448,7 +3713,7 @@
       "file_type": "code",
       "norm_label": ".words()",
       "source_file": "engine.py",
-      "source_location": "L174"
+      "source_location": "L175"
     },
     {
       "id": "engine_engine_words_031a18",
@@ -3460,7 +3725,7 @@
       "file_type": "code",
       "norm_label": "._words()",
       "source_file": "engine.py",
-      "source_location": "L147"
+      "source_location": "L148"
     },
     {
       "id": "engine_is_english_only",
@@ -3472,7 +3737,7 @@
       "file_type": "code",
       "norm_label": "is_english_only()",
       "source_file": "engine.py",
-      "source_location": "L86"
+      "source_location": "L87"
     },
     {
       "id": "engine_dictation_cancel",
@@ -3484,7 +3749,7 @@
       "file_type": "code",
       "norm_label": ".cancel()",
       "source_file": "engine.py",
-      "source_location": "L434"
+      "source_location": "L458"
     },
     {
       "id": "engine_dictation_commit",
@@ -3496,7 +3761,7 @@
       "file_type": "code",
       "norm_label": "._commit()",
       "source_file": "engine.py",
-      "source_location": "L259"
+      "source_location": "L261"
     },
     {
       "id": "engine_dictation_committed_text",
@@ -3508,7 +3773,7 @@
       "file_type": "code",
       "norm_label": ".committed_text()",
       "source_file": "engine.py",
-      "source_location": "L353"
+      "source_location": "L362"
     },
     {
       "id": "engine_dictation_do",
@@ -3520,7 +3785,7 @@
       "file_type": "code",
       "norm_label": "._do()",
       "source_file": "engine.py",
-      "source_location": "L331"
+      "source_location": "L340"
     },
     {
       "id": "engine_dictation_feed",
@@ -3532,7 +3797,7 @@
       "file_type": "code",
       "norm_label": ".feed()",
       "source_file": "engine.py",
-      "source_location": "L239"
+      "source_location": "L241"
     },
     {
       "id": "engine_dictation_finish",
@@ -3544,7 +3809,31 @@
       "file_type": "code",
       "norm_label": ".finish()",
       "source_file": "engine.py",
-      "source_location": "L426"
+      "source_location": "L449"
+    },
+    {
+      "id": "engine_dictation_finish_tail",
+      "label": "._finish_tail()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Dictation",
+      "file_type": "code",
+      "norm_label": "._finish_tail()",
+      "source_file": "engine.py",
+      "source_location": "L383"
+    },
+    {
+      "id": "engine_dictation_heard_all",
+      "label": "._heard_all()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Dictation",
+      "file_type": "code",
+      "norm_label": "._heard_all()",
+      "source_file": "engine.py",
+      "source_location": "L391"
     },
     {
       "id": "engine_dictation_init",
@@ -3556,7 +3845,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "engine.py",
-      "source_location": "L208"
+      "source_location": "L209"
     },
     {
       "id": "engine_dictation_maybe_preview",
@@ -3568,7 +3857,7 @@
       "file_type": "code",
       "norm_label": "._maybe_preview()",
       "source_file": "engine.py",
-      "source_location": "L378"
+      "source_location": "L396"
     },
     {
       "id": "engine_dictation_piece",
@@ -3580,7 +3869,7 @@
       "file_type": "code",
       "norm_label": "._piece()",
       "source_file": "engine.py",
-      "source_location": "L270"
+      "source_location": "L286"
     },
     {
       "id": "engine_dictation_seconds",
@@ -3592,7 +3881,19 @@
       "file_type": "code",
       "norm_label": ".seconds()",
       "source_file": "engine.py",
-      "source_location": "L443"
+      "source_location": "L467"
+    },
+    {
+      "id": "engine_dictation_span",
+      "label": "._span()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Dictation",
+      "file_type": "code",
+      "norm_label": "._span()",
+      "source_file": "engine.py",
+      "source_location": "L272"
     },
     {
       "id": "engine_dictation_store",
@@ -3604,7 +3905,7 @@
       "file_type": "code",
       "norm_label": "._store()",
       "source_file": "engine.py",
-      "source_location": "L325"
+      "source_location": "L334"
     },
     {
       "id": "engine_dictation_threshold",
@@ -3616,7 +3917,7 @@
       "file_type": "code",
       "norm_label": ".threshold()",
       "source_file": "engine.py",
-      "source_location": "L236"
+      "source_location": "L238"
     },
     {
       "id": "engine_dictation_voiced",
@@ -3628,7 +3929,7 @@
       "file_type": "code",
       "norm_label": "._voiced()",
       "source_file": "engine.py",
-      "source_location": "L267"
+      "source_location": "L269"
     },
     {
       "id": "engine_dictation_work",
@@ -3640,7 +3941,7 @@
       "file_type": "code",
       "norm_label": "._work()",
       "source_file": "engine.py",
-      "source_location": "L356"
+      "source_location": "L365"
     },
     {
       "id": "engine_transcribe_array",
@@ -3652,7 +3953,7 @@
       "file_type": "code",
       "norm_label": "transcribe_array()",
       "source_file": "engine.py",
-      "source_location": "L447"
+      "source_location": "L471"
     },
     {
       "id": "hotkeys_hotkeywatcher_capture",
@@ -3852,59 +4153,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "._blit()",
       "source_file": "overlay.py",
       "source_location": "L234"
-    },
-    {
-      "id": "overlay_flowbar_draw",
-      "label": "._draw()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": "._draw()",
-      "source_file": "overlay.py",
-      "source_location": "L177"
-    },
-    {
-      "id": "overlay_flowbar_frame",
-      "label": "._frame()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": "._frame()",
-      "source_file": "overlay.py",
-      "source_location": "L130"
-    },
-    {
-      "id": "overlay_flowbar_init",
-      "label": ".__init__()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "overlay.py",
-      "source_location": "L85"
-    },
-    {
-      "id": "overlay_flowbar_mic",
-      "label": "._mic()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": "._mic()",
-      "source_file": "overlay.py",
-      "source_location": "L171"
     },
     {
       "id": "overlay_flowbar_run",
@@ -3912,35 +4165,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "._run()",
       "source_file": "overlay.py",
       "source_location": "L98"
-    },
-    {
-      "id": "overlay_flowbar_target",
-      "label": "._target()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": "._target()",
-      "source_file": "overlay.py",
-      "source_location": "L164"
-    },
-    {
-      "id": "overlay_flowbar_text",
-      "label": "._text()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "code",
-      "norm_label": "._text()",
-      "source_file": "overlay.py",
-      "source_location": "L155"
     },
     {
       "id": "overlay_font",
@@ -3948,7 +4177,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "_font()",
       "source_file": "overlay.py",
@@ -4173,7 +4402,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "real median wait metric",
@@ -4188,7 +4417,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "wispr flow transcript as reference",
@@ -4204,7 +4433,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "word error rate (live pipeline, 40 recordings)",
@@ -4219,7 +4448,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "document",
       "norm_label": "v1.1.0 (instant typing, 3 s context)",
@@ -4235,7 +4464,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "document",
       "norm_label": "v1.1.1 (short dictations whole at release)",
@@ -4245,29 +4474,13 @@
       "source_url": null
     },
     {
-      "id": "tools_weekly_log_v1_2_1",
-      "label": "v1.2.1 (sound-alike snapping fixes, idle polling fix)",
-      "_origin": "ast",
-      "author": null,
-      "captured_at": null,
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "v1.2.1 (sound-alike snapping fixes, idle polling fix)",
-      "rationale": "Sound-alike snapping wrongly rewrote correct text (e.g. 'trading session' -> TradingView); clean-up step went 10.01% -> 9.22% on 671 Wispr texts. Settings window polled 8x/s even when hidden, costing ~77% of a core idle -> ~6%.",
-      "source_file": "tools/weekly_log.md",
-      "source_location": "L11",
-      "source_url": null
-    },
-    {
       "id": "tools_weekly_log_v1_2_2",
       "label": "v1.2.2 (above-normal CPU priority while dictating)",
       "_origin": "ast",
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "document",
       "norm_label": "v1.2.2 (above-normal cpu priority while dictating)",
@@ -4283,12 +4496,28 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "rationale",
       "norm_label": "above-normal cpu priority only while dictating",
       "source_file": "tools/weekly_log.md",
       "source_location": "L12",
+      "source_url": null
+    },
+    {
+      "id": "tools_weekly_log_v1_2_1",
+      "label": "v1.2.1 (sound-alike snapping fixes, idle polling fix)",
+      "_origin": "ast",
+      "author": null,
+      "captured_at": null,
+      "community": 5,
+      "community_name": "textproc.py",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "v1.2.1 (sound-alike snapping fixes, idle polling fix)",
+      "rationale": "Sound-alike snapping wrongly rewrote correct text (e.g. 'trading session' -> TradingView); clean-up step went 10.01% -> 9.22% on 671 Wispr texts. Settings window polled 8x/s even when hidden, costing ~77% of a core idle -> ~6%.",
+      "source_file": "tools/weekly_log.md",
+      "source_location": "L11",
       "source_url": null
     },
     {
@@ -4363,6 +4592,17 @@
       "source_location": "L98"
     },
     {
+      "id": "parametrize",
+      "label": "parametrize",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "code",
+      "norm_label": "parametrize",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "tests_test_engine",
       "label": "test_engine.py",
       "_origin": "ast",
@@ -4385,7 +4625,7 @@
       "source_location": ""
     },
     {
-      "id": "engine_rationale_60",
+      "id": "engine_rationale_61",
       "label": "Wraps an onnxruntime session so a running call can be stopped from another\u2026",
       "_origin": "ast",
       "community": 10,
@@ -4393,10 +4633,10 @@
       "file_type": "rationale",
       "norm_label": "wraps an onnxruntime session so a running call can be stopped from another...",
       "source_file": "engine.py",
-      "source_location": "L60"
+      "source_location": "L61"
     },
     {
-      "id": "tests_test_engine_rationale_16",
+      "id": "tests_test_engine_rationale_17",
       "label": "A session whose run() blocks until told to finish, then reports whether it was\u2026",
       "_origin": "ast",
       "community": 10,
@@ -4404,7 +4644,51 @@
       "file_type": "rationale",
       "norm_label": "a session whose run() blocks until told to finish, then reports whether it was...",
       "source_file": "tests/test_engine.py",
-      "source_location": "L16"
+      "source_location": "L17"
+    },
+    {
+      "id": "tests_test_engine_rationale_76",
+      "label": "Says one word per call and counts the calls.",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "test_engine.py",
+      "file_type": "rationale",
+      "norm_label": "says one word per call and counts the calls.",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L76"
+    },
+    {
+      "id": "mic",
+      "label": "mic.py",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Microphone",
+      "file_type": "code",
+      "norm_label": "mic.py",
+      "source_file": "mic.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_mic",
+      "label": "test_mic.py",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Microphone",
+      "file_type": "code",
+      "norm_label": "test_mic.py",
+      "source_file": "tests/test_mic.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "mic_rationale_1",
+      "label": "The microphone, kept ready so the first word is never cut off. Opening a\u2026",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Microphone",
+      "file_type": "rationale",
+      "norm_label": "the microphone, kept ready so the first word is never cut off. opening a...",
+      "source_file": "mic.py",
+      "source_location": "L1"
     },
     {
       "id": "mic_rationale_75",
@@ -4429,17 +4713,6 @@
       "source_location": "L88"
     },
     {
-      "id": "store",
-      "label": "store.py",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "code",
-      "norm_label": "store.py",
-      "source_file": "store.py",
-      "source_location": "L1"
-    },
-    {
       "id": "tests_test_store",
       "label": "test_store.py",
       "_origin": "ast",
@@ -4451,116 +4724,6 @@
       "source_location": "L1"
     },
     {
-      "id": "learn_rationale_281",
-      "label": "Keep a copy of a data file that could not be read (path.broken-<time>), before\u2026",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "keep a copy of a data file that could not be read (path.broken-<time>), before...",
-      "source_file": "learn.py",
-      "source_location": "L281"
-    },
-    {
-      "id": "learn_rationale_289",
-      "label": "Stable id for a dictionary line / learned fix / term: the same text always gets\u2026",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "stable id for a dictionary line / learned fix / term: the same text always gets...",
-      "source_file": "learn.py",
-      "source_location": "L289"
-    },
-    {
-      "id": "store_rationale_1",
-      "label": "What SpeakOn saves: settings, dictation history and the custom dictionary,\u2026",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "what speakon saves: settings, dictation history and the custom dictionary,...",
-      "source_file": "store.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "store_rationale_118",
-      "label": "Pick up edits made to the file outside the app; returns the current text.",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "pick up edits made to the file outside the app; returns the current text.",
-      "source_file": "store.py",
-      "source_location": "L118"
-    },
-    {
-      "id": "store_rationale_136",
-      "label": "Replace the line with id `eid`, or add `line` at the end if there is none.",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "replace the line with id `eid`, or add `line` at the end if there is none.",
-      "source_file": "store.py",
-      "source_location": "L136"
-    },
-    {
-      "id": "store_rationale_155",
-      "label": "Append the lines not already in the dictionary under a `# heading`; returns\u2026",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "append the lines not already in the dictionary under a `# heading`; returns...",
-      "source_file": "store.py",
-      "source_location": "L155"
-    },
-    {
-      "id": "store_rationale_20",
-      "label": "The file's contents; `default` if it is missing. An unreadable file is copied\u2026",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "the file's contents; `default` if it is missing. an unreadable file is copied...",
-      "source_file": "store.py",
-      "source_location": "L20"
-    },
-    {
-      "id": "store_rationale_58",
-      "label": "Change (and save) one setting; returns the old value.",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "change (and save) one setting; returns the old value.",
-      "source_file": "store.py",
-      "source_location": "L58"
-    },
-    {
-      "id": "store_rationale_98",
-      "label": "Replace an entry's text; returns the text it had, or None if the entry is gone.",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Store",
-      "file_type": "rationale",
-      "norm_label": "replace an entry's text; returns the text it had, or none if the entry is gone.",
-      "source_file": "store.py",
-      "source_location": "L98"
-    },
-    {
-      "id": "tests_test_api_py_fixture",
-      "label": "fixture",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "code",
-      "norm_label": "fixture",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "learn_rationale_299",
       "label": "learned.json. Re-read whenever the file changes on disk, so edits made while\u2026",
       "_origin": "ast",
@@ -4570,28 +4733,6 @@
       "norm_label": "learned.json. re-read whenever the file changes on disk, so edits made while...",
       "source_file": "learn.py",
       "source_location": "L299"
-    },
-    {
-      "id": "learn_rationale_364",
-      "label": "Enabled fixes and all terms, as rows for the Dictionary page.",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "rationale",
-      "norm_label": "enabled fixes and all terms, as rows for the dictionary page.",
-      "source_file": "learn.py",
-      "source_location": "L364"
-    },
-    {
-      "id": "learn_rationale_373",
-      "label": "What the Your voice page shows.",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Learned",
-      "file_type": "rationale",
-      "norm_label": "what the your voice page shows.",
-      "source_file": "learn.py",
-      "source_location": "L373"
     },
     {
       "id": "learn_rationale_391",
@@ -4660,48 +4801,37 @@
       "source_location": "L1"
     },
     {
-      "id": "engine",
-      "label": "engine.py",
+      "id": "learn_rationale_289",
+      "label": "Stable id for a dictionary line / learned fix / term: the same text always gets\u2026",
       "_origin": "ast",
       "community": 18,
-      "community_name": "engine.py",
-      "file_type": "code",
-      "norm_label": "engine.py",
-      "source_file": "engine.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "tools_learn_now",
-      "label": "learn_now.py",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "engine.py",
-      "file_type": "code",
-      "norm_label": "learn_now.py",
-      "source_file": "tools/learn_now.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "engine_rationale_1",
-      "label": "Speech engines and the streaming dictation pipeline. Engines - Parakeet TDT v3\u2026",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "engine.py",
+      "community_name": "entry_id",
       "file_type": "rationale",
-      "norm_label": "speech engines and the streaming dictation pipeline. engines - parakeet tdt v3...",
-      "source_file": "engine.py",
-      "source_location": "L1"
+      "norm_label": "stable id for a dictionary line / learned fix / term: the same text always gets...",
+      "source_file": "learn.py",
+      "source_location": "L289"
     },
     {
-      "id": "tools_learn_now_rationale_1",
-      "label": "Run the 'Your voice -> Learn now' step from the command line and save the\u2026",
+      "id": "learn_rationale_364",
+      "label": "Enabled fixes and all terms, as rows for the Dictionary page.",
       "_origin": "ast",
       "community": 18,
-      "community_name": "engine.py",
+      "community_name": "entry_id",
       "file_type": "rationale",
-      "norm_label": "run the 'your voice -> learn now' step from the command line and save the...",
-      "source_file": "tools/learn_now.py",
-      "source_location": "L1"
+      "norm_label": "enabled fixes and all terms, as rows for the dictionary page.",
+      "source_file": "learn.py",
+      "source_location": "L364"
+    },
+    {
+      "id": "learn_rationale_373",
+      "label": "What the Your voice page shows.",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "entry_id",
+      "file_type": "rationale",
+      "norm_label": "what the your voice page shows.",
+      "source_file": "learn.py",
+      "source_location": "L373"
     },
     {
       "id": "sendinput",
@@ -4770,37 +4900,48 @@
       "source_location": "L56"
     },
     {
-      "id": "mic",
-      "label": "mic.py",
+      "id": "store",
+      "label": "store.py",
       "_origin": "ast",
       "community": 20,
-      "community_name": "threading",
+      "community_name": "store.py",
       "file_type": "code",
-      "norm_label": "mic.py",
-      "source_file": "mic.py",
+      "norm_label": "store.py",
+      "source_file": "store.py",
       "source_location": "L1"
     },
     {
-      "id": "tests_test_mic",
-      "label": "test_mic.py",
+      "id": "learn_rationale_281",
+      "label": "Keep a copy of a data file that could not be read (path.broken-<time>), before\u2026",
       "_origin": "ast",
       "community": 20,
-      "community_name": "threading",
-      "file_type": "code",
-      "norm_label": "test_mic.py",
-      "source_file": "tests/test_mic.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "mic_rationale_1",
-      "label": "The microphone, kept ready so the first word is never cut off. Opening a\u2026",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "threading",
+      "community_name": "store.py",
       "file_type": "rationale",
-      "norm_label": "the microphone, kept ready so the first word is never cut off. opening a...",
-      "source_file": "mic.py",
+      "norm_label": "keep a copy of a data file that could not be read (path.broken-<time>), before...",
+      "source_file": "learn.py",
+      "source_location": "L281"
+    },
+    {
+      "id": "store_rationale_1",
+      "label": "What SpeakOn saves: settings, dictation history and the custom dictionary,\u2026",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "store.py",
+      "file_type": "rationale",
+      "norm_label": "what speakon saves: settings, dictation history and the custom dictionary,...",
+      "source_file": "store.py",
       "source_location": "L1"
+    },
+    {
+      "id": "store_rationale_20",
+      "label": "The file's contents; `default` if it is missing. An unreadable file is copied\u2026",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "store.py",
+      "file_type": "rationale",
+      "norm_label": "the file's contents; `default` if it is missing. an unreadable file is copied...",
+      "source_file": "store.py",
+      "source_location": "L20"
     },
     {
       "id": "config",
@@ -4858,6 +4999,28 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_bench_release",
+      "label": "bench_release.py",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "bench_release.py",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_selftest",
+      "label": "selftest.py",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "code",
+      "norm_label": "selftest.py",
+      "source_file": "tools/selftest.py",
+      "source_location": "L1"
+    },
+    {
       "id": "config_rationale_1",
       "label": "Settings, choices and paths shared by the app and its window.",
       "_origin": "ast",
@@ -4902,6 +5065,61 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_bench_release_rationale_1",
+      "label": "How long the wait after letting go of the key takes. Replays a WAV through the\u2026",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "rationale",
+      "norm_label": "how long the wait after letting go of the key takes. replays a wav through the...",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_bench_release_rationale_63",
+      "label": "The release step of versions before _finish_tail.",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "rationale",
+      "norm_label": "the release step of versions before _finish_tail.",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L63"
+    },
+    {
+      "id": "tools_bench_release_rationale_72",
+      "label": "Feed the audio like the app does, then let go: (wait, seconds left at release,\u2026",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "rationale",
+      "norm_label": "feed the audio like the app does, then let go: (wait, seconds left at release,...",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L72"
+    },
+    {
+      "id": "tools_selftest_rationale_1",
+      "label": "End-to-end self-test: dictate a WAV through the fake microphone and check what\u2026",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "rationale",
+      "norm_label": "end-to-end self-test: dictate a wav through the fake microphone and check what...",
+      "source_file": "tools/selftest.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_selftest_rationale_39",
+      "label": "Share of the expected words (with repeats) that appear in what was transcribed.",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "test_api.py",
+      "file_type": "rationale",
+      "norm_label": "share of the expected words (with repeats) that appear in what was transcribed.",
+      "source_file": "tools/selftest.py",
+      "source_location": "L39"
+    },
+    {
       "id": "speakon_rationale_145",
       "label": "Plays a 16 kHz mono .wav into the pipeline in real time (testing without a\u2026",
       "_origin": "ast",
@@ -4913,11 +5131,122 @@
       "source_location": "L145"
     },
     {
+      "id": "store_rationale_118",
+      "label": "Pick up edits made to the file outside the app; returns the current text.",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "rationale",
+      "norm_label": "pick up edits made to the file outside the app; returns the current text.",
+      "source_file": "store.py",
+      "source_location": "L118"
+    },
+    {
+      "id": "store_rationale_136",
+      "label": "Replace the line with id `eid`, or add `line` at the end if there is none.",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "rationale",
+      "norm_label": "replace the line with id `eid`, or add `line` at the end if there is none.",
+      "source_file": "store.py",
+      "source_location": "L136"
+    },
+    {
+      "id": "store_rationale_155",
+      "label": "Append the lines not already in the dictionary under a `# heading`; returns\u2026",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": ".set_dictionary",
+      "file_type": "rationale",
+      "norm_label": "append the lines not already in the dictionary under a `# heading`; returns...",
+      "source_file": "store.py",
+      "source_location": "L155"
+    },
+    {
+      "id": "store_rationale_58",
+      "label": "Change (and save) one setting; returns the old value.",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "rationale",
+      "norm_label": "change (and save) one setting; returns the old value.",
+      "source_file": "store.py",
+      "source_location": "L58"
+    },
+    {
+      "id": "store_rationale_98",
+      "label": "Replace an entry's text; returns the text it had, or None if the entry is gone.",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": ".save_history",
+      "file_type": "rationale",
+      "norm_label": "replace an entry's text; returns the text it had, or none if the entry is gone.",
+      "source_file": "store.py",
+      "source_location": "L98"
+    },
+    {
+      "id": "overlay_rationale_172",
+      "label": "mic glyph centred at (cx, cy); u = unit size in pixels",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "rationale",
+      "norm_label": "mic glyph centred at (cx, cy); u = unit size in pixels",
+      "source_file": "overlay.py",
+      "source_location": "L172"
+    },
+    {
+      "id": "overlay_rationale_86",
+      "label": "get_state() -> dict(recording, busy, level, preview, latched, idle_bar)",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "FlowBar",
+      "file_type": "rationale",
+      "norm_label": "get_state() -> dict(recording, busy, level, preview, latched, idle_bar)",
+      "source_file": "overlay.py",
+      "source_location": "L86"
+    },
+    {
+      "id": "tests_test_api_py_fixture",
+      "label": "fixture",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "app",
+      "file_type": "code",
+      "norm_label": "fixture",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "github_release_notes",
+      "label": "release_notes.md",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "release_notes.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "release_notes.md",
+      "source_file": ".github/release_notes.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "engine",
+      "label": "engine.py",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "engine.py",
+      "file_type": "code",
+      "norm_label": "engine.py",
+      "source_file": "engine.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_diff_stream",
       "label": "diff_stream.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "diff_stream.py",
       "source_file": "tools/diff_stream.py",
@@ -4928,7 +5257,7 @@
       "label": "eval_stream.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "eval_stream.py",
       "source_file": "tools/eval_stream.py",
@@ -4939,7 +5268,7 @@
       "label": "eval_textproc.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "eval_textproc.py",
       "source_file": "tools/eval_textproc.py",
@@ -4950,21 +5279,21 @@
       "label": "eval_wispr.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "eval_wispr.py",
       "source_file": "tools/eval_wispr.py",
       "source_location": "L1"
     },
     {
-      "id": "tools_selftest",
-      "label": "selftest.py",
+      "id": "tools_learn_now",
+      "label": "learn_now.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
-      "norm_label": "selftest.py",
-      "source_file": "tools/selftest.py",
+      "norm_label": "learn_now.py",
+      "source_file": "tools/learn_now.py",
       "source_location": "L1"
     },
     {
@@ -4972,10 +5301,21 @@
       "label": "weekly_check.py",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "code",
       "norm_label": "weekly_check.py",
       "source_file": "tools/weekly_check.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "engine_rationale_1",
+      "label": "Speech engines and the streaming dictation pipeline. Engines - Parakeet TDT v3\u2026",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "engine.py",
+      "file_type": "rationale",
+      "norm_label": "speech engines and the streaming dictation pipeline. engines - parakeet tdt v3...",
+      "source_file": "engine.py",
       "source_location": "L1"
     },
     {
@@ -4983,7 +5323,7 @@
       "label": "Where does the live pipeline lose accuracy vs pause-only pieces? Saves both\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
       "norm_label": "where does the live pipeline lose accuracy vs pause-only pieces? saves both...",
       "source_file": "tools/diff_stream.py",
@@ -4994,7 +5334,7 @@
       "label": "Accuracy of the full live pipeline (pieces + previews + release) on the user's\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
       "norm_label": "accuracy of the full live pipeline (pieces + previews + release) on the user's...",
       "source_file": "tools/eval_stream.py",
@@ -5005,7 +5345,7 @@
       "label": "How much the text clean-up (dictionary, sound-alike snapping, capitals) helps\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
       "norm_label": "how much the text clean-up (dictionary, sound-alike snapping, capitals) helps...",
       "source_file": "tools/eval_textproc.py",
@@ -5016,7 +5356,7 @@
       "label": "Score speech engines on the user's own Wispr Flow recordings. Reference =\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
       "norm_label": "score speech engines on the user's own wispr flow recordings. reference =...",
       "source_file": "tools/eval_wispr.py",
@@ -5027,40 +5367,29 @@
       "label": "Levenshtein alignment -> (errors, [(ref_word|None, hyp_word|None), ...])",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
       "norm_label": "levenshtein alignment -> (errors, [(ref_word|none, hyp_word|none), ...])",
       "source_file": "tools/eval_wispr.py",
       "source_location": "L43"
     },
     {
-      "id": "tools_selftest_rationale_1",
-      "label": "End-to-end self-test: dictate a WAV through the fake microphone and check what\u2026",
+      "id": "tools_learn_now_rationale_1",
+      "label": "Run the 'Your voice -> Learn now' step from the command line and save the\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
-      "norm_label": "end-to-end self-test: dictate a wav through the fake microphone and check what...",
-      "source_file": "tools/selftest.py",
+      "norm_label": "run the 'your voice -> learn now' step from the command line and save the...",
+      "source_file": "tools/learn_now.py",
       "source_location": "L1"
-    },
-    {
-      "id": "tools_selftest_rationale_38",
-      "label": "Share of the expected words (with repeats) that appear in what was transcribed.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "file_type": "rationale",
-      "norm_label": "share of the expected words (with repeats) that appear in what was transcribed.",
-      "source_file": "tools/selftest.py",
-      "source_location": "L38"
     },
     {
       "id": "tools_weekly_check_rationale_1",
       "label": "Weekly health check for SpeakOn - used by the improvement routine. python\u2026",
       "_origin": "ast",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "file_type": "rationale",
       "norm_label": "weekly health check for speakon - used by the improvement routine. python...",
       "source_file": "tools/weekly_check.py",
@@ -5298,7 +5627,7 @@
       "source_location": "L78"
     },
     {
-      "id": "engine_rationale_148",
+      "id": "engine_rationale_149",
       "label": "[(text_with_leading_space, start_seconds), ...] - punctuation stays on its word.",
       "_origin": "ast",
       "community": 6,
@@ -5306,10 +5635,10 @@
       "file_type": "rationale",
       "norm_label": "[(text_with_leading_space, start_seconds), ...] - punctuation stays on its word.",
       "source_file": "engine.py",
-      "source_location": "L148"
+      "source_location": "L149"
     },
     {
-      "id": "engine_rationale_186",
+      "id": "engine_rationale_187",
       "label": "Stop a live-preview transcription that is still running (the key was released).",
       "_origin": "ast",
       "community": 6,
@@ -5317,10 +5646,10 @@
       "file_type": "rationale",
       "norm_label": "stop a live-preview transcription that is still running (the key was released).",
       "source_file": "engine.py",
-      "source_location": "L186"
+      "source_location": "L187"
     },
     {
-      "id": "engine_rationale_91",
+      "id": "engine_rationale_92",
       "label": "Holds one loaded model. All calls are serialised with a lock.",
       "_origin": "ast",
       "community": 6,
@@ -5328,10 +5657,10 @@
       "file_type": "rationale",
       "norm_label": "holds one loaded model. all calls are serialised with a lock.",
       "source_file": "engine.py",
-      "source_location": "L91"
+      "source_location": "L92"
     },
     {
-      "id": "engine_rationale_199",
+      "id": "engine_rationale_200",
       "label": "One recording. feed() is called from the audio thread with 30 ms blocks. Pieces\u2026",
       "_origin": "ast",
       "community": 7,
@@ -5339,10 +5668,21 @@
       "file_type": "rationale",
       "norm_label": "one recording. feed() is called from the audio thread with 30 ms blocks. pieces...",
       "source_file": "engine.py",
-      "source_location": "L199"
+      "source_location": "L200"
     },
     {
-      "id": "engine_rationale_271",
+      "id": "engine_rationale_273",
+      "label": "The audio _piece hears for blocks [start, end): (first block, end block, quiet\u2026",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Dictation",
+      "file_type": "rationale",
+      "norm_label": "the audio _piece hears for blocks [start, end): (first block, end block, quiet...",
+      "source_file": "engine.py",
+      "source_location": "L273"
+    },
+    {
+      "id": "engine_rationale_287",
       "label": "Transcribe blocks [start, end) as the next piece. Returns (text, new text for\u2026",
       "_origin": "ast",
       "community": 7,
@@ -5350,10 +5690,10 @@
       "file_type": "rationale",
       "norm_label": "transcribe blocks [start, end) as the next piece. returns (text, new text for...",
       "source_file": "engine.py",
-      "source_location": "L271"
+      "source_location": "L287"
     },
     {
-      "id": "engine_rationale_332",
+      "id": "engine_rationale_341",
       "label": "Finish audio [start, end), reusing the preview when it matches.",
       "_origin": "ast",
       "community": 7,
@@ -5361,10 +5701,32 @@
       "file_type": "rationale",
       "norm_label": "finish audio [start, end), reusing the preview when it matches.",
       "source_file": "engine.py",
-      "source_location": "L332"
+      "source_location": "L341"
     },
     {
-      "id": "engine_rationale_379",
+      "id": "engine_rationale_384",
+      "label": "The release step: the words since the last piece.",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Dictation",
+      "file_type": "rationale",
+      "norm_label": "the release step: the words since the last piece.",
+      "source_file": "engine.py",
+      "source_location": "L384"
+    },
+    {
+      "id": "engine_rationale_392",
+      "label": "Did this preview hear exactly what the final pass would? Then its words are the\u2026",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Dictation",
+      "file_type": "rationale",
+      "norm_label": "did this preview hear exactly what the final pass would? then its words are the...",
+      "source_file": "engine.py",
+      "source_location": "L392"
+    },
+    {
+      "id": "engine_rationale_397",
       "label": "Transcribe the words since the last cut, exactly as the final step would,\u2026",
       "_origin": "ast",
       "community": 7,
@@ -5372,10 +5734,10 @@
       "file_type": "rationale",
       "norm_label": "transcribe the words since the last cut, exactly as the final step would,...",
       "source_file": "engine.py",
-      "source_location": "L379"
+      "source_location": "L397"
     },
     {
-      "id": "engine_rationale_427",
+      "id": "engine_rationale_450",
       "label": "Call after the audio stream has stopped. Blocks until all text is ready.",
       "_origin": "ast",
       "community": 7,
@@ -5383,10 +5745,10 @@
       "file_type": "rationale",
       "norm_label": "call after the audio stream has stopped. blocks until all text is ready.",
       "source_file": "engine.py",
-      "source_location": "L427"
+      "source_location": "L450"
     },
     {
-      "id": "engine_rationale_448",
+      "id": "engine_rationale_472",
       "label": "Transcribe a whole recording (audio file, or a saved dictation) with the same\u2026",
       "_origin": "ast",
       "community": 7,
@@ -5394,7 +5756,7 @@
       "file_type": "rationale",
       "norm_label": "transcribe a whole recording (audio file, or a saved dictation) with the same...",
       "source_file": "engine.py",
-      "source_location": "L448"
+      "source_location": "L472"
     },
     {
       "id": "hotkeys_rationale_101",
@@ -5423,7 +5785,7 @@
       "label": "overlay.py",
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "code",
       "norm_label": "overlay.py",
       "source_file": "overlay.py",
@@ -5434,33 +5796,11 @@
       "label": "The flow bar: a small black pill at the bottom of the screen while you dictate.\u2026",
       "_origin": "ast",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "file_type": "rationale",
       "norm_label": "the flow bar: a small black pill at the bottom of the screen while you dictate....",
       "source_file": "overlay.py",
       "source_location": "L1"
-    },
-    {
-      "id": "overlay_rationale_172",
-      "label": "mic glyph centred at (cx, cy); u = unit size in pixels",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "rationale",
-      "norm_label": "mic glyph centred at (cx, cy); u = unit size in pixels",
-      "source_file": "overlay.py",
-      "source_location": "L172"
-    },
-    {
-      "id": "overlay_rationale_86",
-      "label": "get_state() -> dict(recording, busy, level, preview, latched, idle_bar)",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "FlowBar",
-      "file_type": "rationale",
-      "norm_label": "get_state() -> dict(recording, busy, level, preview, latched, idle_bar)",
-      "source_file": "overlay.py",
-      "source_location": "L86"
     },
     {
       "id": "ui_index_applytheme",
@@ -5788,7 +6128,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "document",
       "norm_label": "speakon weekly log",
@@ -5804,7 +6144,7 @@
       "author": null,
       "captured_at": null,
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "contributor": null,
       "file_type": "rationale",
       "norm_label": "transcribe-while-you-talk pipeline",
@@ -6266,14 +6606,26 @@
       "type": "external"
     },
     {
-      "id": "uuid",
-      "label": "uuid",
+      "id": "collections",
+      "label": "collections",
       "_origin": "semantic",
-      "community": 12,
-      "community_name": "Store",
+      "community": 11,
+      "community_name": "Microphone",
       "external": true,
       "file_type": "concept",
-      "norm_label": "uuid",
+      "norm_label": "collections",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "sounddevice",
+      "label": "sounddevice",
+      "_origin": "semantic",
+      "community": 11,
+      "community_name": "Microphone",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "sounddevice",
       "source_file": "",
       "type": "external"
     },
@@ -6398,62 +6750,50 @@
       "type": "external"
     },
     {
-      "id": "queue",
-      "label": "queue",
-      "_origin": "semantic",
-      "community": 18,
-      "community_name": "engine.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "queue",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "time",
-      "label": "time",
-      "_origin": "semantic",
-      "community": 18,
-      "community_name": "engine.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "time",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "collections",
-      "label": "collections",
-      "_origin": "semantic",
-      "community": 20,
-      "community_name": "threading",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "collections",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "sounddevice",
-      "label": "sounddevice",
-      "_origin": "semantic",
-      "community": 20,
-      "community_name": "threading",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "sounddevice",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "threading",
       "label": "threading",
       "_origin": "semantic",
       "community": 20,
-      "community_name": "threading",
+      "community_name": "store.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "threading",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "uuid",
+      "label": "uuid",
+      "_origin": "semantic",
+      "community": 20,
+      "community_name": "store.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "uuid",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "argparse",
+      "label": "argparse",
+      "_origin": "semantic",
+      "community": 21,
+      "community_name": "test_api.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "argparse",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "numpy",
+      "label": "numpy",
+      "_origin": "semantic",
+      "community": 21,
+      "community_name": "test_api.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "numpy",
       "source_file": "",
       "type": "external"
     },
@@ -6482,6 +6822,30 @@
       "type": "external"
     },
     {
+      "id": "statistics",
+      "label": "statistics",
+      "_origin": "semantic",
+      "community": 21,
+      "community_name": "test_api.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "statistics",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "subprocess",
+      "label": "subprocess",
+      "_origin": "semantic",
+      "community": 21,
+      "community_name": "test_api.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "subprocess",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "types",
       "label": "types",
       "_origin": "semantic",
@@ -6506,14 +6870,14 @@
       "type": "external"
     },
     {
-      "id": "argparse",
-      "label": "argparse",
+      "id": "wave",
+      "label": "wave",
       "_origin": "semantic",
-      "community": 3,
-      "community_name": "eval_wispr.py",
+      "community": 21,
+      "community_name": "test_api.py",
       "external": true,
       "file_type": "concept",
-      "norm_label": "argparse",
+      "norm_label": "wave",
       "source_file": "",
       "type": "external"
     },
@@ -6522,7 +6886,7 @@
       "label": "importlib_util",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "importlib_util",
@@ -6534,7 +6898,7 @@
       "label": "json",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "json",
@@ -6546,10 +6910,22 @@
       "label": "os",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "os",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "queue",
+      "label": "queue",
+      "_origin": "semantic",
+      "community": 3,
+      "community_name": "engine.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "queue",
       "source_file": "",
       "type": "external"
     },
@@ -6558,7 +6934,7 @@
       "label": "random",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "random",
@@ -6570,34 +6946,10 @@
       "label": "re",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "re",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "statistics",
-      "label": "statistics",
-      "_origin": "semantic",
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "statistics",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "subprocess",
-      "label": "subprocess",
-      "_origin": "semantic",
-      "community": 3,
-      "community_name": "eval_wispr.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "subprocess",
       "source_file": "",
       "type": "external"
     },
@@ -6606,7 +6958,7 @@
       "label": "sys",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "sys",
@@ -6614,14 +6966,14 @@
       "type": "external"
     },
     {
-      "id": "wave",
-      "label": "wave",
+      "id": "time",
+      "label": "time",
       "_origin": "semantic",
       "community": 3,
-      "community_name": "eval_wispr.py",
+      "community_name": "engine.py",
       "external": true,
       "file_type": "concept",
-      "norm_label": "wave",
+      "norm_label": "time",
       "source_file": "",
       "type": "external"
     },
@@ -6658,18 +7010,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "io",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "numpy",
-      "label": "numpy",
-      "_origin": "semantic",
-      "community": 4,
-      "community_name": "learn.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "numpy",
       "source_file": "",
       "type": "external"
     },
@@ -6726,7 +7066,7 @@
       "label": "math",
       "_origin": "semantic",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "math",
@@ -6738,7 +7078,7 @@
       "label": "pil",
       "_origin": "semantic",
       "community": 9,
-      "community_name": "FlowBar",
+      "community_name": "overlay.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "pil",
@@ -6864,7 +7204,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L264",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -6876,7 +7216,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L337",
+      "source_location": "L346",
       "weight": 1.0
     },
     {
@@ -6888,7 +7228,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L339",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -6900,7 +7240,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L348",
+      "source_location": "L357",
       "weight": 1.0
     },
     {
@@ -6912,7 +7252,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L240",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -6924,7 +7264,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L246",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -6936,7 +7276,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L254",
+      "source_location": "L256",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_finish",
+      "target": "engine_dictation_heard_all",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L452",
       "weight": 1.0
     },
     {
@@ -6948,7 +7300,67 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L432",
+      "source_location": "L456",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_finish_tail",
+      "target": "engine_dictation_heard_all",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L387",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_finish_tail",
+      "target": "engine_dictation_do",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L389",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_finish_tail",
+      "target": "engine_dictation_threshold",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L389",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_heard_all",
+      "target": "engine_dictation_span",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L394",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_heard_all",
+      "target": "engine_dictation_threshold",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L394",
       "weight": 1.0
     },
     {
@@ -6960,19 +7372,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L390",
+      "source_location": "L409",
       "weight": 1.0
     },
     {
       "source": "engine_dictation_maybe_preview",
-      "target": "engine_dictation_voiced",
+      "target": "engine_dictation_span",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L391",
+      "source_location": "L415",
       "weight": 1.0
     },
     {
@@ -6984,7 +7396,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L400",
+      "source_location": "L421",
       "weight": 1.0
     },
     {
@@ -6996,7 +7408,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L414",
+      "source_location": "L437",
       "weight": 1.0
     },
     {
@@ -7008,19 +7420,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L418",
+      "source_location": "L441",
       "weight": 1.0
     },
     {
       "source": "engine_dictation_piece",
-      "target": "engine_dictation_voiced",
+      "target": "engine_dictation_span",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L273",
+      "source_location": "L289",
       "weight": 1.0
     },
     {
@@ -7032,7 +7444,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L290",
+      "source_location": "L299",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_span",
+      "target": "engine_dictation_voiced",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L275",
       "weight": 1.0
     },
     {
@@ -7044,7 +7468,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L361",
+      "source_location": "L370",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation_work",
+      "target": "engine_dictation_finish_tail",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "engine.py",
+      "source_location": "L375",
       "weight": 1.0
     },
     {
@@ -7056,19 +7492,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L370",
-      "weight": 1.0
-    },
-    {
-      "source": "engine_dictation_work",
-      "target": "engine_dictation_threshold",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "engine.py",
-      "source_location": "L370",
+      "source_location": "L378",
       "weight": 1.0
     },
     {
@@ -7080,7 +7504,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L376",
+      "source_location": "L381",
       "weight": 1.0
     },
     {
@@ -7092,7 +7516,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L172",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -7104,7 +7528,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L127",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -7116,7 +7540,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L137",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -7128,7 +7552,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L191",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -7140,7 +7564,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L175",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -7152,7 +7576,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L181",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -7164,7 +7588,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "engine.py",
-      "source_location": "L449",
+      "source_location": "L473",
       "weight": 1.0
     },
     {
@@ -8872,6 +9296,42 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_engine_previewed",
+      "target": "tests_test_engine_fakeengine",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_previewed",
+      "target": "engine_dictation",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_previewed",
+      "target": "tests_test_engine_talk",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
       "source": "tests_test_engine_test_cancel_stops_a_preview_run",
       "target": "engine_cancellable",
       "relation": "calls",
@@ -8880,7 +9340,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -8892,7 +9352,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -8904,7 +9364,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -8916,7 +9376,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L65",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -8928,7 +9388,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L65",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -8940,7 +9400,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -8952,7 +9412,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -8964,7 +9424,127 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_engine.py",
-      "source_location": "L55",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_preview_waits_for_the_pause_to_cover_the_last_word",
+      "target": "tests_test_engine_fakeengine",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_preview_waits_for_the_pause_to_cover_the_last_word",
+      "target": "engine_dictation",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_preview_waits_for_the_pause_to_cover_the_last_word",
+      "target": "tests_test_engine_talk",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_keeps_a_running_preview_only_if_it_covers_everything",
+      "target": "tests_test_engine_fakeengine",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_keeps_a_running_preview_only_if_it_covers_everything",
+      "target": "engine_dictation",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_keeps_a_running_preview_only_if_it_covers_everything",
+      "target": "tests_test_engine_talk",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_reuses_a_preview_that_heard_everything",
+      "target": "tests_test_engine_previewed",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_reuses_a_preview_that_heard_everything",
+      "target": "tests_test_engine_talk",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_transcribes_again_when_more_was_said",
+      "target": "tests_test_engine_previewed",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_transcribes_again_when_more_was_said",
+      "target": "tests_test_engine_talk",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -9652,6 +10232,54 @@
       "weight": 1.0
     },
     {
+      "source": "tools_bench_release_main",
+      "target": "tools_bench_release_load",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_main",
+      "target": "tools_bench_release_release_time",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_main",
+      "target": "tools_selftest_recall",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_release_time",
+      "target": "tools_bench_release_timed",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
       "source": "tools_eval_stream_main",
       "target": "tools_eval_wispr_load",
       "relation": "calls",
@@ -9792,7 +10420,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/selftest.py",
-      "source_location": "L57",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -9804,7 +10432,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/selftest.py",
-      "source_location": "L88",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -9816,7 +10444,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/selftest.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -9924,7 +10552,19 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "tests/test_engine.py",
-      "source_location": "L27",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_test_release_keeps_a_running_preview_only_if_it_covers_everything",
+      "target": "parametrize",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "decorator",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -11009,7 +11649,7 @@
     },
     {
       "source": "tests_test_engine",
-      "target": "pytest",
+      "target": "numpy",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11021,6 +11661,18 @@
     },
     {
       "source": "tests_test_engine",
+      "target": "pytest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_engine.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
       "target": "engine",
       "relation": "imports",
       "_origin": "ast",
@@ -11028,7 +11680,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_engine.py",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -11305,6 +11957,138 @@
       "context": "import",
       "source_file": "textproc.py",
       "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "argparse",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "statistics",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "time",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "types",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "wave",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "numpy",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "config",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "engine",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_selftest_recall",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -11796,7 +12580,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -11808,7 +12592,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -11820,7 +12604,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -11832,7 +12616,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -11844,7 +12628,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -11856,7 +12640,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -11868,7 +12652,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -11880,7 +12664,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -11892,7 +12676,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -11904,7 +12688,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -12304,6 +13088,30 @@
       "weight": 1.0
     },
     {
+      "source": "tools_bench_release",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_selftest",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
       "source": "tools_diff_stream",
       "target": "tools_eval_stream",
       "relation": "imports_from",
@@ -12360,7 +13168,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/selftest.py",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -12614,7 +13422,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L194",
+      "source_location": "L195",
       "weight": 1.0
     },
     {
@@ -12625,7 +13433,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L198",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -12636,7 +13444,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L447",
+      "source_location": "L471",
       "weight": 1.0
     },
     {
@@ -12647,7 +13455,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L462",
+      "source_location": "L486",
       "weight": 1.0
     },
     {
@@ -12658,7 +13466,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L476",
+      "source_location": "L500",
       "weight": 1.0
     },
     {
@@ -12669,7 +13477,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -12680,7 +13488,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L86",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -12691,7 +13499,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L90",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -13378,13 +14186,68 @@
     },
     {
       "source": "tests_test_engine",
+      "target": "tests_test_engine_previewed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
+      "target": "tests_test_engine_test_release_reuses_a_preview_that_heard_everything",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
       "target": "tests_test_engine_fakerunoptions",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L10",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
+      "target": "tests_test_engine_test_release_transcribes_again_when_more_was_said",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
+      "target": "tests_test_engine_test_preview_waits_for_the_pause_to_cover_the_last_word",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
+      "target": "tests_test_engine_test_release_keeps_a_running_preview_only_if_it_covers_everything",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -13395,7 +14258,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -13406,7 +14269,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -13417,7 +14280,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -13428,7 +14291,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -13439,7 +14302,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -13450,7 +14313,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L62",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
+      "target": "tests_test_engine_fakeengine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine",
+      "target": "tests_test_engine_talk",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -14059,6 +14944,72 @@
       "weight": 1.0
     },
     {
+      "source": "tools_bench_release",
+      "target": "tools_bench_release_main",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_bench_release_load",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_bench_release_timed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_bench_release_piece",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_bench_release_old_finish",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release",
+      "target": "tools_bench_release_release_time",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
       "source": "tools_eval_stream",
       "target": "tools_eval_stream_run",
       "relation": "contains",
@@ -14176,7 +15127,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/selftest.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -14187,7 +15138,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/selftest.py",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -14198,7 +15149,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/selftest.py",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -14209,7 +15160,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/selftest.py",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -14330,7 +15281,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -14341,7 +15292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -14352,7 +15303,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L77",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -14363,7 +15314,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -14374,7 +15325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L208",
+      "source_location": "L209",
       "weight": 1.0
     },
     {
@@ -14385,7 +15336,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L236",
+      "source_location": "L238",
       "weight": 1.0
     },
     {
@@ -14396,7 +15347,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L239",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -14407,7 +15358,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L259",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -14418,7 +15369,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L267",
+      "source_location": "L269",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation",
+      "target": "engine_dictation_span",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "engine.py",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -14429,7 +15391,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L270",
+      "source_location": "L286",
       "weight": 1.0
     },
     {
@@ -14440,7 +15402,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L325",
+      "source_location": "L334",
       "weight": 1.0
     },
     {
@@ -14451,7 +15413,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L331",
+      "source_location": "L340",
       "weight": 1.0
     },
     {
@@ -14462,7 +15424,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L353",
+      "source_location": "L362",
       "weight": 1.0
     },
     {
@@ -14473,7 +15435,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L356",
+      "source_location": "L365",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation",
+      "target": "engine_dictation_finish_tail",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "engine.py",
+      "source_location": "L383",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_dictation",
+      "target": "engine_dictation_heard_all",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "engine.py",
+      "source_location": "L391",
       "weight": 1.0
     },
     {
@@ -14484,7 +15468,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L378",
+      "source_location": "L396",
       "weight": 1.0
     },
     {
@@ -14495,7 +15479,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L426",
+      "source_location": "L449",
       "weight": 1.0
     },
     {
@@ -14506,7 +15490,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L434",
+      "source_location": "L458",
       "weight": 1.0
     },
     {
@@ -14517,7 +15501,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L439",
+      "source_location": "L463",
       "weight": 1.0
     },
     {
@@ -14528,7 +15512,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L443",
+      "source_location": "L467",
       "weight": 1.0
     },
     {
@@ -14539,7 +15523,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L105",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -14550,7 +15534,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L147",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
@@ -14561,7 +15545,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L168",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
@@ -14572,7 +15556,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L174",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -14583,7 +15567,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L185",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -14594,7 +15578,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L190",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -14605,7 +15589,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -15874,6 +16858,39 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_engine_fakeengine",
+      "target": "tests_test_engine_fakeengine_init",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_fakeengine",
+      "target": "tests_test_engine_fakeengine_words",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_fakeengine",
+      "target": "tests_test_engine_fakeengine_cancel_preview",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
       "source": "tests_test_engine_fakerunoptions",
       "target": "tests_test_engine_fakerunoptions_init",
       "relation": "method",
@@ -15881,7 +16898,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -15892,7 +16909,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -15903,7 +16920,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -16028,113 +17045,146 @@
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_148",
+      "source": "engine_rationale_149",
       "target": "engine_engine_words",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L148",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_186",
+      "source": "engine_rationale_187",
       "target": "engine_engine_cancel_preview",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L186",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_199",
+      "source": "engine_rationale_200",
       "target": "engine_dictation",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L199",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_271",
+      "source": "engine_rationale_273",
+      "target": "engine_dictation_span",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "engine.py",
+      "source_location": "L273",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_rationale_287",
       "target": "engine_dictation_piece",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L271",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_332",
+      "source": "engine_rationale_341",
       "target": "engine_dictation_do",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L332",
+      "source_location": "L341",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_379",
+      "source": "engine_rationale_384",
+      "target": "engine_dictation_finish_tail",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "engine.py",
+      "source_location": "L384",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_rationale_392",
+      "target": "engine_dictation_heard_all",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "engine.py",
+      "source_location": "L392",
+      "weight": 1.0
+    },
+    {
+      "source": "engine_rationale_397",
       "target": "engine_dictation_maybe_preview",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L379",
+      "source_location": "L397",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_427",
+      "source": "engine_rationale_450",
       "target": "engine_dictation_finish",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L427",
+      "source_location": "L450",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_448",
+      "source": "engine_rationale_472",
       "target": "engine_transcribe_array",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L448",
+      "source_location": "L472",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_60",
+      "source": "engine_rationale_61",
       "target": "engine_cancellable",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
-      "source": "engine_rationale_91",
+      "source": "engine_rationale_92",
       "target": "engine_engine",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "engine.py",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -16589,14 +17639,25 @@
       "weight": 1.0
     },
     {
-      "source": "tests_test_engine_rationale_16",
+      "source": "tests_test_engine_rationale_17",
       "target": "tests_test_engine_fakesession",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_engine.py",
-      "source_location": "L16",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_engine_rationale_76",
+      "target": "tests_test_engine_fakeengine",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_engine.py",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -16677,6 +17738,39 @@
       "weight": 1.0
     },
     {
+      "source": "tools_bench_release_rationale_1",
+      "target": "tools_bench_release",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_rationale_63",
+      "target": "tools_bench_release_old_finish",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_rationale_72",
+      "target": "tools_bench_release_release_time",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/bench_release.py",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
       "source": "tools_diff_stream_rationale_1",
       "target": "tools_diff_stream",
       "relation": "rationale_for",
@@ -16754,14 +17848,14 @@
       "weight": 1.0
     },
     {
-      "source": "tools_selftest_rationale_38",
+      "source": "tools_selftest_rationale_39",
       "target": "tools_selftest_recall",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/selftest.py",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -17181,6 +18275,30 @@
       "context": "argument",
       "source_file": "textproc.py",
       "source_location": "L270",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_release_time",
+      "target": "tools_bench_release_old_finish",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_bench_release_release_time",
+      "target": "tools_bench_release_piece",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "tools/bench_release.py",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -18704,5 +19822,5 @@
       "source_file": "ui/index.html"
     }
   ],
-  "built_at_commit": "27e105a90cfac73971ecaeae4198b4a33bcf1eec"
+  "built_at_commit": "571227f8a8c5553c2e1bf8b5555a1171e7ae5968"
 }
