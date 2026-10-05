@@ -41,6 +41,7 @@ SpeakOn transcribes **while you talk**. At every natural pause, the finished par
 
 - Windows blocks normal programs from typing into programs running as administrator. The text is still on Home (Copy).
 - If Wispr Flow is running too, it listens for the same Ctrl + Win: quit one of them, or give SpeakOn another key.
+- **Updates:** once a day SpeakOn asks GitHub for the latest version number (nothing about you or your dictations is sent). When there is a new one, Home shows **Update now**: it downloads the new version, checks its SHA-256 fingerprint against the one GitHub publishes, and SpeakOn closes and opens again a few seconds later. Your settings, history and learned words are not touched. Turn the check off in Settings.
 - Parakeet covers 25 European languages. For Hebrew and other languages, pick a Whisper model in Settings.
 
 ## Install

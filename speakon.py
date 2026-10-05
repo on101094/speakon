@@ -17,6 +17,7 @@ import sys
 import threading
 import time
 import wave
+import webbrowser
 import winreg
 import winsound
 from datetime import date, datetime, timedelta
@@ -43,6 +44,7 @@ import engine as eng
 import learn
 import sendinput
 import textproc
+import updates
 from corrections import EditWatcher, find_corrections
 from hotkeys import HotkeyWatcher
 from mic import Microphone
@@ -199,6 +201,8 @@ class SpeakOn:
         self.preview = ""
         self.status = "Starting…"
         self.learning = {"running": False, "progress": 0, "message": "", "finished_at": None}
+        self.update = None          # a newer release, once found
+        self.updating = ""          # what installing it is doing right now
         self.window = None
         self.quitting = False
         self.kb = keyboard.Controller()
@@ -228,6 +232,9 @@ class SpeakOn:
         self.store.set_setting("start_with_windows", STARTUP_LINK.exists(), save=False)
         if self.settings["start_with_windows"]:
             threading.Thread(target=lambda: set_start_with_windows(True), daemon=True).start()
+        self.update_wake = threading.Event()
+        if not (os.environ.get("SPEAKON_SELFTEST") or fake):   # tests never go online
+            threading.Thread(target=self.update_loop, daemon=True).start()
 
     # ----- settings
     def update_setting(self, key, value):
@@ -240,6 +247,8 @@ class SpeakOn:
             self.load_model()
         if key in ("hotkey", "custom_hotkey"):
             self.keys.set_combo(C.hotkey_keys(self.settings))
+        if key == "check_updates" and value:
+            self.update_wake.set()                    # check now, not tomorrow
         if key == "start_with_windows":
             try:
                 set_start_with_windows(bool(value))
@@ -302,6 +311,8 @@ class SpeakOn:
             pystray.MenuItem("Open SpeakOn", lambda: self.show_window("home"), default=True),
             pystray.MenuItem("Dictionary", lambda: self.show_window("dictionary")),
             pystray.MenuItem("Settings", lambda: self.show_window("settings")),
+            pystray.MenuItem(lambda _: f"Update to {self.update['version']}" if self.update else "",
+                             lambda: self.install_update(), visible=lambda _: bool(self.update)),
             pystray.Menu.SEPARATOR,
             pystray.MenuItem("Quit SpeakOn", lambda: self.quit()),
         )
@@ -323,6 +334,52 @@ class SpeakOn:
         self.tray.stop()
         if self.window:
             self.window.destroy()
+
+    # ----- updates
+    def update_loop(self):
+        self.update_wake.wait(20)                     # let the model load first
+        while not self.quitting:
+            self.update_wake.clear()
+            if self.settings.get("check_updates", True):
+                try:
+                    info = updates.check()
+                    if info and (not self.update or self.update["version"] != info["version"]):
+                        log.info("update available: %s", info["version"])
+                        self.update = info
+                        self.tray.update_menu()
+                        self.notify(f"SpeakOn {info['version']} is out. Open SpeakOn and click Update now.")
+                except Exception as e:
+                    log.info("update check failed: %r", e)  # offline is fine: try again tomorrow
+            self.update_wake.wait(24 * 3600)
+
+    def install_update(self):
+        info = self.update
+        if not info or self.updating:
+            return
+        if not updates.can_install():
+            webbrowser.open(info["page"])             # running from source, or a folder we may not write
+            return
+
+        def work():
+            work_dir = C.DATA_DIR / "update"
+            try:
+                while self.recording or self.busy:    # never in the middle of a dictation
+                    time.sleep(0.5)
+                self.updating = "Downloading…"
+                zip_path = updates.download(info, work_dir, lambda done, total: setattr(
+                    self, "updating", f"Downloading… {done * 100 // total}%" if total else "Downloading…"))
+                self.updating = "Installing…"
+                new = updates.unpack(zip_path, work_dir)
+                updates.start_swap(new, updates.app_dir(), work_dir)
+                log.info("updating to %s", info["version"])
+                self.notify(f"Updating to SpeakOn {info['version']} - it will open again in a few seconds.")
+                threading.Timer(5, lambda: os._exit(0)).start()   # make sure this copy really closes
+                self.quit()
+            except Exception as e:
+                log.exception("update failed")
+                self.updating = ""
+                self.notify(f"Could not update: {e}")
+        threading.Thread(target=work, daemon=True).start()
 
     def load_model(self):
         def work():
@@ -591,10 +648,19 @@ class Api:
         return {"recording": a.recording, "busy": a.busy, "preview": a.preview, "status": a.status,
                 "levels": a.levels, "hotkey_keys": C.hotkey_label(a.settings).split(" + "),
                 "name": a.settings.get("name", ""), "history_version": a.store.history_version,
-                "learning": a.learning, **a.stats()}
+                "learning": a.learning, "version": C.VERSION, "updating": a.updating,
+                "update": a.update and {"version": a.update["version"], "notes": a.update["notes"]},
+                **a.stats()}
 
     def toggle_record(self):
         self._app.events.put(("toggle",))
+
+    def install_update(self):
+        self._app.install_update()
+
+    def release_notes(self):
+        if self._app.update:
+            webbrowser.open(self._app.update["page"])
 
     # history
     def history(self, query=""):
