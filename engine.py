@@ -27,6 +27,7 @@ import numpy as np
 from textproc import COMMON_WORDS
 
 SAMPLE_RATE = 16000
+PARAKEET_THREADS = 3        # ONNX threads for Parakeet - measured: more is slower
 BLOCK = 480                 # 30 ms
 PAUSE_BLOCKS = 18           # 540 ms of quiet = a pause we can cut at
 MIN_CHUNK_BLOCKS = 200      # 6 s - tuned on the user's recordings: fewer joins, fewer errors
@@ -115,7 +116,7 @@ class Engine:
             target = self.models_dir / name
             first = not target.exists()
             on_status(f"Downloading {model_id} (one time)…" if first else f"Loading {model_id}…")
-            threads = 3 if kind == "parakeet" else max(2, (os.cpu_count() or 4) // 2)  # measured: more is slower
+            threads = PARAKEET_THREADS if kind == "parakeet" else max(2, (os.cpu_count() or 4) // 2)
             try:
                 if kind == "parakeet":
                     import onnx_asr
