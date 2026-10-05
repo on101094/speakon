@@ -27,6 +27,7 @@ import numpy as np
 from textproc import COMMON_WORDS
 
 SAMPLE_RATE = 16000
+PARAKEET_THREADS = 3        # ONNX threads for Parakeet - measured: more is slower
 BLOCK = 480                 # 30 ms
 PAUSE_BLOCKS = 18           # 540 ms of quiet = a pause we can cut at
 MIN_CHUNK_BLOCKS = 200      # 6 s - tuned on the user's recordings: fewer joins, fewer errors
@@ -115,7 +116,7 @@ class Engine:
             target = self.models_dir / name
             first = not target.exists()
             on_status(f"Downloading {model_id} (one time)…" if first else f"Loading {model_id}…")
-            threads = 3 if kind == "parakeet" else max(2, (os.cpu_count() or 4) // 2)  # measured: more is slower
+            threads = PARAKEET_THREADS if kind == "parakeet" else max(2, (os.cpu_count() or 4) // 2)
             try:
                 if kind == "parakeet":
                     import onnx_asr
@@ -226,6 +227,7 @@ class Dictation:
         self.last_preview = 0.0
         self.error = None
         self.spec = None
+        self.preview_run = None     # the preview being transcribed right now
         self.reused_preview = False
         self.cut_lock = threading.Lock()
         self.worker = threading.Thread(target=self._work, daemon=True)
@@ -267,23 +269,30 @@ class Dictation:
     def _voiced(self, a, b, thr):
         return [i for i in range(a, b) if self.rms[i] >= thr]
 
+    def _span(self, start, end, thr, context=CONTEXT_BLOCKS):
+        """The audio _piece hears for blocks [start, end): (first block, end block, quiet added first?),
+        or None for silence. Same span, same pieces before it: same words."""
+        voiced = self._voiced(start, end, thr)
+        if len(voiced) < 4:                       # < 120 ms above the noise: silence
+            return None
+        end = min(end, voiced[-1] + 1 + PAD_BLOCKS)
+        if self.pieces and self.pieces[-1]:
+            return max(0, start - context), end, False
+        # never clip the first word: only skip a long silence before speaking
+        if voiced[0] - start > 50:
+            start = voiced[0] - 20
+        return start, end, voiced[0] - start < 5   # speech right at the start: a little quiet first saves the word
+
     def _piece(self, start, end, thr, context=CONTEXT_BLOCKS, preview=False):
         """Transcribe blocks [start, end) as the next piece.
         Returns (text, new text for the previous piece or None). Does not change state."""
-        voiced = self._voiced(start, end, thr)
-        if len(voiced) < 4:                       # < 120 ms above the noise: silence
+        span = self._span(start, end, thr, context)
+        if span is None:
             return "", None
-        end = min(end, voiced[-1] + 1 + PAD_BLOCKS)
+        ctx, end, lead = span
         prev = self.pieces[-1] if self.pieces else None
-        if prev:
-            ctx = max(0, start - context)
-        else:
-            # never clip the first word: only skip a long silence before speaking
-            if voiced[0] - start > 50:
-                start = voiced[0] - 20
-            ctx = start
         audio = np.concatenate(self.blocks[ctx:end])
-        if not prev and voiced[0] - start < 5:     # speech right at the start: a little quiet first saves the word
+        if lead:
             audio = np.concatenate([np.zeros(LEAD_SILENCE, np.float32), audio])
         if len(audio) < SAMPLE_RATE // 2:          # engines like at least ~0.5 s
             audio = np.concatenate([audio, np.zeros(SAMPLE_RATE // 2 - len(audio), np.float32)])
@@ -363,17 +372,26 @@ class Dictation:
             if job is None:
                 return
             if job == "finish":
-                n = len(self.blocks)
-                if n > self.done_to and not self.cancelled:
-                    if n - self.done_to <= SHORT_TAIL_BLOCKS:
-                        self.spec = None              # short: one clean pass is accurate and still fast
-                    self._do(self.done_to, n, self.threshold())
+                self._finish_tail()
                 return
             start, end, thr = job
             self._do(start, end, thr)
             self.chunks_done += 1
             if not self.finishing and not self.cancelled:
                 self.on_preview(self.committed_text())
+
+    def _finish_tail(self):
+        """The release step: the words since the last piece."""
+        n = len(self.blocks)
+        if n > self.done_to and not self.cancelled:
+            if n - self.done_to <= SHORT_TAIL_BLOCKS and not self._heard_all(self.spec):
+                self.spec = None              # short: one clean pass is accurate and still fast
+            self._do(self.done_to, n, self.threshold())
+
+    def _heard_all(self, run):
+        """Did this preview hear exactly what the final pass would? Then its words are the final words."""
+        return bool(run and run["start"] == self.done_to and run["n"] == len(self.pieces)
+                    and run["span"] == self._span(self.done_to, len(self.blocks), self.threshold()))
 
     def _maybe_preview(self):
         """Transcribe the words since the last cut, exactly as the final step would,
@@ -385,24 +403,29 @@ class Dictation:
         if start != self.committed:
             return                                  # a piece is queued: let it run first
         tail = n - start
-        if time.time() - self.last_preview < 0.45 or tail < 20 or tail > 400:   # 0.6 s .. 12 s
+        ended = self.quiet >= PAD_BLOCKS            # quiet since the last word: maybe the end - hear it all now
+        if (time.time() - self.last_preview < 0.45 and not ended) or tail < 20 or tail > 400:   # 0.6 s .. 12 s
             return
         thr = self.threshold()
-        if self.spec and self.spec["start"] == start and not self._voiced(self.spec["end"], n, thr):
-            return                                  # nothing new said since the last preview
-        self.last_preview = time.time()
         end = n
         for e in range(n, start + 20, -1):          # latest gap between words
             if all(r < thr for r in self.rms[e - PREVIEW_GAP:e]):
-                end = e - PREVIEW_GAP // 2
+                end = e - PREVIEW_GAP // 2 if e < n else n   # quiet until now: all of it, as the release would
                 break
+        run = {"start": start, "end": end, "n": len(self.pieces), "span": self._span(start, end, thr)}
+        if self.spec and all(self.spec[k] == run[k] for k in ("start", "n", "span")):
+            return                                  # nothing new said since the last preview
+        self.last_preview = time.time()
+        self.preview_run = run
         try:
             text, prev_fixed = self._piece(start, end, thr, preview=True)
         except Exception:
             return                                  # cancelled at release, or failed
+        finally:
+            self.preview_run = None
+        self.spec = dict(run, text=text, prev_fixed=prev_fixed)
         if self.finishing:
-            return
-        self.spec = {"start": start, "end": end, "text": text, "prev_fixed": prev_fixed, "n": len(self.pieces)}
+            return                                  # the release step decides whether it still fits
         if PROMOTE_BLOCKS and end - start >= PROMOTE_BLOCKS and text:
             # 6 s+ of finished words: lock them in, so later previews (and the release) stay short
             with self.cut_lock:
@@ -426,7 +449,8 @@ class Dictation:
     def finish(self):
         """Call after the audio stream has stopped. Blocks until all text is ready."""
         self.finishing = True
-        self.engine.cancel_preview()
+        if not self._heard_all(self.preview_run):   # a preview of everything said: let it finish, it is the answer
+            self.engine.cancel_preview()
         self.jobs.put("finish")
         self.worker.join()
         return self.committed_text()
