@@ -20,8 +20,8 @@ jobs:
       SENTENCE: "Testing SpeakOn on Windows. The quick brown fox jumps over the lazy dog, and the meeting starts at nine tomorrow morning."
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       - name: Version
@@ -52,7 +52,7 @@ jobs:
           if ($missing) { throw "Missing from dist\SpeakOn: $($missing -join ', ')" }
           Write-Output "Bundle complete"
       - name: Cache the speech model
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/SpeakOn/models
           key: speakon-models-${{ hashFiles('engine.py') }}
@@ -111,7 +111,7 @@ jobs:
           --target "$env:GITHUB_SHA" --title "SpeakOn $env:VERSION" --notes-file .github/release_notes.md
       - name: Keep the app log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: speakon-log
           path: ~/SpeakOn/logs/
