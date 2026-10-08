@@ -49,6 +49,8 @@ jobs:
           Write-Output "--- speakon.log"; if (Test-Path $log) { Get-Content $log }
           Write-Output "--- update.log"; if (Test-Path "$HOME\SpeakOn\logs\update.log") { Get-Content "$HOME\SpeakOn\logs\update.log" }
           if (-not $ok) { throw "SpeakOn 0.0.1 did not come back up as $latest" }
+          $gone = (Get-Date).AddSeconds(60)                # the script deletes the download and backup after the restart
+          while ((Test-Path "$HOME\SpeakOn\update") -and (Get-Date) -lt $gone) { Start-Sleep 2 }
           if (Test-Path "$HOME\SpeakOn\update") { throw "the downloaded update was not cleaned up" }
           Write-Output "Updated 0.0.1 -> $latest in place"
       - name: Keep the logs

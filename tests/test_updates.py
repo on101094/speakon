@@ -103,3 +103,41 @@ def test_swap_replaces_the_files_after_the_app_closes(tmp_path):
     assert (target / "_internal" / "old.dll").read_text() == "new"
     assert (target / "_internal" / "keep.txt").read_text() == "mine"
     assert (target / "SpeakOn.exe").exists() and not work.exists()
+
+
+LOCK = """
+import ctypes, sys, time
+from ctypes import wintypes
+k = ctypes.WinDLL("kernel32", use_last_error=True)
+k.CreateFileW.restype = wintypes.HANDLE
+# read sharing only, like an antivirus scanning the file: others may read it (the backup) but not write it
+h = k.CreateFileW(sys.argv[1], 0x80000000, 1, None, 3, 0x80, None)
+assert h != wintypes.HANDLE(-1).value, ctypes.get_last_error()
+print("locked", flush=True)
+time.sleep(float(sys.argv[2]))
+"""
+
+
+@pytest.mark.skipif(sys.platform != "win32", reason="the swap runs PowerShell and robocopy")
+def test_a_failed_copy_puts_the_old_version_back(tmp_path):
+    target, work = tmp_path / "app", tmp_path / "update"
+    new = work / "new" / "SpeakOn"
+    for folder, word in [(target, "old"), (new, "new")]:
+        (folder / "_internal").mkdir(parents=True)
+        (folder / "_internal" / "a.dll").write_text(word)
+        (folder / "_internal" / "z.dll").write_text(word)
+        shutil.copy(Path(os.environ["SystemRoot"]) / "System32" / "whoami.exe", folder / "SpeakOn.exe")
+    locker = subprocess.Popen([sys.executable, "-c", LOCK, str(target / "_internal" / "z.dll"), "40"],
+                              stdout=subprocess.PIPE, text=True)
+    assert locker.stdout.readline().strip() == "locked"
+    log = tmp_path / "update.log"
+    script = tmp_path / "update.ps1"
+    script.write_text(updates.swap_script(999999, new, target, work, log), encoding="utf-8-sig")
+    try:
+        subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script)],
+                       check=True, timeout=120)
+    finally:
+        locker.kill()
+    assert "restoring the old version" in log.read_text(encoding="utf-8-sig", errors="replace")
+    assert (target / "_internal" / "a.dll").read_text() == "old"     # put back, not left half-updated
+    assert not work.exists()
