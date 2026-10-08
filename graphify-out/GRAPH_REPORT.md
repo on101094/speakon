@@ -1,17 +1,17 @@
 # Graph Report - speakon  (2026-10-08)
 
 ## Corpus Check
-- 35 files · ~27,706 words
+- 35 files · ~28,032 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 3, .ico 1)
 
 ## Summary
-- 619 nodes · 1202 edges · 21 communities (17 shown, 4 thin omitted)
+- 619 nodes · 1203 edges · 21 communities (17 shown, 4 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 72 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `94b9be08`
+- Built from commit: `e41e5d3d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -73,8 +73,8 @@
 ## Communities (21 total, 4 thin omitted)
 
 ### Community 0 - "speakon.py"
-Cohesion: 0.05
-Nodes (9): EditWatcher, find_corrections(), _words(), main(), make_tone(), modifiers_down(), resource(), FakeStream (+1 more)
+Cohesion: 0.06
+Nodes (11): INPUT, KEYBDINPUT, MOUSEINPUT, type_text(), _U, main(), make_tone(), modifiers_down() (+3 more)
 
 ### Community 1 - "Api"
 Cohesion: 0.07
@@ -93,8 +93,8 @@ Cohesion: 0.08
 Nodes (27): align(), apply_fixes(), diff_spans(), learn_fixes(), learn_from_wispr(), learn_lowercase(), learn_terms(), ngram_counts() (+19 more)
 
 ### Community 5 - "textproc.py"
-Cohesion: 0.08
-Nodes (28): looks_like_correction(), clean(), test_filler_before_a_full_stop_keeps_the_sentence_break(), test_filler_cleanup_otherwise_unchanged(), test_fixes_report_only_rules_that_matched_the_spoken_text(), test_learned_lowercase_words_undo_a_capital_after_a_pause(), test_many_rules_keep_their_placeholders_apart(), test_shorter_rule_does_not_rewrite_a_longer_rules_output() (+20 more)
+Cohesion: 0.06
+Nodes (31): EditWatcher, find_corrections(), looks_like_correction(), _words(), clean(), test_filler_before_a_full_stop_keeps_the_sentence_break(), test_filler_cleanup_otherwise_unchanged(), test_fixes_report_only_rules_that_matched_the_spoken_text() (+23 more)
 
 ### Community 6 - "SpeakOn"
 Cohesion: 0.07
@@ -105,8 +105,8 @@ Cohesion: 0.09
 Nodes (22): fake_download(), make_zip(), release(), test_can_install_only_a_built_app_in_a_writable_folder(), test_check_reports_only_newer_releases(), test_download_checks_the_fingerprint(), test_download_refuses_a_release_without_a_fingerprint(), test_swap_replaces_the_files_after_the_app_closes() (+14 more)
 
 ### Community 8 - "HotkeyWatcher"
-Cohesion: 0.10
-Nodes (8): HotkeyWatcher, key_name(), matches(), INPUT, KEYBDINPUT, MOUSEINPUT, type_text(), _U
+Cohesion: 0.15
+Nodes (3): HotkeyWatcher, key_name(), matches()
 
 ### Community 9 - "Dictation"
 Cohesion: 0.13
@@ -148,7 +148,7 @@ Nodes (3): data_dir(), test_dictionary_page(), test_fake_mic_keeps_to_the_clock_
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `SpeakOn` connect `SpeakOn` to `speakon.py`, `Api`, `SpeakOn`, `HotkeyWatcher`, `Microphone`, `Store`, `FlowBar`?**
+- **Why does `SpeakOn` connect `SpeakOn` to `speakon.py`, `Api`, `textproc.py`, `SpeakOn`, `HotkeyWatcher`, `Microphone`, `Store`, `FlowBar`?**
   _High betweenness centrality (0.133) - this node is a cross-community bridge._
 - **Why does `Api` connect `Api` to `speakon.py`, `SpeakOn`, `SpeakOn`?**
   _High betweenness centrality (0.115) - this node is a cross-community bridge._

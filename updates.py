@@ -31,8 +31,10 @@ def parse_version(text):
 
 
 def _get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": f"{C.APP_NAME}/{C.VERSION}",
-                                               "Accept": "application/vnd.github+json"})
+    headers = {"User-Agent": f"{C.APP_NAME}/{C.VERSION}", "Accept": "application/vnd.github+json"}
+    if os.environ.get("SPEAKON_GITHUB_TOKEN") and url.startswith("https://api.github.com/"):
+        headers["Authorization"] = "Bearer " + os.environ["SPEAKON_GITHUB_TOKEN"]   # CI only
+    req = urllib.request.Request(url, headers=headers)
     return urllib.request.urlopen(req, timeout=TIMEOUT)
 
 
