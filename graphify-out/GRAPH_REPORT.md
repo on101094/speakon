@@ -1,17 +1,17 @@
-# Graph Report - speakon  (2026-10-05)
+# Graph Report - speakon  (2026-10-08)
 
 ## Corpus Check
-- 35 files · ~27,380 words
+- 35 files · ~27,706 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 3, .ico 1)
 
 ## Summary
-- 618 nodes · 1199 edges · 21 communities (18 shown, 3 thin omitted)
+- 618 nodes · 1200 edges · 21 communities (18 shown, 3 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 71 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `77fa252e`
+- Built from commit: `94b9be08`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

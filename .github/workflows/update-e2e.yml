@@ -1,0 +1,60 @@
+name: update-e2e
+
+# Rehearses the one-click update on a real Windows install: builds SpeakOn.exe numbered 0.0.1, starts
+# it with SPEAKON_TEST_UPDATE (= Update now, without a click), and checks that it downloads the latest
+# published release, swaps its own files and comes back up as that version.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: [updates.py, speakon.py, build.ps1, .github/workflows/update-e2e.yml]
+
+jobs:
+  update:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install (into .venv, as build.ps1 expects)
+        run: |
+          python -m venv .venv
+          .venv\Scripts\python -m pip install -r requirements.txt pyinstaller
+      - name: Build an old SpeakOn.exe (version 0.0.1)
+        shell: pwsh
+        run: |
+          (Get-Content config.py) -replace '^VERSION = ".*"', 'VERSION = "0.0.1"' | Set-Content config.py
+          powershell -File build.ps1
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Let it update itself
+        shell: pwsh
+        run: |
+          $latest = (gh release view --json tagName -q .tagName).TrimStart("v")
+          $app = Resolve-Path dist\SpeakOn
+          $log = "$HOME\SpeakOn\logs\speakon.log"
+          $env:SPEAKON_TEST_UPDATE = "1"
+          $env:SPEAKON_GITHUB_TOKEN = $env:GH_TOKEN      # shared runner IPs hit the anonymous API limit
+          Start-Process "$app\SpeakOn.exe" -ArgumentList "--tray"
+          Remove-Item Env:SPEAKON_TEST_UPDATE, Env:SPEAKON_GITHUB_TOKEN
+          $deadline = (Get-Date).AddMinutes(10)
+          $ok = $false
+          while ((Get-Date) -lt $deadline) {
+            Start-Sleep 5
+            if ((Test-Path $log) -and (Select-String -Path $log -SimpleMatch "SpeakOn $latest starting" -Quiet)) { $ok = $true; break }
+          }
+          Get-Process SpeakOn -ErrorAction SilentlyContinue | Stop-Process -Force
+          Write-Output "--- speakon.log"; if (Test-Path $log) { Get-Content $log }
+          Write-Output "--- update.log"; if (Test-Path "$HOME\SpeakOn\logs\update.log") { Get-Content "$HOME\SpeakOn\logs\update.log" }
+          if (-not $ok) { throw "SpeakOn 0.0.1 did not come back up as $latest" }
+          if (Test-Path "$HOME\SpeakOn\update") { throw "the downloaded update was not cleaned up" }
+          Write-Output "Updated 0.0.1 -> $latest in place"
+      - name: Keep the logs
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: update-logs
+          path: ~/SpeakOn/logs/
+          if-no-files-found: ignore

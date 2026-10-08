@@ -342,7 +342,8 @@ class SpeakOn:
 
     # ----- updates
     def update_loop(self):
-        self.update_wake.wait(20)                     # let the model load first
+        rehearsal = bool(os.environ.get("SPEAKON_TEST_UPDATE"))   # CI: update at once, as if Update now was clicked
+        self.update_wake.wait(1 if rehearsal else 20)  # let the model load first
         while not self.quitting:
             self.update_wake.clear()
             if self.settings.get("check_updates", True):
@@ -353,6 +354,8 @@ class SpeakOn:
                         self.update = info
                         self.tray.update_menu()
                         self.notify(f"SpeakOn {info['version']} is out. Open SpeakOn and click Update now.")
+                        if rehearsal:
+                            self.install_update()
                 except Exception as e:
                     log.info("update check failed: %r", e)  # offline is fine: try again tomorrow
             self.update_wake.wait(24 * 3600)
