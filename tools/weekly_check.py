@@ -18,16 +18,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, os.path.dirname(__file__))
 import config as C  # noqa: E402
 
-LOG_RE = re.compile(r"^(\S+ \S+) INFO dictation: ([\d.]+)s speech, (\d+) chars, wait ([\d.]+)s = engine ([\d.]+) "
-                    r"\(pieces (\S+), preview reused (\S+)\) \+ keys still held ([\d.]+) \+ insert ([\d.]+) \[(\w+)\]")
-
-REL_RE = re.compile(r"^(\S+ \S+) INFO release: worker (.+?), waited ([\d.]+)s for it, ([\d.]+)s left, "
-                    r"final step ([\d.]+)s, preview heard all (\S+)")
-
-
-def pct(xs, p):
-    xs = sorted(xs)
-    return xs[min(len(xs) - 1, int(len(xs) * p))] if xs else 0
+from speedreport import LOG_RE, REL_RE, pct  # noqa: E402  (shared with Settings -> Copy speed report)
 
 
 def report(days=7, show_text=False):
