@@ -156,7 +156,7 @@
       "file_type": "code",
       "norm_label": "api",
       "source_file": "speakon.py",
-      "source_location": "L646"
+      "source_location": "L649"
     },
     {
       "id": "engine_cancellable",
@@ -557,7 +557,7 @@
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "speakon.py",
-      "source_location": "L845"
+      "source_location": "L848"
     },
     {
       "id": "speakon_main_selftest",
@@ -569,7 +569,7 @@
       "file_type": "code",
       "norm_label": "selftest()",
       "source_file": "speakon.py",
-      "source_location": "L896"
+      "source_location": "L899"
     },
     {
       "id": "speakon_resource",
@@ -605,7 +605,7 @@
       "file_type": "code",
       "norm_label": ".check_entry()",
       "source_file": "speakon.py",
-      "source_location": "L719"
+      "source_location": "L722"
     },
     {
       "id": "speakon_api_copy",
@@ -617,7 +617,7 @@
       "file_type": "code",
       "norm_label": ".copy()",
       "source_file": "speakon.py",
-      "source_location": "L685"
+      "source_location": "L688"
     },
     {
       "id": "speakon_api_delete_entry",
@@ -629,7 +629,7 @@
       "file_type": "code",
       "norm_label": ".delete_entry()",
       "source_file": "speakon.py",
-      "source_location": "L736"
+      "source_location": "L739"
     },
     {
       "id": "speakon_api_delete_history",
@@ -641,7 +641,7 @@
       "file_type": "code",
       "norm_label": ".delete_history()",
       "source_file": "speakon.py",
-      "source_location": "L690"
+      "source_location": "L693"
     },
     {
       "id": "speakon_api_dictionary",
@@ -653,7 +653,7 @@
       "file_type": "code",
       "norm_label": ".dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L706"
+      "source_location": "L709"
     },
     {
       "id": "speakon_api_edit_history",
@@ -665,7 +665,7 @@
       "file_type": "code",
       "norm_label": ".edit_history()",
       "source_file": "speakon.py",
-      "source_location": "L693"
+      "source_location": "L696"
     },
     {
       "id": "speakon_api_history",
@@ -677,7 +677,7 @@
       "file_type": "code",
       "norm_label": ".history()",
       "source_file": "speakon.py",
-      "source_location": "L671"
+      "source_location": "L674"
     },
     {
       "id": "speakon_api_import_wispr_dictionary",
@@ -689,7 +689,7 @@
       "file_type": "code",
       "norm_label": ".import_wispr_dictionary()",
       "source_file": "speakon.py",
-      "source_location": "L748"
+      "source_location": "L751"
     },
     {
       "id": "speakon_api_init",
@@ -701,7 +701,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "speakon.py",
-      "source_location": "L647"
+      "source_location": "L650"
     },
     {
       "id": "speakon_api_learn_from_wispr",
@@ -713,7 +713,7 @@
       "file_type": "code",
       "norm_label": ".learn_from_wispr()",
       "source_file": "speakon.py",
-      "source_location": "L772"
+      "source_location": "L775"
     },
     {
       "id": "speakon_api_learn_from_wispr_progress",
@@ -725,7 +725,7 @@
       "file_type": "code",
       "norm_label": "progress()",
       "source_file": "speakon.py",
-      "source_location": "L777"
+      "source_location": "L780"
     },
     {
       "id": "speakon_api_learn_from_wispr_work",
@@ -737,7 +737,7 @@
       "file_type": "code",
       "norm_label": "work()",
       "source_file": "speakon.py",
-      "source_location": "L780"
+      "source_location": "L783"
     },
     {
       "id": "speakon_api_open_data_folder",
@@ -749,7 +749,7 @@
       "file_type": "code",
       "norm_label": ".open_data_folder()",
       "source_file": "speakon.py",
-      "source_location": "L822"
+      "source_location": "L825"
     },
     {
       "id": "speakon_api_open_dictionary_file",
@@ -761,7 +761,7 @@
       "file_type": "code",
       "norm_label": ".open_dictionary_file()",
       "source_file": "speakon.py",
-      "source_location": "L745"
+      "source_location": "L748"
     },
     {
       "id": "speakon_api_options",
@@ -773,7 +773,7 @@
       "file_type": "code",
       "norm_label": ".options()",
       "source_file": "speakon.py",
-      "source_location": "L796"
+      "source_location": "L799"
     },
     {
       "id": "speakon_api_record_shortcut",
@@ -785,7 +785,7 @@
       "file_type": "code",
       "norm_label": ".record_shortcut()",
       "source_file": "speakon.py",
-      "source_location": "L810"
+      "source_location": "L813"
     },
     {
       "id": "speakon_api_release_notes",
@@ -797,7 +797,7 @@
       "file_type": "code",
       "norm_label": ".release_notes()",
       "source_file": "speakon.py",
-      "source_location": "L666"
+      "source_location": "L669"
     },
     {
       "id": "speakon_api_save_entry",
@@ -809,7 +809,7 @@
       "file_type": "code",
       "norm_label": ".save_entry()",
       "source_file": "speakon.py",
-      "source_location": "L725"
+      "source_location": "L728"
     },
     {
       "id": "speakon_api_set_setting",
@@ -821,7 +821,7 @@
       "file_type": "code",
       "norm_label": ".set_setting()",
       "source_file": "speakon.py",
-      "source_location": "L807"
+      "source_location": "L810"
     },
     {
       "id": "speakon_api_state",
@@ -833,7 +833,7 @@
       "file_type": "code",
       "norm_label": ".state()",
       "source_file": "speakon.py",
-      "source_location": "L650"
+      "source_location": "L653"
     },
     {
       "id": "speakon_api_toggle_learned",
@@ -845,7 +845,7 @@
       "file_type": "code",
       "norm_label": ".toggle_learned()",
       "source_file": "speakon.py",
-      "source_location": "L769"
+      "source_location": "L772"
     },
     {
       "id": "speakon_api_toggle_record",
@@ -857,7 +857,7 @@
       "file_type": "code",
       "norm_label": ".toggle_record()",
       "source_file": "speakon.py",
-      "source_location": "L660"
+      "source_location": "L663"
     },
     {
       "id": "speakon_api_transcribe_file",
@@ -869,7 +869,7 @@
       "file_type": "code",
       "norm_label": ".transcribe_file()",
       "source_file": "speakon.py",
-      "source_location": "L825"
+      "source_location": "L828"
     },
     {
       "id": "speakon_api_voice",
@@ -881,7 +881,7 @@
       "file_type": "code",
       "norm_label": ".voice()",
       "source_file": "speakon.py",
-      "source_location": "L756"
+      "source_location": "L759"
     },
     {
       "id": "tools_eval_textproc_main_clean",
@@ -1913,7 +1913,7 @@
       "file_type": "code",
       "norm_label": "on_closing()",
       "source_file": "speakon.py",
-      "source_location": "L884"
+      "source_location": "L887"
     },
     {
       "id": "tests_test_api_app",
@@ -2165,7 +2165,7 @@
       "file_type": "code",
       "norm_label": ".install_update()",
       "source_file": "speakon.py",
-      "source_location": "L663"
+      "source_location": "L666"
     },
     {
       "id": "speakon_foreground_app",
@@ -2249,7 +2249,7 @@
       "file_type": "code",
       "norm_label": ".clean()",
       "source_file": "speakon.py",
-      "source_location": "L520"
+      "source_location": "L523"
     },
     {
       "id": "speakon_speakon_close_stream",
@@ -2261,7 +2261,7 @@
       "file_type": "code",
       "norm_label": ".close_stream()",
       "source_file": "speakon.py",
-      "source_location": "L473"
+      "source_location": "L476"
     },
     {
       "id": "speakon_speakon_controller",
@@ -2273,7 +2273,7 @@
       "file_type": "code",
       "norm_label": ".controller()",
       "source_file": "speakon.py",
-      "source_location": "L398"
+      "source_location": "L401"
     },
     {
       "id": "speakon_speakon_deliver",
@@ -2285,7 +2285,7 @@
       "file_type": "code",
       "norm_label": ".deliver()",
       "source_file": "speakon.py",
-      "source_location": "L553"
+      "source_location": "L556"
     },
     {
       "id": "speakon_speakon_do_cancel",
@@ -2297,7 +2297,7 @@
       "file_type": "code",
       "norm_label": ".do_cancel()",
       "source_file": "speakon.py",
-      "source_location": "L476"
+      "source_location": "L479"
     },
     {
       "id": "speakon_speakon_do_esc",
@@ -2309,7 +2309,7 @@
       "file_type": "code",
       "norm_label": ".do_esc()",
       "source_file": "speakon.py",
-      "source_location": "L427"
+      "source_location": "L430"
     },
     {
       "id": "speakon_speakon_do_hot_down",
@@ -2321,7 +2321,7 @@
       "file_type": "code",
       "norm_label": ".do_hot_down()",
       "source_file": "speakon.py",
-      "source_location": "L406"
+      "source_location": "L409"
     },
     {
       "id": "speakon_speakon_do_hot_up",
@@ -2333,7 +2333,7 @@
       "file_type": "code",
       "norm_label": ".do_hot_up()",
       "source_file": "speakon.py",
-      "source_location": "L414"
+      "source_location": "L417"
     },
     {
       "id": "speakon_speakon_do_other_key",
@@ -2345,7 +2345,7 @@
       "file_type": "code",
       "norm_label": ".do_other_key()",
       "source_file": "speakon.py",
-      "source_location": "L423"
+      "source_location": "L426"
     },
     {
       "id": "speakon_speakon_do_start",
@@ -2357,7 +2357,7 @@
       "file_type": "code",
       "norm_label": ".do_start()",
       "source_file": "speakon.py",
-      "source_location": "L443"
+      "source_location": "L446"
     },
     {
       "id": "speakon_speakon_do_start_sink",
@@ -2369,7 +2369,7 @@
       "file_type": "code",
       "norm_label": "sink()",
       "source_file": "speakon.py",
-      "source_location": "L456"
+      "source_location": "L459"
     },
     {
       "id": "speakon_speakon_do_stop",
@@ -2381,7 +2381,7 @@
       "file_type": "code",
       "norm_label": ".do_stop()",
       "source_file": "speakon.py",
-      "source_location": "L485"
+      "source_location": "L488"
     },
     {
       "id": "speakon_speakon_do_toggle",
@@ -2393,7 +2393,7 @@
       "file_type": "code",
       "norm_label": ".do_toggle()",
       "source_file": "speakon.py",
-      "source_location": "L431"
+      "source_location": "L434"
     },
     {
       "id": "speakon_speakon_finish",
@@ -2405,7 +2405,7 @@
       "file_type": "code",
       "norm_label": ".finish()",
       "source_file": "speakon.py",
-      "source_location": "L501"
+      "source_location": "L504"
     },
     {
       "id": "speakon_speakon_hotwords",
@@ -2417,7 +2417,7 @@
       "file_type": "code",
       "norm_label": ".hotwords()",
       "source_file": "speakon.py",
-      "source_location": "L437"
+      "source_location": "L440"
     },
     {
       "id": "speakon_speakon_init",
@@ -2441,7 +2441,7 @@
       "file_type": "code",
       "norm_label": ".insert()",
       "source_file": "speakon.py",
-      "source_location": "L600"
+      "source_location": "L603"
     },
     {
       "id": "speakon_speakon_insert_44c9b8",
@@ -2453,7 +2453,7 @@
       "file_type": "code",
       "norm_label": "._insert()",
       "source_file": "speakon.py",
-      "source_location": "L614"
+      "source_location": "L617"
     },
     {
       "id": "speakon_speakon_insert_44c9b8_restore",
@@ -2465,7 +2465,7 @@
       "file_type": "code",
       "norm_label": "restore()",
       "source_file": "speakon.py",
-      "source_location": "L635"
+      "source_location": "L638"
     },
     {
       "id": "speakon_speakon_install_update",
@@ -2477,7 +2477,7 @@
       "file_type": "code",
       "norm_label": ".install_update()",
       "source_file": "speakon.py",
-      "source_location": "L360"
+      "source_location": "L363"
     },
     {
       "id": "speakon_speakon_install_update_work",
@@ -2489,7 +2489,7 @@
       "file_type": "code",
       "norm_label": "work()",
       "source_file": "speakon.py",
-      "source_location": "L368"
+      "source_location": "L371"
     },
     {
       "id": "speakon_speakon_learn_corrections",
@@ -2501,7 +2501,7 @@
       "file_type": "code",
       "norm_label": ".learn_corrections()",
       "source_file": "speakon.py",
-      "source_location": "L528"
+      "source_location": "L531"
     },
     {
       "id": "speakon_speakon_load_model",
@@ -2513,7 +2513,7 @@
       "file_type": "code",
       "norm_label": ".load_model()",
       "source_file": "speakon.py",
-      "source_location": "L389"
+      "source_location": "L392"
     },
     {
       "id": "speakon_speakon_load_model_work",
@@ -2525,7 +2525,7 @@
       "file_type": "code",
       "norm_label": "work()",
       "source_file": "speakon.py",
-      "source_location": "L390"
+      "source_location": "L393"
     },
     {
       "id": "speakon_speakon_notify",
@@ -2549,7 +2549,7 @@
       "file_type": "code",
       "norm_label": ".play()",
       "source_file": "speakon.py",
-      "source_location": "L592"
+      "source_location": "L595"
     },
     {
       "id": "speakon_speakon_quit",
@@ -2573,7 +2573,7 @@
       "file_type": "code",
       "norm_label": ".set_preview()",
       "source_file": "speakon.py",
-      "source_location": "L589"
+      "source_location": "L592"
     },
     {
       "id": "speakon_speakon_set_status",
@@ -4013,7 +4013,7 @@
       "file_type": "code",
       "norm_label": "app_dir()",
       "source_file": "updates.py",
-      "source_location": "L57"
+      "source_location": "L59"
     },
     {
       "id": "updates_can_install",
@@ -4025,7 +4025,7 @@
       "file_type": "code",
       "norm_label": "can_install()",
       "source_file": "updates.py",
-      "source_location": "L62"
+      "source_location": "L64"
     },
     {
       "id": "updates_check",
@@ -4037,7 +4037,7 @@
       "file_type": "code",
       "norm_label": "check()",
       "source_file": "updates.py",
-      "source_location": "L39"
+      "source_location": "L41"
     },
     {
       "id": "updates_download",
@@ -4049,7 +4049,7 @@
       "file_type": "code",
       "norm_label": "download()",
       "source_file": "updates.py",
-      "source_location": "L76"
+      "source_location": "L78"
     },
     {
       "id": "updates_get",
@@ -4085,7 +4085,7 @@
       "file_type": "code",
       "norm_label": "_q()",
       "source_file": "updates.py",
-      "source_location": "L121"
+      "source_location": "L123"
     },
     {
       "id": "updates_start_swap",
@@ -4097,7 +4097,7 @@
       "file_type": "code",
       "norm_label": "start_swap()",
       "source_file": "updates.py",
-      "source_location": "L139"
+      "source_location": "L141"
     },
     {
       "id": "updates_swap_script",
@@ -4109,7 +4109,7 @@
       "file_type": "code",
       "norm_label": "swap_script()",
       "source_file": "updates.py",
-      "source_location": "L125"
+      "source_location": "L127"
     },
     {
       "id": "updates_unpack",
@@ -4121,7 +4121,7 @@
       "file_type": "code",
       "norm_label": "unpack()",
       "source_file": "updates.py",
-      "source_location": "L97"
+      "source_location": "L99"
     },
     {
       "id": "hotkeys_hotkeywatcher_capture",
@@ -5470,7 +5470,7 @@
       "source_location": "L108"
     },
     {
-      "id": "speakon_rationale_529",
+      "id": "speakon_rationale_532",
       "label": "Remember words the user corrected; applied from the next dictation on.",
       "_origin": "ast",
       "community": 2,
@@ -5478,7 +5478,7 @@
       "file_type": "rationale",
       "norm_label": "remember words the user corrected; applied from the next dictation on.",
       "source_file": "speakon.py",
-      "source_location": "L529"
+      "source_location": "L532"
     },
     {
       "id": "speakon_rationale_58",
@@ -6054,7 +6054,18 @@
       "source_location": "L1"
     },
     {
-      "id": "updates_rationale_126",
+      "id": "updates_rationale_100",
+      "label": "Unpack the release zip; returns the folder holding the new SpeakOn.exe.",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "updates.py",
+      "file_type": "rationale",
+      "norm_label": "unpack the release zip; returns the folder holding the new speakon.exe.",
+      "source_file": "updates.py",
+      "source_location": "L100"
+    },
+    {
+      "id": "updates_rationale_128",
       "label": "PowerShell that waits for this SpeakOn to close, copies the new files over it\u2026",
       "_origin": "ast",
       "community": 7,
@@ -6062,10 +6073,10 @@
       "file_type": "rationale",
       "norm_label": "powershell that waits for this speakon to close, copies the new files over it...",
       "source_file": "updates.py",
-      "source_location": "L126"
+      "source_location": "L128"
     },
     {
-      "id": "updates_rationale_140",
+      "id": "updates_rationale_142",
       "label": "Leave the swap script running; the caller then quits SpeakOn.",
       "_origin": "ast",
       "community": 7,
@@ -6073,7 +6084,7 @@
       "file_type": "rationale",
       "norm_label": "leave the swap script running; the caller then quits speakon.",
       "source_file": "updates.py",
-      "source_location": "L140"
+      "source_location": "L142"
     },
     {
       "id": "updates_rationale_26",
@@ -6087,7 +6098,7 @@
       "source_location": "L26"
     },
     {
-      "id": "updates_rationale_40",
+      "id": "updates_rationale_42",
       "label": "The newest release if it is newer than `current`, else None. Raises on network\u2026",
       "_origin": "ast",
       "community": 7,
@@ -6095,10 +6106,10 @@
       "file_type": "rationale",
       "norm_label": "the newest release if it is newer than `current`, else none. raises on network...",
       "source_file": "updates.py",
-      "source_location": "L40"
+      "source_location": "L42"
     },
     {
-      "id": "updates_rationale_58",
+      "id": "updates_rationale_60",
       "label": "The folder SpeakOn.exe runs from, or None when running from source.",
       "_origin": "ast",
       "community": 7,
@@ -6106,10 +6117,10 @@
       "file_type": "rationale",
       "norm_label": "the folder speakon.exe runs from, or none when running from source.",
       "source_file": "updates.py",
-      "source_location": "L58"
+      "source_location": "L60"
     },
     {
-      "id": "updates_rationale_63",
+      "id": "updates_rationale_65",
       "label": "True when an update can replace the files in place (a built SpeakOn.exe in a\u2026",
       "_origin": "ast",
       "community": 7,
@@ -6117,10 +6128,10 @@
       "file_type": "rationale",
       "norm_label": "true when an update can replace the files in place (a built speakon.exe in a...",
       "source_file": "updates.py",
-      "source_location": "L63"
+      "source_location": "L65"
     },
     {
-      "id": "updates_rationale_77",
+      "id": "updates_rationale_79",
       "label": "Download and verify the release zip into `work`; returns its path.",
       "_origin": "ast",
       "community": 7,
@@ -6128,18 +6139,7 @@
       "file_type": "rationale",
       "norm_label": "download and verify the release zip into `work`; returns its path.",
       "source_file": "updates.py",
-      "source_location": "L77"
-    },
-    {
-      "id": "updates_rationale_98",
-      "label": "Unpack the release zip; returns the folder holding the new SpeakOn.exe.",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "updates.py",
-      "file_type": "rationale",
-      "norm_label": "unpack the release zip; returns the folder holding the new speakon.exe.",
-      "source_file": "updates.py",
-      "source_location": "L98"
+      "source_location": "L79"
     },
     {
       "id": "hotkeys",
@@ -8979,7 +8979,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L699",
+      "source_location": "L702",
       "weight": 1.0
     },
     {
@@ -8991,7 +8991,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L732",
+      "source_location": "L735",
       "weight": 1.0
     },
     {
@@ -9003,7 +9003,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L876",
+      "source_location": "L879",
       "weight": 1.0
     },
     {
@@ -9015,7 +9015,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L877",
+      "source_location": "L880",
       "weight": 1.0
     },
     {
@@ -9027,7 +9027,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L880",
+      "source_location": "L883",
       "weight": 1.0
     },
     {
@@ -9039,7 +9039,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L404",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -9051,7 +9051,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L555",
+      "source_location": "L558",
       "weight": 1.0
     },
     {
@@ -9063,7 +9063,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L556",
+      "source_location": "L559",
       "weight": 1.0
     },
     {
@@ -9075,7 +9075,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L563",
+      "source_location": "L566",
       "weight": 1.0
     },
     {
@@ -9087,7 +9087,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L565",
+      "source_location": "L568",
       "weight": 1.0
     },
     {
@@ -9099,7 +9099,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L478",
+      "source_location": "L481",
       "weight": 1.0
     },
     {
@@ -9111,7 +9111,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L481",
+      "source_location": "L484",
       "weight": 1.0
     },
     {
@@ -9123,7 +9123,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L429",
+      "source_location": "L432",
       "weight": 1.0
     },
     {
@@ -9135,7 +9135,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L409",
+      "source_location": "L412",
       "weight": 1.0
     },
     {
@@ -9147,7 +9147,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L412",
+      "source_location": "L415",
       "weight": 1.0
     },
     {
@@ -9159,7 +9159,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L421",
+      "source_location": "L424",
       "weight": 1.0
     },
     {
@@ -9171,7 +9171,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L425",
+      "source_location": "L428",
       "weight": 1.0
     },
     {
@@ -9183,7 +9183,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L447",
+      "source_location": "L450",
       "weight": 1.0
     },
     {
@@ -9195,24 +9195,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L453",
+      "source_location": "L456",
       "weight": 1.0
     },
     {
       "source": "speakon_speakon_do_start",
       "target": "speakon_set_busy_priority",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "speakon.py",
-      "source_location": "L467",
-      "weight": 1.0
-    },
-    {
-      "source": "speakon_speakon_do_start",
-      "target": "speakon_foreground_app",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9224,6 +9212,18 @@
     },
     {
       "source": "speakon_speakon_do_start",
+      "target": "speakon_foreground_app",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L473",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_speakon_do_start",
       "target": "speakon_speakon_play",
       "relation": "calls",
       "_origin": "ast",
@@ -9231,7 +9231,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L471",
+      "source_location": "L474",
       "weight": 1.0
     },
     {
@@ -9243,7 +9243,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L491",
+      "source_location": "L494",
       "weight": 1.0
     },
     {
@@ -9255,7 +9255,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L495",
+      "source_location": "L498",
       "weight": 1.0
     },
     {
@@ -9267,7 +9267,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L497",
+      "source_location": "L500",
       "weight": 1.0
     },
     {
@@ -9279,7 +9279,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L433",
+      "source_location": "L436",
       "weight": 1.0
     },
     {
@@ -9291,7 +9291,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L435",
+      "source_location": "L438",
       "weight": 1.0
     },
     {
@@ -9303,7 +9303,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L514",
+      "source_location": "L517",
       "weight": 1.0
     },
     {
@@ -9315,7 +9315,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L518",
+      "source_location": "L521",
       "weight": 1.0
     },
     {
@@ -9471,7 +9471,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L603",
+      "source_location": "L606",
       "weight": 1.0
     },
     {
@@ -9483,7 +9483,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L608",
+      "source_location": "L611",
       "weight": 1.0
     },
     {
@@ -9495,7 +9495,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L380",
+      "source_location": "L383",
       "weight": 1.0
     },
     {
@@ -9507,7 +9507,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L382",
+      "source_location": "L385",
       "weight": 1.0
     },
     {
@@ -9519,7 +9519,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L549",
+      "source_location": "L552",
       "weight": 1.0
     },
     {
@@ -9531,7 +9531,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L394",
+      "source_location": "L397",
       "weight": 1.0
     },
     {
@@ -9579,7 +9579,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L355",
+      "source_location": "L356",
+      "weight": 1.0
+    },
+    {
+      "source": "speakon_speakon_update_loop",
+      "target": "speakon_api_install_update",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "speakon.py",
+      "source_location": "L358",
       "weight": 1.0
     },
     {
@@ -11331,7 +11343,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "updates.py",
-      "source_location": "L64",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -11343,7 +11355,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "updates.py",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -11355,7 +11367,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "updates.py",
-      "source_location": "L46",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -11367,7 +11379,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "updates.py",
-      "source_location": "L144",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -11379,7 +11391,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "updates.py",
-      "source_location": "L131",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -15150,7 +15162,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L646",
+      "source_location": "L649",
       "weight": 1.0
     },
     {
@@ -15183,7 +15195,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L845",
+      "source_location": "L848",
       "weight": 1.0
     },
     {
@@ -15205,7 +15217,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L777",
+      "source_location": "L780",
       "weight": 1.0
     },
     {
@@ -15216,7 +15228,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L780",
+      "source_location": "L783",
       "weight": 1.0
     },
     {
@@ -15227,7 +15239,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L884",
+      "source_location": "L887",
       "weight": 1.0
     },
     {
@@ -15238,7 +15250,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L390",
+      "source_location": "L393",
       "weight": 1.0
     },
     {
@@ -16591,7 +16603,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L121",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -16602,7 +16614,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L125",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -16613,7 +16625,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L139",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -16646,7 +16658,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -16657,7 +16669,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L57",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -16668,7 +16680,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L62",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -16679,7 +16691,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L76",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -16690,7 +16702,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L97",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -17581,7 +17593,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L647",
+      "source_location": "L650",
       "weight": 1.0
     },
     {
@@ -17592,7 +17604,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L650",
+      "source_location": "L653",
       "weight": 1.0
     },
     {
@@ -17603,7 +17615,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L660",
+      "source_location": "L663",
       "weight": 1.0
     },
     {
@@ -17614,7 +17626,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L663",
+      "source_location": "L666",
       "weight": 1.0
     },
     {
@@ -17625,7 +17637,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L666",
+      "source_location": "L669",
       "weight": 1.0
     },
     {
@@ -17636,7 +17648,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L671",
+      "source_location": "L674",
       "weight": 1.0
     },
     {
@@ -17647,7 +17659,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L685",
+      "source_location": "L688",
       "weight": 1.0
     },
     {
@@ -17658,7 +17670,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L690",
+      "source_location": "L693",
       "weight": 1.0
     },
     {
@@ -17669,7 +17681,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L693",
+      "source_location": "L696",
       "weight": 1.0
     },
     {
@@ -17680,7 +17692,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L706",
+      "source_location": "L709",
       "weight": 1.0
     },
     {
@@ -17691,7 +17703,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L719",
+      "source_location": "L722",
       "weight": 1.0
     },
     {
@@ -17702,7 +17714,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L725",
+      "source_location": "L728",
       "weight": 1.0
     },
     {
@@ -17713,7 +17725,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L736",
+      "source_location": "L739",
       "weight": 1.0
     },
     {
@@ -17724,7 +17736,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L745",
+      "source_location": "L748",
       "weight": 1.0
     },
     {
@@ -17735,7 +17747,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L748",
+      "source_location": "L751",
       "weight": 1.0
     },
     {
@@ -17746,7 +17758,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L756",
+      "source_location": "L759",
       "weight": 1.0
     },
     {
@@ -17757,7 +17769,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L769",
+      "source_location": "L772",
       "weight": 1.0
     },
     {
@@ -17768,7 +17780,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L772",
+      "source_location": "L775",
       "weight": 1.0
     },
     {
@@ -17779,7 +17791,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L796",
+      "source_location": "L799",
       "weight": 1.0
     },
     {
@@ -17790,7 +17802,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L807",
+      "source_location": "L810",
       "weight": 1.0
     },
     {
@@ -17801,7 +17813,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L810",
+      "source_location": "L813",
       "weight": 1.0
     },
     {
@@ -17812,7 +17824,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L822",
+      "source_location": "L825",
       "weight": 1.0
     },
     {
@@ -17823,7 +17835,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L825",
+      "source_location": "L828",
       "weight": 1.0
     },
     {
@@ -17988,7 +18000,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L360",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -17999,7 +18011,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L389",
+      "source_location": "L392",
       "weight": 1.0
     },
     {
@@ -18010,7 +18022,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L398",
+      "source_location": "L401",
       "weight": 1.0
     },
     {
@@ -18021,7 +18033,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L406",
+      "source_location": "L409",
       "weight": 1.0
     },
     {
@@ -18032,7 +18044,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L414",
+      "source_location": "L417",
       "weight": 1.0
     },
     {
@@ -18043,7 +18055,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L423",
+      "source_location": "L426",
       "weight": 1.0
     },
     {
@@ -18054,7 +18066,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L427",
+      "source_location": "L430",
       "weight": 1.0
     },
     {
@@ -18065,7 +18077,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L431",
+      "source_location": "L434",
       "weight": 1.0
     },
     {
@@ -18076,7 +18088,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L437",
+      "source_location": "L440",
       "weight": 1.0
     },
     {
@@ -18087,7 +18099,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L443",
+      "source_location": "L446",
       "weight": 1.0
     },
     {
@@ -18098,7 +18110,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L473",
+      "source_location": "L476",
       "weight": 1.0
     },
     {
@@ -18109,7 +18121,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L476",
+      "source_location": "L479",
       "weight": 1.0
     },
     {
@@ -18120,7 +18132,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L485",
+      "source_location": "L488",
       "weight": 1.0
     },
     {
@@ -18131,7 +18143,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L501",
+      "source_location": "L504",
       "weight": 1.0
     },
     {
@@ -18142,7 +18154,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L520",
+      "source_location": "L523",
       "weight": 1.0
     },
     {
@@ -18153,7 +18165,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L528",
+      "source_location": "L531",
       "weight": 1.0
     },
     {
@@ -18164,7 +18176,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L553",
+      "source_location": "L556",
       "weight": 1.0
     },
     {
@@ -18175,7 +18187,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L589",
+      "source_location": "L592",
       "weight": 1.0
     },
     {
@@ -18186,7 +18198,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L592",
+      "source_location": "L595",
       "weight": 1.0
     },
     {
@@ -18197,7 +18209,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L600",
+      "source_location": "L603",
       "weight": 1.0
     },
     {
@@ -18208,7 +18220,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L614",
+      "source_location": "L617",
       "weight": 1.0
     },
     {
@@ -19048,14 +19060,14 @@
       "weight": 1.0
     },
     {
-      "source": "speakon_rationale_529",
+      "source": "speakon_rationale_532",
       "target": "speakon_speakon_learn_corrections",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "speakon.py",
-      "source_location": "L529",
+      "source_location": "L532",
       "weight": 1.0
     },
     {
@@ -19422,25 +19434,36 @@
       "weight": 1.0
     },
     {
-      "source": "updates_rationale_126",
+      "source": "updates_rationale_100",
+      "target": "updates_unpack",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "updates.py",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "updates_rationale_128",
       "target": "updates_swap_script",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L126",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
-      "source": "updates_rationale_140",
+      "source": "updates_rationale_142",
       "target": "updates_start_swap",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L140",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -19455,58 +19478,47 @@
       "weight": 1.0
     },
     {
-      "source": "updates_rationale_40",
+      "source": "updates_rationale_42",
       "target": "updates_check",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
-      "source": "updates_rationale_58",
+      "source": "updates_rationale_60",
       "target": "updates_app_dir",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L58",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
-      "source": "updates_rationale_63",
+      "source": "updates_rationale_65",
       "target": "updates_can_install",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L63",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
-      "source": "updates_rationale_77",
+      "source": "updates_rationale_79",
       "target": "updates_download",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "updates.py",
-      "source_location": "L77",
-      "weight": 1.0
-    },
-    {
-      "source": "updates_rationale_98",
-      "target": "updates_unpack",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "updates.py",
-      "source_location": "L98",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -19782,7 +19794,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L793",
+      "source_location": "L796",
       "weight": 1.0
     },
     {
@@ -19794,7 +19806,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L784",
+      "source_location": "L787",
       "weight": 1.0
     },
     {
@@ -19806,7 +19818,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L784",
+      "source_location": "L787",
       "weight": 1.0
     },
     {
@@ -19830,7 +19842,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L912",
+      "source_location": "L915",
       "weight": 1.0
     },
     {
@@ -19842,7 +19854,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L888",
+      "source_location": "L891",
       "weight": 1.0
     },
     {
@@ -19854,7 +19866,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L461",
+      "source_location": "L464",
       "weight": 1.0
     },
     {
@@ -19866,7 +19878,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L638",
+      "source_location": "L641",
       "weight": 1.0
     },
     {
@@ -19878,7 +19890,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L387",
+      "source_location": "L390",
       "weight": 1.0
     },
     {
@@ -19890,7 +19902,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "speakon.py",
-      "source_location": "L395",
+      "source_location": "L398",
       "weight": 1.0
     },
     {
@@ -19986,7 +19998,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "speakon.py",
-      "source_location": "L714",
+      "source_location": "L717",
       "weight": 1.0
     },
     {
@@ -20053,7 +20065,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "speakon.py",
-      "source_location": "L861",
+      "source_location": "L864",
       "weight": 0.8
     },
     {
@@ -21486,5 +21498,5 @@
       "source_file": "ui/index.html"
     }
   ],
-  "built_at_commit": "77fa252e70c950761cbae47dc250d3d09b0dc701"
+  "built_at_commit": "94b9be08537fc0f04b301e32e4db2df0602980cc"
 }
