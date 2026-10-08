@@ -509,7 +509,7 @@ class SpeakOn:
             err = e
             log.exception("transcription failed")
         self.timing = {"engine": time.time() - self.released_at, "reused": d.reused_preview,
-                       "pieces": d.nchunks, "speech": round(d.seconds, 1)}
+                       "pieces": d.nchunks, "speech": round(d.seconds, 1), "release": dict(getattr(d, "release", {}))}
         try:
             self.deliver(raw, d, err)
         finally:
@@ -571,6 +571,10 @@ class SpeakOn:
                  "+ keys still held %.2f + insert %.2f [%s] lead-in %.2fs", t.get("speech", 0), len(text), latency,
                  t.get("engine", 0), t.get("pieces"), t.get("reused"), t.get("keys_held", 0), t.get("insert", 0),
                  self.settings["paste_method"], self.lead_in)
+        r = t.get("release") or {}
+        if "final" in r:   # where the engine part went (tools/weekly_check.py sums these up)
+            log.info("release: worker %s, waited %.2fs for it, %.1fs left, final step %.2fs, preview heard all %s",
+                     r.get("busy"), r.get("queued", 0), r.get("left", 0), r["final"], r.get("heard_all"))
         entry = {"time": datetime.now().isoformat(timespec="seconds"), "text": text, "raw": raw, "fixes": fixes,
                  "app": self.target_app, "seconds": round(d.seconds, 1), "model": self.settings["model"],
                  "latency": round(latency, 2)}

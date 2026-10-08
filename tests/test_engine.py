@@ -147,3 +147,13 @@ def test_release_keeps_a_running_preview_only_if_it_covers_everything(more, canc
     d.worker = types.SimpleNamespace(join=lambda: None)
     d.finish()
     assert eng.cancels == cancelled
+
+
+def test_release_records_where_the_wait_went():
+    eng, d = previewed(2.0, 0.6)
+    d.worker = types.SimpleNamespace(join=lambda: None)
+    d.finish()
+    assert d.release["busy"] == "idle"
+    d._finish_tail()                      # the worker's "finish" job
+    r = d.release
+    assert r["heard_all"] and r["queued"] >= 0 and r["final"] >= 0 and 2.0 < r["left"] < 3.0

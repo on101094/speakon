@@ -229,6 +229,8 @@ class Dictation:
         self.spec = None
         self.preview_run = None     # the preview being transcribed right now
         self.reused_preview = False
+        self.running_piece = False  # the worker is transcribing a piece right now
+        self.release = {}           # what the wait after letting go was spent on (for the log)
         self.cut_lock = threading.Lock()
         self.worker = threading.Thread(target=self._work, daemon=True)
         if start_worker:
@@ -375,18 +377,27 @@ class Dictation:
                 self._finish_tail()
                 return
             start, end, thr = job
+            self.running_piece = True
             self._do(start, end, thr)
+            self.running_piece = False
             self.chunks_done += 1
             if not self.finishing and not self.cancelled:
                 self.on_preview(self.committed_text())
 
     def _finish_tail(self):
         """The release step: the words since the last piece."""
+        t = time.perf_counter()
         n = len(self.blocks)
+        r = self.release
+        r["queued"] = t - r.get("asked", t)            # waiting for the worker to be free
+        r["left"] = max(0, n - self.done_to) * BLOCK / SAMPLE_RATE
+        r["heard_all"] = False
         if n > self.done_to and not self.cancelled:
-            if n - self.done_to <= SHORT_TAIL_BLOCKS and not self._heard_all(self.spec):
+            r["heard_all"] = self._heard_all(self.spec)
+            if n - self.done_to <= SHORT_TAIL_BLOCKS and not r["heard_all"]:
                 self.spec = None              # short: one clean pass is accurate and still fast
             self._do(self.done_to, n, self.threshold())
+        r["final"] = time.perf_counter() - t
 
     def _heard_all(self, run):
         """Did this preview hear exactly what the final pass would? Then its words are the final words."""
@@ -449,8 +460,12 @@ class Dictation:
     def finish(self):
         """Call after the audio stream has stopped. Blocks until all text is ready."""
         self.finishing = True
+        busy = "preview" if self.preview_run else "piece" if self.running_piece else "idle"
         if not self._heard_all(self.preview_run):   # a preview of everything said: let it finish, it is the answer
             self.engine.cancel_preview()
+        elif busy == "preview":
+            busy = "covering preview"
+        self.release = {"asked": time.perf_counter(), "busy": busy}
         self.jobs.put("finish")
         self.worker.join()
         return self.committed_text()

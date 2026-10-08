@@ -39,7 +39,7 @@ import engine as E  # noqa: E402
 from selftest import recall  # noqa: E402
 
 CLOCK = [0.0]
-E.time = types.SimpleNamespace(time=lambda: CLOCK[0])   # the preview timer runs on audio time
+E.time = types.SimpleNamespace(time=lambda: CLOCK[0], perf_counter=time.perf_counter)   # previews run on audio time
 
 
 def load(path):
