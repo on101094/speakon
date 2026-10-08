@@ -125,13 +125,26 @@ def _q(path):
 
 
 def swap_script(pid, new, target, work, log):
-    """PowerShell that waits for this SpeakOn to close, copies the new files over it and starts it again."""
+    """PowerShell that waits for this SpeakOn to close, copies the new files over it and starts it again.
+    The old files are copied aside first: if the new ones can't all be written (a file held open by an
+    antivirus, a full disk), the old ones go back, so a failed update leaves the old version working."""
     exe = PureWindowsPath(target) / f"{C.APP_NAME}.exe"
+    backup = PureWindowsPath(work) / "old"
+    copy = "/E /R:10 /W:1 /NP /NJH /NFL /NDL"
+    note = f"Out-File -Append -Encoding utf8 {_q(log)}"
     return "\n".join([
         f"Wait-Process -Id {int(pid)} -Timeout 60 -ErrorAction SilentlyContinue",
         f"Stop-Process -Id {int(pid)} -Force -ErrorAction SilentlyContinue",   # stuck closing: its files must be free
-        f"robocopy {_q(new)} {_q(target)} /E /R:10 /W:1 /NP /NJH /NFL /NDL | Out-File -Append -Encoding utf8 {_q(log)}",
-        f"if ($LASTEXITCODE -ge 8) {{ \"update copy failed: $LASTEXITCODE\" | Out-File -Append -Encoding utf8 {_q(log)} }}",
+        f"robocopy {_q(target)} {_q(backup)} {copy} | {note}",
+        "if ($LASTEXITCODE -ge 8) {",
+        f"  \"update skipped: could not back up the old version ($LASTEXITCODE)\" | {note}",
+        "} else {",
+        f"  robocopy {_q(new)} {_q(target)} {copy} | {note}",
+        "  if ($LASTEXITCODE -ge 8) {",
+        f"    \"update copy failed ($LASTEXITCODE) - restoring the old version\" | {note}",
+        f"    robocopy {_q(backup)} {_q(target)} {copy} | {note}",
+        "  }",
+        "}",
         f"Start-Process -FilePath {_q(exe)}",
         f"Remove-Item -Recurse -Force {_q(work)} -ErrorAction SilentlyContinue",
         "",
