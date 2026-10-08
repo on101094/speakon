@@ -1,4 +1,4 @@
-- **Last manual download.** From this version on, SpeakOn tells you when a new version is out and installs it with one click: Home shows **Update now**, SpeakOn downloads the new version, checks its fingerprint (SHA-256) against the one GitHub publishes, closes, and opens again a few seconds later. Your settings, history, dictionary and learned words are not touched.
-- To know about new versions, SpeakOn asks GitHub once a day for the latest version number. Nothing about you or your dictations is sent. You can turn this off in Settings ("Tell me when there is a new version").
+- **Your first one-click update.** If you have 1.2.5, SpeakOn shows **Update now** on Home (and in the tray menu) about 20 seconds after it starts. Click it: SpeakOn downloads this version, checks its fingerprint, closes, and opens again a few seconds later. Before release, this exact path was rehearsed on a Windows machine: an older SpeakOn updated itself and came back up as the new version.
+- **Where the wait goes.** After each dictation the log (`C:\Users\<you>\SpeakOn\logs\speakon.log`) now also notes what SpeakOn was busy with when you let go, how much audio was left and how long the last step took. No dictated text is written there. This is what the next speed work will be based on.
 
-To install this one: quit SpeakOn (tray icon → Quit), download SpeakOn-1.2.5-windows-x64.zip, unzip it over your old SpeakOn folder (replace the files), run SpeakOn.exe. Windows only.
+New here? Download SpeakOn-1.2.6-windows-x64.zip, unzip, run SpeakOn.exe. Windows only.

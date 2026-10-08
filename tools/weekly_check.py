@@ -21,6 +21,9 @@ import config as C  # noqa: E402
 LOG_RE = re.compile(r"^(\S+ \S+) INFO dictation: ([\d.]+)s speech, (\d+) chars, wait ([\d.]+)s = engine ([\d.]+) "
                     r"\(pieces (\S+), preview reused (\S+)\) \+ keys still held ([\d.]+) \+ insert ([\d.]+) \[(\w+)\]")
 
+REL_RE = re.compile(r"^(\S+ \S+) INFO release: worker (.+?), waited ([\d.]+)s for it, ([\d.]+)s left, "
+                    r"final step ([\d.]+)s, preview heard all (\S+)")
+
 
 def pct(xs, p):
     xs = sorted(xs)
@@ -38,10 +41,14 @@ def report(days=7, show_text=False):
     if waits:
         print(f"wait after release: median {statistics.median(waits):.2f}s, 90% under {pct(waits, .9):.2f}s, "
               f"worst {max(waits):.2f}s")
-    rows = []
+    rows, rel = [], []
     for folder in [C.DATA_DIR / "logs"]:
         for f in sorted(folder.glob("speakon.log*")):
             for line in f.read_text(encoding="utf-8", errors="ignore").splitlines():
+                r = REL_RE.match(line)
+                if r and datetime.strptime(r.group(1)[:19], "%Y-%m-%d %H:%M:%S") >= since:
+                    rel.append({"busy": r.group(2), "queued": float(r.group(3)), "left": float(r.group(4)),
+                                "final": float(r.group(5)), "heard_all": r.group(6) == "True"})
                 m = LOG_RE.match(line)
                 if m and datetime.strptime(m.group(1)[:19], "%Y-%m-%d %H:%M:%S") >= since:
                     rows.append({"speech": float(m.group(2)), "chars": int(m.group(3)), "wait": float(m.group(4)),
@@ -52,6 +59,14 @@ def report(days=7, show_text=False):
               f"keys-held median {statistics.median(r['keys'] for r in rows):.2f}s, "
               f"insert median {statistics.median(r['insert'] for r in rows):.2f}s, "
               f"preview reused {sum(r['reused'] for r in rows)}/{len(rows)}")
+        if rel:   # 1.2.6+: what the engine part of the wait was spent on
+            busy = {k: sum(r["busy"] == k for r in rel) for k in sorted({r["busy"] for r in rel})}
+            print(f"engine part ({len(rel)} dictations): waiting for the worker median "
+                  f"{statistics.median(r['queued'] for r in rel):.2f}s (90% {pct([r['queued'] for r in rel], .9):.2f}s), "
+                  f"final step median {statistics.median(r['final'] for r in rel):.2f}s "
+                  f"(90% {pct([r['final'] for r in rel], .9):.2f}s), "
+                  f"audio left median {statistics.median(r['left'] for r in rel):.1f}s, "
+                  f"preview heard all {sum(r['heard_all'] for r in rel)}/{len(rel)}, worker at release {busy}")
         slow = sorted(rows, key=lambda r: -r["wait"])[:5]
         print("slowest:", ", ".join(f"{r['wait']:.2f}s ({r['speech']:.0f}s speech, engine {r['engine']:.2f}, "
                                     f"insert {r['insert']:.2f})" for r in slow))
