@@ -43,6 +43,7 @@ import config as C
 import engine as eng
 import learn
 import sendinput
+import speedreport
 import textproc
 import updates
 from corrections import EditWatcher, find_corrections
@@ -828,6 +829,12 @@ class Api:
 
     def open_data_folder(self):
         os.startfile(str(C.DATA_DIR))
+
+    def copy_speed_report(self):
+        a = self._app
+        text = speedreport.report(C.DATA_DIR / "logs", C.VERSION, a.settings["model"], eng.PARAKEET_THREADS)
+        pyperclip.copy(text)
+        return text
 
     def transcribe_file(self):
         a = self._app

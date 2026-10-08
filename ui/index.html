@@ -255,6 +255,7 @@ a.link{color:var(--accent);cursor:pointer;text-decoration:none}
       <div class="card section">
         <h2 style="margin-bottom:6px">You</h2>
         <div class="field"><label>Your name<span class="d">For the greeting</span></label><input class="input" id="name" placeholder="Name"></div>
+        <div class="field"><label>Speed report</label><div class="row"><span class="muted" id="speedmsg">Timings only, never what you said</span><button class="btn small" id="speedcopy">Copy speed report</button></div></div>
         <div class="field"><label>Data folder</label><div class="row"><span class="muted" id="datadir"></span><button class="btn small" id="opendata">Open</button></div></div>
         <div class="field"><label>Audio or video file</label><div><button class="btn" id="filebtn">Transcribe a file…</button></div></div>
       </div>
@@ -414,6 +415,7 @@ async function loadSettings(){
 $("#hotkey").onchange = e => api.set_setting("hotkey", e.target.value);
 $("#name").onchange = e => api.set_setting("name", e.target.value.trim());
 $("#opendata").onclick = () => api.open_data_folder();
+$("#speedcopy").onclick = async () => { await api.copy_speed_report(); $("#speedmsg").textContent = "Copied - paste it into your chat"; };
 $("#filebtn").onclick = async () => { toast("Choose a file…"); const r = await api.transcribe_file(); if(r) toast(r); };
 $("#recordkey").onclick = async () => { $("#keymodal").classList.add("on"); const r = await api.record_shortcut(); $("#keymodal").classList.remove("on"); if(r){ toast("Shortcut: "+r); } loadSettings(); };
 
